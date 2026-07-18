@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Bayonet",
+    "defIndex": 500,
+    "category": "Knife"
+  },
+  {
+    "name": "Karambit",
+    "defIndex": 507,
+    "category": "Knife"
+  }
+]

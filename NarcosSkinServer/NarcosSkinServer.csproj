@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CounterStrikeSharp.API" Version="1.0.371" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Utils\" />
+	</ItemGroup>
+
+	<Target Name="CopyPlugin" AfterTargets="Build">
+
+		<MakeDir Directories="D:\CS2Server\server\game\csgo\addons\counterstrikesharp\plugins\NarcosSkinServer" />
+
+		<Copy SourceFiles="$(OutputPath)NarcosSkinServer.dll" DestinationFolder="D:\CS2Server\server\game\csgo\addons\counterstrikesharp\plugins\NarcosSkinServer" />
+
+		<Copy SourceFiles="$(OutputPath)NarcosSkinServer.deps.json" DestinationFolder="D:\CS2Server\server\game\csgo\addons\counterstrikesharp\plugins\NarcosSkinServer" />
+
+	</Target>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+	  <Exec Command="if not exist &quot;D:\CS2Server\server\game\csgo\addons\counterstrikesharp\plugins\NarcosSkinServer&quot; (&#xD;&#xA;    mkdir &quot;D:\CS2Server\server\game\csgo\addons\counterstrikesharp\plugins\NarcosSkinServer&quot;&#xD;&#xA;)&#xD;&#xA;&#xD;&#xA;xcopy /Y /E /I &quot;$(TargetDir)*.*&quot; &quot;D:\CS2Server\server\game\csgo\addons\counterstrikesharp\plugins\NarcosSkinServer\&quot;&#xD;&#xA;&#xD;&#xA;xcopy /Y /E /I &quot;$(ProjectDir)Assets&quot; &quot;D:\CS2Server\server\game\csgo\addons\counterstrikesharp\plugins\NarcosSkinServer\Assets&quot;" />
+	</Target>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\NarcosEconomy\NarcosEconomy.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="CS2MenuManager">
+	    <HintPath>..\..\CS2MenuManager\CS2MenuManager\obj\Debug\CS2MenuManager.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+
+</Project>
