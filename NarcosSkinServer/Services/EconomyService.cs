@@ -97,6 +97,8 @@ public class EconomyService
         List<JObject> skinInfo;
         bool isLegacyModel;
 
+        Console.WriteLine($"[GivePlayerWeaponSkin] weaponDefIndex={weaponDefIndex}, HasChangedPaint={HasChangedPaint(player, weaponDefIndex, out var debugInfo)}, storedPaint={debugInfo?.Paint}");
+
         if (!HasChangedPaint(player, weaponDefIndex, out _))
         {
             // Random skins
@@ -512,12 +514,17 @@ public class EconomyService
             {
                 CCSWeaponBaseVData? weaponData = weapon.Value.As<CCSWeaponBase>().VData;
 
+                Console.WriteLine($"[RefreshWeapons] Checking {weapon.Value.DesignerName}, GearSlot={weaponData?.GearSlot}");
+
                 if (weaponData == null) continue;
 
                 if (weaponData.GearSlot is gear_slot_t.GEAR_SLOT_RIFLE or gear_slot_t.GEAR_SLOT_PISTOL)
                 {
                     if (!WeaponDefindex.TryGetValue(weapon.Value.AttributeManager.Item.ItemDefinitionIndex, out var weaponByDefindex))
+                    {
+                        Console.WriteLine($"[RefreshWeapons] No WeaponDefindex entry for ItemDefinitionIndex={weapon.Value.AttributeManager.Item.ItemDefinitionIndex}");
                         continue;
+                    }
 
                     int clip1 = weapon.Value.Clip1;
                     int reservedAmmo = weapon.Value.ReserveAmmo[0];
@@ -530,7 +537,11 @@ public class EconomyService
 
                     value.Add((clip1, reservedAmmo));
 
-                    if (gun.VData == null) return;
+                    if (gun.VData == null)
+                    {
+                        Console.WriteLine($"[RefreshWeapons] gun.VData is null for {weaponByDefindex}, aborting entire refresh!");
+                        return;
+                    }
 
                     weapon.Value?.AddEntityIOEvent("Kill", weapon.Value, null, "", 0.1f);
                 }
@@ -544,9 +555,11 @@ public class EconomyService
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine($"[RefreshWeapons] Exception in scan loop: {ex}");
             }
         }
+
+        Console.WriteLine($"[RefreshWeapons] weaponsWithAmmo count={weaponsWithAmmo.Count}, hasKnife={hasKnife}");
 
         Server.NextFrame(() =>
         {
@@ -564,6 +577,7 @@ public class EconomyService
             {
                 foreach (var ammo in entry.Value)
                 {
+                    Console.WriteLine($"[RefreshWeapons] Re-giving {entry.Key}");
                     var newWeapon = new CBasePlayerWeapon(player.GiveNamedItem(entry.Key));
 
                     Server.NextFrame(() =>
@@ -573,13 +587,14 @@ public class EconomyService
                             newWeapon.Clip1 = ammo.Item1;
                             newWeapon.ReserveAmmo[0] = ammo.Item2;
 
+                            Console.WriteLine($"[RefreshWeapons] Calling GivePlayerWeaponSkin for {entry.Key}, defIndex={newWeapon.AttributeManager.Item.ItemDefinitionIndex}");
                             GivePlayerWeaponSkin(player, newWeapon);
 
                             IncrementWearForWeaponWithStickers(player, newWeapon);
                         }
                         catch (Exception ex)
                         {
-
+                            Console.WriteLine($"[RefreshWeapons] Exception in re-give callback for {entry.Key}: {ex}");
                         }
                     });
                 }
