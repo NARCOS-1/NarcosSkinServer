@@ -41,7 +41,11 @@ public partial class Plugin : BasePlugin
 
         Logger.LogInformation($"Plugin directory: {pluginDirectory}");
 
-        Economy.Initialize(pluginDirectory);
+        Dictionary<string, int> weaponDefIndexes = WeaponDefindex
+            .GroupBy(kvp => kvp.Value)
+            .ToDictionary(g => g.Key, g => g.First().Key);
+
+        Economy.Initialize(pluginDirectory, weaponDefIndexes);
 
 
 

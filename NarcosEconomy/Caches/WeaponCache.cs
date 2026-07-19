@@ -7,20 +7,18 @@ internal static class WeaponCache
 {
     private static readonly Dictionary<string, Weapon> _weapons = new();
 
-    internal static void Build(JsonElement root)
+    /// <summary>
+    /// Builds the weapon cache from the "skins" section of the economy JSON.
+    /// </summary>
+    /// <param name="root">The root JSON element of the economy file.</param>
+    /// <param name="weaponDefIndexes">
+    /// A lookup of internal weapon name (e.g. "weapon_ak47") to its definition index.
+    /// The economy JSON has no "weapons" section of its own, so this must be supplied
+    /// by the caller (see <see cref="Economy.Initialize"/>).
+    /// </param>
+    internal static void Build(JsonElement root, IReadOnlyDictionary<string, int> weaponDefIndexes)
     {
         _weapons.Clear();
-
-        // Build a lookup: internal weapon name -> definition index
-        Dictionary<string, int> weaponDefIndexes = new();
-
-        foreach (JsonProperty weapon in root.GetProperty("weapons").EnumerateObject())
-        {
-            int defIndex = int.Parse(
-                weapon.Value.GetProperty("index").GetString()!);
-
-            weaponDefIndexes[weapon.Name] = defIndex;
-        }
 
         JsonElement skins = root.GetProperty("skins");
 

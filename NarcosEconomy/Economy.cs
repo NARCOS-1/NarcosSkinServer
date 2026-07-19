@@ -13,13 +13,19 @@ public static class Economy
 
 
 
-    public static void Initialize(string pluginDirectory)
+    /// <param name="pluginDirectory">The plugin's own directory (used to locate Assets/cs2.json).</param>
+    /// <param name="weaponDefIndexes">
+    /// Internal weapon name (e.g. "weapon_ak47") to definition index lookup.
+    /// The economy JSON has no "weapons" section, so the caller must supply this
+    /// (in NarcosSkinServer this comes from Data.Variables.WeaponDefindex).
+    /// </param>
+    public static void Initialize(string pluginDirectory, IReadOnlyDictionary<string, int> weaponDefIndexes)
     {
         if (IsLoaded)
             return;
 
         string jsonPath = Path.Combine(pluginDirectory, "Assets", "cs2.json");
-        
+
 
         Console.WriteLine($"[NarcosEconomy] Plugin Directory: {pluginDirectory}");
         Console.WriteLine($"[NarcosEconomy] Loading economy from: {jsonPath}");
@@ -34,7 +40,7 @@ public static class Economy
         _document = JsonDocument.Parse(stream);
 
         PaintKitCache.Build(_document.RootElement);
-        WeaponCache.Build(_document.RootElement);
+        WeaponCache.Build(_document.RootElement, weaponDefIndexes);
         GloveCache.Build(_document.RootElement.GetProperty("gloves"));
     }
 
