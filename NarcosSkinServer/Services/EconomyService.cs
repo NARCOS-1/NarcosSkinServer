@@ -352,6 +352,15 @@ public class EconomyService
         if (!WeaponDefindex.TryGetValue(weapon.DefIndex, out var internalName))
             return;
 
+        // Every primary weapon (rifle, SMG, sniper, heavy) shares a single gear slot in CS2 -
+        // you can only hold one at a time. Giving a second one while that slot is occupied
+        // makes the engine drop it on the ground instead of swapping, so kill whatever
+        // currently occupies the same slot as the weapon we're about to give, not just an
+        // existing copy of the exact same weapon.
+        gear_slot_t targetSlot = weapon.Category == WeaponCategory.Pistol
+            ? gear_slot_t.GEAR_SLOT_PISTOL
+            : gear_slot_t.GEAR_SLOT_RIFLE;
+
         var weapons = player.PlayerPawn?.Value?.WeaponServices?.MyWeapons;
 
         if (weapons != null)
@@ -364,7 +373,13 @@ public class EconomyService
                 if (handle.Value.AttributeManager.Item.ItemDefinitionIndex == weapon.DefIndex)
                 {
                     handle.Value.AddEntityIOEvent("Kill", handle.Value, null, "", 0.0f);
-                    break;
+                    continue;
+                }
+
+                var heldData = handle.Value.As<CCSWeaponBase>().VData;
+                if (heldData != null && heldData.GearSlot == targetSlot)
+                {
+                    handle.Value.AddEntityIOEvent("Kill", handle.Value, null, "", 0.0f);
                 }
             }
         }
