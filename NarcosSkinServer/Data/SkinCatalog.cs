@@ -144,6 +144,55 @@ public static class SkinCatalog
             Name = "Kukri Knife",
             DefIndex = 526,
             Category = WeaponCategory.Knife
+        },
+
+        ["Galil AR"] = new()
+        {
+            Name = "Galil AR",
+            DefIndex = 13,
+            Category = WeaponCategory.Rifle
+        },
+
+        ["FAMAS"] = new()
+        {
+            Name = "FAMAS",
+            DefIndex = 10,
+            Category = WeaponCategory.Rifle
+        },
+
+        ["AK-47"] = new()
+        {
+            Name = "AK-47",
+            DefIndex = 7,
+            Category = WeaponCategory.Rifle
+        },
+
+        ["M4A4"] = new()
+        {
+            Name = "M4A4",
+            DefIndex = 16,
+            Category = WeaponCategory.Rifle
+        },
+
+        ["M4A1-S"] = new()
+        {
+            Name = "M4A1-S",
+            DefIndex = 60,
+            Category = WeaponCategory.Rifle
+        },
+
+        ["SG 553"] = new()
+        {
+            Name = "SG 553",
+            DefIndex = 39,
+            Category = WeaponCategory.Rifle
+        },
+
+        ["AUG"] = new()
+        {
+            Name = "AUG",
+            DefIndex = 8,
+            Category = WeaponCategory.Rifle
         }
     };
 }

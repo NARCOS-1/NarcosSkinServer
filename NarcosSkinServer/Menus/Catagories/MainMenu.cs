@@ -33,7 +33,7 @@ public class MainMenu
 
         menu.AddItem("Rifles", (p, option) =>
         {
-            p.PrintToChat("[Narcos] Rifles selected.");
+            RifleMenu.Open(p, plugin, economyService);
         });
 
         menu.AddItem("Snipers", (p, option) =>

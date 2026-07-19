@@ -790,13 +790,18 @@ public class EconomyService
     }
     public void ApplySkin(CCSPlayerController player, WeaponDefinition weapon, int paintKit, float wear, int seed)
     {
-        if (!GPlayersKnife.TryGetValue(player.Slot, out var knifeTeams))
-        {
-            knifeTeams = new();
-            GPlayersKnife[player.Slot] = knifeTeams;
-        }
+        bool isKnife = weapon.Category == WeaponCategory.Knife;
 
-        knifeTeams[player.Team] = WeaponDefindex[weapon.DefIndex];
+        if (isKnife)
+        {
+            if (!GPlayersKnife.TryGetValue(player.Slot, out var knifeTeams))
+            {
+                knifeTeams = new();
+                GPlayersKnife[player.Slot] = knifeTeams;
+            }
+
+            knifeTeams[player.Team] = WeaponDefindex[weapon.DefIndex];
+        }
 
         if (!GPlayerWeaponsInfo.TryGetValue(player.Slot, out var teams))
         {
@@ -822,7 +827,8 @@ public class EconomyService
             KeyChain = null
         };
 
-        RefreshKnife(player);
+        if (isKnife)
+            RefreshKnife(player);
     }
 
     public void ApplyGlove(
