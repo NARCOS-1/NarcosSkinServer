@@ -52,7 +52,7 @@ public partial class Plugin : BasePlugin
 
         AddCommand("css_skins", "Open skin browser", OnSkinsCommand);
 
-        AddCommand("css_gloves", "Inspect gloves", OnGlovesCommand);
+        AddCommand("css_gloves", "Lists loaded gloves", OnGlovesCommand);
         AddCommand("css_knife", "Inspect a knife", OnKnifeCommand);
         AddTimer(3.0f, () =>
         {
@@ -241,4 +241,5 @@ public partial class Plugin : BasePlugin
 
         _weaponService?.GiveSkeletonKnife(player);
     }
+
 }

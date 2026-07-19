@@ -30,3 +30,6 @@ Desktop.ini
 # ReSharper
 _ReSharper*/
 *.DotSettings.user
+
+*.tmp
+*.Backup.*

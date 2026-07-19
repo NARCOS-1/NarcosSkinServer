@@ -8,7 +8,6 @@ using CounterStrikeSharp.API.Modules.Utils;
 using Microsoft.Extensions.Logging;
 using NarcosSkinServer.Data;
 using NarcosSkinServer.Models;
-using NarcosSkinServer.Models;
 using Newtonsoft.Json.Linq;
 using Serilog.Core;
 using System;
@@ -822,6 +821,50 @@ public class EconomyService
 
         RefreshKnife(player);
     }
+
+    public void ApplyGlove(
+    CCSPlayerController player,
+    int gloveDefIndex,
+    int paintKit,
+    float wear,
+    int seed)
+    {
+        if (!GPlayersGlove.TryGetValue(player.Slot, out var gloveTeams))
+        {
+            gloveTeams = new();
+            GPlayersGlove[player.Slot] = gloveTeams;
+        }
+
+        gloveTeams[player.Team] = gloveDefIndex;
+
+        if (!GPlayerWeaponsInfo.TryGetValue(player.Slot, out var teams))
+        {
+            teams = new();
+            GPlayerWeaponsInfo[player.Slot] = teams;
+        }
+
+        if (!teams.TryGetValue(player.Team, out var weapons))
+        {
+            weapons = new();
+            teams[player.Team] = weapons;
+        }
+
+        weapons[gloveDefIndex] = new WeaponInfo
+        {
+            DefIndex = gloveDefIndex,
+            Paint = paintKit,
+            Wear = wear,
+            Seed = seed,
+            StatTrak = false,
+            StatTrakCount = 0,
+            Nametag = "",
+            Stickers = new(),
+            KeyChain = null
+        };
+
+        GivePlayerGloves(player);
+    }
+
 }
 
 

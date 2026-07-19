@@ -19,6 +19,7 @@ public static class Economy
             return;
 
         string jsonPath = Path.Combine(pluginDirectory, "Assets", "cs2.json");
+        
 
         Console.WriteLine($"[NarcosEconomy] Plugin Directory: {pluginDirectory}");
         Console.WriteLine($"[NarcosEconomy] Loading economy from: {jsonPath}");
@@ -32,8 +33,9 @@ public static class Economy
 
         _document = JsonDocument.Parse(stream);
 
-        WeaponCache.Build(_document.RootElement);
         PaintKitCache.Build(_document.RootElement);
+        WeaponCache.Build(_document.RootElement);
+        GloveCache.Build(_document.RootElement.GetProperty("gloves"));
     }
 
     internal static JsonElement Root
@@ -61,18 +63,33 @@ public static class Economy
         return Root.TryGetProperty(sectionName, out _);
     }
 
-    public static JsonElement GetWeapon(string weaponName)
+    public static Weapon GetWeapon(string weaponName)
     {
         return WeaponCache.Get(weaponName);
     }
 
-    public static int WeaponCount => WeaponCache.Count;
+    public static IEnumerable<Weapon> GetWeapons()
+    {
+        return WeaponCache.All;
+    }
 
     public static PaintKit GetPaintKit(int paintKit)
     {
         return PaintKitCache.Get(paintKit);
     }
 
-    public static IReadOnlyDictionary<int, PaintKit> PaintKits
-    => PaintKitCache.PaintKits;
+    public static IEnumerable<Glove> GetGloves()
+    {
+        return GloveCache.GetAll();
+    }
+
+    public static Glove? GetGlove(string internalName)
+    {
+        return GloveCache.Get(internalName);
+    }
+
+    public static Weapon? GetWeapon(int defIndex)
+    {
+        return WeaponCache.GetByDefIndex(defIndex);
+    }
 }

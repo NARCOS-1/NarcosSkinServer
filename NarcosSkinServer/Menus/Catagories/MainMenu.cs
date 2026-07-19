@@ -17,7 +17,8 @@ public class MainMenu
 
         menu.AddItem("Gloves", (p, option) =>
         {
-            p.PrintToChat("[Narcos] Gloves selected.");
+            p.PrintToChat("[Narcos] Gloves callback");
+            GloveMenu.Open(p, plugin, economyService);
         });
 
         menu.AddItem("Pistols", (p, option) =>

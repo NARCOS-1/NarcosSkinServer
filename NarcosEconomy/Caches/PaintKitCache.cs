@@ -46,5 +46,11 @@ internal static class PaintKitCache
 
     internal static int Count => _paintKits.Count;
 
+    
+    internal static IReadOnlyCollection<PaintKit> GetAll()
+    {
+        return _paintKits.Values;
+    }
+
     internal static IReadOnlyDictionary<int, PaintKit> PaintKits => _paintKits;
 }

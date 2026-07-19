@@ -28,7 +28,7 @@
 	</Target>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-	  <Exec Command="if not exist &quot;D:\CS2Server\server\game\csgo\addons\counterstrikesharp\plugins\NarcosSkinServer&quot; (&#xD;&#xA;    mkdir &quot;D:\CS2Server\server\game\csgo\addons\counterstrikesharp\plugins\NarcosSkinServer&quot;&#xD;&#xA;)&#xD;&#xA;&#xD;&#xA;xcopy /Y /E /I &quot;$(TargetDir)*.*&quot; &quot;D:\CS2Server\server\game\csgo\addons\counterstrikesharp\plugins\NarcosSkinServer\&quot;&#xD;&#xA;&#xD;&#xA;xcopy /Y /E /I &quot;$(ProjectDir)Assets&quot; &quot;D:\CS2Server\server\game\csgo\addons\counterstrikesharp\plugins\NarcosSkinServer\Assets&quot;" />
+	  <Exec Command="if not exist &quot;D:\CS2Server\server\game\csgo\addons\counterstrikesharp\plugins\NarcosSkinServer&quot; (&#xD;&#xA;    mkdir &quot;D:\CS2Server\server\game\csgo\addons\counterstrikesharp\plugins\NarcosSkinServer&quot;&#xD;&#xA;)&#xD;&#xA;&#xD;&#xA;xcopy /Y /E /I &quot;$(TargetDir)*.*&quot; &quot;D:\CS2Server\server\game\csgo\addons\counterstrikesharp\plugins\NarcosSkinServer\&quot;&#xD;&#xA;" />
 	</Target>
 
 	<ItemGroup>
@@ -36,9 +36,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Reference Include="CS2MenuManager">
-	    <HintPath>..\..\CS2MenuManager\CS2MenuManager\obj\Debug\CS2MenuManager.dll</HintPath>
-	  </Reference>
+		<Reference Include="CS2MenuManager">
+			<HintPath>D:\Projects\CS2MenuManager\BuildOutput\plugins\CS2MenuManager\CS2MenuManager.dll</HintPath>
+		</Reference>
 	</ItemGroup>
 
 </Project>
