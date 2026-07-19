@@ -15263,6 +15263,3938 @@
                 "highest_float": 1.0,
                 "rarity": "mythical"
             }
+        },
+        "weapon_bayonet": {
+            "hy_ddpat": {
+                "index": "5",
+                "tag": "Forest DDPAT",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_webs": {
+                "index": "12",
+                "tag": "Crimson Web",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aa_fade": {
+                "index": "38",
+                "tag": "Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "so_night": {
+                "index": "40",
+                "tag": "Night",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aq_blued": {
+                "index": "42",
+                "tag": "Blue Steel",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_forced": {
+                "index": "43",
+                "tag": "Stained",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_oiled": {
+                "index": "44",
+                "tag": "Case Hardened",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_zebra": {
+                "index": "59",
+                "tag": "Slaughter",
+                "lowest_float": 0.01,
+                "highest_float": 0.26,
+                "rarity": "ancient"
+            },
+            "sp_mesh_tan": {
+                "index": "72",
+                "tag": "Safari Mesh",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_forest_boreal": {
+                "index": "77",
+                "tag": "Boreal Forest",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "so_purple": {
+                "index": "98",
+                "tag": "Ultraviolet",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_tape_urban": {
+                "index": "143",
+                "tag": "Urban Masked",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_dapple": {
+                "index": "175",
+                "tag": "Scorched",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "an_tiger_orange": {
+                "index": "409",
+                "tag": "Tiger Tooth",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_damascus": {
+                "index": "410",
+                "tag": "Damascus Steel",
+                "lowest_float": 0,
+                "highest_float": 0.5,
+                "rarity": "ancient"
+            },
+            "am_marble_fade": {
+                "index": "413",
+                "tag": "Marble Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_steel_knife": {
+                "index": "414",
+                "tag": "Rust Coat",
+                "lowest_float": 0.4,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_ruby_marbleized": {
+                "index": "415",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_sapphire_marbleized": {
+                "index": "416",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_blackpearl_marbleized": {
+                "index": "417",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase1": {
+                "index": "418",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase2": {
+                "index": "419",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase3": {
+                "index": "420",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase4": {
+                "index": "421",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "cu_bayonet_lore": {
+                "index": "558",
+                "tag": "Lore",
+                "lowest_float": 0,
+                "highest_float": 0.65,
+                "rarity": "ancient"
+            },
+            "cu_bayonet_stonewash": {
+                "index": "563",
+                "tag": "Black Laminate",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_emerald_marbleized": {
+                "index": "568",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase1": {
+                "index": "569",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase2": {
+                "index": "570",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase3": {
+                "index": "571",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase4": {
+                "index": "572",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "gs_bayonet_autotronic": {
+                "index": "573",
+                "tag": "Autotronic",
+                "lowest_float": 0,
+                "highest_float": 0.85,
+                "rarity": "ancient"
+            },
+            "hy_ocean_knife": {
+                "index": "578",
+                "tag": "Bright Water",
+                "lowest_float": 0,
+                "highest_float": 0.5,
+                "rarity": "ancient"
+            },
+            "am_marked_up": {
+                "index": "580",
+                "tag": "Freehand",
+                "lowest_float": 0,
+                "highest_float": 0.48,
+                "rarity": "ancient"
+            }
+        },
+        "weapon_knife_butterfly": {
+            "hy_ddpat": {
+                "index": "5",
+                "tag": "Forest DDPAT",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_webs": {
+                "index": "12",
+                "tag": "Crimson Web",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aa_fade": {
+                "index": "38",
+                "tag": "Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "so_night": {
+                "index": "40",
+                "tag": "Night",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aq_blued": {
+                "index": "42",
+                "tag": "Blue Steel",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_forced": {
+                "index": "43",
+                "tag": "Stained",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_oiled": {
+                "index": "44",
+                "tag": "Case Hardened",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_zebra": {
+                "index": "59",
+                "tag": "Slaughter",
+                "lowest_float": 0.01,
+                "highest_float": 0.26,
+                "rarity": "ancient"
+            },
+            "sp_mesh_tan": {
+                "index": "72",
+                "tag": "Safari Mesh",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_forest_boreal": {
+                "index": "77",
+                "tag": "Boreal Forest",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "so_purple": {
+                "index": "98",
+                "tag": "Ultraviolet",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_tape_urban": {
+                "index": "143",
+                "tag": "Urban Masked",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_dapple": {
+                "index": "175",
+                "tag": "Scorched",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "an_tiger_orange": {
+                "index": "409",
+                "tag": "Tiger Tooth",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_damascus_90": {
+                "index": "411",
+                "tag": "Damascus Steel",
+                "lowest_float": 0,
+                "highest_float": 0.5,
+                "rarity": "ancient"
+            },
+            "am_marble_fade": {
+                "index": "413",
+                "tag": "Marble Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_steel_knife": {
+                "index": "414",
+                "tag": "Rust Coat",
+                "lowest_float": 0.4,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_ruby_marbleized": {
+                "index": "415",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase1": {
+                "index": "418",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase3": {
+                "index": "420",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase4": {
+                "index": "421",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_emerald_marbleized": {
+                "index": "568",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase1": {
+                "index": "569",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase2": {
+                "index": "570",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase3": {
+                "index": "571",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase4": {
+                "index": "572",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "hy_ocean_knife_90": {
+                "index": "579",
+                "tag": "Bright Water",
+                "lowest_float": 0,
+                "highest_float": 0.5,
+                "rarity": "ancient"
+            },
+            "am_marked_up_90": {
+                "index": "581",
+                "tag": "Freehand",
+                "lowest_float": 0,
+                "highest_float": 0.48,
+                "rarity": "ancient"
+            },
+            "am_blackpearl_marbleized_b": {
+                "index": "617",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase2_b": {
+                "index": "618",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_sapphire_marbleized_b": {
+                "index": "619",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "cu_butterfly_lore": {
+                "index": "1105",
+                "tag": "Lore",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "gs_butterfly_black_laminate": {
+                "index": "1110",
+                "tag": "Black Laminate",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "gs_butterfly_autotronic": {
+                "index": "1115",
+                "tag": "Autotronic",
+                "lowest_float": 0,
+                "highest_float": 0.85,
+                "rarity": "ancient"
+            }
+        },
+        "weapon_knife_canis": {
+            "hy_ddpat": {
+                "index": "5",
+                "tag": "Forest DDPAT",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_webs": {
+                "index": "12",
+                "tag": "Crimson Web",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aa_fade": {
+                "index": "38",
+                "tag": "Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_blued": {
+                "index": "42",
+                "tag": "Blue Steel",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_forced": {
+                "index": "43",
+                "tag": "Stained",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_oiled": {
+                "index": "44",
+                "tag": "Case Hardened",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_zebra": {
+                "index": "59",
+                "tag": "Slaughter",
+                "lowest_float": 0.01,
+                "highest_float": 0.26,
+                "rarity": "ancient"
+            },
+            "sp_mesh_tan": {
+                "index": "72",
+                "tag": "Safari Mesh",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_forest_boreal": {
+                "index": "77",
+                "tag": "Boreal Forest",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "so_purple": {
+                "index": "98",
+                "tag": "Ultraviolet",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_tape_urban": {
+                "index": "143",
+                "tag": "Urban Masked",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_dapple": {
+                "index": "175",
+                "tag": "Scorched",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "an_tiger_orange": {
+                "index": "409",
+                "tag": "Tiger Tooth",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_damascus": {
+                "index": "410",
+                "tag": "Damascus Steel",
+                "lowest_float": 0,
+                "highest_float": 0.5,
+                "rarity": "ancient"
+            },
+            "am_marble_fade": {
+                "index": "413",
+                "tag": "Marble Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_steel_knife": {
+                "index": "414",
+                "tag": "Rust Coat",
+                "lowest_float": 0.4,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_ruby_marbleized": {
+                "index": "415",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_sapphire_marbleized": {
+                "index": "416",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_blackpearl_marbleized": {
+                "index": "417",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase1": {
+                "index": "418",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase2": {
+                "index": "419",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase3": {
+                "index": "420",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase4": {
+                "index": "421",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "sp_nightstripe": {
+                "index": "735",
+                "tag": "Night Stripe",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            }
+        },
+        "weapon_knife_cord": {
+            "hy_ddpat": {
+                "index": "5",
+                "tag": "Forest DDPAT",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_webs": {
+                "index": "12",
+                "tag": "Crimson Web",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aa_fade": {
+                "index": "38",
+                "tag": "Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_blued": {
+                "index": "42",
+                "tag": "Blue Steel",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_forced": {
+                "index": "43",
+                "tag": "Stained",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_oiled": {
+                "index": "44",
+                "tag": "Case Hardened",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_zebra": {
+                "index": "59",
+                "tag": "Slaughter",
+                "lowest_float": 0.01,
+                "highest_float": 0.26,
+                "rarity": "ancient"
+            },
+            "sp_mesh_tan": {
+                "index": "72",
+                "tag": "Safari Mesh",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_forest_boreal": {
+                "index": "77",
+                "tag": "Boreal Forest",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_tape_urban": {
+                "index": "143",
+                "tag": "Urban Masked",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_dapple": {
+                "index": "175",
+                "tag": "Scorched",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "an_tiger_orange": {
+                "index": "409",
+                "tag": "Tiger Tooth",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_damascus": {
+                "index": "410",
+                "tag": "Damascus Steel",
+                "lowest_float": 0,
+                "highest_float": 0.5,
+                "rarity": "ancient"
+            },
+            "am_marble_fade": {
+                "index": "413",
+                "tag": "Marble Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_steel_knife": {
+                "index": "414",
+                "tag": "Rust Coat",
+                "lowest_float": 0.4,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_ruby_marbleized": {
+                "index": "415",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_sapphire_marbleized": {
+                "index": "416",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_blackpearl_marbleized": {
+                "index": "417",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase1": {
+                "index": "418",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase2": {
+                "index": "419",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase3": {
+                "index": "420",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase4": {
+                "index": "421",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "so_purple_falchion": {
+                "index": "621",
+                "tag": "Ultraviolet",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_nightstripe": {
+                "index": "735",
+                "tag": "Night Stripe",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            }
+        },
+        "weapon_knife_css": {
+            "hy_ddpat": {
+                "index": "5",
+                "tag": "Forest DDPAT",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_webs": {
+                "index": "12",
+                "tag": "Crimson Web",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aa_fade": {
+                "index": "38",
+                "tag": "Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_blued": {
+                "index": "42",
+                "tag": "Blue Steel",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_forced": {
+                "index": "43",
+                "tag": "Stained",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_oiled": {
+                "index": "44",
+                "tag": "Case Hardened",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_zebra": {
+                "index": "59",
+                "tag": "Slaughter",
+                "lowest_float": 0.01,
+                "highest_float": 0.26,
+                "rarity": "ancient"
+            },
+            "sp_mesh_tan": {
+                "index": "72",
+                "tag": "Safari Mesh",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_forest_boreal": {
+                "index": "77",
+                "tag": "Boreal Forest",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_tape_urban": {
+                "index": "143",
+                "tag": "Urban Masked",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_dapple": {
+                "index": "175",
+                "tag": "Scorched",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_nightstripe": {
+                "index": "735",
+                "tag": "Night Stripe",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            }
+        },
+        "weapon_knife_falchion": {
+            "hy_ddpat": {
+                "index": "5",
+                "tag": "Forest DDPAT",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_webs": {
+                "index": "12",
+                "tag": "Crimson Web",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aa_fade": {
+                "index": "38",
+                "tag": "Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "so_night": {
+                "index": "40",
+                "tag": "Night",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aq_blued": {
+                "index": "42",
+                "tag": "Blue Steel",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_forced": {
+                "index": "43",
+                "tag": "Stained",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_oiled": {
+                "index": "44",
+                "tag": "Case Hardened",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_zebra": {
+                "index": "59",
+                "tag": "Slaughter",
+                "lowest_float": 0.01,
+                "highest_float": 0.26,
+                "rarity": "ancient"
+            },
+            "sp_mesh_tan": {
+                "index": "72",
+                "tag": "Safari Mesh",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_forest_boreal": {
+                "index": "77",
+                "tag": "Boreal Forest",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_tape_urban": {
+                "index": "143",
+                "tag": "Urban Masked",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_dapple": {
+                "index": "175",
+                "tag": "Scorched",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "an_tiger_orange": {
+                "index": "409",
+                "tag": "Tiger Tooth",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_damascus_90": {
+                "index": "411",
+                "tag": "Damascus Steel",
+                "lowest_float": 0,
+                "highest_float": 0.5,
+                "rarity": "ancient"
+            },
+            "am_marble_fade": {
+                "index": "413",
+                "tag": "Marble Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_steel_knife": {
+                "index": "414",
+                "tag": "Rust Coat",
+                "lowest_float": 0.4,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_ruby_marbleized": {
+                "index": "415",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_sapphire_marbleized": {
+                "index": "416",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_blackpearl_marbleized": {
+                "index": "417",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase1": {
+                "index": "418",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase2": {
+                "index": "419",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase3": {
+                "index": "420",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase4": {
+                "index": "421",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_emerald_marbleized": {
+                "index": "568",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase1": {
+                "index": "569",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase2": {
+                "index": "570",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase3": {
+                "index": "571",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase4": {
+                "index": "572",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "hy_ocean_knife_90": {
+                "index": "579",
+                "tag": "Bright Water",
+                "lowest_float": 0,
+                "highest_float": 0.5,
+                "rarity": "ancient"
+            },
+            "am_marked_up_90": {
+                "index": "581",
+                "tag": "Freehand",
+                "lowest_float": 0,
+                "highest_float": 0.48,
+                "rarity": "ancient"
+            },
+            "so_purple_falchion": {
+                "index": "621",
+                "tag": "Ultraviolet",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "cu_falchion_lore": {
+                "index": "1106",
+                "tag": "Lore",
+                "lowest_float": 0,
+                "highest_float": 0.65,
+                "rarity": "ancient"
+            },
+            "gs_falchion_black_laminate": {
+                "index": "1111",
+                "tag": "Black Laminate",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "gs_falchion_autotronic": {
+                "index": "1116",
+                "tag": "Autotronic",
+                "lowest_float": 0,
+                "highest_float": 0.85,
+                "rarity": "ancient"
+            }
+        },
+        "weapon_knife_flip": {
+            "hy_ddpat": {
+                "index": "5",
+                "tag": "Forest DDPAT",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_webs": {
+                "index": "12",
+                "tag": "Crimson Web",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aa_fade": {
+                "index": "38",
+                "tag": "Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "so_night": {
+                "index": "40",
+                "tag": "Night",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aq_blued": {
+                "index": "42",
+                "tag": "Blue Steel",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_forced": {
+                "index": "43",
+                "tag": "Stained",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_oiled": {
+                "index": "44",
+                "tag": "Case Hardened",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_zebra": {
+                "index": "59",
+                "tag": "Slaughter",
+                "lowest_float": 0.01,
+                "highest_float": 0.26,
+                "rarity": "ancient"
+            },
+            "sp_mesh_tan": {
+                "index": "72",
+                "tag": "Safari Mesh",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_forest_boreal": {
+                "index": "77",
+                "tag": "Boreal Forest",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "so_purple": {
+                "index": "98",
+                "tag": "Ultraviolet",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_tape_urban": {
+                "index": "143",
+                "tag": "Urban Masked",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_dapple": {
+                "index": "175",
+                "tag": "Scorched",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "an_tiger_orange": {
+                "index": "409",
+                "tag": "Tiger Tooth",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_damascus": {
+                "index": "410",
+                "tag": "Damascus Steel",
+                "lowest_float": 0,
+                "highest_float": 0.5,
+                "rarity": "ancient"
+            },
+            "am_marble_fade": {
+                "index": "413",
+                "tag": "Marble Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_steel_knife": {
+                "index": "414",
+                "tag": "Rust Coat",
+                "lowest_float": 0.4,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_ruby_marbleized": {
+                "index": "415",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_sapphire_marbleized": {
+                "index": "416",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_blackpearl_marbleized": {
+                "index": "417",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase1": {
+                "index": "418",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase2": {
+                "index": "419",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase3": {
+                "index": "420",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase4": {
+                "index": "421",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "cu_flip_lore": {
+                "index": "559",
+                "tag": "Lore",
+                "lowest_float": 0,
+                "highest_float": 0.65,
+                "rarity": "ancient"
+            },
+            "cu_flip_stonewash": {
+                "index": "564",
+                "tag": "Black Laminate",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_emerald_marbleized": {
+                "index": "568",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase1": {
+                "index": "569",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase2": {
+                "index": "570",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase3": {
+                "index": "571",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase4": {
+                "index": "572",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "gs_flip_autotronic": {
+                "index": "574",
+                "tag": "Autotronic",
+                "lowest_float": 0,
+                "highest_float": 0.85,
+                "rarity": "ancient"
+            },
+            "hy_ocean_knife": {
+                "index": "578",
+                "tag": "Bright Water",
+                "lowest_float": 0,
+                "highest_float": 0.5,
+                "rarity": "ancient"
+            },
+            "am_marked_up": {
+                "index": "580",
+                "tag": "Freehand",
+                "lowest_float": 0,
+                "highest_float": 0.48,
+                "rarity": "ancient"
+            }
+        },
+        "weapon_knife_gut": {
+            "hy_ddpat": {
+                "index": "5",
+                "tag": "Forest DDPAT",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_webs": {
+                "index": "12",
+                "tag": "Crimson Web",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aa_fade": {
+                "index": "38",
+                "tag": "Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "so_night": {
+                "index": "40",
+                "tag": "Night",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aq_blued": {
+                "index": "42",
+                "tag": "Blue Steel",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_forced": {
+                "index": "43",
+                "tag": "Stained",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_oiled": {
+                "index": "44",
+                "tag": "Case Hardened",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_zebra": {
+                "index": "59",
+                "tag": "Slaughter",
+                "lowest_float": 0.01,
+                "highest_float": 0.26,
+                "rarity": "ancient"
+            },
+            "sp_mesh_tan": {
+                "index": "72",
+                "tag": "Safari Mesh",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_forest_boreal": {
+                "index": "77",
+                "tag": "Boreal Forest",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "so_purple": {
+                "index": "98",
+                "tag": "Ultraviolet",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_tape_urban": {
+                "index": "143",
+                "tag": "Urban Masked",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_dapple": {
+                "index": "175",
+                "tag": "Scorched",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "an_tiger_orange": {
+                "index": "409",
+                "tag": "Tiger Tooth",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_damascus": {
+                "index": "410",
+                "tag": "Damascus Steel",
+                "lowest_float": 0,
+                "highest_float": 0.5,
+                "rarity": "ancient"
+            },
+            "am_marble_fade": {
+                "index": "413",
+                "tag": "Marble Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_steel_knife": {
+                "index": "414",
+                "tag": "Rust Coat",
+                "lowest_float": 0.4,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_ruby_marbleized": {
+                "index": "415",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_sapphire_marbleized": {
+                "index": "416",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_blackpearl_marbleized": {
+                "index": "417",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase1": {
+                "index": "418",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase2": {
+                "index": "419",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase3": {
+                "index": "420",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase4": {
+                "index": "421",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "cu_gut_lore": {
+                "index": "560",
+                "tag": "Lore",
+                "lowest_float": 0,
+                "highest_float": 0.65,
+                "rarity": "ancient"
+            },
+            "cu_gut_stonewash": {
+                "index": "565",
+                "tag": "Black Laminate",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_emerald_marbleized": {
+                "index": "568",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase1": {
+                "index": "569",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase2": {
+                "index": "570",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase3": {
+                "index": "571",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase4": {
+                "index": "572",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "gs_gut_autotronic": {
+                "index": "575",
+                "tag": "Autotronic",
+                "lowest_float": 0,
+                "highest_float": 0.85,
+                "rarity": "ancient"
+            },
+            "hy_ocean_knife": {
+                "index": "578",
+                "tag": "Bright Water",
+                "lowest_float": 0,
+                "highest_float": 0.5,
+                "rarity": "ancient"
+            },
+            "am_marked_up": {
+                "index": "580",
+                "tag": "Freehand",
+                "lowest_float": 0,
+                "highest_float": 0.48,
+                "rarity": "ancient"
+            }
+        },
+        "weapon_knife_gypsy_jackknife": {
+            "hy_ddpat": {
+                "index": "5",
+                "tag": "Forest DDPAT",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_webs": {
+                "index": "12",
+                "tag": "Crimson Web",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aa_fade": {
+                "index": "38",
+                "tag": "Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_blued": {
+                "index": "42",
+                "tag": "Blue Steel",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_forced": {
+                "index": "43",
+                "tag": "Stained",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_oiled": {
+                "index": "44",
+                "tag": "Case Hardened",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_zebra": {
+                "index": "59",
+                "tag": "Slaughter",
+                "lowest_float": 0.01,
+                "highest_float": 0.26,
+                "rarity": "ancient"
+            },
+            "sp_mesh_tan": {
+                "index": "72",
+                "tag": "Safari Mesh",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_forest_boreal": {
+                "index": "77",
+                "tag": "Boreal Forest",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "so_purple": {
+                "index": "98",
+                "tag": "Ultraviolet",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_tape_urban": {
+                "index": "143",
+                "tag": "Urban Masked",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_dapple": {
+                "index": "175",
+                "tag": "Scorched",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "an_tiger_orange": {
+                "index": "409",
+                "tag": "Tiger Tooth",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_marble_fade": {
+                "index": "413",
+                "tag": "Marble Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_steel_knife": {
+                "index": "414",
+                "tag": "Rust Coat",
+                "lowest_float": 0.4,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_ruby_marbleized": {
+                "index": "415",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_sapphire_marbleized": {
+                "index": "416",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_blackpearl_marbleized": {
+                "index": "417",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase1": {
+                "index": "418",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase2": {
+                "index": "419",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase3": {
+                "index": "420",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase4": {
+                "index": "421",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "sp_nightstripe": {
+                "index": "735",
+                "tag": "Night Stripe",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aq_damascus_prisma": {
+                "index": "857",
+                "tag": "Damascus Steel",
+                "lowest_float": 0,
+                "highest_float": 0.5,
+                "rarity": "ancient"
+            }
+        },
+        "weapon_knife_karambit": {
+            "hy_ddpat": {
+                "index": "5",
+                "tag": "Forest DDPAT",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_webs": {
+                "index": "12",
+                "tag": "Crimson Web",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aa_fade": {
+                "index": "38",
+                "tag": "Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "so_night": {
+                "index": "40",
+                "tag": "Night",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aq_blued": {
+                "index": "42",
+                "tag": "Blue Steel",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_forced": {
+                "index": "43",
+                "tag": "Stained",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_oiled": {
+                "index": "44",
+                "tag": "Case Hardened",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_zebra": {
+                "index": "59",
+                "tag": "Slaughter",
+                "lowest_float": 0.01,
+                "highest_float": 0.26,
+                "rarity": "ancient"
+            },
+            "sp_mesh_tan": {
+                "index": "72",
+                "tag": "Safari Mesh",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_forest_boreal": {
+                "index": "77",
+                "tag": "Boreal Forest",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "so_purple": {
+                "index": "98",
+                "tag": "Ultraviolet",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_tape_urban": {
+                "index": "143",
+                "tag": "Urban Masked",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_dapple": {
+                "index": "175",
+                "tag": "Scorched",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "an_tiger_orange": {
+                "index": "409",
+                "tag": "Tiger Tooth",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_damascus": {
+                "index": "410",
+                "tag": "Damascus Steel",
+                "lowest_float": 0,
+                "highest_float": 0.5,
+                "rarity": "ancient"
+            },
+            "am_marble_fade": {
+                "index": "413",
+                "tag": "Marble Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_steel_knife": {
+                "index": "414",
+                "tag": "Rust Coat",
+                "lowest_float": 0.4,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_ruby_marbleized": {
+                "index": "415",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_sapphire_marbleized": {
+                "index": "416",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_blackpearl_marbleized": {
+                "index": "417",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase1": {
+                "index": "418",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase2": {
+                "index": "419",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase3": {
+                "index": "420",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase4": {
+                "index": "421",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "cu_karam_lore": {
+                "index": "561",
+                "tag": "Lore",
+                "lowest_float": 0,
+                "highest_float": 0.65,
+                "rarity": "ancient"
+            },
+            "cu_karam_stonewash": {
+                "index": "566",
+                "tag": "Black Laminate",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_emerald_marbleized": {
+                "index": "568",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase1": {
+                "index": "569",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase2": {
+                "index": "570",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase3": {
+                "index": "571",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase4": {
+                "index": "572",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "gs_karam_autotronic": {
+                "index": "576",
+                "tag": "Autotronic",
+                "lowest_float": 0,
+                "highest_float": 0.85,
+                "rarity": "ancient"
+            },
+            "hy_ocean_knife": {
+                "index": "578",
+                "tag": "Bright Water",
+                "lowest_float": 0,
+                "highest_float": 0.5,
+                "rarity": "ancient"
+            },
+            "am_marked_up_fine": {
+                "index": "582",
+                "tag": "Freehand",
+                "lowest_float": 0,
+                "highest_float": 0.48,
+                "rarity": "ancient"
+            }
+        },
+        "weapon_knife_kukri": {
+            "hy_ddpat": {
+                "index": "5",
+                "tag": "Forest DDPAT",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_webs": {
+                "index": "12",
+                "tag": "Crimson Web",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aa_fade": {
+                "index": "38",
+                "tag": "Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_blued": {
+                "index": "42",
+                "tag": "Blue Steel",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_forced": {
+                "index": "43",
+                "tag": "Stained",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_oiled": {
+                "index": "44",
+                "tag": "Case Hardened",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_zebra": {
+                "index": "59",
+                "tag": "Slaughter",
+                "lowest_float": 0.01,
+                "highest_float": 0.26,
+                "rarity": "ancient"
+            },
+            "sp_mesh_tan": {
+                "index": "72",
+                "tag": "Safari Mesh",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_forest_boreal": {
+                "index": "77",
+                "tag": "Boreal Forest",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_tape_urban": {
+                "index": "143",
+                "tag": "Urban Masked",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_dapple": {
+                "index": "175",
+                "tag": "Scorched",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_nightstripe": {
+                "index": "735",
+                "tag": "Night Stripe",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            }
+        },
+        "weapon_knife_m9_bayonet": {
+            "hy_ddpat": {
+                "index": "5",
+                "tag": "Forest DDPAT",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_webs": {
+                "index": "12",
+                "tag": "Crimson Web",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aa_fade": {
+                "index": "38",
+                "tag": "Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "so_night": {
+                "index": "40",
+                "tag": "Night",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aq_blued": {
+                "index": "42",
+                "tag": "Blue Steel",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_forced": {
+                "index": "43",
+                "tag": "Stained",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_oiled": {
+                "index": "44",
+                "tag": "Case Hardened",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_zebra": {
+                "index": "59",
+                "tag": "Slaughter",
+                "lowest_float": 0.01,
+                "highest_float": 0.26,
+                "rarity": "ancient"
+            },
+            "sp_mesh_tan": {
+                "index": "72",
+                "tag": "Safari Mesh",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_forest_boreal": {
+                "index": "77",
+                "tag": "Boreal Forest",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "so_purple": {
+                "index": "98",
+                "tag": "Ultraviolet",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_tape_urban": {
+                "index": "143",
+                "tag": "Urban Masked",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_dapple": {
+                "index": "175",
+                "tag": "Scorched",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "an_tiger_orange": {
+                "index": "409",
+                "tag": "Tiger Tooth",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_damascus_90": {
+                "index": "411",
+                "tag": "Damascus Steel",
+                "lowest_float": 0,
+                "highest_float": 0.5,
+                "rarity": "ancient"
+            },
+            "am_marble_fade": {
+                "index": "413",
+                "tag": "Marble Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_steel_knife": {
+                "index": "414",
+                "tag": "Rust Coat",
+                "lowest_float": 0.4,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_ruby_marbleized": {
+                "index": "415",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_sapphire_marbleized": {
+                "index": "416",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_blackpearl_marbleized": {
+                "index": "417",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase1": {
+                "index": "418",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase2": {
+                "index": "419",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase3": {
+                "index": "420",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase4": {
+                "index": "421",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "cu_m9_bay_lore": {
+                "index": "562",
+                "tag": "Lore",
+                "lowest_float": 0,
+                "highest_float": 0.65,
+                "rarity": "ancient"
+            },
+            "cu_m9_bay_stonewash": {
+                "index": "567",
+                "tag": "Black Laminate",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_emerald_marbleized": {
+                "index": "568",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase1": {
+                "index": "569",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase2": {
+                "index": "570",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase3": {
+                "index": "571",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase4": {
+                "index": "572",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "gs_m9_bay_autotronic": {
+                "index": "577",
+                "tag": "Autotronic",
+                "lowest_float": 0,
+                "highest_float": 0.85,
+                "rarity": "ancient"
+            },
+            "hy_ocean_knife_90": {
+                "index": "579",
+                "tag": "Bright Water",
+                "lowest_float": 0,
+                "highest_float": 0.5,
+                "rarity": "ancient"
+            },
+            "am_marked_up_90": {
+                "index": "581",
+                "tag": "Freehand",
+                "lowest_float": 0,
+                "highest_float": 0.48,
+                "rarity": "ancient"
+            }
+        },
+        "weapon_knife_outdoor": {
+            "hy_ddpat": {
+                "index": "5",
+                "tag": "Forest DDPAT",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_webs": {
+                "index": "12",
+                "tag": "Crimson Web",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aa_fade": {
+                "index": "38",
+                "tag": "Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_blued": {
+                "index": "42",
+                "tag": "Blue Steel",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_forced": {
+                "index": "43",
+                "tag": "Stained",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_oiled": {
+                "index": "44",
+                "tag": "Case Hardened",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_zebra": {
+                "index": "59",
+                "tag": "Slaughter",
+                "lowest_float": 0.01,
+                "highest_float": 0.26,
+                "rarity": "ancient"
+            },
+            "sp_mesh_tan": {
+                "index": "72",
+                "tag": "Safari Mesh",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_forest_boreal": {
+                "index": "77",
+                "tag": "Boreal Forest",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "so_purple": {
+                "index": "98",
+                "tag": "Ultraviolet",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_tape_urban": {
+                "index": "143",
+                "tag": "Urban Masked",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_dapple": {
+                "index": "175",
+                "tag": "Scorched",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "an_tiger_orange": {
+                "index": "409",
+                "tag": "Tiger Tooth",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_damascus": {
+                "index": "410",
+                "tag": "Damascus Steel",
+                "lowest_float": 0,
+                "highest_float": 0.5,
+                "rarity": "ancient"
+            },
+            "am_marble_fade": {
+                "index": "413",
+                "tag": "Marble Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_steel_knife": {
+                "index": "414",
+                "tag": "Rust Coat",
+                "lowest_float": 0.4,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_ruby_marbleized": {
+                "index": "415",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_sapphire_marbleized": {
+                "index": "416",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_blackpearl_marbleized": {
+                "index": "417",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase1": {
+                "index": "418",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase2": {
+                "index": "419",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase3": {
+                "index": "420",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase4": {
+                "index": "421",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "sp_nightstripe": {
+                "index": "735",
+                "tag": "Night Stripe",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            }
+        },
+        "weapon_knife_push": {
+            "hy_ddpat": {
+                "index": "5",
+                "tag": "Forest DDPAT",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_webs": {
+                "index": "12",
+                "tag": "Crimson Web",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aa_fade": {
+                "index": "38",
+                "tag": "Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "so_night": {
+                "index": "40",
+                "tag": "Night",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aq_blued": {
+                "index": "42",
+                "tag": "Blue Steel",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_forced": {
+                "index": "43",
+                "tag": "Stained",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_oiled": {
+                "index": "44",
+                "tag": "Case Hardened",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_zebra": {
+                "index": "59",
+                "tag": "Slaughter",
+                "lowest_float": 0.01,
+                "highest_float": 0.26,
+                "rarity": "ancient"
+            },
+            "sp_mesh_tan": {
+                "index": "72",
+                "tag": "Safari Mesh",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_forest_boreal": {
+                "index": "77",
+                "tag": "Boreal Forest",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "so_purple": {
+                "index": "98",
+                "tag": "Ultraviolet",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_tape_urban": {
+                "index": "143",
+                "tag": "Urban Masked",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_dapple": {
+                "index": "175",
+                "tag": "Scorched",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "an_tiger_orange": {
+                "index": "409",
+                "tag": "Tiger Tooth",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_damascus_90": {
+                "index": "411",
+                "tag": "Damascus Steel",
+                "lowest_float": 0,
+                "highest_float": 0.5,
+                "rarity": "ancient"
+            },
+            "am_marble_fade": {
+                "index": "413",
+                "tag": "Marble Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_steel_knife": {
+                "index": "414",
+                "tag": "Rust Coat",
+                "lowest_float": 0.4,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_ruby_marbleized": {
+                "index": "415",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase1": {
+                "index": "418",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase3": {
+                "index": "420",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase4": {
+                "index": "421",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_emerald_marbleized": {
+                "index": "568",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase1": {
+                "index": "569",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase2": {
+                "index": "570",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase3": {
+                "index": "571",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase4": {
+                "index": "572",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "hy_ocean_knife_90": {
+                "index": "579",
+                "tag": "Bright Water",
+                "lowest_float": 0,
+                "highest_float": 0.5,
+                "rarity": "ancient"
+            },
+            "am_marked_up_90": {
+                "index": "581",
+                "tag": "Freehand",
+                "lowest_float": 0,
+                "highest_float": 0.48,
+                "rarity": "ancient"
+            },
+            "am_blackpearl_marbleized_b": {
+                "index": "617",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase2_b": {
+                "index": "618",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_sapphire_marbleized_b": {
+                "index": "619",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "cu_push_lore": {
+                "index": "1108",
+                "tag": "Lore",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "gs_push_black_laminate": {
+                "index": "1113",
+                "tag": "Black Laminate",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "gs_push_autotronic": {
+                "index": "1118",
+                "tag": "Autotronic",
+                "lowest_float": 0,
+                "highest_float": 0.85,
+                "rarity": "ancient"
+            }
+        },
+        "weapon_knife_skeleton": {
+            "hy_ddpat": {
+                "index": "5",
+                "tag": "Forest DDPAT",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_webs": {
+                "index": "12",
+                "tag": "Crimson Web",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aa_fade": {
+                "index": "38",
+                "tag": "Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_blued": {
+                "index": "42",
+                "tag": "Blue Steel",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_forced": {
+                "index": "43",
+                "tag": "Stained",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_oiled": {
+                "index": "44",
+                "tag": "Case Hardened",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_zebra": {
+                "index": "59",
+                "tag": "Slaughter",
+                "lowest_float": 0.01,
+                "highest_float": 0.26,
+                "rarity": "ancient"
+            },
+            "sp_mesh_tan": {
+                "index": "72",
+                "tag": "Safari Mesh",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_forest_boreal": {
+                "index": "77",
+                "tag": "Boreal Forest",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "so_purple": {
+                "index": "98",
+                "tag": "Ultraviolet",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_tape_urban": {
+                "index": "143",
+                "tag": "Urban Masked",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_dapple": {
+                "index": "175",
+                "tag": "Scorched",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "an_tiger_orange": {
+                "index": "409",
+                "tag": "Tiger Tooth",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_damascus": {
+                "index": "410",
+                "tag": "Damascus Steel",
+                "lowest_float": 0,
+                "highest_float": 0.5,
+                "rarity": "ancient"
+            },
+            "am_marble_fade": {
+                "index": "413",
+                "tag": "Marble Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_steel_knife": {
+                "index": "414",
+                "tag": "Rust Coat",
+                "lowest_float": 0.4,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_ruby_marbleized": {
+                "index": "415",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_sapphire_marbleized": {
+                "index": "416",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_blackpearl_marbleized": {
+                "index": "417",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase1": {
+                "index": "418",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase2": {
+                "index": "419",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase3": {
+                "index": "420",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase4": {
+                "index": "421",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "sp_nightstripe": {
+                "index": "735",
+                "tag": "Night Stripe",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            }
+        },
+        "weapon_knife_stiletto": {
+            "hy_ddpat": {
+                "index": "5",
+                "tag": "Forest DDPAT",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_webs": {
+                "index": "12",
+                "tag": "Crimson Web",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aa_fade": {
+                "index": "38",
+                "tag": "Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_blued": {
+                "index": "42",
+                "tag": "Blue Steel",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_forced": {
+                "index": "43",
+                "tag": "Stained",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_oiled": {
+                "index": "44",
+                "tag": "Case Hardened",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_zebra": {
+                "index": "59",
+                "tag": "Slaughter",
+                "lowest_float": 0.01,
+                "highest_float": 0.26,
+                "rarity": "ancient"
+            },
+            "sp_mesh_tan": {
+                "index": "72",
+                "tag": "Safari Mesh",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_forest_boreal": {
+                "index": "77",
+                "tag": "Boreal Forest",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "so_purple": {
+                "index": "98",
+                "tag": "Ultraviolet",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_tape_urban": {
+                "index": "143",
+                "tag": "Urban Masked",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_dapple": {
+                "index": "175",
+                "tag": "Scorched",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "an_tiger_orange": {
+                "index": "409",
+                "tag": "Tiger Tooth",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_marble_fade": {
+                "index": "413",
+                "tag": "Marble Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_steel_knife": {
+                "index": "414",
+                "tag": "Rust Coat",
+                "lowest_float": 0.4,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_ruby_marbleized": {
+                "index": "415",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_sapphire_marbleized": {
+                "index": "416",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_blackpearl_marbleized": {
+                "index": "417",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase1": {
+                "index": "418",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase2": {
+                "index": "419",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase3": {
+                "index": "420",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase4": {
+                "index": "421",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "sp_nightstripe": {
+                "index": "735",
+                "tag": "Night Stripe",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aq_damascus_prisma": {
+                "index": "857",
+                "tag": "Damascus Steel",
+                "lowest_float": 0,
+                "highest_float": 0.5,
+                "rarity": "ancient"
+            }
+        },
+        "weapon_knife_survival_bowie": {
+            "hy_ddpat": {
+                "index": "5",
+                "tag": "Forest DDPAT",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_webs": {
+                "index": "12",
+                "tag": "Crimson Web",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aa_fade": {
+                "index": "38",
+                "tag": "Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "so_night": {
+                "index": "40",
+                "tag": "Night",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aq_blued": {
+                "index": "42",
+                "tag": "Blue Steel",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_forced": {
+                "index": "43",
+                "tag": "Stained",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_oiled": {
+                "index": "44",
+                "tag": "Case Hardened",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_zebra": {
+                "index": "59",
+                "tag": "Slaughter",
+                "lowest_float": 0.01,
+                "highest_float": 0.26,
+                "rarity": "ancient"
+            },
+            "sp_mesh_tan": {
+                "index": "72",
+                "tag": "Safari Mesh",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_forest_boreal": {
+                "index": "77",
+                "tag": "Boreal Forest",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "so_purple": {
+                "index": "98",
+                "tag": "Ultraviolet",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_tape_urban": {
+                "index": "143",
+                "tag": "Urban Masked",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_dapple": {
+                "index": "175",
+                "tag": "Scorched",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "an_tiger_orange": {
+                "index": "409",
+                "tag": "Tiger Tooth",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_damascus_90": {
+                "index": "411",
+                "tag": "Damascus Steel",
+                "lowest_float": 0,
+                "highest_float": 0.5,
+                "rarity": "ancient"
+            },
+            "am_marble_fade": {
+                "index": "413",
+                "tag": "Marble Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_steel_knife": {
+                "index": "414",
+                "tag": "Rust Coat",
+                "lowest_float": 0.4,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_ruby_marbleized": {
+                "index": "415",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_sapphire_marbleized": {
+                "index": "416",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_blackpearl_marbleized": {
+                "index": "417",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase1": {
+                "index": "418",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase2": {
+                "index": "419",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase3": {
+                "index": "420",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase4": {
+                "index": "421",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_emerald_marbleized": {
+                "index": "568",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase1": {
+                "index": "569",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase2": {
+                "index": "570",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase3": {
+                "index": "571",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase4": {
+                "index": "572",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "hy_ocean_knife_90": {
+                "index": "579",
+                "tag": "Bright Water",
+                "lowest_float": 0,
+                "highest_float": 0.5,
+                "rarity": "ancient"
+            },
+            "am_marked_up_90": {
+                "index": "581",
+                "tag": "Freehand",
+                "lowest_float": 0,
+                "highest_float": 0.48,
+                "rarity": "ancient"
+            },
+            "cu_bowie_lore": {
+                "index": "1104",
+                "tag": "Lore",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "gs_bowie_black_laminate": {
+                "index": "1109",
+                "tag": "Black Laminate",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "gs_bowie_autotronic": {
+                "index": "1114",
+                "tag": "Autotronic",
+                "lowest_float": 0,
+                "highest_float": 0.85,
+                "rarity": "ancient"
+            }
+        },
+        "weapon_knife_tactical": {
+            "hy_ddpat": {
+                "index": "5",
+                "tag": "Forest DDPAT",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_webs": {
+                "index": "12",
+                "tag": "Crimson Web",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aa_fade": {
+                "index": "38",
+                "tag": "Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "so_night": {
+                "index": "40",
+                "tag": "Night",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aq_blued": {
+                "index": "42",
+                "tag": "Blue Steel",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_forced": {
+                "index": "43",
+                "tag": "Stained",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_oiled": {
+                "index": "44",
+                "tag": "Case Hardened",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_zebra": {
+                "index": "59",
+                "tag": "Slaughter",
+                "lowest_float": 0.01,
+                "highest_float": 0.26,
+                "rarity": "ancient"
+            },
+            "sp_mesh_tan": {
+                "index": "72",
+                "tag": "Safari Mesh",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_forest_boreal": {
+                "index": "77",
+                "tag": "Boreal Forest",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_tape_urban": {
+                "index": "143",
+                "tag": "Urban Masked",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_dapple": {
+                "index": "175",
+                "tag": "Scorched",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "an_tiger_orange": {
+                "index": "409",
+                "tag": "Tiger Tooth",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_damascus_90": {
+                "index": "411",
+                "tag": "Damascus Steel",
+                "lowest_float": 0,
+                "highest_float": 0.5,
+                "rarity": "ancient"
+            },
+            "am_marble_fade": {
+                "index": "413",
+                "tag": "Marble Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_steel_knife": {
+                "index": "414",
+                "tag": "Rust Coat",
+                "lowest_float": 0.4,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_ruby_marbleized": {
+                "index": "415",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_sapphire_marbleized": {
+                "index": "416",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_blackpearl_marbleized": {
+                "index": "417",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase1": {
+                "index": "418",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase2": {
+                "index": "419",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase3": {
+                "index": "420",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase4": {
+                "index": "421",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_emerald_marbleized": {
+                "index": "568",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase1": {
+                "index": "569",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase2": {
+                "index": "570",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase3": {
+                "index": "571",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_gamma_doppler_phase4": {
+                "index": "572",
+                "tag": "Gamma Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "hy_ocean_knife_90": {
+                "index": "579",
+                "tag": "Bright Water",
+                "lowest_float": 0,
+                "highest_float": 0.5,
+                "rarity": "ancient"
+            },
+            "am_marked_up_90": {
+                "index": "581",
+                "tag": "Freehand",
+                "lowest_float": 0,
+                "highest_float": 0.48,
+                "rarity": "ancient"
+            },
+            "cu_purple_huntsman": {
+                "index": "620",
+                "tag": "Ultraviolet",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "cu_huntsman_lore": {
+                "index": "1107",
+                "tag": "Lore",
+                "lowest_float": 0,
+                "highest_float": 0.65,
+                "rarity": "ancient"
+            },
+            "gs_huntsman_black_laminate": {
+                "index": "1112",
+                "tag": "Black Laminate",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "gs_huntsman_autotronic": {
+                "index": "1117",
+                "tag": "Autotronic",
+                "lowest_float": 0,
+                "highest_float": 0.85,
+                "rarity": "ancient"
+            }
+        },
+        "weapon_knife_ursus": {
+            "hy_ddpat": {
+                "index": "5",
+                "tag": "Forest DDPAT",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_webs": {
+                "index": "12",
+                "tag": "Crimson Web",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aa_fade": {
+                "index": "38",
+                "tag": "Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_blued": {
+                "index": "42",
+                "tag": "Blue Steel",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_forced": {
+                "index": "43",
+                "tag": "Stained",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_oiled": {
+                "index": "44",
+                "tag": "Case Hardened",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_zebra": {
+                "index": "59",
+                "tag": "Slaughter",
+                "lowest_float": 0.01,
+                "highest_float": 0.26,
+                "rarity": "ancient"
+            },
+            "sp_mesh_tan": {
+                "index": "72",
+                "tag": "Safari Mesh",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_forest_boreal": {
+                "index": "77",
+                "tag": "Boreal Forest",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "so_purple": {
+                "index": "98",
+                "tag": "Ultraviolet",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_tape_urban": {
+                "index": "143",
+                "tag": "Urban Masked",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_dapple": {
+                "index": "175",
+                "tag": "Scorched",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "an_tiger_orange": {
+                "index": "409",
+                "tag": "Tiger Tooth",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_marble_fade": {
+                "index": "413",
+                "tag": "Marble Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_steel_knife": {
+                "index": "414",
+                "tag": "Rust Coat",
+                "lowest_float": 0.4,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_ruby_marbleized": {
+                "index": "415",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_sapphire_marbleized": {
+                "index": "416",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_blackpearl_marbleized": {
+                "index": "417",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase1": {
+                "index": "418",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase2": {
+                "index": "419",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase3": {
+                "index": "420",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase4": {
+                "index": "421",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "sp_nightstripe": {
+                "index": "735",
+                "tag": "Night Stripe",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aq_damascus_prisma": {
+                "index": "857",
+                "tag": "Damascus Steel",
+                "lowest_float": 0,
+                "highest_float": 0.5,
+                "rarity": "ancient"
+            }
+        },
+        "weapon_knife_widowmaker": {
+            "hy_ddpat": {
+                "index": "5",
+                "tag": "Forest DDPAT",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_webs": {
+                "index": "12",
+                "tag": "Crimson Web",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "aa_fade": {
+                "index": "38",
+                "tag": "Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_blued": {
+                "index": "42",
+                "tag": "Blue Steel",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_forced": {
+                "index": "43",
+                "tag": "Stained",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "aq_oiled": {
+                "index": "44",
+                "tag": "Case Hardened",
+                "lowest_float": 0,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_zebra": {
+                "index": "59",
+                "tag": "Slaughter",
+                "lowest_float": 0.01,
+                "highest_float": 0.26,
+                "rarity": "ancient"
+            },
+            "sp_mesh_tan": {
+                "index": "72",
+                "tag": "Safari Mesh",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "hy_forest_boreal": {
+                "index": "77",
+                "tag": "Boreal Forest",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "so_purple": {
+                "index": "98",
+                "tag": "Ultraviolet",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_tape_urban": {
+                "index": "143",
+                "tag": "Urban Masked",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "sp_dapple": {
+                "index": "175",
+                "tag": "Scorched",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "an_tiger_orange": {
+                "index": "409",
+                "tag": "Tiger Tooth",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_steel_knife": {
+                "index": "414",
+                "tag": "Rust Coat",
+                "lowest_float": 0.4,
+                "highest_float": 1,
+                "rarity": "ancient"
+            },
+            "am_ruby_marbleized": {
+                "index": "415",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_sapphire_marbleized": {
+                "index": "416",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_blackpearl_marbleized": {
+                "index": "417",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "sp_nightstripe": {
+                "index": "735",
+                "tag": "Night Stripe",
+                "lowest_float": 0.06,
+                "highest_float": 0.8,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase1_widow": {
+                "index": "852",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase2_widow": {
+                "index": "853",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase3_widow": {
+                "index": "854",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_doppler_phase4_widow": {
+                "index": "855",
+                "tag": "Doppler",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "am_marble_fade_widow": {
+                "index": "856",
+                "tag": "Marble Fade",
+                "lowest_float": 0,
+                "highest_float": 0.08,
+                "rarity": "ancient"
+            },
+            "aq_damascus_widow": {
+                "index": "858",
+                "tag": "Damascus Steel",
+                "lowest_float": 0,
+                "highest_float": 0.5,
+                "rarity": "ancient"
+            }
         }
     },
     "stickers": {
