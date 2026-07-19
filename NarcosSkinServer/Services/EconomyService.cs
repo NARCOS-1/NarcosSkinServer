@@ -584,6 +584,9 @@ public class EconomyService
                     });
                 }
             }
+
+            if (hasKnife)
+                RefreshKnife(player);
         });
     }
 
