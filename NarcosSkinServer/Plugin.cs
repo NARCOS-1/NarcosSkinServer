@@ -52,8 +52,9 @@ public partial class Plugin : BasePlugin
         // isolated from the CS2MenuManager-MenuManager plugin's copy under CounterStrikeSharp's
         // per-plugin AssemblyLoadContext. That means this copy's static ConfigManager.Config
         // (WasdMenu FreezePlayer, colors, etc.) never gets loaded from shared/CS2MenuManager/config.toml
-        // unless we reload it ourselves here.
-        MenuManager.ReloadConfig();
+        // unless we reload it ourselves here. Fully qualified because CS2MenuManager.API.Class.MenuManager
+        // and CounterStrikeSharp.API.Modules.Menu.MenuManager (also in scope) collide.
+        CS2MenuManager.API.Class.MenuManager.ReloadConfig();
 
         Logger.LogInformation("NarcosSkinServer loaded!");
 
