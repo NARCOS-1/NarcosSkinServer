@@ -829,6 +829,8 @@ public class EconomyService
 
         if (isKnife)
             RefreshKnife(player);
+        else
+            RefreshWeapons(player);
     }
 
     public void ApplyGlove(
