@@ -362,6 +362,7 @@ public class EconomyService
             : gear_slot_t.GEAR_SLOT_RIFLE;
 
         var weapons = player.PlayerPawn?.Value?.WeaponServices?.MyWeapons;
+        bool killedSomething = false;
 
         if (weapons != null)
         {
@@ -373,6 +374,7 @@ public class EconomyService
                 if (handle.Value.AttributeManager.Item.ItemDefinitionIndex == weapon.DefIndex)
                 {
                     handle.Value.AddEntityIOEvent("Kill", handle.Value, null, "", 0.0f);
+                    killedSomething = true;
                     continue;
                 }
 
@@ -380,12 +382,26 @@ public class EconomyService
                 if (heldData != null && heldData.GearSlot == targetSlot)
                 {
                     handle.Value.AddEntityIOEvent("Kill", handle.Value, null, "", 0.0f);
+                    killedSomething = true;
                 }
             }
         }
 
-        var newWeapon = new CBasePlayerWeapon(player.GiveNamedItem(internalName));
-        GivePlayerWeaponSkin(player, newWeapon);
+        void GiveAndPaint()
+        {
+            var newWeapon = new CBasePlayerWeapon(player.GiveNamedItem(internalName));
+            GivePlayerWeaponSkin(player, newWeapon);
+        }
+
+        // The Kill I/O event above isn't processed synchronously - giving the replacement
+        // weapon in the same tick can race with the old one still occupying the slot,
+        // which paints an entity that gets discarded once the kill actually resolves.
+        // Only defer when we actually killed something; the simple "empty slot" case
+        // already works fine giving immediately.
+        if (killedSomething)
+            Server.NextFrame(GiveAndPaint);
+        else
+            GiveAndPaint();
     }
 
     private void GivePlayerGloves(CCSPlayerController player)
