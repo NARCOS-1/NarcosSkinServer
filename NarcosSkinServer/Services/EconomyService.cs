@@ -346,6 +346,33 @@ public class EconomyService
             }
         });
     }
+
+    private void RefreshGun(CCSPlayerController player, WeaponDefinition weapon)
+    {
+        if (!WeaponDefindex.TryGetValue(weapon.DefIndex, out var internalName))
+            return;
+
+        var weapons = player.PlayerPawn?.Value?.WeaponServices?.MyWeapons;
+
+        if (weapons != null)
+        {
+            foreach (var handle in weapons)
+            {
+                if (!handle.IsValid || handle.Value == null || !handle.Value.IsValid)
+                    continue;
+
+                if (handle.Value.AttributeManager.Item.ItemDefinitionIndex == weapon.DefIndex)
+                {
+                    handle.Value.AddEntityIOEvent("Kill", handle.Value, null, "", 0.0f);
+                    break;
+                }
+            }
+        }
+
+        var newWeapon = new CBasePlayerWeapon(player.GiveNamedItem(internalName));
+        GivePlayerWeaponSkin(player, newWeapon);
+    }
+
     private void GivePlayerGloves(CCSPlayerController player)
     {
         if (player == null ||
@@ -848,7 +875,7 @@ public class EconomyService
         if (isKnife)
             RefreshKnife(player);
         else
-            RefreshWeapons(player);
+            RefreshGun(player, weapon);
     }
 
     public void ApplyGlove(
