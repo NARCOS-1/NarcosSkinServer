@@ -133,7 +133,12 @@ public class EconomyService
         }
 
         if (!HasChangedPaint(player, weaponDefIndex, out var weaponInfo) || weaponInfo == null)
+        {
+            Console.WriteLine($"[GivePlayerWeaponSkin] Aborting: second HasChangedPaint check failed or weaponInfo null");
             return;
+        }
+
+        Console.WriteLine($"[GivePlayerWeaponSkin] Applying paint. weapon.IsValid={weapon.IsValid}, DesignerName={weapon.DesignerName}");
 
         //Log($"Apply on {weapon.DesignerName}({weapon.AttributeManager.Item.ItemDefinitionIndex}) paint {gPlayerWeaponPaints[steamId.SteamId64][weapon.AttributeManager.Item.ItemDefinitionIndex]} seed {gPlayerWeaponSeed[steamId.SteamId64][weapon.AttributeManager.Item.ItemDefinitionIndex]} wear {gPlayerWeaponWear[steamId.SteamId64][weapon.AttributeManager.Item.ItemDefinitionIndex]}");
 
@@ -166,7 +171,10 @@ public class EconomyService
         fallbackPaintKit = weapon.FallbackPaintKit;
 
         if (fallbackPaintKit == 0)
+        {
+            Console.WriteLine($"[GivePlayerWeaponSkin] Aborting: fallbackPaintKit is 0 after setting weapon.FallbackPaintKit={weaponInfo.Paint}");
             return;
+        }
 
         if (weaponInfo.KeyChain != null) SetKeychain(player, weapon);
         if (weaponInfo.Stickers.Count > 0) SetStickers(player, weapon);
@@ -179,6 +187,8 @@ public class EconomyService
 
         isLegacyModel = skinInfo.Count <= 0 || skinInfo[0].Value<bool>("legacy_model");
         UpdatePlayerWeaponMeshGroupMask(player, weapon, isLegacyModel);
+
+        Console.WriteLine($"[GivePlayerWeaponSkin] Completed. fallbackPaintKit={fallbackPaintKit}, isLegacyModel={isLegacyModel}, skinInfo.Count={skinInfo.Count}");
     }
 
 
