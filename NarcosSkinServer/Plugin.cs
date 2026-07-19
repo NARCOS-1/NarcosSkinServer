@@ -4,6 +4,7 @@ using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Menu;
+using CS2MenuManager.API.Class;
 using CS2MenuManager.API.Menu;
 using Microsoft.Extensions.Logging;
 using NarcosSkinServer.Data;
@@ -47,7 +48,12 @@ public partial class Plugin : BasePlugin
 
         Economy.Initialize(pluginDirectory, weaponDefIndexes);
 
-
+        // NarcosSkinServer links its own copy of CS2MenuManager.dll (via HintPath),
+        // isolated from the CS2MenuManager-MenuManager plugin's copy under CounterStrikeSharp's
+        // per-plugin AssemblyLoadContext. That means this copy's static ConfigManager.Config
+        // (WasdMenu FreezePlayer, colors, etc.) never gets loaded from shared/CS2MenuManager/config.toml
+        // unless we reload it ourselves here.
+        MenuManager.ReloadConfig();
 
         Logger.LogInformation("NarcosSkinServer loaded!");
 
