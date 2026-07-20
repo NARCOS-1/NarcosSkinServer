@@ -127,7 +127,7 @@ public class EconomyService
                     w["paint"]?.ToObject<int>() == fallbackPaintKit)
                 .ToList();
 
-            isLegacyModel = skinInfo.Count <= 0 || skinInfo[0].Value<bool>("legacy_model");
+            isLegacyModel = skinInfo.Count > 0 && skinInfo[0].Value<bool>("legacy_model");
             UpdatePlayerWeaponMeshGroupMask(player, weapon, isLegacyModel);
             return;
         }
@@ -185,7 +185,7 @@ public class EconomyService
                 w["paint"]?.ToObject<int>() == fallbackPaintKit)
             .ToList();
 
-        isLegacyModel = skinInfo.Count <= 0 || skinInfo[0].Value<bool>("legacy_model");
+        isLegacyModel = skinInfo.Count > 0 && skinInfo[0].Value<bool>("legacy_model");
         UpdatePlayerWeaponMeshGroupMask(player, weapon, isLegacyModel);
 
         Console.WriteLine($"[GivePlayerWeaponSkin] Completed. fallbackPaintKit={fallbackPaintKit}, isLegacyModel={isLegacyModel}, skinInfo.Count={skinInfo.Count}");
