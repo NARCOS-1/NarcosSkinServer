@@ -59,7 +59,19 @@ public partial class Plugin
     private void OnMapStart(string mapName)
     {
         foreach (var agent in AgentCatalog.Agents)
-            Server.PrecacheModel(agent.ModelPath);
+        {
+            // A bad path here must not be allowed to take out map-start registration for
+            // everything else in the plugin (commands, listeners, etc.) - it did exactly
+            // that when this loop had no guard.
+            try
+            {
+                Server.PrecacheModel(agent.ModelPath);
+            }
+            catch (Exception ex)
+            {
+                Server.PrintToConsole($"[Narcos] Failed to precache agent model '{agent.ModelPath}' ({agent.Name}): {ex.Message}");
+            }
+        }
     }
 
     private HookResult OnCheatCommandAttempt(CCSPlayerController? player, CommandInfo command)

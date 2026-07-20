@@ -772,8 +772,15 @@ public class EconomyService
 
         Server.NextFrame(() =>
         {
-            if (pawn.IsValid)
-                pawn.SetModel(modelPath);
+            try
+            {
+                if (pawn.IsValid)
+                    pawn.SetModel(modelPath);
+            }
+            catch (Exception ex)
+            {
+                Server.PrintToConsole($"[Narcos] Failed to set agent model '{modelPath}': {ex.Message}");
+            }
         });
     }
 
