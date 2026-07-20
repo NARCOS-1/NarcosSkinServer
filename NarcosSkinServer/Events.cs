@@ -19,6 +19,24 @@ public partial class Plugin
         RegisterListener<OnEntitySpawned>(OnEntityCreated);
         AddCommandListener("say", OnPlayerSay);
         AddCommandListener("say_team", OnPlayerSay);
+        RegisterEventHandler<EventPlayerSpawn>(OnPlayerSpawn);
+    }
+
+    // Mouse wheel isn't a PlayerButtons flag CS2MenuManager's WasdMenu can read like
+    // W/S, so we bind it client-side to our own commands (css_menuscrollup/down),
+    // which scroll the active menu when one's open and otherwise fall back to the
+    // game's normal weapon-switch behavior.
+    private HookResult OnPlayerSpawn(EventPlayerSpawn @event, GameEventInfo info)
+    {
+        CCSPlayerController? player = @event.Userid;
+
+        if (player == null || !player.IsValid || player.IsBot)
+            return HookResult.Continue;
+
+        player.ExecuteClientCommand("bind \"MWHEELUP\" \"css_menuscrollup\"");
+        player.ExecuteClientCommand("bind \"MWHEELDOWN\" \"css_menuscrolldown\"");
+
+        return HookResult.Continue;
     }
 
     // Captures the "Custom Seed" chat input queued by SeedMenu/GloveSeedMenu, since
