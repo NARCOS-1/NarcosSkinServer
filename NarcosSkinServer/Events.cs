@@ -45,6 +45,7 @@ public partial class Plugin
         AddCommandListener("say", OnPlayerSay);
         AddCommandListener("say_team", OnPlayerSay);
         RegisterEventHandler<EventPlayerSpawn>(OnPlayerSpawn);
+        RegisterEventHandler<EventPlayerHurt>(OnPlayerHurt);
 
         foreach (string command in BlockedCheatCommands)
             AddCommandListener(command, OnCheatCommandAttempt);
@@ -76,6 +77,37 @@ public partial class Plugin
 
         player.ExecuteClientCommand("bind \"MWHEELUP\" \"css_menuscrollup\"");
         player.ExecuteClientCommand("bind \"MWHEELDOWN\" \"css_menuscrolldown\"");
+
+        // Player models reset to the team default on every respawn.
+        _economyService?.ReapplyAgent(player);
+
+        return HookResult.Continue;
+    }
+
+    // sv_falldamage_scale 0 handles fall damage at the cvar level, but bullets/blasts/
+    // grenades still deal damage through the normal combat path - this is the code-side
+    // half: whatever damage just landed, immediately top health back up so it never
+    // results in a kill. mp_respawn_immunitytime/mp_respawn_on_death_* still cover the
+    // rare case something slips through (e.g. world damage, falling out of the map).
+    private HookResult OnPlayerHurt(EventPlayerHurt @event, GameEventInfo info)
+    {
+        CCSPlayerController? player = @event.Userid;
+
+        if (player == null || !player.IsValid || player.IsBot || !player.PawnIsAlive)
+            return HookResult.Continue;
+
+        var pawn = player.PlayerPawn.Value;
+        if (pawn == null || !pawn.IsValid)
+            return HookResult.Continue;
+
+        pawn.Health = pawn.MaxHealth;
+        Utilities.SetStateChanged(pawn, "CBaseEntity", "m_iHealth");
+
+        if (pawn.ArmorValue < 100)
+        {
+            pawn.ArmorValue = 100;
+            Utilities.SetStateChanged(pawn, "CCSPlayerPawn", "m_ArmorValue");
+        }
 
         return HookResult.Continue;
     }

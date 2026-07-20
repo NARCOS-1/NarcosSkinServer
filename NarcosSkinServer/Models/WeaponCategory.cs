@@ -8,5 +8,6 @@ public enum WeaponCategory
     SMG,
     Rifle,
     Sniper,
-    Heavy
+    Heavy,
+    Equipment
 }

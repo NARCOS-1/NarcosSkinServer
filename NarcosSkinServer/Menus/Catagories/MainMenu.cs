@@ -1,5 +1,6 @@
 using CounterStrikeSharp.API.Core;
 using CS2MenuManager.API.Menu;
+using NarcosSkinServer.Data;
 using NarcosSkinServer.Services;
 
 namespace NarcosSkinServer.Menus.Catagories;
@@ -22,12 +23,12 @@ public class MainMenu
 
         menu.AddItem("Pistols", (p, option) =>
         {
-            p.PrintToChat("[Narcos] Pistols selected.");
+            PistolMenu.Open(p, plugin, economyService, menu);
         });
 
         menu.AddItem("SMGs", (p, option) =>
         {
-            p.PrintToChat("[Narcos] SMGs selected.");
+            SmgMenu.Open(p, plugin, economyService, menu);
         });
 
         menu.AddItem("Rifles", (p, option) =>
@@ -37,12 +38,22 @@ public class MainMenu
 
         menu.AddItem("Snipers", (p, option) =>
         {
-            p.PrintToChat("[Narcos] Snipers selected.");
+            SniperMenu.Open(p, plugin, economyService, menu);
         });
 
         menu.AddItem("Heavy", (p, option) =>
         {
-            p.PrintToChat("[Narcos] Heavy selected.");
+            HeavyMenu.Open(p, plugin, economyService, menu);
+        });
+
+        menu.AddItem("Zeus x27", (p, option) =>
+        {
+            PaintKitMenu.Open(p, plugin, economyService, SkinCatalog.Weapons["Zeus x27"], menu);
+        });
+
+        menu.AddItem("Agents", (p, option) =>
+        {
+            AgentMenu.Open(p, plugin, economyService, menu);
         });
 
         menu.Display(player, 0);

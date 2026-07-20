@@ -148,6 +148,10 @@ public partial class Plugin : BasePlugin
             Server.ExecuteCommand("mp_forcecamera 0");
             Server.ExecuteCommand("sv_talk_enemy_dead 1");
             Server.ExecuteCommand("sv_talk_enemy_living 1");
+
+            // Fall damage has no equivalent "cancel it in code" hook - it's purely
+            // cvar-driven, unlike bullet/blast damage which OnPlayerHurt corrects.
+            Server.ExecuteCommand("sv_falldamage_scale 0");
         });
     }
     private void OnGlovesCommand(CCSPlayerController? player, CommandInfo command)
