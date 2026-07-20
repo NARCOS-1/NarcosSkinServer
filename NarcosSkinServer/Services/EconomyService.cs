@@ -94,6 +94,11 @@ public class EconomyService
 
         weapon.AttributeManager.Item.AccountID = (uint)player.SteamID;
 
+        // GivePlayerGloves sets this on the glove econ item and gloves have never had a
+        // drop problem; this line was simply missing here. Un-initialized items are
+        // plausibly what the engine's manual-drop check treats as "not a real item."
+        weapon.AttributeManager.Item.Initialized = true;
+
         List<JObject> skinInfo;
         bool isLegacyModel;
 

@@ -46,9 +46,20 @@ public partial class Plugin
         AddCommandListener("say_team", OnPlayerSay);
         RegisterEventHandler<EventPlayerSpawn>(OnPlayerSpawn);
         RegisterEventHandler<EventPlayerHurt>(OnPlayerHurt);
+        RegisterListener<OnMapStart>(OnMapStart);
 
         foreach (string command in BlockedCheatCommands)
             AddCommandListener(command, OnCheatCommandAttempt);
+    }
+
+    // Source 2 refuses SetModel() on anything not already in the map's precache list -
+    // "resource ... requested is not loaded and may have been deleted" is that check
+    // failing, not necessarily a bad path. Agent models aren't part of any map's default
+    // precache, so we have to register them ourselves on every map load.
+    private void OnMapStart(string mapName)
+    {
+        foreach (var agent in AgentCatalog.Agents)
+            Server.PrecacheModel(agent.ModelPath);
     }
 
     private HookResult OnCheatCommandAttempt(CCSPlayerController? player, CommandInfo command)
