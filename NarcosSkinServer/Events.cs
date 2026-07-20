@@ -46,32 +46,9 @@ public partial class Plugin
         AddCommandListener("say_team", OnPlayerSay);
         RegisterEventHandler<EventPlayerSpawn>(OnPlayerSpawn);
         RegisterEventHandler<EventPlayerHurt>(OnPlayerHurt);
-        RegisterListener<OnMapStart>(OnMapStart);
 
         foreach (string command in BlockedCheatCommands)
             AddCommandListener(command, OnCheatCommandAttempt);
-    }
-
-    // Source 2 refuses SetModel() on anything not already in the map's precache list -
-    // "resource ... requested is not loaded and may have been deleted" is that check
-    // failing, not necessarily a bad path. Agent models aren't part of any map's default
-    // precache, so we have to register them ourselves on every map load.
-    private void OnMapStart(string mapName)
-    {
-        foreach (var agent in AgentCatalog.Agents)
-        {
-            // A bad path here must not be allowed to take out map-start registration for
-            // everything else in the plugin (commands, listeners, etc.) - it did exactly
-            // that when this loop had no guard.
-            try
-            {
-                Server.PrecacheModel(agent.ModelPath);
-            }
-            catch (Exception ex)
-            {
-                Server.PrintToConsole($"[Narcos] Failed to precache agent model '{agent.ModelPath}' ({agent.Name}): {ex.Message}");
-            }
-        }
     }
 
     private HookResult OnCheatCommandAttempt(CCSPlayerController? player, CommandInfo command)
@@ -100,9 +77,6 @@ public partial class Plugin
 
         player.ExecuteClientCommand("bind \"MWHEELUP\" \"css_menuscrollup\"");
         player.ExecuteClientCommand("bind \"MWHEELDOWN\" \"css_menuscrolldown\"");
-
-        // Player models reset to the team default on every respawn.
-        _economyService?.ReapplyAgent(player);
 
         return HookResult.Continue;
     }
