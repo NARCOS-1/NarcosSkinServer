@@ -1,6 +1,7 @@
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
+using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
@@ -13,6 +14,30 @@ namespace NarcosSkinServer;
 
 public partial class Plugin
 {
+    // sv_cheats has to stay on (it's what lets us set weapon paint attributes),
+    // but that also unlocks these engine cheat commands for every connected
+    // player, not just us. Block them for anyone without @css/cheats instead of
+    // relying on admins.json alone, since admins.json only gates things a plugin
+    // explicitly checks - it does nothing to raw engine console commands by itself.
+    private static readonly string[] BlockedCheatCommands =
+    [
+        "noclip",
+        "god",
+        "buddha",
+        "notarget",
+        "give",
+        "impulse",
+        "sv_cheats",
+        "sv_infinite_ammo",
+        "sv_gravity",
+        "host_timescale",
+        "map",
+        "changelevel",
+        "kick",
+        "banid",
+        "rcon",
+    ];
+
     private void RegisterListeners()
     {
         VirtualFunctions.GiveNamedItemFunc.Hook(OnGiveNamedItemPost, HookMode.Post);
@@ -20,6 +45,22 @@ public partial class Plugin
         AddCommandListener("say", OnPlayerSay);
         AddCommandListener("say_team", OnPlayerSay);
         RegisterEventHandler<EventPlayerSpawn>(OnPlayerSpawn);
+
+        foreach (string command in BlockedCheatCommands)
+            AddCommandListener(command, OnCheatCommandAttempt);
+    }
+
+    private HookResult OnCheatCommandAttempt(CCSPlayerController? player, CommandInfo command)
+    {
+        // Only restrict actual clients; the server console (player == null) is us.
+        if (player == null || !player.IsValid)
+            return HookResult.Continue;
+
+        if (AdminManager.PlayerHasPermissions(player, "@css/cheats"))
+            return HookResult.Continue;
+
+        player.PrintToChat($"[Narcos] '{command.GetArg(0)}' is restricted to admins.");
+        return HookResult.Stop;
     }
 
     // Mouse wheel isn't a PlayerButtons flag CS2MenuManager's WasdMenu can read like
