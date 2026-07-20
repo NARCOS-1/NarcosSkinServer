@@ -1,4 +1,4 @@
-﻿using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Core;
 using CS2MenuManager.API.Menu;
 using NarcosSkinServer.Data;
 using NarcosSkinServer.Models;
@@ -9,9 +9,12 @@ namespace NarcosSkinServer.Menus;
 
 public static class WearMenu
 {
-    public static void Open(CCSPlayerController player, BasePlugin plugin, EconomyService economyService, WeaponDefinition weapon, int paintKit)
+    public static void Open(CCSPlayerController player, BasePlugin plugin, EconomyService economyService, WeaponDefinition weapon, int paintKit, WasdMenu? previousMenu = null)
     {
-        var menu = new WasdMenu($"{weapon.Name} | Wear", plugin);
+        var menu = new WasdMenu($"{weapon.Name} | Wear", plugin)
+        {
+            PrevMenu = previousMenu
+        };
 
         foreach (var preset in WearPresets.All)
         {
@@ -39,7 +42,7 @@ public static class WearMenu
     {
         menu.AddItem(name, (player, option) =>
         {
-            SeedMenu.Open(player, plugin, economyService, weapon, paintKit, wear);
+            SeedMenu.Open(player, plugin, economyService, weapon, paintKit, wear, menu);
         });
     }
 
@@ -48,9 +51,13 @@ public static class WearMenu
     BasePlugin plugin,
     EconomyService economyService,
     Glove glove,
-    int paintKit)
+    int paintKit,
+    WasdMenu? previousMenu = null)
     {
-        var menu = new WasdMenu($"{glove.Name} | Wear", plugin);
+        var menu = new WasdMenu($"{glove.Name} | Wear", plugin)
+        {
+            PrevMenu = previousMenu
+        };
 
         foreach (var preset in WearPresets.All)
         {
@@ -84,7 +91,8 @@ public static class WearMenu
                 economyService,
                 glove,
                 paintKit,
-                wear);
+                wear,
+                menu);
         });
     }
 }

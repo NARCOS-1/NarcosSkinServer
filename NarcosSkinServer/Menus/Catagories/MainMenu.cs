@@ -1,4 +1,4 @@
-﻿using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Core;
 using CS2MenuManager.API.Menu;
 using NarcosSkinServer.Services;
 
@@ -12,13 +12,12 @@ public class MainMenu
 
         menu.AddItem("Knives", (p, option) =>
         {
-            KnifeMenu.Open(player, plugin, economyService);
+            KnifeMenu.Open(player, plugin, economyService, menu);
         });
 
         menu.AddItem("Gloves", (p, option) =>
         {
-            p.PrintToChat("[Narcos] Gloves callback");
-            GloveMenu.Open(p, plugin, economyService);
+            GloveMenu.Open(p, plugin, economyService, menu);
         });
 
         menu.AddItem("Pistols", (p, option) =>
@@ -33,7 +32,7 @@ public class MainMenu
 
         menu.AddItem("Rifles", (p, option) =>
         {
-            RifleMenu.Open(p, plugin, economyService);
+            RifleMenu.Open(p, plugin, economyService, menu);
         });
 
         menu.AddItem("Snipers", (p, option) =>
@@ -45,9 +44,7 @@ public class MainMenu
         {
             p.PrintToChat("[Narcos] Heavy selected.");
         });
-        player.PrintToChat("[Narcos] Display");
-        player.PrintToChat("[Narcos] About to call Display()");
+
         menu.Display(player, 0);
-        player.PrintToChat("[Narcos] Display() returned");
     }
 }

@@ -9,15 +9,18 @@ namespace NarcosSkinServer.Menus.Catagories;
 
 public static class RifleMenu
 {
-    public static void Open(CCSPlayerController player, BasePlugin plugin, EconomyService economyService)
+    public static void Open(CCSPlayerController player, BasePlugin plugin, EconomyService economyService, WasdMenu? previousMenu = null)
     {
-        var menu = new WasdMenu("Rifles", plugin);
+        var menu = new WasdMenu("Rifles", plugin)
+        {
+            PrevMenu = previousMenu
+        };
 
         foreach (var weapon in SkinCatalog.Weapons.Values.Where(w => w.Category == WeaponCategory.Rifle))
         {
             menu.AddItem(weapon.Name, (p, o) =>
             {
-                PaintKitMenu.Open(p, plugin, economyService, weapon);
+                PaintKitMenu.Open(p, plugin, economyService, weapon, menu);
             });
         }
 

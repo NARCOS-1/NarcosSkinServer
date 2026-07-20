@@ -1,5 +1,6 @@
 ﻿using CounterStrikeSharp.API.Modules.Utils;
 using System.Collections.Concurrent;
+using NarcosEconomy.Models;
 using NarcosSkinServer.Models;
 using Newtonsoft.Json.Linq;
 namespace NarcosSkinServer.Data;
@@ -8,6 +9,12 @@ namespace NarcosSkinServer.Data;
 
 internal static class Variables
 {
+    // Player slot -> pending "Custom Seed" chat input, set by SeedMenu/GloveSeedMenu
+    // and consumed by Plugin's chat listener. WASD menus have no free-text input,
+    // so this is how a player types an exact seed instead of picking a fixed preset.
+    internal static readonly ConcurrentDictionary<int, (WeaponDefinition Weapon, int PaintKit, float Wear)> PendingWeaponSeedInput = new();
+    internal static readonly ConcurrentDictionary<int, (Glove Glove, int PaintKit, float Wear)> PendingGloveSeedInput = new();
+
 
     internal static readonly Dictionary<string, string> WeaponList = new()
     {

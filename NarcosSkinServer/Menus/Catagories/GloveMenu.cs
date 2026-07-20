@@ -1,4 +1,4 @@
-﻿using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Core;
 using CS2MenuManager.API.Menu;
 using NarcosEconomy;
 using NarcosSkinServer.Services;
@@ -10,13 +10,15 @@ public static class GloveMenu
     public static void Open(
     CCSPlayerController player,
     BasePlugin plugin,
-    EconomyService economyService)
+    EconomyService economyService,
+    WasdMenu? previousMenu = null)
     {
         var gloves = Economy.GetGloves().ToList();
 
-        player.PrintToChat($"Gloves loaded: {gloves.Count}");
-
-        var menu = new WasdMenu("Gloves", plugin);
+        var menu = new WasdMenu("Gloves", plugin)
+        {
+            PrevMenu = previousMenu
+        };
 
         foreach (var glove in gloves)
         {
@@ -26,11 +28,10 @@ public static class GloveMenu
                     p,
                     plugin,
                     economyService,
-                    glove);
+                    glove,
+                    menu);
             });
         }
-
-        player.PrintToChat($"Menu items: {gloves.Count}");
 
         menu.Display(player, 0);
     }

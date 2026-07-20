@@ -1,8 +1,10 @@
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
+using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
+using NarcosSkinServer.Data;
 using NarcosSkinServer.Services;
 using CounterStrikeSharp.API.Modules.Memory.DynamicFunctions;
 using static CounterStrikeSharp.API.Core.Listeners;
@@ -15,6 +17,50 @@ public partial class Plugin
     {
         VirtualFunctions.GiveNamedItemFunc.Hook(OnGiveNamedItemPost, HookMode.Post);
         RegisterListener<OnEntitySpawned>(OnEntityCreated);
+        AddCommandListener("say", OnPlayerSay);
+        AddCommandListener("say_team", OnPlayerSay);
+    }
+
+    // Captures the "Custom Seed" chat input queued by SeedMenu/GloveSeedMenu, since
+    // CS2MenuManager's WASD menus have no free-text input for typing an exact seed.
+    private HookResult OnPlayerSay(CCSPlayerController? player, CommandInfo command)
+    {
+        if (player == null || !player.IsValid)
+            return HookResult.Continue;
+
+        string message = command.GetArg(1).Trim();
+
+        if (Variables.PendingWeaponSeedInput.TryRemove(player.Slot, out var weaponPending))
+        {
+            if (int.TryParse(message, out int seed) && seed >= 0)
+            {
+                _economyService?.ApplySkin(player, weaponPending.Weapon, weaponPending.PaintKit, weaponPending.Wear, seed);
+                player.PrintToChat($"[Narcos] Applied seed {seed}.");
+            }
+            else
+            {
+                player.PrintToChat("[Narcos] Invalid seed - open the menu again and pick Custom Seed to retry.");
+            }
+
+            return HookResult.Stop;
+        }
+
+        if (Variables.PendingGloveSeedInput.TryRemove(player.Slot, out var glovePending))
+        {
+            if (int.TryParse(message, out int seed) && seed >= 0)
+            {
+                _economyService?.ApplyGlove(player, glovePending.Glove.DefIndex, glovePending.PaintKit, glovePending.Wear, seed);
+                player.PrintToChat($"[Narcos] Applied seed {seed}.");
+            }
+            else
+            {
+                player.PrintToChat("[Narcos] Invalid seed - open the menu again and pick Custom Seed to retry.");
+            }
+
+            return HookResult.Stop;
+        }
+
+        return HookResult.Continue;
     }
 
     private static CCSPlayerController? GetPlayerFromItemServices(CCSPlayer_ItemServices itemServices)

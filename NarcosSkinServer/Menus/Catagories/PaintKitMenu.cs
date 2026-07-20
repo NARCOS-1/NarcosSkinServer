@@ -1,4 +1,4 @@
-﻿using CounterStrikeSharp.API;
+using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CS2MenuManager.API.Menu;
 using NarcosEconomy;
@@ -11,9 +11,12 @@ namespace NarcosSkinServer.Menus.Catagories;
 
 public static class PaintKitMenu
 {
-    public static void Open(CCSPlayerController player, BasePlugin plugin, EconomyService economyService, WeaponDefinition weapon)
+    public static void Open(CCSPlayerController player, BasePlugin plugin, EconomyService economyService, WeaponDefinition weapon, WasdMenu? previousMenu = null)
     {
-        var menu = new WasdMenu(weapon.Name, plugin);
+        var menu = new WasdMenu(weapon.Name, plugin)
+        {
+            PrevMenu = previousMenu
+        };
 
         var econWeapon = Economy.GetWeapon(weapon.DefIndex);
 
@@ -30,10 +33,11 @@ public static class PaintKitMenu
                     plugin,
                     economyService,
                     weapon,
-                    paintKit.Id);
+                    paintKit.Id,
+                    menu);
             });
         }
-        
+
 
         menu.Display(player, 0);
     }

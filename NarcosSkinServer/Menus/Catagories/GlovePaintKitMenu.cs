@@ -1,4 +1,4 @@
-﻿using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Core;
 using CS2MenuManager.API.Menu;
 using NarcosEconomy;
 using NarcosEconomy.Models;
@@ -12,9 +12,13 @@ public static class GlovePaintKitMenu
         CCSPlayerController player,
         BasePlugin plugin,
         EconomyService economyService,
-        Glove glove)
+        Glove glove,
+        WasdMenu? previousMenu = null)
     {
-        var menu = new WasdMenu(glove.Name, plugin);
+        var menu = new WasdMenu(glove.Name, plugin)
+        {
+            PrevMenu = previousMenu
+        };
 
         foreach (var paintKit in glove.PaintKits)
         {
@@ -25,7 +29,8 @@ public static class GlovePaintKitMenu
                     plugin,
                     economyService,
                     glove,
-                    paintKit.Id);
+                    paintKit.Id,
+                    menu);
             });
         }
 
