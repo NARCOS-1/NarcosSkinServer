@@ -155,7 +155,7 @@ public class EconomyService
 
         weapon.FallbackWear = weaponInfo.Wear;
 
-        Console.WriteLine($"[GivePlayerWeaponSkin] Pre-write: FallbackPaintKit={weapon.FallbackPaintKit}, FallbackSeed={weapon.FallbackSeed}, FallbackWear={weapon.FallbackWear}, NetworkedDynamicAttributes.Handle={weapon.AttributeManager.Item.NetworkedDynamicAttributes.Handle}, AttributeList.Handle={weapon.AttributeManager.Item.AttributeList.Handle}, Entity valid={weapon.Entity?.IsValid}");
+        Console.WriteLine($"[GivePlayerWeaponSkin] Pre-write: FallbackPaintKit={weapon.FallbackPaintKit}, FallbackSeed={weapon.FallbackSeed}, FallbackWear={weapon.FallbackWear}, NetworkedDynamicAttributes.Handle={weapon.AttributeManager.Item.NetworkedDynamicAttributes.Handle}, AttributeList.Handle={weapon.AttributeManager.Item.AttributeList.Handle}, weapon.IsValid={weapon.IsValid}");
 
         CAttributeListSetOrAddAttributeValueByName.Invoke(weapon.AttributeManager.Item.NetworkedDynamicAttributes.Handle, "set item texture prefab", weapon.FallbackPaintKit);
 
