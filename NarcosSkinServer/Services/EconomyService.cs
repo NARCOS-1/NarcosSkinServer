@@ -328,9 +328,15 @@ public class EconomyService
         // makes the engine drop it on the ground instead of swapping, so kill whatever
         // currently occupies the same slot as the weapon we're about to give, not just an
         // existing copy of the exact same weapon.
-        gear_slot_t targetSlot = weapon.Category == WeaponCategory.Pistol
-            ? gear_slot_t.GEAR_SLOT_PISTOL
-            : gear_slot_t.GEAR_SLOT_RIFLE;
+        // Equipment (Zeus) doesn't share a gear slot with any other weapon category, so
+        // there's nothing to sweep for it - only an exact same-item replacement matters,
+        // which the ItemDefinitionIndex check below already covers.
+        gear_slot_t? targetSlot = weapon.Category switch
+        {
+            WeaponCategory.Pistol => gear_slot_t.GEAR_SLOT_PISTOL,
+            WeaponCategory.Equipment => null,
+            _ => gear_slot_t.GEAR_SLOT_RIFLE
+        };
 
         var weapons = player.PlayerPawn?.Value?.WeaponServices?.MyWeapons;
         bool killedSomething = false;
@@ -348,6 +354,9 @@ public class EconomyService
                     killedSomething = true;
                     continue;
                 }
+
+                if (targetSlot == null)
+                    continue;
 
                 var heldData = handle.Value.As<CCSWeaponBase>().VData;
                 if (heldData != null && heldData.GearSlot == targetSlot)
@@ -729,6 +738,38 @@ public class EconomyService
         };
 
         GivePlayerGloves(player);
+    }
+
+    public void ApplyAgent(CCSPlayerController player, AgentDefinition agent)
+    {
+        if (!GPlayersAgent.TryGetValue(player.Slot, out var agentTeams))
+        {
+            agentTeams = new();
+            GPlayersAgent[player.Slot] = agentTeams;
+        }
+
+        agentTeams[agent.Team] = agent.ModelPath;
+
+        ReapplyAgent(player);
+    }
+
+    // Player models reset to the team default on every respawn, so this needs to run
+    // again each spawn (see OnPlayerSpawn), not just once when the menu selection is made.
+    public void ReapplyAgent(CCSPlayerController player)
+    {
+        if (!GPlayersAgent.TryGetValue(player.Slot, out var agentTeams) ||
+            !agentTeams.TryGetValue(player.Team, out var modelPath))
+            return;
+
+        var pawn = player.PlayerPawn.Value;
+        if (pawn == null || !pawn.IsValid)
+            return;
+
+        Server.NextFrame(() =>
+        {
+            if (pawn.IsValid)
+                pawn.SetModel(modelPath);
+        });
     }
 
 }

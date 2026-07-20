@@ -193,6 +193,202 @@ public static class SkinCatalog
             Name = "AUG",
             DefIndex = 8,
             Category = WeaponCategory.Rifle
+        },
+
+        ["Desert Eagle"] = new()
+        {
+            Name = "Desert Eagle",
+            DefIndex = 1,
+            Category = WeaponCategory.Pistol
+        },
+
+        ["Dual Berettas"] = new()
+        {
+            Name = "Dual Berettas",
+            DefIndex = 2,
+            Category = WeaponCategory.Pistol
+        },
+
+        ["Five-SeveN"] = new()
+        {
+            Name = "Five-SeveN",
+            DefIndex = 3,
+            Category = WeaponCategory.Pistol
+        },
+
+        ["Glock-18"] = new()
+        {
+            Name = "Glock-18",
+            DefIndex = 4,
+            Category = WeaponCategory.Pistol
+        },
+
+        ["Tec-9"] = new()
+        {
+            Name = "Tec-9",
+            DefIndex = 30,
+            Category = WeaponCategory.Pistol
+        },
+
+        ["P2000"] = new()
+        {
+            Name = "P2000",
+            DefIndex = 32,
+            Category = WeaponCategory.Pistol
+        },
+
+        ["P250"] = new()
+        {
+            Name = "P250",
+            DefIndex = 36,
+            Category = WeaponCategory.Pistol
+        },
+
+        ["USP-S"] = new()
+        {
+            Name = "USP-S",
+            DefIndex = 61,
+            Category = WeaponCategory.Pistol
+        },
+
+        ["CZ75-Auto"] = new()
+        {
+            Name = "CZ75-Auto",
+            DefIndex = 63,
+            Category = WeaponCategory.Pistol
+        },
+
+        ["R8 Revolver"] = new()
+        {
+            Name = "R8 Revolver",
+            DefIndex = 64,
+            Category = WeaponCategory.Pistol
+        },
+
+        ["MAC-10"] = new()
+        {
+            Name = "MAC-10",
+            DefIndex = 17,
+            Category = WeaponCategory.SMG
+        },
+
+        ["P90"] = new()
+        {
+            Name = "P90",
+            DefIndex = 19,
+            Category = WeaponCategory.SMG
+        },
+
+        ["MP5-SD"] = new()
+        {
+            Name = "MP5-SD",
+            DefIndex = 23,
+            Category = WeaponCategory.SMG
+        },
+
+        ["UMP-45"] = new()
+        {
+            Name = "UMP-45",
+            DefIndex = 24,
+            Category = WeaponCategory.SMG
+        },
+
+        ["PP-Bizon"] = new()
+        {
+            Name = "PP-Bizon",
+            DefIndex = 26,
+            Category = WeaponCategory.SMG
+        },
+
+        ["MP7"] = new()
+        {
+            Name = "MP7",
+            DefIndex = 33,
+            Category = WeaponCategory.SMG
+        },
+
+        ["MP9"] = new()
+        {
+            Name = "MP9",
+            DefIndex = 34,
+            Category = WeaponCategory.SMG
+        },
+
+        ["AWP"] = new()
+        {
+            Name = "AWP",
+            DefIndex = 9,
+            Category = WeaponCategory.Sniper
+        },
+
+        ["G3SG1"] = new()
+        {
+            Name = "G3SG1",
+            DefIndex = 11,
+            Category = WeaponCategory.Sniper
+        },
+
+        ["SCAR-20"] = new()
+        {
+            Name = "SCAR-20",
+            DefIndex = 38,
+            Category = WeaponCategory.Sniper
+        },
+
+        ["SSG 08"] = new()
+        {
+            Name = "SSG 08",
+            DefIndex = 40,
+            Category = WeaponCategory.Sniper
+        },
+
+        ["M249"] = new()
+        {
+            Name = "M249",
+            DefIndex = 14,
+            Category = WeaponCategory.Heavy
+        },
+
+        ["MAG-7"] = new()
+        {
+            Name = "MAG-7",
+            DefIndex = 27,
+            Category = WeaponCategory.Heavy
+        },
+
+        ["Negev"] = new()
+        {
+            Name = "Negev",
+            DefIndex = 28,
+            Category = WeaponCategory.Heavy
+        },
+
+        ["Sawed-Off"] = new()
+        {
+            Name = "Sawed-Off",
+            DefIndex = 29,
+            Category = WeaponCategory.Heavy
+        },
+
+        ["XM1014"] = new()
+        {
+            Name = "XM1014",
+            DefIndex = 25,
+            Category = WeaponCategory.Heavy
+        },
+
+        ["Nova"] = new()
+        {
+            Name = "Nova",
+            DefIndex = 35,
+            Category = WeaponCategory.Heavy
+        },
+
+        ["Zeus x27"] = new()
+        {
+            Name = "Zeus x27",
+            DefIndex = 31,
+            Category = WeaponCategory.Equipment
         }
     };
 }
