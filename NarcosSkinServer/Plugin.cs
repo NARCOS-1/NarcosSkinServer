@@ -84,6 +84,8 @@ public partial class Plugin : BasePlugin
         AddCommand("css_gloves", "Lists loaded gloves", OnGlovesCommand);
         AddCommand("css_knife", "Inspect a knife", OnKnifeCommand);
         AddCommand("css_weapon", "Apply a gun skin with an exact seed", OnWeaponCommand);
+        AddCommand("css_menuscrollup", "internal: mouse wheel up", OnMenuScrollUp);
+        AddCommand("css_menuscrolldown", "internal: mouse wheel down", OnMenuScrollDown);
         AddTimer(3.0f, () =>
         {
             // Set here instead of server.cfg because plugin/server updates
@@ -92,7 +94,7 @@ public partial class Plugin : BasePlugin
 
             // Cheats & networking
             Server.ExecuteCommand("sv_cheats 1");
-            Server.ExecuteCommand("sv_lan 1");
+            Server.ExecuteCommand("sv_lan 0");
 
             // Bots 
             Server.ExecuteCommand("bot_quota 0");
@@ -304,6 +306,31 @@ public partial class Plugin : BasePlugin
         _economyService!.ApplySkin(player, weaponDef, paint, wear, seed);
 
         player.PrintToChat($"[Narcos] {weaponDef.Name} | {Economy.GetPaintKit(paint).Name ?? $"Paint {paint}"} | wear {wear} | seed {seed}");
+    }
+
+    // Bound to the mouse wheel (see Events.cs OnPlayerSpawn). Scrolls the active
+    // WASD menu if one's open; otherwise falls back to the game's normal
+    // next/previous weapon switch so we don't break scroll-to-switch in regular play.
+    private void OnMenuScrollUp(CCSPlayerController? player, CommandInfo command)
+    {
+        if (player == null || !player.IsValid)
+            return;
+
+        if (CS2MenuManager.API.Class.MenuManager.GetActiveMenu(player) is WasdMenuInstance menu)
+            menu.ScrollUp();
+        else
+            player.ExecuteClientCommand("invprev");
+    }
+
+    private void OnMenuScrollDown(CCSPlayerController? player, CommandInfo command)
+    {
+        if (player == null || !player.IsValid)
+            return;
+
+        if (CS2MenuManager.API.Class.MenuManager.GetActiveMenu(player) is WasdMenuInstance menu)
+            menu.ScrollDown();
+        else
+            player.ExecuteClientCommand("invnext");
     }
 
 
