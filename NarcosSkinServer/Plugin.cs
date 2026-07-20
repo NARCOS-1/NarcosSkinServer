@@ -89,34 +89,63 @@ public partial class Plugin : BasePlugin
         AddCommand("css_weapon", "Apply a gun skin with an exact seed", OnWeaponCommand);
         AddTimer(3.0f, () =>
         {
-            // Warmup
-            Server.ExecuteCommand("mp_warmup_end");
+            // Set here instead of server.cfg because plugin/server updates
+            // routinely overwrite server.cfg, and this way the environment is
+            // always correct after any redeploy without a manual re-edit.
 
-            // Bots
-            Server.ExecuteCommand("bot_kick");
+            // Cheats & networking
+            Server.ExecuteCommand("sv_cheats 1");
+            Server.ExecuteCommand("sv_lan 1");
+
+            // Bots (none, this is a solo/inspection server)
             Server.ExecuteCommand("bot_quota 0");
+            Server.ExecuteCommand("bot_kick");
 
-            // Money
+            // Warmup: skip it entirely
+            Server.ExecuteCommand("mp_warmup_end");
+            Server.ExecuteCommand("mp_warmuptime 0");
+            Server.ExecuteCommand("mp_do_warmup_period 0");
+
+            // Round/freeze time: no friction between spawning and playing
+            Server.ExecuteCommand("mp_freezetime 0");
+            Server.ExecuteCommand("mp_round_restart_delay 0");
+            Server.ExecuteCommand("mp_ignore_round_win_conditions 1");
+            Server.ExecuteCommand("mp_roundtime 60");
+            Server.ExecuteCommand("mp_roundtime_defuse 60");
+            Server.ExecuteCommand("mp_roundtime_hostage 60");
+            Server.ExecuteCommand("mp_maxrounds 0");
+            Server.ExecuteCommand("mp_timelimit 0");
+
+            // Buying: anywhere, anytime, full armor free
+            Server.ExecuteCommand("mp_buy_anywhere 1");
+            Server.ExecuteCommand("mp_buytime 9999");
+            Server.ExecuteCommand("mp_free_armor 2");
+
+            // Money: maxed out
             Server.ExecuteCommand("mp_startmoney 65535");
             Server.ExecuteCommand("mp_maxmoney 65535");
             Server.ExecuteCommand("mp_afterroundmoney 65535");
 
-            // Buying
-            Server.ExecuteCommand("mp_buy_anywhere 1");
-            Server.ExecuteCommand("mp_buytime 9999");
-
-            // Gameplay
-            Server.ExecuteCommand("mp_freezetime 0");
-            Server.ExecuteCommand("sv_cheats 1");
-
-            Server.ExecuteCommand("mp_ignore_round_win_conditions 1");
-            
+            // Ammo
             Server.ExecuteCommand("sv_infinite_ammo 2");
 
-            Server.ExecuteCommand("mp_roundtime_defuse 60");
-            Server.ExecuteCommand("mp_roundtime_hostage 60");
-            Server.ExecuteCommand("mp_roundtime 60");
+            // Survivability (closest vanilla approximation to "can't die")
+            Server.ExecuteCommand("mp_respawn_on_death_ct 1");
+            Server.ExecuteCommand("mp_respawn_on_death_t 1");
+            Server.ExecuteCommand("mp_respawn_immunitytime 9999");
 
+            // Team/balance friction removal
+            Server.ExecuteCommand("mp_autoteambalance 0");
+            Server.ExecuteCommand("mp_limitteams 0");
+            Server.ExecuteCommand("mp_solid_teammates 0");
+
+            // Misc QoL
+            Server.ExecuteCommand("mp_drop_knife_enable 1");
+            Server.ExecuteCommand("mp_death_drop_gun 0");
+            Server.ExecuteCommand("mp_death_drop_grenade 0");
+            Server.ExecuteCommand("mp_forcecamera 0");
+            Server.ExecuteCommand("sv_talk_enemy_dead 1");
+            Server.ExecuteCommand("sv_talk_enemy_living 1");
         });
     }
     private void OnGlovesCommand(CCSPlayerController? player, CommandInfo command)
