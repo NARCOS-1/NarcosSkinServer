@@ -6,6 +6,7 @@ using NarcosSkinServer.Data;
 using NarcosSkinServer.Menus;
 using NarcosSkinServer.Models;
 using NarcosSkinServer.Services;
+using System.Linq;
 
 namespace NarcosSkinServer.Menus.Catagories;
 
@@ -23,7 +24,7 @@ public static class PaintKitMenu
         if (econWeapon == null)
             return;
 
-        foreach (var paintKit in econWeapon.PaintKits)
+        foreach (var paintKit in econWeapon.PaintKits.OrderBy(pk => pk.Name, StringComparer.OrdinalIgnoreCase))
         {
 
             menu.AddItem(paintKit.Name, (p, o) =>
