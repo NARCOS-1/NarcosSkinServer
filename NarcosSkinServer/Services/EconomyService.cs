@@ -97,8 +97,6 @@ public class EconomyService
         List<JObject> skinInfo;
         bool isLegacyModel;
 
-        Console.WriteLine($"[GivePlayerWeaponSkin] weaponDefIndex={weaponDefIndex}, HasChangedPaint={HasChangedPaint(player, weaponDefIndex, out var debugInfo)}, storedPaint={debugInfo?.Paint}");
-
         if (!HasChangedPaint(player, weaponDefIndex, out _))
         {
             // Random skins
@@ -133,12 +131,7 @@ public class EconomyService
         }
 
         if (!HasChangedPaint(player, weaponDefIndex, out var weaponInfo) || weaponInfo == null)
-        {
-            Console.WriteLine($"[GivePlayerWeaponSkin] Aborting: second HasChangedPaint check failed or weaponInfo null");
             return;
-        }
-
-        Console.WriteLine($"[GivePlayerWeaponSkin] Applying paint. weapon.IsValid={weapon.IsValid}, DesignerName={weapon.DesignerName}");
 
         //Log($"Apply on {weapon.DesignerName}({weapon.AttributeManager.Item.ItemDefinitionIndex}) paint {gPlayerWeaponPaints[steamId.SteamId64][weapon.AttributeManager.Item.ItemDefinitionIndex]} seed {gPlayerWeaponSeed[steamId.SteamId64][weapon.AttributeManager.Item.ItemDefinitionIndex]} wear {gPlayerWeaponWear[steamId.SteamId64][weapon.AttributeManager.Item.ItemDefinitionIndex]}");
 
@@ -154,9 +147,6 @@ public class EconomyService
         weapon.FallbackSeed = weaponInfo is { Paint: 38, Seed: 0 } ? _fadeSeed++ : weaponInfo.Seed;
 
         weapon.FallbackWear = weaponInfo.Wear;
-
-        Console.WriteLine($"[GivePlayerWeaponSkin] Pre-write: FallbackPaintKit={weapon.FallbackPaintKit}, FallbackSeed={weapon.FallbackSeed}, FallbackWear={weapon.FallbackWear}, NetworkedDynamicAttributes.Handle={weapon.AttributeManager.Item.NetworkedDynamicAttributes.Handle}, AttributeList.Handle={weapon.AttributeManager.Item.AttributeList.Handle}, weapon.IsValid={weapon.IsValid}");
-
         CAttributeListSetOrAddAttributeValueByName.Invoke(weapon.AttributeManager.Item.NetworkedDynamicAttributes.Handle, "set item texture prefab", weapon.FallbackPaintKit);
 
         if (weaponInfo.StatTrak)
@@ -174,10 +164,7 @@ public class EconomyService
         fallbackPaintKit = weapon.FallbackPaintKit;
 
         if (fallbackPaintKit == 0)
-        {
-            Console.WriteLine($"[GivePlayerWeaponSkin] Aborting: fallbackPaintKit is 0 after setting weapon.FallbackPaintKit={weaponInfo.Paint}");
             return;
-        }
 
         if (weaponInfo.KeyChain != null) SetKeychain(player, weapon);
         if (weaponInfo.Stickers.Count > 0) SetStickers(player, weapon);
@@ -190,8 +177,6 @@ public class EconomyService
 
         isLegacyModel = skinInfo.Count > 0 && skinInfo[0].Value<bool>("legacy_model");
         UpdatePlayerWeaponMeshGroupMask(player, weapon, isLegacyModel);
-
-        Console.WriteLine($"[GivePlayerWeaponSkin] Completed. fallbackPaintKit={fallbackPaintKit}, isLegacyModel={isLegacyModel}, skinInfo.Count={skinInfo.Count}");
     }
 
 
@@ -498,182 +483,6 @@ public class EconomyService
             }
         });
 
-    }
-
-    public void RefreshWeapons(CCSPlayerController? player)
-    {
-
-
-        if (!_gBCommandsAllowed)
-        {
-
-            return;
-        }
-
-        if (player == null || !player.IsValid || player.PlayerPawn.Value == null ||
-            (LifeState_t)player.LifeState != LifeState_t.LIFE_ALIVE)
-        {
-
-            return;
-        }
-
-        if (player.PlayerPawn.Value.WeaponServices == null ||
-            player.PlayerPawn.Value.ItemServices == null)
-        {
-
-            return;
-        }
-
-        var weapons = player.PlayerPawn.Value.WeaponServices.MyWeapons;
-
-        if (weapons.Count == 0)
-        {
-
-            return;
-        }
-
-        ;
-
-        if (player.Team is CsTeam.None or CsTeam.Spectator)
-        {
-
-            return;
-        }
-
-        var hasKnife = false;
-
-        Dictionary<string, List<(int, int)>> weaponsWithAmmo = [];
-
-        foreach (var weapon in weapons)
-        {
-
-
-            if (!weapon.IsValid)
-            {
-
-                continue;
-            }
-
-            if (weapon.Value == null)
-            {
-
-                continue;
-            }
-
-            if (!weapon.Value.IsValid)
-            {
-
-                continue;
-            }
-
-
-
-            if (!weapon.Value.DesignerName.Contains("weapon_"))
-            {
-
-                continue;
-            }
-
-            CCSWeaponBaseGun gun = weapon.Value.As<CCSWeaponBaseGun>();
-
-            if (weapon.Value.Entity == null) continue;
-            if (!weapon.Value.OwnerEntity.IsValid) continue;
-            if (gun.Entity == null) continue;
-            if (!gun.IsValid) continue;
-
-            try
-            {
-                CCSWeaponBaseVData? weaponData = weapon.Value.As<CCSWeaponBase>().VData;
-
-                Console.WriteLine($"[RefreshWeapons] Checking {weapon.Value.DesignerName}, GearSlot={weaponData?.GearSlot}");
-
-                if (weaponData == null) continue;
-
-                if (weaponData.GearSlot is gear_slot_t.GEAR_SLOT_RIFLE or gear_slot_t.GEAR_SLOT_PISTOL)
-                {
-                    if (!WeaponDefindex.TryGetValue(weapon.Value.AttributeManager.Item.ItemDefinitionIndex, out var weaponByDefindex))
-                    {
-                        Console.WriteLine($"[RefreshWeapons] No WeaponDefindex entry for ItemDefinitionIndex={weapon.Value.AttributeManager.Item.ItemDefinitionIndex}");
-                        continue;
-                    }
-
-                    int clip1 = weapon.Value.Clip1;
-                    int reservedAmmo = weapon.Value.ReserveAmmo[0];
-
-                    if (!weaponsWithAmmo.TryGetValue(weaponByDefindex, out var value))
-                    {
-                        value = [];
-                        weaponsWithAmmo.Add(weaponByDefindex, value);
-                    }
-
-                    value.Add((clip1, reservedAmmo));
-
-                    if (gun.VData == null)
-                    {
-                        Console.WriteLine($"[RefreshWeapons] gun.VData is null for {weaponByDefindex}, aborting entire refresh!");
-                        return;
-                    }
-
-                    weapon.Value?.AddEntityIOEvent("Kill", weapon.Value, null, "", 0.1f);
-                }
-
-
-                if (weaponData.GearSlot == gear_slot_t.GEAR_SLOT_KNIFE)
-                {
-                    weapon.Value?.AddEntityIOEvent("Kill", weapon.Value, null, "", 0.1f);
-                    hasKnife = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"[RefreshWeapons] Exception in scan loop: {ex}");
-            }
-        }
-
-        Console.WriteLine($"[RefreshWeapons] weaponsWithAmmo count={weaponsWithAmmo.Count}, hasKnife={hasKnife}");
-
-        Server.NextFrame(() =>
-        {
-            if (!_gBCommandsAllowed)
-            {
-
-                return;
-            }
-
-
-
-
-
-            foreach (var entry in weaponsWithAmmo)
-            {
-                foreach (var ammo in entry.Value)
-                {
-                    Console.WriteLine($"[RefreshWeapons] Re-giving {entry.Key}");
-                    var newWeapon = new CBasePlayerWeapon(player.GiveNamedItem(entry.Key));
-
-                    Server.NextFrame(() =>
-                    {
-                        try
-                        {
-                            newWeapon.Clip1 = ammo.Item1;
-                            newWeapon.ReserveAmmo[0] = ammo.Item2;
-
-                            Console.WriteLine($"[RefreshWeapons] Calling GivePlayerWeaponSkin for {entry.Key}, defIndex={newWeapon.AttributeManager.Item.ItemDefinitionIndex}");
-                            GivePlayerWeaponSkin(player, newWeapon);
-
-                            IncrementWearForWeaponWithStickers(player, newWeapon);
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine($"[RefreshWeapons] Exception in re-give callback for {entry.Key}: {ex}");
-                        }
-                    });
-                }
-            }
-
-            if (hasKnife)
-                RefreshKnife(player);
-        });
     }
 
     private static int GetRandomPaint(int defindex)

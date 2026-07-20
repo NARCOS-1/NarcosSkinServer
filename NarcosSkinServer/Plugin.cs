@@ -69,6 +69,7 @@ public partial class Plugin : BasePlugin
 
         AddCommand("css_gloves", "Lists loaded gloves", OnGlovesCommand);
         AddCommand("css_knife", "Inspect a knife", OnKnifeCommand);
+        AddCommand("css_weapon", "Apply a gun skin with an exact seed", OnWeaponCommand);
         AddTimer(3.0f, () =>
         {
             // Warmup
@@ -211,6 +212,58 @@ public partial class Plugin : BasePlugin
     $"[Narcos] {WeaponNames.Get(knifeId)} | {Economy.GetPaintKit(paint).Name ?? $"Paint {paint}"}");
 
         player.PrintToChat($"[Narcos] {WeaponNames.Get(knifeId)} | {Economy.GetPaintKit(paint).Name ?? $"Paint {paint}"}");
+    }
+
+    // The WASD skin menu only offers a handful of fixed seed presets (0, 100, 250,
+    // 500, 661, Random) since CS2MenuManager has no free-text input. This command
+    // fills the gap for picking an exact seed/pattern (e.g. to match a specific
+    // showcase image), the same way css_knife/css_gloves already do for those categories.
+    private void OnWeaponCommand(CCSPlayerController? player, CommandInfo command)
+    {
+        if (player == null || !player.IsValid || player.IsBot)
+            return;
+
+        if (command.ArgCount != 5)
+        {
+            player.PrintToChat("Usage: !weapon <defindex> <paint> <wear> <seed>");
+            return;
+        }
+
+        if (!int.TryParse(command.GetArg(1), out int defIndex))
+        {
+            player.PrintToChat("Invalid weapon defindex.");
+            return;
+        }
+
+        if (!int.TryParse(command.GetArg(2), out int paint))
+        {
+            player.PrintToChat("Invalid paint ID.");
+            return;
+        }
+
+        if (!float.TryParse(command.GetArg(3), out float wear))
+        {
+            player.PrintToChat("Invalid wear.");
+            return;
+        }
+
+        if (!int.TryParse(command.GetArg(4), out int seed))
+        {
+            player.PrintToChat("Invalid seed.");
+            return;
+        }
+
+        var weaponDef = SkinCatalog.Weapons.Values.FirstOrDefault(w => w.DefIndex == defIndex);
+
+        if (weaponDef == null)
+        {
+            player.PrintToChat("Invalid weapon defindex.");
+            return;
+        }
+
+        _economyService!.ApplySkin(player, weaponDef, paint, wear, seed);
+
+        player.PrintToChat($"[Narcos] {weaponDef.Name} | {Economy.GetPaintKit(paint).Name ?? $"Paint {paint}"} | wear {wear} | seed {seed}");
     }
 
 
