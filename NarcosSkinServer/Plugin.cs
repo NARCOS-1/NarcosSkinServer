@@ -48,6 +48,10 @@ public partial class Plugin : BasePlugin
 
         Economy.Initialize(pluginDirectory, weaponDefIndexes);
 
+        // Hooks GiveNamedItemFunc + an OnEntitySpawned backstop to actually apply
+        // stored weapon skins on give/spawn; was defined but never called.
+        RegisterListeners();
+
         // NarcosSkinServer links its own copy of CS2MenuManager.dll (via HintPath),
         // isolated from the CS2MenuManager-MenuManager plugin's copy under CounterStrikeSharp's
         // per-plugin AssemblyLoadContext. That means this copy's static ConfigManager.Config

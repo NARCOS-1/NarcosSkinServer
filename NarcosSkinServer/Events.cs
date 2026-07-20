@@ -1,10 +1,11 @@
-﻿using CounterStrikeSharp.API;
+using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
 using NarcosSkinServer.Services;
 using CounterStrikeSharp.API.Modules.Memory.DynamicFunctions;
+using static CounterStrikeSharp.API.Core.Listeners;
 
 namespace NarcosSkinServer;
 
@@ -13,6 +14,7 @@ public partial class Plugin
     private void RegisterListeners()
     {
         VirtualFunctions.GiveNamedItemFunc.Hook(OnGiveNamedItemPost, HookMode.Post);
+        RegisterListener<OnEntitySpawned>(OnEntityCreated);
     }
 
     private static CCSPlayerController? GetPlayerFromItemServices(CCSPlayer_ItemServices itemServices)
@@ -28,26 +30,53 @@ public partial class Plugin
 
     private HookResult OnGiveNamedItemPost(DynamicHook hook)
     {
-        
-
         var itemServices = hook.GetParam<CCSPlayer_ItemServices>(0);
         var weapon = hook.GetReturn<CBasePlayerWeapon>();
-
-        
 
         var player = GetPlayerFromItemServices(itemServices);
 
         if (player == null || weapon == null || !weapon.IsValid)
             return HookResult.Continue;
 
-        if (weapon.DesignerName.Contains("knife") ||
-            weapon.DesignerName.Contains("bayonet"))
+        if (weapon.DesignerName.Contains("weapon"))
         {
             _economyService?.GivePlayerWeaponSkin(player, weapon);
         }
 
         return HookResult.Continue;
+    }
 
-        
+    // Backstop for OnGiveNamedItemPost: some weapon give paths (e.g. subclass-swapped
+    // rifles) don't reliably have their skin stick when painted only at give-time.
+    // Re-apply once the entity is fully spawned, mirroring the pattern used by
+    // Nereziel/cs2-WeaponPaints (a mature reference implementation this economy code
+    // closely follows).
+    private void OnEntityCreated(CEntityInstance entity)
+    {
+        if (!entity.DesignerName.Contains("weapon"))
+            return;
+
+        Server.NextWorldUpdate(() =>
+        {
+            try
+            {
+                var weapon = new CBasePlayerWeapon(entity.Handle);
+                if (!weapon.IsValid)
+                    return;
+
+                if (!weapon.OwnerEntity.IsValid)
+                    return;
+
+                var player = Utilities.GetPlayerFromIndex((int)weapon.OwnerEntity.Index);
+
+                if (player == null || !player.IsValid || player.IsBot)
+                    return;
+
+                _economyService?.GivePlayerWeaponSkin(player, weapon);
+            }
+            catch (Exception)
+            {
+            }
+        });
     }
 }
