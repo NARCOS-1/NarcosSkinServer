@@ -77,7 +77,6 @@ internal static class Variables
     };
 
 internal static readonly ConcurrentDictionary<int, ConcurrentDictionary<CsTeam, string>> GPlayersKnife = new(); public static readonly Dictionary<int, Dictionary<CsTeam, int>> GPlayersGlove = new();
-    internal static readonly ConcurrentDictionary<int, ConcurrentDictionary<CsTeam, string>> GPlayersAgent = new();
     internal static readonly ConcurrentDictionary<int, ConcurrentDictionary<CsTeam, ConcurrentDictionary<int, WeaponInfo>>> GPlayerWeaponsInfo = new();
     internal static List<JObject> SkinsList = [];
 

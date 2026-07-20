@@ -51,11 +51,6 @@ public class MainMenu
             PaintKitMenu.Open(p, plugin, economyService, SkinCatalog.Weapons["Zeus x27"], menu);
         });
 
-        menu.AddItem("Agents", (p, option) =>
-        {
-            AgentMenu.Open(p, plugin, economyService, menu);
-        });
-
         menu.Display(player, 0);
     }
 }

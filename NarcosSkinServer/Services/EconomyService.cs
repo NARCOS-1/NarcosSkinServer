@@ -745,43 +745,4 @@ public class EconomyService
         GivePlayerGloves(player);
     }
 
-    public void ApplyAgent(CCSPlayerController player, AgentDefinition agent)
-    {
-        if (!GPlayersAgent.TryGetValue(player.Slot, out var agentTeams))
-        {
-            agentTeams = new();
-            GPlayersAgent[player.Slot] = agentTeams;
-        }
-
-        agentTeams[agent.Team] = agent.ModelPath;
-
-        ReapplyAgent(player);
-    }
-
-    // Player models reset to the team default on every respawn, so this needs to run
-    // again each spawn (see OnPlayerSpawn), not just once when the menu selection is made.
-    public void ReapplyAgent(CCSPlayerController player)
-    {
-        if (!GPlayersAgent.TryGetValue(player.Slot, out var agentTeams) ||
-            !agentTeams.TryGetValue(player.Team, out var modelPath))
-            return;
-
-        var pawn = player.PlayerPawn.Value;
-        if (pawn == null || !pawn.IsValid)
-            return;
-
-        Server.NextFrame(() =>
-        {
-            try
-            {
-                if (pawn.IsValid)
-                    pawn.SetModel(modelPath);
-            }
-            catch (Exception ex)
-            {
-                Server.PrintToConsole($"[Narcos] Failed to set agent model '{modelPath}': {ex.Message}");
-            }
-        });
-    }
-
 }
