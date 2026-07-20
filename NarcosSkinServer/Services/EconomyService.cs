@@ -154,6 +154,9 @@ public class EconomyService
         weapon.FallbackSeed = weaponInfo is { Paint: 38, Seed: 0 } ? _fadeSeed++ : weaponInfo.Seed;
 
         weapon.FallbackWear = weaponInfo.Wear;
+
+        Console.WriteLine($"[GivePlayerWeaponSkin] Pre-write: FallbackPaintKit={weapon.FallbackPaintKit}, FallbackSeed={weapon.FallbackSeed}, FallbackWear={weapon.FallbackWear}, NetworkedDynamicAttributes.Handle={weapon.AttributeManager.Item.NetworkedDynamicAttributes.Handle}, AttributeList.Handle={weapon.AttributeManager.Item.AttributeList.Handle}, Entity valid={weapon.Entity?.IsValid}");
+
         CAttributeListSetOrAddAttributeValueByName.Invoke(weapon.AttributeManager.Item.NetworkedDynamicAttributes.Handle, "set item texture prefab", weapon.FallbackPaintKit);
 
         if (weaponInfo.StatTrak)
@@ -746,6 +749,8 @@ public class EconomyService
         var itemId = _nextItemId++;
 
         econItemView.ItemID = itemId;
+        econItemView.ItemIDLow = (uint)itemId & 0xFFFFFFFF;
+        econItemView.ItemIDHigh = (uint)itemId >> 32;
     }
 
     private static CCSPlayerController? GetPlayerFromItemServices(CCSPlayer_ItemServices itemServices)
