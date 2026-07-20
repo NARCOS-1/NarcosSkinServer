@@ -97,7 +97,7 @@ public partial class Plugin : BasePlugin
 
             // Cheats & networking
             Server.ExecuteCommand("sv_cheats 1");
-            Server.ExecuteCommand("sv_lan 1");
+            Server.ExecuteCommand("sv_lan 0");
 
             // Bots (none, this is a solo/inspection server)
             Server.ExecuteCommand("bot_quota 0");
