@@ -97,39 +97,12 @@ public class EconomyService
         List<JObject> skinInfo;
         bool isLegacyModel;
 
-        if (!HasChangedPaint(player, weaponDefIndex, out _))
-        {
-            // Random skins
-            weapon.FallbackPaintKit = GetRandomPaint(weaponDefIndex);
-            weapon.FallbackSeed = 0;
-            weapon.FallbackWear = 0.01f;
-
-            weapon.AttributeManager.Item.NetworkedDynamicAttributes.Attributes.RemoveAll();
-            CAttributeListSetOrAddAttributeValueByName.Invoke(weapon.AttributeManager.Item.NetworkedDynamicAttributes.Handle, "set item texture prefab", GetRandomPaint(weaponDefIndex));
-            CAttributeListSetOrAddAttributeValueByName.Invoke(weapon.AttributeManager.Item.NetworkedDynamicAttributes.Handle, "set item texture seed", 0);
-            CAttributeListSetOrAddAttributeValueByName.Invoke(weapon.AttributeManager.Item.NetworkedDynamicAttributes.Handle, "set item texture wear", 0.01f);
-
-            weapon.AttributeManager.Item.AttributeList.Attributes.RemoveAll();
-            CAttributeListSetOrAddAttributeValueByName.Invoke(weapon.AttributeManager.Item.AttributeList.Handle, "set item texture prefab", GetRandomPaint(weaponDefIndex));
-            CAttributeListSetOrAddAttributeValueByName.Invoke(weapon.AttributeManager.Item.AttributeList.Handle, "set item texture seed", 0);
-            CAttributeListSetOrAddAttributeValueByName.Invoke(weapon.AttributeManager.Item.AttributeList.Handle, "set item texture wear", 0.01f);
-
-            fallbackPaintKit = weapon.FallbackPaintKit;
-
-            if (fallbackPaintKit == 0)
-                return;
-
-            skinInfo = SkinsList
-                .Where(w =>
-                    w["weapon_defindex"]?.ToObject<int>() == weaponDefIndex &&
-                    w["paint"]?.ToObject<int>() == fallbackPaintKit)
-                .ToList();
-
-            isLegacyModel = skinInfo.Count > 0 && skinInfo[0].Value<bool>("legacy_model");
-            UpdatePlayerWeaponMeshGroupMask(player, weapon, isLegacyModel);
-            return;
-        }
-
+        // No explicitly stored skin for this weapon - leave it exactly as-is (this
+        // includes a player's own real Steam-inventory skin, if they have one
+        // equipped). Only touch weapons the player has actually chosen a skin for
+        // via the menu; forcing a "random" skin here used to unconditionally wipe
+        // both attribute lists before even checking whether it found a replacement,
+        // which stripped real owned skins down to nothing.
         if (!HasChangedPaint(player, weaponDefIndex, out var weaponInfo) || weaponInfo == null)
             return;
 
@@ -483,24 +456,6 @@ public class EconomyService
             }
         });
 
-    }
-
-    private static int GetRandomPaint(int defindex)
-    {
-        if (SkinsList.Count == 0)
-            return 0;
-
-        Random rnd = new Random();
-
-        // Filter weapons by the provided defindex
-        var filteredWeapons = SkinsList.Where(w => w["weapon_defindex"]?.ToString() == defindex.ToString()).ToList();
-
-        if (filteredWeapons.Count == 0)
-            return 0;
-
-        var randomWeapon = filteredWeapons[rnd.Next(filteredWeapons.Count)];
-
-        return int.TryParse(randomWeapon["paint"]?.ToString(), out var paintValue) ? paintValue : 0;
     }
 
     public static void SubclassChange(CBasePlayerWeapon weapon, ushort itemD)
