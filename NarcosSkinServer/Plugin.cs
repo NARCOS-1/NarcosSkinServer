@@ -7,6 +7,7 @@ using CounterStrikeSharp.API.Modules.Menu;
 using CS2MenuManager.API.Class;
 using CS2MenuManager.API.Menu;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Linq;
 using NarcosSkinServer.Data;
 using NarcosSkinServer.Menus.Catagories;
 using NarcosSkinServer.Models;
@@ -47,6 +48,22 @@ public partial class Plugin : BasePlugin
             .ToDictionary(g => g.Key, g => g.First().Key);
 
         Economy.Initialize(pluginDirectory, weaponDefIndexes);
+
+        // Per-skin legacy_model flags (whether a paint kit uses the pre-2023 mesh/UV
+        // layout). GivePlayerWeaponSkin picks the weapon's bodygroup off this, and
+        // legacy vs modern is genuinely per-skin - defaulting it one way or the other
+        // when this list is empty renders some skins with the wrong mesh entirely.
+        string skinLegacyModelsPath = Path.Combine(pluginDirectory, "Data", "SkinLegacyModels.json");
+
+        if (File.Exists(skinLegacyModelsPath))
+        {
+            SkinsList = JArray.Parse(File.ReadAllText(skinLegacyModelsPath)).OfType<JObject>().ToList();
+            Logger.LogInformation($"Loaded {SkinsList.Count} skin legacy-model entries.");
+        }
+        else
+        {
+            Logger.LogWarning($"SkinLegacyModels.json not found at {skinLegacyModelsPath}; legacy/modern weapon meshes may render incorrectly.");
+        }
 
         // Hooks GiveNamedItemFunc + an OnEntitySpawned backstop to actually apply
         // stored weapon skins on give/spawn; was defined but never called.

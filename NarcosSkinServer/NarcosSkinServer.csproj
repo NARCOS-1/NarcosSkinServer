@@ -17,6 +17,13 @@
 	  <Folder Include="Utils\" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<None Remove="Data\SkinLegacyModels.json" />
+		<Content Include="Data\SkinLegacyModels.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
 	<Target Name="CopyPlugin" AfterTargets="Build">
 
 		<MakeDir Directories="D:\CS2Server\server\game\csgo\addons\counterstrikesharp\plugins\NarcosSkinServer" />
