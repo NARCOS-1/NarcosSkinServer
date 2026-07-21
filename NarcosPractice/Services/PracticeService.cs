@@ -125,7 +125,7 @@ public class PracticeService
         for (int i = 1; i < lineups.Count; i++)
         {
             var lineup = lineups[i];
-            new Timer(RunAllDelaySeconds * i, () =>
+            new CounterStrikeSharp.API.Modules.Timers.Timer(RunAllDelaySeconds * i, () =>
             {
                 if (player.IsValid)
                     Throw(player, lineup);
