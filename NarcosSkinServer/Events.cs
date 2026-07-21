@@ -47,8 +47,11 @@ public partial class Plugin
         RegisterEventHandler<EventPlayerSpawn>(OnPlayerSpawn);
         RegisterEventHandler<EventPlayerHurt>(OnPlayerHurt);
 
-        foreach (string command in BlockedCheatCommands)
-            AddCommandListener(command, OnCheatCommandAttempt);
+        // Temporarily disabled to isolate a "can't drop weapons" regression that
+        // appeared around the same time this was added - re-enable once confirmed
+        // this isn't the cause (or fixed if it is).
+        // foreach (string command in BlockedCheatCommands)
+        //     AddCommandListener(command, OnCheatCommandAttempt);
     }
 
     private HookResult OnCheatCommandAttempt(CCSPlayerController? player, CommandInfo command)
