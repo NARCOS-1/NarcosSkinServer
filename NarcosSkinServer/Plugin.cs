@@ -255,12 +255,13 @@ public partial class Plugin : BasePlugin
         session.KnifeName = knifeName;
         session.Knife ??= new WeaponInfo();
 
-        session.Knife.Paint = paint;
-        session.Knife.Wear = wear;
-        session.Knife.Seed = seed;
-        session.Knife.StatTrak = false;
-        session.Knife.StatTrakCount = 0;
-        session.Knife.Nametag = "";
+        var knife = session.Knife;
+        knife.Paint = paint;
+        knife.Wear = wear;
+        knife.Seed = seed;
+        knife.StatTrak = false;
+        knife.StatTrakCount = 0;
+        knife.Nametag = "";
 
         _economyService.ApplyInspectSession(player, session);
 
