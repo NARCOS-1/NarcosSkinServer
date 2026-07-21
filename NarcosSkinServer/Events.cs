@@ -40,6 +40,8 @@ public partial class Plugin
 
     private void RegisterListeners()
     {
+        // Both confirmed not the cause of the drop regression (it was
+        // mp_death_drop_gun/mp_death_drop_grenade, fixed in Plugin.cs) - restored.
         VirtualFunctions.GiveNamedItemFunc.Hook(OnGiveNamedItemPost, HookMode.Post);
         RegisterListener<OnEntitySpawned>(OnEntityCreated);
         AddCommandListener("say", OnPlayerSay);

@@ -106,7 +106,7 @@ public partial class Plugin : BasePlugin
             // Warmup: skip it entirely
             Server.ExecuteCommand("mp_warmup_end");
             Server.ExecuteCommand("mp_warmuptime 0");
-            Server.ExecuteCommand("mp_do_warmup_period 0");
+            Server.ExecuteCommand("mp_do_warmup_offline 0");
 
             // Round/freeze time: no friction between spawning and playing
             Server.ExecuteCommand("mp_freezetime 0");
@@ -143,8 +143,12 @@ public partial class Plugin : BasePlugin
 
             // Misc QoL
             Server.ExecuteCommand("mp_drop_knife_enable 1");
-            Server.ExecuteCommand("mp_death_drop_gun 0");
-            Server.ExecuteCommand("mp_death_drop_grenade 0");
+            // These also gate voluntary manual drop (G/drop), not just drop-on-death,
+            // on this build - setting them to 0 silently disabled dropping guns/nades
+            // entirely. Left at default; death-drop is moot anyway since players can't
+            // really die with the no-damage system in place.
+            Server.ExecuteCommand("mp_death_drop_gun 1");
+            Server.ExecuteCommand("mp_death_drop_grenade 1");
             Server.ExecuteCommand("mp_forcecamera 0");
             Server.ExecuteCommand("sv_talk_enemy_dead 1");
             Server.ExecuteCommand("sv_talk_enemy_living 1");
