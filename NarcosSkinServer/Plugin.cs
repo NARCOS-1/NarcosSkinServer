@@ -103,7 +103,7 @@ public partial class Plugin : BasePlugin
             // Warmup
             Server.ExecuteCommand("mp_warmup_end");
             Server.ExecuteCommand("mp_warmuptime 0");
-            Server.ExecuteCommand("mp_do_warmup_period 0");
+            Server.ExecuteCommand("mp_do_warmup_offline 0");
 
             // Round/freeze time
             Server.ExecuteCommand("mp_freezetime 0");

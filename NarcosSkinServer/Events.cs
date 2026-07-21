@@ -40,18 +40,20 @@ public partial class Plugin
 
     private void RegisterListeners()
     {
-        VirtualFunctions.GiveNamedItemFunc.Hook(OnGiveNamedItemPost, HookMode.Post);
+        // Temporarily disabled to isolate the "can't drop weapons" regression -
+        // ruled out the cheat-command blocker below (still broken with it off), so
+        // this native hook is next. Re-enable once confirmed this isn't the cause
+        // (or fixed if it is).
+        // VirtualFunctions.GiveNamedItemFunc.Hook(OnGiveNamedItemPost, HookMode.Post);
         RegisterListener<OnEntitySpawned>(OnEntityCreated);
         AddCommandListener("say", OnPlayerSay);
         AddCommandListener("say_team", OnPlayerSay);
         RegisterEventHandler<EventPlayerSpawn>(OnPlayerSpawn);
         RegisterEventHandler<EventPlayerHurt>(OnPlayerHurt);
 
-        // Temporarily disabled to isolate a "can't drop weapons" regression that
-        // appeared around the same time this was added - re-enable once confirmed
-        // this isn't the cause (or fixed if it is).
-        // foreach (string command in BlockedCheatCommands)
-        //     AddCommandListener(command, OnCheatCommandAttempt);
+        // Confirmed not the cause of the drop regression - restored.
+        foreach (string command in BlockedCheatCommands)
+            AddCommandListener(command, OnCheatCommandAttempt);
     }
 
     private HookResult OnCheatCommandAttempt(CCSPlayerController? player, CommandInfo command)
