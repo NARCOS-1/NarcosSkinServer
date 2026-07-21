@@ -6,6 +6,10 @@ public class Lineup
 
     public NadeType Type { get; set; }
 
+    public ThrowTechnique Technique { get; set; } = ThrowTechnique.Normal;
+
+    public ThrowStrength Strength { get; set; } = ThrowStrength.Full;
+
     public float ThrowPosX { get; set; }
     public float ThrowPosY { get; set; }
     public float ThrowPosZ { get; set; }

@@ -7,24 +7,24 @@ namespace NarcosPractice;
 
 public partial class Plugin : BasePlugin
 {
-    private LineupService? _lineupService;
+    private MarkerService? _markerService;
     private PracticeService? _practiceService;
 
     public override string ModuleName => "NarcosPractice";
-    public override string ModuleVersion => "0.1.0";
+    public override string ModuleVersion => "0.2.0";
     public override string ModuleAuthor => "Zein";
-    public override string ModuleDescription => "Nade lineup practice with insta-throw replay";
+    public override string ModuleDescription => "Nade lineup practice with markers and insta-throw replay";
 
     public override void Load(bool hotReload)
     {
         string pluginDirectory = Path.GetDirectoryName(ModulePath)!;
 
-        _lineupService = new LineupService(pluginDirectory);
-        _practiceService = new PracticeService(_lineupService);
+        _markerService = new MarkerService(pluginDirectory);
+        _practiceService = new PracticeService(_markerService);
 
         RegisterListeners();
 
-        AddCommand("css_nadesave", "Arm a lineup save - throw the nade right after", OnNadeSaveCommand);
+        AddCommand("css_nadesave", "Start saving a lineup here - pick type/technique/strength, then throw", OnNadeSaveCommand);
         AddCommand("css_nades", "Open the nade practice menu", OnNadesCommand);
         AddCommand("css_nadedelete", "Delete a saved lineup", OnNadeDeleteCommand);
 
@@ -38,11 +38,12 @@ public partial class Plugin : BasePlugin
 
         if (command.ArgCount != 2)
         {
-            player.PrintToChat("Usage: !nadesave <name> - then throw the nade immediately.");
+            player.PrintToChat("Usage: !nadesave <name> - pick type/technique/strength, then throw immediately.");
             return;
         }
 
-        _practiceService?.ArmSave(player, command.GetArg(1));
+        if (_practiceService != null)
+            SaveWizardMenu.Open(player, this, _practiceService, command.GetArg(1));
     }
 
     private void OnNadesCommand(CCSPlayerController? player, CommandInfo command)
@@ -50,10 +51,10 @@ public partial class Plugin : BasePlugin
         if (player == null || !player.IsValid || player.IsBot)
             return;
 
-        if (_lineupService == null || _practiceService == null)
+        if (_markerService == null || _practiceService == null)
             return;
 
-        LineupMenu.Open(player, this, _lineupService, _practiceService, _currentMap);
+        LineupMenu.Open(player, this, _markerService, _practiceService, _currentMap);
     }
 
     private void OnNadeDeleteCommand(CCSPlayerController? player, CommandInfo command)
@@ -73,7 +74,10 @@ public partial class Plugin : BasePlugin
             return;
         }
 
-        bool deleted = _lineupService?.DeleteLineup(_currentMap, command.GetArg(1), type) ?? false;
+        var marker = _markerService?.GetMarkers(_currentMap)
+            .FirstOrDefault(m => m.Lineups.Any(l => l.Name.Equals(command.GetArg(1), StringComparison.OrdinalIgnoreCase) && l.Type == type));
+
+        bool deleted = marker != null && (_markerService?.DeleteLineup(_currentMap, marker, command.GetArg(1), type) ?? false);
         player.PrintToChat(deleted
             ? $"[Practice] Deleted '{command.GetArg(1)}'."
             : $"[Practice] No lineup named '{command.GetArg(1)}' found.");

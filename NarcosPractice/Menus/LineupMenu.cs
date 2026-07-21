@@ -8,7 +8,7 @@ namespace NarcosPractice.Menus;
 
 public static class LineupMenu
 {
-    public static void Open(CCSPlayerController player, BasePlugin plugin, LineupService lineupService, PracticeService practiceService, string map)
+    public static void Open(CCSPlayerController player, BasePlugin plugin, MarkerService markerService, PracticeService practiceService, string map)
     {
         var menu = new WasdMenu("Nade Practice", plugin);
 
@@ -16,16 +16,20 @@ public static class LineupMenu
         {
             menu.AddItem(type.ToString(), (p, o) =>
             {
-                OpenType(p, plugin, lineupService, practiceService, map, type, menu);
+                OpenType(p, plugin, markerService, practiceService, map, type, menu);
             });
         }
 
         menu.Display(player, 0);
     }
 
-    private static void OpenType(CCSPlayerController player, BasePlugin plugin, LineupService lineupService, PracticeService practiceService, string map, NadeType type, WasdMenu previousMenu)
+    private static void OpenType(CCSPlayerController player, BasePlugin plugin, MarkerService markerService, PracticeService practiceService, string map, NadeType type, WasdMenu previousMenu)
     {
-        var lineups = lineupService.GetLineups(map).Where(l => l.Type == type).OrderBy(l => l.Name).ToList();
+        var lineups = markerService.GetMarkers(map)
+            .SelectMany(m => m.Lineups)
+            .Where(l => l.Type == type)
+            .OrderBy(l => l.Name)
+            .ToList();
 
         var menu = new WasdMenu($"{type} Lineups", plugin)
         {
@@ -40,7 +44,7 @@ public static class LineupMenu
 
         foreach (var lineup in lineups)
         {
-            menu.AddItem(lineup.Name, (p, o) =>
+            menu.AddItem($"{lineup.Name} [{lineup.Technique}, {lineup.Strength}]", (p, o) =>
             {
                 practiceService.Throw(p, lineup);
             });
