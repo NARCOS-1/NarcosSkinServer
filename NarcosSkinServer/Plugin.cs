@@ -143,8 +143,12 @@ public partial class Plugin : BasePlugin
 
             // Misc QoL
             Server.ExecuteCommand("mp_drop_knife_enable 1");
-            Server.ExecuteCommand("mp_death_drop_gun 0");
-            Server.ExecuteCommand("mp_death_drop_grenade 0");
+            // These also gate voluntary manual drop (G/drop), not just drop-on-death,
+            // on this build - setting them to 0 silently disabled dropping guns/nades
+            // entirely. Left at default; death-drop is moot anyway since players can't
+            // really die with the no-damage system in place.
+            Server.ExecuteCommand("mp_death_drop_gun 1");
+            Server.ExecuteCommand("mp_death_drop_grenade 1");
             Server.ExecuteCommand("mp_forcecamera 0");
             Server.ExecuteCommand("sv_talk_enemy_dead 1");
             Server.ExecuteCommand("sv_talk_enemy_living 1");

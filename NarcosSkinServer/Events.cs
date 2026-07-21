@@ -40,14 +40,10 @@ public partial class Plugin
 
     private void RegisterListeners()
     {
-        // Confirmed not the cause of the drop regression - restored.
+        // Both confirmed not the cause of the drop regression (it was
+        // mp_death_drop_gun/mp_death_drop_grenade, fixed in Plugin.cs) - restored.
         VirtualFunctions.GiveNamedItemFunc.Hook(OnGiveNamedItemPost, HookMode.Post);
-
-        // Temporarily disabled to isolate the "can't drop weapons" regression -
-        // ruled out the cheat-command blocker and the GiveNamedItemFunc hook (still
-        // broken with each off individually). Re-enable once confirmed this isn't
-        // the cause (or fixed if it is).
-        // RegisterListener<OnEntitySpawned>(OnEntityCreated);
+        RegisterListener<OnEntitySpawned>(OnEntityCreated);
         AddCommandListener("say", OnPlayerSay);
         AddCommandListener("say_team", OnPlayerSay);
         RegisterEventHandler<EventPlayerSpawn>(OnPlayerSpawn);
