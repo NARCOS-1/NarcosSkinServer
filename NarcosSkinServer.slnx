@@ -2,4 +2,5 @@
   <Project Path="NarcosEconomy/NarcosEconomy.csproj" Id="2b3a94f9-8a09-4ac7-863f-98b2a74e67f9" />
   <Project Path="NarcosEconomyTest/NarcosEconomyTest.csproj" Id="52d2bed5-295c-4d80-b8fb-cc80095cc46d" />
   <Project Path="NarcosSkinServer/NarcosSkinServer.csproj" />
+  <Project Path="NarcosPractice/NarcosPractice.csproj" />
 </Solution>
