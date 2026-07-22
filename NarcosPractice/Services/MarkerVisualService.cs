@@ -73,8 +73,17 @@ public class MarkerVisualService
         }
     }
 
+    // TEMPORARILY DISABLED: this was causing a real native access violation crash
+    // in server.dll (0xc0000005), not just a bad-looking .NET exception - one of
+    // these property/enum guesses is wrong in a way that corrupts engine memory
+    // rather than just failing safely. Returning null here until each property is
+    // verified individually against a live server; the markers just won't render
+    // in the meantime, but nothing else breaks or crashes.
     private static CPointWorldText? CreateWorldText(string text, Vector position, Color color)
     {
+        return null;
+
+#pragma warning disable CS0162 // unreachable - kept so this is a one-line revert once verified safe
         var entity = Utilities.CreateEntityByName<CPointWorldText>("point_worldtext");
         if (entity == null)
             return null;
@@ -94,5 +103,6 @@ public class MarkerVisualService
         entity.DispatchSpawn();
 
         return entity;
+#pragma warning restore CS0162
     }
 }
