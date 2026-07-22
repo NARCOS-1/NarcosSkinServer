@@ -4,6 +4,7 @@ using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Menu;
+using CounterStrikeSharp.API.Modules.Utils;
 using CS2MenuManager.API.Class;
 using CS2MenuManager.API.Menu;
 using Microsoft.Extensions.Logging;
@@ -317,9 +318,14 @@ public partial class Plugin : BasePlugin
         player.PrintToChat($"[Narcos] {weaponDef.Name} | {Economy.GetPaintKit(paint).Name ?? $"Paint {paint}"} | wear {wear} | seed {seed}");
     }
 
-    // Bound to the mouse wheel (see Events.cs OnPlayerSpawn). Scrolls the active
-    // WASD menu if one's open; otherwise falls back to the game's normal
-    // next/previous weapon switch so we don't break scroll-to-switch in regular play.
+    // Bound to the mouse wheel (see Events.cs's bind-on-menu-open logic). Scrolls the
+    // active WASD menu if one's open; otherwise simulates a jump. This has to be a
+    // direct velocity change, not "+jump" via ExecuteClientCommand - movement commands
+    // aren't FCVAR_SERVER_CAN_EXECUTE either, so a server can't remotely trigger them
+    // any more than it can force a client bind (same restriction we hit with the wheel
+    // bind itself). 301 u/s matches CS2's actual jump-impulse velocity.
+    private const float JumpVelocity = 301f;
+
     private void OnMenuScrollUp(CCSPlayerController? player, CommandInfo command)
     {
         if (player == null || !player.IsValid)
@@ -328,7 +334,7 @@ public partial class Plugin : BasePlugin
         if (CS2MenuManager.API.Class.MenuManager.GetActiveMenu(player) is WasdMenuInstance menu)
             menu.ScrollUp();
         else
-            player.ExecuteClientCommand("invprev");
+            SimulateJump(player);
     }
 
     private void OnMenuScrollDown(CCSPlayerController? player, CommandInfo command)
@@ -339,7 +345,17 @@ public partial class Plugin : BasePlugin
         if (CS2MenuManager.API.Class.MenuManager.GetActiveMenu(player) is WasdMenuInstance menu)
             menu.ScrollDown();
         else
-            player.ExecuteClientCommand("invnext");
+            SimulateJump(player);
+    }
+
+    private static void SimulateJump(CCSPlayerController player)
+    {
+        var pawn = player.PlayerPawn.Value;
+        if (pawn == null || !pawn.IsValid || pawn.AbsVelocity == null)
+            return;
+
+        pawn.AbsVelocity.Z = JumpVelocity;
+        Utilities.SetStateChanged(pawn, "CBaseEntity", "m_vecAbsVelocity");
     }
 
 
