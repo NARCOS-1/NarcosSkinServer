@@ -1,4 +1,5 @@
 using System.Collections.Concurrent;
+using System.Linq;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Memory;
@@ -17,13 +18,14 @@ public class PracticeService
     private const float AimReferenceDistance = 400f;
 
     // How far away / how far off-crosshair a marker can be and still count as
-    // "aimed at" for the shoot/use-to-teleport interaction.
+    // "aimed at" for the shoot/use-to-teleport fast-travel convenience.
     private const float AimMaxDistance = 1200f;
     private const float AimMaxAngleDegrees = 4f;
 
-    // Once guided to a lineup, the technique bar keeps showing as long as you're
-    // still roughly at the stand spot - past this distance you've clearly moved on.
-    private const float ActiveGuideRadius = 300f;
+    // Close enough to a marker to count as "standing at it" for the automatic
+    // equip-and-see-the-aim-guide flow - this is the primary way lineups are meant
+    // to be practiced; shoot/use-to-teleport above is just a fast-travel shortcut.
+    private const float StandingAtMarkerRadius = 100f;
 
     private record PendingSave(string Name, NadeType Type, ThrowTechnique Technique, ThrowStrength Strength, Vector ThrowPos, QAngle ThrowAngles, DateTime ArmedAt);
 
@@ -173,8 +175,10 @@ public class PracticeService
             : "[Practice] Noclip off.");
     }
 
-    // Drives the aim-at-a-marker / technique-bar HUD and the shoot-or-use-to-teleport
-    // interaction. Called once per tick from Events.cs.
+    // Primary flow: standing at a marker with the matching nade equipped shows the
+    // aim guide automatically, no interaction needed. Secondary: aiming at a distant
+    // marker still offers shoot/use as a fast-travel shortcut to walking there.
+    // Called once per tick from Events.cs.
     public void Tick(CCSPlayerController player, string map, Action<Marker> onInteract)
     {
         var pawn = player.PlayerPawn.Value;
@@ -185,28 +189,70 @@ public class PracticeService
         bool interactedLastTick = _interactedLastTick.GetOrAdd(player.Slot, false);
         _interactedLastTick[player.Slot] = interactingNow;
 
-        // Actively practicing a guided lineup and still near its stand spot - show
-        // the technique bar instead of the marker-approach hint.
-        if (_lastGuided.TryGetValue(player.Slot, out var activeLineup) &&
-            Distance(pawn.AbsOrigin, activeLineup.ThrowPosX, activeLineup.ThrowPosY, activeLineup.ThrowPosZ) <= ActiveGuideRadius)
+        var nearbyMarker = _markerService.FindNearest(map, pawn.AbsOrigin.X, pawn.AbsOrigin.Y, pawn.AbsOrigin.Z, StandingAtMarkerRadius);
+
+        if (nearbyMarker != null)
         {
-            player.PrintToCenterHtml(BuildTechniqueBarText(activeLineup));
+            var equippedType = GetEquippedNadeType(player);
+            var matchingLineup = equippedType == null
+                ? null
+                : nearbyMarker.Lineups.Find(l => l.Type == equippedType);
+
+            if (matchingLineup != null)
+            {
+                ShowAutoGuide(player, matchingLineup);
+                return;
+            }
+
+            var neededTypes = string.Join(", ", nearbyMarker.Lineups.Select(l => l.Type).Distinct());
+            player.PrintToCenterHtml($"<font color='#8fd3ff'>Equip {neededTypes}</font> to see the aim guide here");
             return;
         }
 
-        var marker = FindAimedAtMarker(player, map);
+        // Not standing at a marker - fall back to the aim/shoot/use fast-travel hint.
+        var aimedMarker = FindAimedAtMarker(player, map);
 
-        if (marker == null)
+        if (aimedMarker == null)
         {
             player.PrintToCenterHtml("");
             return;
         }
 
-        int count = marker.Lineups.Count;
+        int count = aimedMarker.Lineups.Count;
         player.PrintToCenterHtml($"<font color='#8fd3ff'>SHOOT or USE</font> to teleport - {count} lineup{(count == 1 ? "" : "s")} here");
 
         if (interactingNow && !interactedLastTick)
-            onInteract(marker);
+            onInteract(aimedMarker);
+    }
+
+    // Shows the aim-reference marker + technique bar for whichever lineup matches
+    // the nade currently in hand - only respawns the reference dot when the
+    // relevant lineup actually changes, not every single tick.
+    private void ShowAutoGuide(CCSPlayerController player, Lineup lineup)
+    {
+        if (!_lastGuided.TryGetValue(player.Slot, out var previous) || previous != lineup)
+        {
+            var throwPos = new Vector(lineup.ThrowPosX, lineup.ThrowPosY, lineup.ThrowPosZ);
+            var throwAngles = new QAngle(lineup.ThrowAngPitch, lineup.ThrowAngYaw, 0);
+            _markerVisualService.ShowAimReference(player.Slot, ComputeAimReferencePoint(throwPos, throwAngles));
+            _lastGuided[player.Slot] = lineup;
+        }
+
+        player.PrintToCenterHtml(BuildTechniqueBarText(lineup));
+    }
+
+    private static NadeType? GetEquippedNadeType(CCSPlayerController player)
+    {
+        string? designerName = player.PlayerPawn.Value?.WeaponServices?.ActiveWeapon.Value?.DesignerName;
+
+        return designerName switch
+        {
+            "weapon_smokegrenade" => NadeType.Smoke,
+            "weapon_flashbang" => NadeType.Flash,
+            "weapon_hegrenade" => NadeType.HE,
+            "weapon_molotov" or "weapon_incgrenade" => NadeType.Molotov,
+            _ => null
+        };
     }
 
     // Simple angle-to-nearest-marker check rather than a real engine trace - good
@@ -266,14 +312,6 @@ public class PracticeService
             MathF.Cos(yawRad) * MathF.Cos(pitchRad),
             MathF.Sin(yawRad) * MathF.Cos(pitchRad),
             -MathF.Sin(pitchRad));
-    }
-
-    private static float Distance(Vector a, float bx, float by, float bz)
-    {
-        float dx = a.X - bx;
-        float dy = a.Y - by;
-        float dz = a.Z - bz;
-        return MathF.Sqrt(dx * dx + dy * dy + dz * dz);
     }
 
     private static string BuildTechniqueBarText(Lineup lineup)
