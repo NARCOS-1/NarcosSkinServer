@@ -7,14 +7,23 @@ using NarcosPractice.Models;
 namespace NarcosPractice.Services;
 
 // Spawns the actual visible markers players walk up to and aim at. Uses CS2's
-// native point_worldtext entity (plain 3D text, no model file) rather than a
-// prop/model - Agents already proved guessing at .vmdl paths is a great way to
-// end up with an invisible or ERROR-placeholder marker.
+// native point_worldtext entity (plain 3D text with an optional background
+// plate, no model file) rather than a prop/particle - guessing at an asset
+// path for either of those is exactly the kind of unverified native resource
+// reference that caused a real crash earlier in this plugin's history.
 public class MarkerVisualService
 {
-    private readonly Dictionary<string, CPointWorldText> _markerEntities = new();
+    // One entity per lineup now, not per marker - Yprac shows a separate
+    // labeled panel for each lineup ("Smoke wall 3", "Smoke mouz wall 1", ...)
+    // even when several share roughly the same stand spot, rather than
+    // collapsing them into a single "3 lineups" summary.
+    private readonly Dictionary<string, List<CPointWorldText>> _markerEntities = new();
     private readonly Dictionary<int, CPointWorldText> _aimReferenceEntities = new();
     private readonly Queue<Marker> _pendingSpawns = new();
+
+    // Vertical gap between stacked lineup labels at the same marker, so they
+    // read as a list rather than overlapping into unreadable mush.
+    private const float LabelStackSpacing = 26f;
 
     // How many point_worldtext entities to create per tick while draining the
     // spawn queue - some maps have 80+ lineups, and creating dozens of entities
@@ -49,36 +58,39 @@ public class MarkerVisualService
 
     public void SpawnMarkerText(Marker marker)
     {
-        if (_markerEntities.TryGetValue(marker.Id, out var existing) && existing.IsValid)
-            existing.Remove();
+        RemoveMarkerText(marker.Id);
 
-        // No label text at all - just a floating shape, closer to how Yprac marks
-        // stand spots with a small gem/diamond prop rather than a readable sign.
-        // A real 3D prop or particle effect would need precaching a specific
-        // asset path server-side, which is exactly the kind of unverified native
-        // resource guess that caused the earlier crash - this reuses the same
-        // point_worldtext entity that's already proven safe, just rendering a
-        // single glyph instead of a label.
-        var pos = new Vector(marker.PosX, marker.PosY, marker.PosZ + 8f);
-        var entity = CreateWorldText("◆", pos, Color.FromArgb(255, 90, 170, 255));
-        string label = marker.Lineups.Count == 1 ? marker.Lineups[0].Name : $"{marker.Lineups.Count} lineups";
-        if (entity != null)
+        var entities = new List<CPointWorldText>();
+        for (int i = 0; i < marker.Lineups.Count; i++)
         {
-            _markerEntities[marker.Id] = entity;
-            Server.PrintToConsole($"[NarcosPractice] Spawned marker '{label}' at {pos.X:F0},{pos.Y:F0},{pos.Z:F0}");
+            var lineup = marker.Lineups[i];
+            var pos = new Vector(marker.PosX, marker.PosY, marker.PosZ + 32f + i * LabelStackSpacing);
+            var entity = CreateWorldText(lineup.Name, pos, Color.FromArgb(255, 255, 193, 61), background: true);
+
+            if (entity != null)
+            {
+                entities.Add(entity);
+                Server.PrintToConsole($"[NarcosPractice] Spawned '{lineup.Name}' at {pos.X:F0},{pos.Y:F0},{pos.Z:F0}");
+            }
+            else
+            {
+                Server.PrintToConsole($"[NarcosPractice] FAILED to spawn '{lineup.Name}' - CreateEntityByName/property assignment returned null or threw.");
+            }
         }
-        else
-        {
-            Server.PrintToConsole($"[NarcosPractice] FAILED to spawn marker '{label}' - CreateEntityByName/property assignment returned null or threw.");
-        }
+
+        if (entities.Count > 0)
+            _markerEntities[marker.Id] = entities;
     }
 
     public void RemoveMarkerText(string markerId)
     {
-        if (_markerEntities.TryGetValue(markerId, out var entity))
+        if (_markerEntities.TryGetValue(markerId, out var entities))
         {
-            if (entity.IsValid)
-                entity.Remove();
+            foreach (var entity in entities)
+            {
+                if (entity.IsValid)
+                    entity.Remove();
+            }
             _markerEntities.Remove(markerId);
         }
     }
@@ -89,7 +101,7 @@ public class MarkerVisualService
     {
         HideAimReference(playerSlot);
 
-        var entity = CreateWorldText("●", position, Color.FromArgb(255, 120, 255, 120));
+        var entity = CreateWorldText("O", position, Color.FromArgb(255, 255, 221, 0), background: false);
         if (entity != null)
             _aimReferenceEntities[playerSlot] = entity;
     }
@@ -104,7 +116,7 @@ public class MarkerVisualService
         }
     }
 
-    private static CPointWorldText? CreateWorldText(string text, Vector position, Color color)
+    private static CPointWorldText? CreateWorldText(string text, Vector position, Color color, bool background)
     {
         try
         {
@@ -118,14 +130,14 @@ public class MarkerVisualService
             entity.MessageText = text;
             entity.Enabled = true;
             entity.FontName = "Arial";
-            // No background plate and no label anymore - just a large glowing
-            // glyph, so size it like a shape (bigger) rather than readable text.
-            entity.FontSize = 60;
+            entity.FontSize = 24;
             entity.Color = color;
             entity.Fullbright = true;
-            entity.WorldUnitsPerPx = 0.35f;
+            entity.WorldUnitsPerPx = 0.3f;
             entity.DepthOffset = 0f;
-            entity.DrawBackground = false;
+            entity.DrawBackground = background;
+            entity.BackgroundBorderWidth = 0.12f;
+            entity.BackgroundBorderHeight = 0.2f;
             entity.JustifyHorizontal = PointWorldTextJustifyHorizontal_t.POINT_WORLD_TEXT_JUSTIFY_HORIZONTAL_CENTER;
             entity.JustifyVertical = PointWorldTextJustifyVertical_t.POINT_WORLD_TEXT_JUSTIFY_VERTICAL_CENTER;
             // NONE pins the text to a fixed facing forever - from most approach
