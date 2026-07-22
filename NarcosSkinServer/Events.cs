@@ -5,6 +5,7 @@ using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
+using CS2MenuManager.API.Menu;
 using NarcosSkinServer.Data;
 using NarcosSkinServer.Services;
 using CounterStrikeSharp.API.Modules.Memory.DynamicFunctions;
@@ -14,6 +15,9 @@ namespace NarcosSkinServer;
 
 public partial class Plugin
 {
+    // Tracks whether each player had a menu open as of the last tick, so the mouse
+    // wheel rebind below only fires on the open/close transition instead of every tick.
+    private readonly Dictionary<int, bool> _menuOpenLastTick = new();
     // sv_cheats has to stay on (it's what lets us set weapon paint attributes),
     // but that also unlocks these engine cheat commands for every connected
     // player, not just us. Block them for anyone without @css/cheats instead of
@@ -46,8 +50,8 @@ public partial class Plugin
         RegisterListener<OnEntitySpawned>(OnEntityCreated);
         AddCommandListener("say", OnPlayerSay);
         AddCommandListener("say_team", OnPlayerSay);
-        RegisterEventHandler<EventPlayerSpawn>(OnPlayerSpawn);
         RegisterEventHandler<EventPlayerHurt>(OnPlayerHurt);
+        RegisterListener<OnTick>(OnMouseWheelTick);
 
         foreach (string command in BlockedCheatCommands)
             AddCommandListener(command, OnCheatCommandAttempt);
@@ -67,20 +71,37 @@ public partial class Plugin
     }
 
     // Mouse wheel isn't a PlayerButtons flag CS2MenuManager's WasdMenu can read like
-    // W/S, so we bind it client-side to our own commands (css_menuscrollup/down),
-    // which scroll the active menu when one's open and otherwise fall back to the
-    // game's normal weapon-switch behavior.
-    private HookResult OnPlayerSpawn(EventPlayerSpawn @event, GameEventInfo info)
+    // W/S, so scrolling a menu means rebinding the wheel client-side. This used to
+    // rebind unconditionally on every spawn, which permanently stomped any personal
+    // mwheelup/mwheeldown bind (e.g. scroll-to-jump for bhop practice) even outside
+    // of menus. Instead, only take the wheel over while a menu is actually open, and
+    // give it back to +jump the instant it closes.
+    private void OnMouseWheelTick()
     {
-        CCSPlayerController? player = @event.Userid;
+        foreach (var player in Utilities.GetPlayers())
+        {
+            if (!player.IsValid || player.IsBot)
+                continue;
 
-        if (player == null || !player.IsValid || player.IsBot)
-            return HookResult.Continue;
+            bool menuOpenNow = CS2MenuManager.API.Class.MenuManager.GetActiveMenu(player) is WasdMenuInstance;
+            bool menuOpenLastTick = _menuOpenLastTick.GetValueOrDefault(player.Slot);
 
-        player.ExecuteClientCommand("bind \"MWHEELUP\" \"css_menuscrollup\"");
-        player.ExecuteClientCommand("bind \"MWHEELDOWN\" \"css_menuscrolldown\"");
+            if (menuOpenNow == menuOpenLastTick)
+                continue;
 
-        return HookResult.Continue;
+            _menuOpenLastTick[player.Slot] = menuOpenNow;
+
+            if (menuOpenNow)
+            {
+                player.ExecuteClientCommand("bind \"MWHEELUP\" \"css_menuscrollup\"");
+                player.ExecuteClientCommand("bind \"MWHEELDOWN\" \"css_menuscrolldown\"");
+            }
+            else
+            {
+                player.ExecuteClientCommand("bind \"MWHEELUP\" \"+jump\"");
+                player.ExecuteClientCommand("bind \"MWHEELDOWN\" \"+jump\"");
+            }
+        }
     }
 
     // sv_falldamage_scale 0 handles fall damage at the cvar level, but bullets/blasts/

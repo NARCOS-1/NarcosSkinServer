@@ -143,8 +143,14 @@ public class PracticeService
             goingNoclip ? MoveType_t.MOVETYPE_NOCLIP : MoveType_t.MOVETYPE_WALK;
         Utilities.SetStateChanged(pawn, "CBaseEntity", "m_MoveType");
 
+        // Only take mouse-wheel-down over while actually flying, so a personal
+        // mwheeldown bind (e.g. scroll-to-jump) is untouched the rest of the time.
+        player.ExecuteClientCommand(goingNoclip
+            ? "bind \"MWHEELDOWN\" \"css_verify\""
+            : "bind \"MWHEELDOWN\" \"+jump\"");
+
         player.PrintToChat(goingNoclip
-            ? "[Practice] Noclip on - fly up to check your throw, !verify again to drop back down."
+            ? "[Practice] Noclip on - fly up to check your throw, scroll wheel down to drop back down."
             : "[Practice] Noclip off.");
     }
 
