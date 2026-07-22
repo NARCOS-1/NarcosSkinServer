@@ -354,6 +354,12 @@ public partial class Plugin : BasePlugin
         if (pawn == null || !pawn.IsValid || pawn.AbsVelocity == null)
             return;
 
+        // Only jump if actually grounded - without this, every scroll notch adds
+        // another 301 u/s upward regardless of being airborne already, which is
+        // exactly the "jump infinitely mid-air" bug just reported.
+        if (!pawn.GroundEntity.IsValid)
+            return;
+
         pawn.AbsVelocity.Z = JumpVelocity;
         Utilities.SetStateChanged(pawn, "CBaseEntity", "m_vecAbsVelocity");
     }
