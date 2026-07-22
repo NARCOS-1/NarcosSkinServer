@@ -30,9 +30,15 @@ public partial class Plugin : BasePlugin
 
         // OnMapStart won't fire again for whatever map is already running when this
         // plugin loads (or hot-reloads), so seed the current map and spawn its
-        // markers immediately instead of waiting for the next map change.
-        _currentMap = Server.MapName;
-        RefreshMarkerVisuals();
+        // markers instead of waiting for the next map change. Server.MapName can
+        // be null this early in Load() (before the engine's finished registering
+        // the map), so this is deferred a second rather than read immediately -
+        // reading it as null crashed plugin load entirely last time.
+        AddTimer(1.0f, () =>
+        {
+            _currentMap = Server.MapName ?? _currentMap;
+            RefreshMarkerVisuals();
+        });
 
         AddCommand("css_nadesave", "Start saving a lineup here - pick type/technique/strength, then throw", OnNadeSaveCommand);
         AddCommand("css_nades", "Open the nade practice menu", OnNadesCommand);

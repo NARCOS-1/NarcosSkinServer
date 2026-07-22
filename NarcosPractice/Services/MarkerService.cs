@@ -23,8 +23,14 @@ public class MarkerService
 
     private string PathFor(string map) => Path.Combine(_dataDirectory, $"{map}.json");
 
-    public List<Marker> GetMarkers(string map)
+    public List<Marker> GetMarkers(string? map)
     {
+        // Server.MapName can be null very early during plugin load, before the
+        // engine's finished registering the current map - a null Dictionary key
+        // throws instead of just missing, which took the whole plugin down once.
+        if (string.IsNullOrEmpty(map))
+            return [];
+
         if (_cache.TryGetValue(map, out var cached))
             return cached;
 
