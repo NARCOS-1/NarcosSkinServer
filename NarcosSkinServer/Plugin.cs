@@ -154,6 +154,11 @@ public partial class Plugin : BasePlugin
             // Fall damage has no equivalent "cancel it in code" hook - it's purely
             // cvar-driven, unlike bullet/blast damage which OnPlayerHurt corrects.
             Server.ExecuteCommand("sv_falldamage_scale 0");
+
+            // Holding space auto-bhops instead of needing single-tap timing, and
+            // removes the speed penalty CS normally applies for over-bhopping.
+            Server.ExecuteCommand("sv_autobunnyhopping 1");
+            Server.ExecuteCommand("sv_enablebunnyhopping 1");
         });
     }
     private void OnGlovesCommand(CCSPlayerController? player, CommandInfo command)
