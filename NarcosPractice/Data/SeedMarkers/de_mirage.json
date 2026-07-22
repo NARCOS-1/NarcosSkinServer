@@ -1,6 +1,6 @@
 [
   {
-    "Id": "6b4e8373984f4c73961e2066cf363019",
+    "Id": "3631bacf5b144ba39a55f17b8cbc3b8e",
     "PosX": 1389.46875,
     "PosY": 70.968201,
     "PosZ": -167.96875,
@@ -17,7 +17,11 @@
         "ThrowAngYaw": -163.909958,
         "DetonatePosX": -1161.228394,
         "DetonatePosY": -643.96991,
-        "DetonatePosZ": -165.96875
+        "DetonatePosZ": -165.96875,
+        "Notes": "Strafe right, then jump throw",
+        "AimPosX": 1307.055786,
+        "AimPosY": 47.196411,
+        "AimPosZ": -52.718651
       },
       {
         "Name": "Smoke connector",
@@ -31,7 +35,11 @@
         "ThrowAngYaw": -157.222641,
         "DetonatePosX": -627.418335,
         "DetonatePosY": -886.672913,
-        "DetonatePosZ": -245.96875
+        "DetonatePosZ": -245.96875,
+        "Notes": "Aim at bottom of border\\nAlign with center of the door",
+        "AimPosX": 1303.029297,
+        "AimPosY": 34.67556,
+        "AimPosZ": -69.331673
       },
       {
         "Name": "Smoke Window",
@@ -45,12 +53,16 @@
         "ThrowAngYaw": -162.727432,
         "DetonatePosX": -1155.30957,
         "DetonatePosY": -687.634277,
-        "DetonatePosZ": -165.96875
+        "DetonatePosZ": -165.96875,
+        "Notes": "Strafe right, jump throw",
+        "AimPosX": 1305.820068,
+        "AimPosY": 44.965927,
+        "AimPosZ": -55.712784
       }
     ]
   },
   {
-    "Id": "5615b7042aac4713a12b1da1826f49bd",
+    "Id": "90cf42d3a0f64b4f8a88a64344da7ee2",
     "PosX": 907.430115,
     "PosY": -1036.031982,
     "PosZ": -251.96875,
@@ -67,7 +79,11 @@
         "ThrowAngYaw": -158.774521,
         "DetonatePosX": -520.425903,
         "DetonatePosY": -1590.563599,
-        "DetonatePosZ": -37.96875
+        "DetonatePosZ": -37.96875,
+        "Notes": "Aim slight off the edge of the building\\\\nCombine with jungle smoke",
+        "AimPosX": 867.427673,
+        "AimPosY": -1051.568359,
+        "AimPosZ": -100.601532
       },
       {
         "Name": "Lamp flash",
@@ -81,7 +97,11 @@
         "ThrowAngYaw": -154.218887,
         "DetonatePosX": 95.679504,
         "DetonatePosY": -1411.779541,
-        "DetonatePosZ": 96.837936
+        "DetonatePosZ": 96.837936,
+        "Notes": "",
+        "AimPosX": 798.480042,
+        "AimPosY": -1072.32019,
+        "AimPosZ": -135.506378
       },
       {
         "Name": "Smoke jungle",
@@ -95,12 +115,16 @@
         "ThrowAngYaw": -162.678314,
         "DetonatePosX": -765.740234,
         "DetonatePosY": -1557.873047,
-        "DetonatePosZ": -165.96875
+        "DetonatePosZ": -165.96875,
+        "Notes": "Aim at the middle of the wall",
+        "AimPosX": 861.456848,
+        "AimPosY": -1050.422485,
+        "AimPosZ": -103.384087
       }
     ]
   },
   {
-    "Id": "3baa5e1fb1934c70918eb2b93f2bb506",
+    "Id": "020c6d959c2a48ed8a70922219690ec9",
     "PosX": 1092.043335,
     "PosY": -1012.002258,
     "PosZ": -257.438171,
@@ -117,7 +141,11 @@
         "ThrowAngYaw": -162.921844,
         "DetonatePosX": -812.124756,
         "DetonatePosY": -1647.311646,
-        "DetonatePosZ": 18.03125
+        "DetonatePosZ": 18.03125,
+        "Notes": "Aim at the dot on the wall and jump throw\\\\nCombine with stairs smoke",
+        "AimPosX": 1003.480042,
+        "AimPosY": -1039.210938,
+        "AimPosZ": -157.9673
       },
       {
         "Name": "Smoke CT Spawn",
@@ -131,12 +159,16 @@
         "ThrowAngYaw": -143.773361,
         "DetonatePosX": -876.852173,
         "DetonatePosY": -2436.367432,
-        "DetonatePosZ": -108.837357
+        "DetonatePosZ": -108.837357,
+        "Notes": "Right most part of the tower (not the beam)",
+        "AimPosX": 1021.083618,
+        "AimPosY": -1064.231812,
+        "AimPosZ": -146.137482
       }
     ]
   },
   {
-    "Id": "f10254befcf74a669a79d82b489fa7ec",
+    "Id": "45a4289d85674e52b4ea270940829fca",
     "PosX": 1239.962158,
     "PosY": -1159.484131,
     "PosZ": -246.550842,
@@ -153,12 +185,16 @@
         "ThrowAngYaw": -175.049759,
         "DetonatePosX": -611.516357,
         "DetonatePosY": -1368.771606,
-        "DetonatePosZ": -165.96875
+        "DetonatePosZ": -165.96875,
+        "Notes": "Aim at the top of the antenna\\njump throw",
+        "AimPosX": 1149.443359,
+        "AimPosY": -1167.324341,
+        "AimPosZ": -147.207748
       }
     ]
   },
   {
-    "Id": "b581f969d0ca455ebefd342a858f0e54",
+    "Id": "818edf907fb64532b8304055a7dcd711",
     "PosX": 509.521759,
     "PosY": -1707.965698,
     "PosZ": -263.96875,
@@ -175,12 +211,16 @@
         "ThrowAngYaw": 133.609192,
         "DetonatePosX": 19.33671,
         "DetonatePosY": -1642.851929,
-        "DetonatePosZ": -169.96875
+        "DetonatePosZ": -169.96875,
+        "Notes": "Middle of the line",
+        "AimPosX": 442.938171,
+        "AimPosY": -1638.068481,
+        "AimPosZ": -174.032532
       }
     ]
   },
   {
-    "Id": "d9328bfa418e44cf92b2c174b4623b6c",
+    "Id": "594d1df2133a4bd7a3fddb50923b6ca9",
     "PosX": 385.87326,
     "PosY": -2127.966309,
     "PosZ": -39.96875,
@@ -197,12 +237,16 @@
         "ThrowAngYaw": -126.39624,
         "DetonatePosX": -34.790619,
         "DetonatePosY": -2081.317383,
-        "DetonatePosZ": -36.96875
+        "DetonatePosZ": -36.96875,
+        "Notes": "Aim between the two horizontal lines at the vertical line",
+        "AimPosX": 326.838867,
+        "AimPosY": -2208.049561,
+        "AimPosZ": 33.951427
       }
     ]
   },
   {
-    "Id": "17c25420dc974ce3abf65e8398d70aa7",
+    "Id": "3300e2d4dd8a451da3a8725c885631dd",
     "PosX": 1422.966919,
     "PosY": 36.46875,
     "PosZ": -167.96875,
@@ -219,7 +263,11 @@
         "ThrowAngYaw": -160.521606,
         "DetonatePosX": 34.644897,
         "DetonatePosY": -481.505035,
-        "DetonatePosZ": -184.162582
+        "DetonatePosZ": -184.162582,
+        "Notes": "Tip of the antenna",
+        "AimPosX": 1353.240967,
+        "AimPosY": 11.80707,
+        "AimPosZ": -36.822807
       },
       {
         "Name": "Smoke conn",
@@ -233,12 +281,16 @@
         "ThrowAngYaw": -157.981613,
         "DetonatePosX": -618.204895,
         "DetonatePosY": -895.653015,
-        "DetonatePosZ": -245.96875
+        "DetonatePosZ": -245.96875,
+        "Notes": "",
+        "AimPosX": 1335.585205,
+        "AimPosY": 1.131798,
+        "AimPosZ": -70.724884
       }
     ]
   },
   {
-    "Id": "503b9576326848c58ae835092ce3e985",
+    "Id": "127bd9dc30af4affb2ad31beb6cd7e52",
     "PosX": 343.302429,
     "PosY": -621.618347,
     "PosZ": -162.331787,
@@ -255,12 +307,16 @@
         "ThrowAngYaw": 179.378647,
         "DetonatePosX": -1187.866455,
         "DetonatePosY": -603.414001,
-        "DetonatePosZ": -165.96875
+        "DetonatePosZ": -165.96875,
+        "Notes": "1x at the top of the flap on the box",
+        "AimPosX": 258.859711,
+        "AimPosY": -620.702576,
+        "AimPosZ": -45.646915
       }
     ]
   },
   {
-    "Id": "a90ee1af1df34e1a94941dbcf54ba690",
+    "Id": "c3b1e819c3814eabbc147d488282e28d",
     "PosX": 360.075439,
     "PosY": -691.96875,
     "PosZ": -163.355286,
@@ -277,12 +333,16 @@
         "ThrowAngYaw": 160.904984,
         "DetonatePosX": -798.707214,
         "DetonatePosY": -202.775055,
-        "DetonatePosZ": -164.94046
+        "DetonatePosZ": -164.94046,
+        "Notes": "Aim at the tip of the antenna",
+        "AimPosX": 274.368622,
+        "AimPosY": -662.298462,
+        "AimPosZ": -58.108246
       }
     ]
   },
   {
-    "Id": "5352c1c25d2743dea559c74b783fc80c",
+    "Id": "5c4e1324d43844a3b20ce2446dd4bfec",
     "PosX": -160.03302,
     "PosY": 887.96698,
     "PosZ": -135.328064,
@@ -299,7 +359,11 @@
         "ThrowAngYaw": -146.991608,
         "DetonatePosX": -1916.892456,
         "DetonatePosY": -292.930206,
-        "DetonatePosZ": -165.972
+        "DetonatePosZ": -165.972,
+        "Notes": "Aim at the top most part of the tower, jump throw",
+        "AimPosX": -212.868134,
+        "AimPosY": 853.644531,
+        "AimPosZ": 5.850853
       },
       {
         "Name": "Smoke kitchen entrance",
@@ -313,7 +377,11 @@
         "ThrowAngYaw": -151.91066,
         "DetonatePosX": -2376.21167,
         "DetonatePosY": -295.757202,
-        "DetonatePosZ": -165.966705
+        "DetonatePosZ": -165.966705,
+        "Notes": "Top part of the right most window",
+        "AimPosX": -225.511414,
+        "AimPosY": 853.020386,
+        "AimPosZ": -4.794472
       },
       {
         "Name": "Smoke Short",
@@ -327,12 +395,16 @@
         "ThrowAngYaw": -134.684814,
         "DetonatePosX": -998.699158,
         "DetonatePosY": 167.673553,
-        "DetonatePosZ": -170.557404
+        "DetonatePosZ": -170.557404,
+        "Notes": "Middle click jump throw",
+        "AimPosX": -209.305832,
+        "AimPosY": 838.144409,
+        "AimPosZ": -0.300514
       }
     ]
   },
   {
-    "Id": "3b6c05c073ca4170b189575170cd0a6e",
+    "Id": "62df97e49f064e4b8f45c3ccb8b97778",
     "PosX": -2031.968872,
     "PosY": -1766.488647,
     "PosZ": -300.431152,
@@ -349,12 +421,16 @@
         "ThrowAngYaw": 5.386463,
         "DetonatePosX": 476.344696,
         "DetonatePosY": -1531.98938,
-        "DetonatePosZ": -255.135513
+        "DetonatePosZ": -255.135513,
+        "Notes": "Aim at edge of wall and top grout",
+        "AimPosX": -1936.531494,
+        "AimPosY": -1757.489868,
+        "AimPosZ": -211.352829
       }
     ]
   },
   {
-    "Id": "fab62dc8e8df4c7983c46a7da752ab96",
+    "Id": "736172f2267941ec9c7e3b906fbe45d7",
     "PosX": 1296.0,
     "PosY": 32.0,
     "PosZ": -167.96875,
@@ -371,12 +447,16 @@
         "ThrowAngYaw": -165.958099,
         "DetonatePosX": -1162.511597,
         "DetonatePosY": -632.730225,
-        "DetonatePosZ": -165.96875
+        "DetonatePosZ": -165.96875,
+        "Notes": "setpos 1296.000000 32.000000 -103.968750",
+        "AimPosX": 1211.079834,
+        "AimPosY": 10.761017,
+        "AimPosZ": -55.781288
       }
     ]
   },
   {
-    "Id": "84f5f6a870c743929b5ce99e7e4f9605",
+    "Id": "9f533eb89cf9464da080f4ef96ce3600",
     "PosX": 1296.0,
     "PosY": -352.0,
     "PosZ": -167.96875,
@@ -393,12 +473,16 @@
         "ThrowAngYaw": -173.246841,
         "DetonatePosX": -1195.737061,
         "DetonatePosY": -663.078857,
-        "DetonatePosZ": -165.968414
+        "DetonatePosZ": -165.968414,
+        "Notes": "setpos 1216.00 -211.00 -158.60",
+        "AimPosX": 1222.731079,
+        "AimPosY": -360.676025,
+        "AimPosZ": -36.627716
       }
     ]
   },
   {
-    "Id": "00cf9e6f86244024a0fc26353e8d06c6",
+    "Id": "de8b9bcd6348465884cc633ca4624645",
     "PosX": 1216.0,
     "PosY": -16.0,
     "PosZ": -163.96875,
@@ -415,12 +499,16 @@
         "ThrowAngYaw": -166.252304,
         "DetonatePosX": -1207.445801,
         "DetonatePosY": -634.600586,
-        "DetonatePosZ": -165.96875
+        "DetonatePosZ": -165.96875,
+        "Notes": "setpos 1136.00 32.000 -158.78",
+        "AimPosX": 1146.833374,
+        "AimPosY": -32.922001,
+        "AimPosZ": -31.725586
       }
     ]
   },
   {
-    "Id": "9fb6f23dfadc4ea98b2c593718c4112e",
+    "Id": "47d8e37e207b46f9a16191d3fef1b233",
     "PosX": 1216.0,
     "PosY": -115.0,
     "PosZ": -163.96875,
@@ -437,12 +525,16 @@
         "ThrowAngYaw": -167.666473,
         "DetonatePosX": -1200.9021,
         "DetonatePosY": -670.274963,
-        "DetonatePosZ": -165.96875
+        "DetonatePosZ": -165.96875,
+        "Notes": "setpos 1136.00 -64.00 -158.69",
+        "AimPosX": 1146.275635,
+        "AimPosY": -130.245102,
+        "AimPosZ": -31.893295
       }
     ]
   },
   {
-    "Id": "bbfe43ac85774b56ae5bfe3dd0ef1ae6",
+    "Id": "a0f19094849643adb51d38b2a53d9e5c",
     "PosX": 1216.0,
     "PosY": -211.0,
     "PosZ": -163.96875,
@@ -459,12 +551,16 @@
         "ThrowAngYaw": -170.316238,
         "DetonatePosX": -1208.038574,
         "DetonatePosY": -643.046753,
-        "DetonatePosZ": -165.96875
+        "DetonatePosZ": -165.96875,
+        "Notes": "setpos 1136.00 -256.00 -158.83",
+        "AimPosX": 1147.563599,
+        "AimPosY": -222.678085,
+        "AimPosZ": -29.028008
       }
     ]
   },
   {
-    "Id": "37d672f98be0431aa9bf544f3b7cb22a",
+    "Id": "53465dcee20440618d8ffc4bb044e95f",
     "PosX": 1216.000122,
     "PosY": -307.000244,
     "PosZ": -164.814819,
@@ -481,12 +577,16 @@
         "ThrowAngYaw": -170.927353,
         "DetonatePosX": -1208.431396,
         "DetonatePosY": -674.645142,
-        "DetonatePosZ": -165.96875
+        "DetonatePosZ": -165.96875,
+        "Notes": "Walk to the right until you reach the 2nd metal railing, step jump throw",
+        "AimPosX": 1147.941772,
+        "AimPosY": -317.868103,
+        "AimPosZ": -28.5214
       }
     ]
   },
   {
-    "Id": "dfa661f063864847a59a58371ba214ce",
+    "Id": "48a611963fc047f3ac35b6034d6b0746",
     "PosX": 1135.997314,
     "PosY": 32.00264,
     "PosZ": -164.788452,
@@ -503,12 +603,16 @@
         "ThrowAngYaw": -164.376755,
         "DetonatePosX": -1208.431396,
         "DetonatePosY": -674.645142,
-        "DetonatePosZ": -165.96875
+        "DetonatePosZ": -165.96875,
+        "Notes": "Aim to the left of the square mark, walk backwards until crosshair is at the dark brick, step jump throw",
+        "AimPosX": 1068.472046,
+        "AimPosY": 13.119694,
+        "AimPosZ": -29.669563
       }
     ]
   },
   {
-    "Id": "d3ec23a11b2441d3810b5427291aef9d",
+    "Id": "2ed357899d1a4e7a811f4f84055bc950",
     "PosX": 1136.049194,
     "PosY": -63.972839,
     "PosZ": -164.499817,
@@ -525,12 +629,16 @@
         "ThrowAngYaw": -166.298676,
         "DetonatePosX": -1204.479736,
         "DetonatePosY": -654.664429,
-        "DetonatePosZ": -165.96875
+        "DetonatePosZ": -165.96875,
+        "Notes": "Align with the dirt in the center of the A, and the bottom right corner of the center in the A, walk backwards until reaching bottom of railing",
+        "AimPosX": 1072.717041,
+        "AimPosY": -79.413086,
+        "AimPosZ": -41.342056
       }
     ]
   },
   {
-    "Id": "3fedb47cbe5d45aca9b25f1d256767af",
+    "Id": "ad71e004903f4e03a9332c0312d45df5",
     "PosX": 1136.052612,
     "PosY": -160.017456,
     "PosZ": -164.431152,
@@ -547,12 +655,16 @@
         "ThrowAngYaw": -168.192444,
         "DetonatePosX": -1194.388184,
         "DetonatePosY": -675.464722,
-        "DetonatePosZ": -165.96875
+        "DetonatePosZ": -165.96875,
+        "Notes": "Align where the black lines from the window meet, walk backwards until above the swirl on the railing, step jump throw",
+        "AimPosX": 1064.323486,
+        "AimPosY": -175.012329,
+        "AimPosZ": -32.781769
       }
     ]
   },
   {
-    "Id": "eb8f51a74a5148b3835edfd7bcc524b9",
+    "Id": "a585952c8ed448a986a685c464b1c987",
     "PosX": 1135.99585,
     "PosY": -256.0,
     "PosZ": -164.836548,
@@ -569,12 +681,16 @@
         "ThrowAngYaw": -171.158752,
         "DetonatePosX": -1159.483765,
         "DetonatePosY": -637.949402,
-        "DetonatePosZ": -165.96875
+        "DetonatePosZ": -165.96875,
+        "Notes": "Align between two black dots, and look at bottom of dirt, walk backwards until reaching the bottom of the border, step jump throw",
+        "AimPosX": 1048.875854,
+        "AimPosY": -269.551117,
+        "AimPosZ": -54.944305
       }
     ]
   },
   {
-    "Id": "bdc2b9deffbc4f64a3408a8d7b97678f",
+    "Id": "298255c521c6491a9133a25b30079219",
     "PosX": 32.012798,
     "PosY": -2375.968506,
     "PosZ": -39.96875,
@@ -591,12 +707,16 @@
         "ThrowAngYaw": 82.633415,
         "DetonatePosX": -702.168518,
         "DetonatePosY": -1605.487427,
-        "DetonatePosZ": -165.96875
+        "DetonatePosZ": -165.96875,
+        "Notes": "Aim slightly above the ladder, run throw",
+        "AimPosX": 44.594959,
+        "AimPosY": -2278.64502,
+        "AimPosZ": 43.099819
       }
     ]
   },
   {
-    "Id": "465a6aadae7640be8d7593cc5ede783a",
+    "Id": "9d558d8c3cc5477ba56f25222c36b9fb",
     "PosX": -30.46875,
     "PosY": -1418.031372,
     "PosZ": -167.96875,
@@ -613,12 +733,16 @@
         "ThrowAngYaw": -117.342819,
         "DetonatePosX": -919.340942,
         "DetonatePosY": -2402.688965,
-        "DetonatePosZ": -165.96875
+        "DetonatePosZ": -165.96875,
+        "Notes": "Aim at the lower left corner of the window",
+        "AimPosX": -69.09967,
+        "AimPosY": -1492.740356,
+        "AimPosZ": -50.108276
       }
     ]
   },
   {
-    "Id": "bce231fa5c314af687eb544581df91b0",
+    "Id": "b608cf2dee1b426d9375b74be75e4baa",
     "PosX": -992.031494,
     "PosY": -1352.346191,
     "PosZ": -164.287415,
@@ -635,12 +759,16 @@
         "ThrowAngYaw": -48.352592,
         "DetonatePosX": -325.833832,
         "DetonatePosY": -2101.455566,
-        "DetonatePosZ": -98.96875
+        "DetonatePosZ": -98.96875,
+        "Notes": "",
+        "AimPosX": -927.36499,
+        "AimPosY": -1425.060547,
+        "AimPosZ": -80.162605
       }
     ]
   },
   {
-    "Id": "db3f1bcb02064976924ac782bc6105f2",
+    "Id": "a70d841292534eca908d2f25291dc176",
     "PosX": 473.427765,
     "PosY": 401.470917,
     "PosZ": -251.96875,
@@ -657,12 +785,16 @@
         "ThrowAngYaw": -175.065186,
         "DetonatePosX": -986.797913,
         "DetonatePosY": 200.521667,
-        "DetonatePosZ": -170.833588
+        "DetonatePosZ": -170.833588,
+        "Notes": "Aim at black dot",
+        "AimPosX": 385.32193,
+        "AimPosY": 393.863647,
+        "AimPosZ": -141.443741
       }
     ]
   },
   {
-    "Id": "487294d86316410590a3180f78213de6",
+    "Id": "3d33599ccaef4f90a60c576277ac6b72",
     "PosX": -161.029663,
     "PosY": 576.386169,
     "PosZ": -69.767151,
@@ -679,12 +811,16 @@
         "ThrowAngYaw": -154.720551,
         "DetonatePosX": -1871.772217,
         "DetonatePosY": -318.362762,
-        "DetonatePosZ": -165.96875
+        "DetonatePosZ": -165.96875,
+        "Notes": "",
+        "AimPosX": -250.62854,
+        "AimPosY": 534.072266,
+        "AimPosZ": 5.346231
       }
     ]
   },
   {
-    "Id": "e9407fa208844cf59c4af61d863dc2a0",
+    "Id": "5af21027069c4ae293a582b0d9a2a5bc",
     "PosX": -396.251831,
     "PosY": 598.035522,
     "PosZ": -80.292358,
@@ -701,12 +837,16 @@
         "ThrowAngYaw": -175.51828,
         "DetonatePosX": -1808.161011,
         "DetonatePosY": 489.617371,
-        "DetonatePosZ": 446.879242
+        "DetonatePosZ": 446.879242,
+        "Notes": "Running jump throw",
+        "AimPosX": -492.699036,
+        "AimPosY": 590.475952,
+        "AimPosZ": 8.52947
       }
     ]
   },
   {
-    "Id": "a34083fdb36f4803956e28d89468b6fb",
+    "Id": "c745625d694d4f9c91525afe43e42e19",
     "PosX": -1321.249878,
     "PosY": 815.958313,
     "PosZ": -79.96875,
@@ -723,12 +863,16 @@
         "ThrowAngYaw": -160.777451,
         "DetonatePosX": -2517.611084,
         "DetonatePosY": 290.459412,
-        "DetonatePosZ": -165.96875
+        "DetonatePosZ": -165.96875,
+        "Notes": "",
+        "AimPosX": -1414.823364,
+        "AimPosY": 783.331421,
+        "AimPosZ": -2.729637
       }
     ]
   },
   {
-    "Id": "39486fbe6f5545739caafbcad96967b9",
+    "Id": "87add57dbbc24b6ba18cbe31efd85f04",
     "PosX": 283.032745,
     "PosY": -1599.023926,
     "PosZ": -175.96875,
@@ -745,12 +889,16 @@
         "ThrowAngYaw": -178.726547,
         "DetonatePosX": -627.446655,
         "DetonatePosY": -1626.849976,
-        "DetonatePosZ": -169.96875
+        "DetonatePosZ": -169.96875,
+        "Notes": "",
+        "AimPosX": 186.284653,
+        "AimPosY": -1601.175049,
+        "AimPosZ": -86.926437
       }
     ]
   },
   {
-    "Id": "4dc2777325694b35adff37e761581b89",
+    "Id": "8b70b088ad924a729592ddc0349b67e2",
     "PosX": 460.96875,
     "PosY": -1520.031494,
     "PosZ": -242.44635,
@@ -767,7 +915,11 @@
         "ThrowAngYaw": -179.668427,
         "DetonatePosX": -492.245361,
         "DetonatePosY": -1525.548828,
-        "DetonatePosZ": -37.96875
+        "DetonatePosZ": -37.96875,
+        "Notes": "",
+        "AimPosX": 369.116913,
+        "AimPosY": -1520.56311,
+        "AimPosZ": -145.206329
       },
       {
         "Name": "Flash jungle",
@@ -781,12 +933,16 @@
         "ThrowAngYaw": -174.586151,
         "DetonatePosX": -649.827209,
         "DetonatePosY": -1625.296387,
-        "DetonatePosZ": -5.276679
+        "DetonatePosZ": -5.276679,
+        "Notes": "",
+        "AimPosX": 361.551483,
+        "AimPosY": -1529.449707,
+        "AimPosZ": -189.941483
       }
     ]
   },
   {
-    "Id": "9c9e7860b8af4156a79fdb6f20e41682",
+    "Id": "6e81667e95da4f73bced7cf053936b96",
     "PosX": 1422.96875,
     "PosY": -367.96875,
     "PosZ": -167.96875,
@@ -803,12 +959,16 @@
         "ThrowAngYaw": -173.920013,
         "DetonatePosX": -1170.35144,
         "DetonatePosY": -641.017029,
-        "DetonatePosZ": -165.96991
+        "DetonatePosZ": -165.96991,
+        "Notes": "Step Jump Throw",
+        "AimPosX": 1338.863525,
+        "AimPosY": -376.927277,
+        "AimPosZ": -50.780243
       }
     ]
   },
   {
-    "Id": "8d6eb7fbe5104c17a484dc5c52d9e733",
+    "Id": "babd65fd9b724b12b97687e1d137534e",
     "PosX": 814.949463,
     "PosY": -1548.909058,
     "PosZ": -108.96875,
@@ -825,7 +985,11 @@
         "ThrowAngYaw": -178.373764,
         "DetonatePosX": -713.966736,
         "DetonatePosY": -1597.099365,
-        "DetonatePosZ": -165.96875
+        "DetonatePosZ": -165.96875,
+        "Notes": "",
+        "AimPosX": 727.828064,
+        "AimPosY": -1551.382446,
+        "AimPosZ": 4.059246
       },
       {
         "Name": "Smoke Stairs / Entry Flash",
@@ -839,12 +1003,16 @@
         "ThrowAngYaw": -179.63884,
         "DetonatePosX": -478.927795,
         "DetonatePosY": -1557.059814,
-        "DetonatePosZ": -37.96875
+        "DetonatePosZ": -37.96875,
+        "Notes": "Middle Click Jump throw",
+        "AimPosX": 715.141296,
+        "AimPosY": -1549.538208,
+        "AimPosZ": -38.809921
       }
     ]
   },
   {
-    "Id": "c035e603634b464b86aefd4d52176379",
+    "Id": "16a91e3055fd41f188eda13ebcdd3176",
     "PosX": 1422.964233,
     "PosY": 70.96875,
     "PosZ": -112.46875,
@@ -861,7 +1029,11 @@
         "ThrowAngYaw": -161.931534,
         "DetonatePosX": -263.696136,
         "DetonatePosY": -482.791199,
-        "DetonatePosZ": -163.454605
+        "DetonatePosZ": -163.454605,
+        "Notes": "",
+        "AimPosX": 1342.224854,
+        "AimPosY": 44.628242,
+        "AimPosZ": 4.326515
       }
     ]
   }

@@ -1,6 +1,6 @@
 [
   {
-    "Id": "d062720780b4432789366d24a9144bf0",
+    "Id": "78f724235f4b4da8ad6d0ae5675c2e37",
     "PosX": 1493.967896,
     "PosY": 92.700645,
     "PosZ": 0.03125,
@@ -17,12 +17,16 @@
         "ThrowAngYaw": 130.300415,
         "DetonatePosX": 41.595615,
         "DetonatePosY": 1522.731689,
-        "DetonatePosZ": -29.96875
+        "DetonatePosZ": -29.96875,
+        "Notes": "Wedge into corner created by the rugs",
+        "AimPosX": 1432.554077,
+        "AimPosY": 165.118408,
+        "AimPosZ": 95.232338
       }
     ]
   },
   {
-    "Id": "3fc982a1b15540d2a63f36b0adbf3c2e",
+    "Id": "b22db1320c0f4a9aae6218dd2b9bf3a8",
     "PosX": 365.96875,
     "PosY": 424.03125,
     "PosZ": -13.968811,
@@ -39,12 +43,16 @@
         "ThrowAngYaw": 118.204048,
         "DetonatePosX": 486.297333,
         "DetonatePosY": 1250.233398,
-        "DetonatePosZ": -29.968742
+        "DetonatePosZ": -29.968742,
+        "Notes": "Running jump throw",
+        "AimPosX": 318.738556,
+        "AimPosY": 512.10022,
+        "AimPosZ": 37.001095
       }
     ]
   },
   {
-    "Id": "49160c4719c9484fbec1983797ec9c2b",
+    "Id": "c170a7c6cd814f27b86f9b80751d112a",
     "PosX": 1149.968506,
     "PosY": 610.03125,
     "PosZ": -188.833618,
@@ -61,7 +69,11 @@
         "ThrowAngYaw": 93.919449,
         "DetonatePosX": 1020.986572,
         "DetonatePosY": 2263.612305,
-        "DetonatePosZ": -37.965336
+        "DetonatePosZ": -37.965336,
+        "Notes": "Middle of the create along the line",
+        "AimPosX": 1143.151367,
+        "AimPosY": 709.531006,
+        "AimPosZ": -117.691391
       },
       {
         "Name": "Entry flash A",
@@ -75,7 +87,11 @@
         "ThrowAngYaw": 91.664078,
         "DetonatePosX": 1125.133667,
         "DetonatePosY": 1465.210815,
-        "DetonatePosZ": 172.443878
+        "DetonatePosZ": 172.443878,
+        "Notes": "",
+        "AimPosX": 1147.566895,
+        "AimPosY": 692.705872,
+        "AimPosZ": -68.786407
       },
       {
         "Name": "Molo A Headshot from water",
@@ -89,12 +105,16 @@
         "ThrowAngYaw": 115.270645,
         "DetonatePosX": 798.99353,
         "DetonatePosY": 1702.517212,
-        "DetonatePosZ": 12.283487
+        "DetonatePosZ": 12.283487,
+        "Notes": "",
+        "AimPosX": 1107.287476,
+        "AimPosY": 700.464233,
+        "AimPosZ": -126.796371
       }
     ]
   },
   {
-    "Id": "f3ba79af1b65411491dfc7dcba9c3be1",
+    "Id": "2a8c0f8ec2ee47409bc5df2cf8143bf7",
     "PosX": -1267.945312,
     "PosY": -314.032043,
     "PosZ": 5.697535,
@@ -111,7 +131,11 @@
         "ThrowAngYaw": 86.534378,
         "DetonatePosX": -1202.021729,
         "DetonatePosY": 762.178589,
-        "DetonatePosZ": -1.96875
+        "DetonatePosZ": -1.96875,
+        "Notes": "Left click for smoke\\nMiddle click for flash",
+        "AimPosX": -1262.504272,
+        "AimPosY": -224.186859,
+        "AimPosZ": 111.501053
       },
       {
         "Name": "Smoke Ninja & Molo connector",
@@ -125,12 +149,16 @@
         "ThrowAngYaw": 89.520416,
         "DetonatePosX": -999.039917,
         "DetonatePosY": 388.432922,
-        "DetonatePosZ": -3.361699
+        "DetonatePosZ": -3.361699,
+        "Notes": "",
+        "AimPosX": -1267.220459,
+        "AimPosY": -225.202118,
+        "AimPosZ": 112.780746
       }
     ]
   },
   {
-    "Id": "05daefa3161f436790b62ba6b2a57a41",
+    "Id": "3d3a2cee27564355bddc9a79765fac15",
     "PosX": -730.007202,
     "PosY": 148.5009,
     "PosZ": -95.96875,
@@ -147,12 +175,16 @@
         "ThrowAngYaw": 116.947144,
         "DetonatePosX": -887.122253,
         "DetonatePosY": 1060.772949,
-        "DetonatePosZ": 37.03125
+        "DetonatePosZ": 37.03125,
+        "Notes": "Aim at the top of the doorway\\nStep walk",
+        "AimPosX": -769.768066,
+        "AimPosY": 226.71434,
+        "AimPosZ": 15.847572
       }
     ]
   },
   {
-    "Id": "6b4ef8db17b545cba3230627fa835a92",
+    "Id": "d3a030d310934901a0b549debe725a05",
     "PosX": -298.323242,
     "PosY": -1723.963135,
     "PosZ": 2.03125,
@@ -169,7 +201,11 @@
         "ThrowAngYaw": 85.620819,
         "DetonatePosX": -93.3358,
         "DetonatePosY": 903.678528,
-        "DetonatePosZ": 2.266544
+        "DetonatePosZ": 2.266544,
+        "Notes": "Step jump throw",
+        "AimPosX": -290.83432,
+        "AimPosY": -1626.166504,
+        "AimPosZ": 85.356537
       },
       {
         "Name": "Smoke connector",
@@ -183,12 +219,16 @@
         "ThrowAngYaw": 96.659157,
         "DetonatePosX": -415.900299,
         "DetonatePosY": 185.528915,
-        "DetonatePosZ": -117.965393
+        "DetonatePosZ": -117.965393,
+        "Notes": "In front of middle column",
+        "AimPosX": -308.059662,
+        "AimPosY": -1629.034668,
+        "AimPosZ": 95.286591
       }
     ]
   },
   {
-    "Id": "b49c422c5dff4ea29c7acf19a2e9fe27",
+    "Id": "4f670749edeb41f7aa13a3ae1e480931",
     "PosX": -368.94519,
     "PosY": 2360.894287,
     "PosZ": 24.031494,
@@ -205,7 +245,11 @@
         "ThrowAngYaw": -71.334373,
         "DetonatePosX": 474.383545,
         "DetonatePosY": 134.866638,
-        "DetonatePosZ": -147.997009
+        "DetonatePosZ": -147.997009,
+        "Notes": "Center underneath the protruding bricks",
+        "AimPosX": -341.625854,
+        "AimPosY": 2280.033203,
+        "AimPosZ": 139.998337
       },
       {
         "Name": "Retake smoke B main",
@@ -219,7 +263,11 @@
         "ThrowAngYaw": -119.121651,
         "DetonatePosX": -1600.978638,
         "DetonatePosY": 384.544586,
-        "DetonatePosZ": 2.03125
+        "DetonatePosZ": 2.03125,
+        "Notes": "Aim top left side of the ruin",
+        "AimPosX": -411.257263,
+        "AimPosY": 2284.942139,
+        "AimPosZ": 137.277069
       },
       {
         "Name": "Retake smoke B connector",
@@ -233,12 +281,16 @@
         "ThrowAngYaw": -126.566643,
         "DetonatePosX": -854.936096,
         "DetonatePosY": 300.717896,
-        "DetonatePosZ": -53.96875
+        "DetonatePosZ": -53.96875,
+        "Notes": "Aim at top leaf over the big plant\\nRun jump throw\\nRelease after 1 step",
+        "AimPosX": -425.631042,
+        "AimPosY": 2284.473877,
+        "AimPosZ": 118.638412
       }
     ]
   },
   {
-    "Id": "a6a3eba818614cb1b004796b1a0d7cd5",
+    "Id": "7d5eadb08d4a48209489f6a778f02fa5",
     "PosX": 750.031555,
     "PosY": 1399.853516,
     "PosZ": -87.96875,
@@ -255,7 +307,11 @@
         "ThrowAngYaw": -30.66238,
         "DetonatePosX": 972.235962,
         "DetonatePosY": 1039.795898,
-        "DetonatePosZ": 60.068233
+        "DetonatePosZ": 60.068233,
+        "Notes": "Bottom of arch in window\\nLeft click throw",
+        "AimPosX": 829.958984,
+        "AimPosY": 1352.467041,
+        "AimPosZ": 12.832359
       },
       {
         "Name": "Smoke/Molo Rugs",
@@ -269,12 +325,16 @@
         "ThrowAngYaw": -59.20491,
         "DetonatePosX": 1386.182495,
         "DetonatePosY": 564.342834,
-        "DetonatePosZ": 2.03125
+        "DetonatePosZ": 2.03125,
+        "Notes": "",
+        "AimPosX": 796.819031,
+        "AimPosY": 1317.802856,
+        "AimPosZ": 16.47768
       }
     ]
   },
   {
-    "Id": "1fc07c76205a42449222ec28cee57f9e",
+    "Id": "44bb4dfbffc546adaf2ad9d20403e555",
     "PosX": 1604.597046,
     "PosY": 1446.479004,
     "PosZ": -145.96875,
@@ -291,12 +351,16 @@
         "ThrowAngYaw": -90.933464,
         "DetonatePosX": 1188.977417,
         "DetonatePosY": 867.94635,
-        "DetonatePosZ": 328.04364
+        "DetonatePosZ": 328.04364,
+        "Notes": "Running left click jump throw",
+        "AimPosX": 1603.130493,
+        "AimPosY": 1356.466797,
+        "AimPosZ": -43.014919
       }
     ]
   },
   {
-    "Id": "afb5750c2cea405d8720ae4ed42e4c55",
+    "Id": "e6dea203a4234d37bdc40671313aa4e9",
     "PosX": 1550.651611,
     "PosY": 944.969238,
     "PosZ": -145.96759,
@@ -313,12 +377,16 @@
         "ThrowAngYaw": 73.150681,
         "DetonatePosX": 1597.375977,
         "DetonatePosY": 1978.17981,
-        "DetonatePosZ": -72.378075
+        "DetonatePosZ": -72.378075,
+        "Notes": "Aim at the edge of the column\\nShould bounce behind the column so as to not self-flash\\nRun all the way to the site entrance before throwing",
+        "AimPosX": 1578.986206,
+        "AimPosY": 1038.526733,
+        "AimPosZ": -66.113129
       }
     ]
   },
   {
-    "Id": "efebea7b42c244c98613b87b841f6273",
+    "Id": "d98871d5cb7249f8a745c67cda692f23",
     "PosX": -1157.192993,
     "PosY": -425.579956,
     "PosZ": 56.03125,
@@ -335,12 +403,16 @@
         "ThrowAngYaw": 80.039627,
         "DetonatePosX": -863.37616,
         "DetonatePosY": 1180.371704,
-        "DetonatePosZ": 37.03125
+        "DetonatePosZ": 37.03125,
+        "Notes": "Middle of the 2nd 'tooth' from the right",
+        "AimPosX": -1144.206055,
+        "AimPosY": -351.628235,
+        "AimPosZ": 186.080353
       }
     ]
   },
   {
-    "Id": "a1665091fb324845a91349e0258d5640",
+    "Id": "6940cdb43f02431ca5a828528f413c99",
     "PosX": -1519.009277,
     "PosY": -146.966797,
     "PosZ": 32.03125,
@@ -357,12 +429,16 @@
         "ThrowAngYaw": 48.434856,
         "DetonatePosX": -832.699219,
         "DetonatePosY": 627.006348,
-        "DetonatePosZ": 37.03125
+        "DetonatePosZ": 37.03125,
+        "Notes": "Aim between wall and 1st tooth - middle jump throw",
+        "AimPosX": -1480.597656,
+        "AimPosY": -103.649704,
+        "AimPosZ": 177.407593
       }
     ]
   },
   {
-    "Id": "94c9b994ecd74fb4bbb2c38ba671c2d0",
+    "Id": "6ead4dbf92d14db890d7b26ddcfa907c",
     "PosX": -735.600403,
     "PosY": -500.644653,
     "PosZ": 94.224113,
@@ -379,12 +455,16 @@
         "ThrowAngYaw": 55.244892,
         "DetonatePosX": -168.267883,
         "DetonatePosY": 315.89856,
-        "DetonatePosZ": 237.731354
+        "DetonatePosZ": 237.731354,
+        "Notes": "Aim at corner of wall and small overhang",
+        "AimPosX": -681.972778,
+        "AimPosY": -423.355164,
+        "AimPosZ": 179.390198
       }
     ]
   },
   {
-    "Id": "edac52d58fdb4036ad0931a9feebbf66",
+    "Id": "786a0cc2d0664bb7bfb826d938cef517",
     "PosX": -784.275024,
     "PosY": -817.022278,
     "PosZ": 106.03125,
@@ -401,12 +481,16 @@
         "ThrowAngYaw": 62.776279,
         "DetonatePosX": -78.131691,
         "DetonatePosY": 849.9729,
-        "DetonatePosZ": 19.78949
+        "DetonatePosZ": 19.78949,
+        "Notes": "Aim at bottom left on the window\\nRun throw\\nRelease after 2 steps",
+        "AimPosX": -739.499634,
+        "AimPosY": -729.987427,
+        "AimPosZ": 190.367584
       }
     ]
   },
   {
-    "Id": "3432b8a02675431f87dd73b5e7c1aa98",
+    "Id": "f4e7dbe6f9b2452896021ccd0eb9e4a7",
     "PosX": -252.625305,
     "PosY": -104.440918,
     "PosZ": 38.03125,
@@ -423,7 +507,11 @@
         "ThrowAngYaw": 42.10577,
         "DetonatePosX": 171.438263,
         "DetonatePosY": 648.499207,
-        "DetonatePosZ": -1.116693
+        "DetonatePosZ": -1.116693,
+        "Notes": "Aim at middle of the bottom rail",
+        "AimPosX": -179.781311,
+        "AimPosY": -38.607986,
+        "AimPosZ": 83.063477
       },
       {
         "Name": "Molo Mid Double Doors from Left Mid",
@@ -437,12 +525,16 @@
         "ThrowAngYaw": 42.53809,
         "DetonatePosX": 127.26561,
         "DetonatePosY": 624.803467,
-        "DetonatePosZ": -14.300752
+        "DetonatePosZ": -14.300752,
+        "Notes": "Step Jump throw",
+        "AimPosX": -187.003662,
+        "AimPosY": -43.308853,
+        "AimPosZ": 48.133522
       }
     ]
   },
   {
-    "Id": "56a7f320a39e4699b53d22078ae72c05",
+    "Id": "a4562b6b78f64bf480d9de9ae9ef7d73",
     "PosX": 141.030807,
     "PosY": 732.051636,
     "PosZ": -30.746521,
@@ -459,7 +551,11 @@
         "ThrowAngYaw": 20.240501,
         "DetonatePosX": 1731.192749,
         "DetonatePosY": 1318.412231,
-        "DetonatePosZ": -147.205124
+        "DetonatePosZ": -147.205124,
+        "Notes": "Aim middle of the left side of the 3th blue V from the left",
+        "AimPosX": 183.505676,
+        "AimPosY": 747.71344,
+        "AimPosZ": 121.037392
       },
       {
         "Name": "Mid pop flash CT",
@@ -473,12 +569,16 @@
         "ThrowAngYaw": -13.620417,
         "DetonatePosX": -23.445105,
         "DetonatePosY": 577.783508,
-        "DetonatePosZ": 19.86882
+        "DetonatePosZ": 19.86882,
+        "Notes": "Step throw",
+        "AimPosX": 251.668335,
+        "AimPosY": 682.2453,
+        "AimPosZ": 81.454216
       }
     ]
   },
   {
-    "Id": "96f00fe98be1495d9e028fcaf5970992",
+    "Id": "67f66fc6bfe642b88eee4567a610b0c9",
     "PosX": -527.845825,
     "PosY": -340.03241,
     "PosZ": 66.03125,
@@ -495,7 +595,11 @@
         "ThrowAngYaw": 63.70953,
         "DetonatePosX": -29.869221,
         "DetonatePosY": 718.621582,
-        "DetonatePosZ": 62.93853
+        "DetonatePosZ": 62.93853,
+        "Notes": "",
+        "AimPosX": -485.316711,
+        "AimPosY": -253.945221,
+        "AimPosZ": 157.964523
       },
       {
         "Name": "Connector Flash",
@@ -509,12 +613,16 @@
         "ThrowAngYaw": 71.004028,
         "DetonatePosX": -244.913849,
         "DetonatePosY": 123.627487,
-        "DetonatePosZ": 11.112478
+        "DetonatePosZ": 11.112478,
+        "Notes": "",
+        "AimPosX": -494.143555,
+        "AimPosY": -245.639465,
+        "AimPosZ": 135.860306
       }
     ]
   },
   {
-    "Id": "d7fabf477cbc486482b6582af4349916",
+    "Id": "2d4e14691a2145f9b91b41cf172f868a",
     "PosX": 1495.967407,
     "PosY": 451.96875,
     "PosZ": 0.03125,
@@ -531,7 +639,11 @@
         "ThrowAngYaw": 170.611664,
         "DetonatePosX": 153.338715,
         "DetonatePosY": 703.041931,
-        "DetonatePosZ": 70.42247
+        "DetonatePosZ": 70.42247,
+        "Notes": "Wedge into corner",
+        "AimPosX": 1397.802612,
+        "AimPosY": 468.19928,
+        "AimPosZ": 53.858597
       },
       {
         "Name": "Smoke temple from rugs",
@@ -545,12 +657,16 @@
         "ThrowAngYaw": 169.207779,
         "DetonatePosX": -878.505188,
         "DetonatePosY": 930.776672,
-        "DetonatePosZ": 37.03125
+        "DetonatePosZ": 37.03125,
+        "Notes": "",
+        "AimPosX": 1404.535156,
+        "AimPosY": 495.58313,
+        "AimPosZ": 116.653488
       }
     ]
   },
   {
-    "Id": "efe4732f553b4cada4bafc4e36e37a53",
+    "Id": "1b565fcc76d949cda86fa5aca6e50c0b",
     "PosX": 1251.96875,
     "PosY": 934.967468,
     "PosZ": -151.96875,
@@ -567,12 +683,16 @@
         "ThrowAngYaw": -25.749363,
         "DetonatePosX": 1565.533691,
         "DetonatePosY": 783.505066,
-        "DetonatePosZ": -55.758308
+        "DetonatePosZ": -55.758308,
+        "Notes": "Right click jump throw",
+        "AimPosX": 1340.94043,
+        "AimPosY": 892.053833,
+        "AimPosZ": -103.700188
       }
     ]
   },
   {
-    "Id": "3481c0ad0830484c9a904075d32b05fa",
+    "Id": "f7bffbea90794fb19c29528cda49a530",
     "PosX": 1330.893921,
     "PosY": -233.945679,
     "PosZ": -23.96875,
@@ -589,12 +709,16 @@
         "ThrowAngYaw": 79.003662,
         "DetonatePosX": 1543.512085,
         "DetonatePosY": 860.310242,
-        "DetonatePosZ": 223.506104
+        "DetonatePosZ": 223.506104,
+        "Notes": "",
+        "AimPosX": 1349.949219,
+        "AimPosY": -135.881104,
+        "AimPosZ": 35.372864
       }
     ]
   },
   {
-    "Id": "ba2ee87fbc8b42079ebe53c31186015e",
+    "Id": "95adda273cc94efbae982cda5dd3bf04",
     "PosX": 1004.626526,
     "PosY": -421.167114,
     "PosZ": -31.96875,
@@ -611,12 +735,16 @@
         "ThrowAngYaw": 122.471405,
         "DetonatePosX": 198.225403,
         "DetonatePosY": 497.991913,
-        "DetonatePosZ": 76.469116
+        "DetonatePosZ": 76.469116,
+        "Notes": "Running JumpThrow\\nKeep aim at the spot while running\\nRelease when reaching stairs",
+        "AimPosX": 951.05127,
+        "AimPosY": -336.978088,
+        "AimPosZ": 25.397978
       }
     ]
   },
   {
-    "Id": "edefd8119aba494b82aa1be7361453e5",
+    "Id": "10b42d9e379249c0addc0e9b4173aca4",
     "PosX": 732.031738,
     "PosY": 615.96875,
     "PosZ": -151.96875,
@@ -633,7 +761,11 @@
         "ThrowAngYaw": 54.079697,
         "DetonatePosX": 1265.910156,
         "DetonatePosY": 1352.935425,
-        "DetonatePosZ": 139.939316
+        "DetonatePosZ": 139.939316,
+        "Notes": "",
+        "AimPosX": 783.27417,
+        "AimPosY": 686.70459,
+        "AimPosZ": -39.439339
       },
       {
         "Name": "Smoke Heaven from outside A Main",
@@ -647,12 +779,16 @@
         "ThrowAngYaw": 79.049545,
         "DetonatePosX": 952.299561,
         "DetonatePosY": 2267.783203,
-        "DetonatePosZ": -37.96875
+        "DetonatePosZ": -37.96875,
+        "Notes": "",
+        "AimPosX": 763.134399,
+        "AimPosY": 724.127808,
+        "AimPosZ": -87.527451
       }
     ]
   },
   {
-    "Id": "04df90503e1c424ea8c707b5d87d49d6",
+    "Id": "c5b45c1b5bd847fe989f79e26440df16",
     "PosX": -959.96875,
     "PosY": 744.032593,
     "PosZ": -1.96875,
@@ -669,12 +805,16 @@
         "ThrowAngYaw": -98.905914,
         "DetonatePosX": -805.270386,
         "DetonatePosY": 301.828369,
-        "DetonatePosZ": -51.788517
+        "DetonatePosZ": -51.788517,
+        "Notes": "",
+        "AimPosX": -973.557617,
+        "AimPosY": 657.316162,
+        "AimPosZ": 107.783806
       }
     ]
   },
   {
-    "Id": "5b94fc01197d46ec8552cbf5c054eb50",
+    "Id": "f9b04e4c883c48d9b71a1c37d253cf24",
     "PosX": -16.533142,
     "PosY": 440.033417,
     "PosZ": 16.03125,
@@ -691,12 +831,16 @@
         "ThrowAngYaw": 46.442299,
         "DetonatePosX": 223.309341,
         "DetonatePosY": 692.267517,
-        "DetonatePosZ": 101.349808
+        "DetonatePosZ": 101.349808,
+        "Notes": "Right click jump throw",
+        "AimPosX": 51.200447,
+        "AimPosY": 511.26593,
+        "AimPosZ": 55.961327
       }
     ]
   },
   {
-    "Id": "94b3ef51291148a4913d6d06b851d0a7",
+    "Id": "b8bd9f0c11084b67b1b43f230107f9ff",
     "PosX": -760.672668,
     "PosY": -561.756104,
     "PosZ": 81.865341,
@@ -713,12 +857,16 @@
         "ThrowAngYaw": 42.491619,
         "DetonatePosX": 268.293549,
         "DetonatePosY": 643.731079,
-        "DetonatePosZ": -31.968748
+        "DetonatePosZ": -31.968748,
+        "Notes": "Aim at corner of carpet\\nRunning JumpThrow",
+        "AimPosX": -688.439636,
+        "AimPosY": -495.586151,
+        "AimPosZ": 125.29702
       }
     ]
   },
   {
-    "Id": "eae959a5eec44426a27ca1a65988b20b",
+    "Id": "3326fc75431540789d420d040001a643",
     "PosX": 1259.964966,
     "PosY": 600.03125,
     "PosZ": -115.96875,
@@ -735,12 +883,16 @@
         "ThrowAngYaw": 125.511276,
         "DetonatePosX": 575.034424,
         "DetonatePosY": 1275.90332,
-        "DetonatePosZ": -85.717201
+        "DetonatePosZ": -85.717201,
+        "Notes": "",
+        "AimPosX": 1205.816772,
+        "AimPosY": 675.912659,
+        "AimPosZ": -15.935036
       }
     ]
   },
   {
-    "Id": "9f6457a4f6c24355bb0038042f3bbc8e",
+    "Id": "fa6c8f1c81604d5aa948e06794d59118",
     "PosX": -1277.874023,
     "PosY": 897.613953,
     "PosZ": 0.031249,
@@ -757,12 +909,16 @@
         "ThrowAngYaw": -87.071564,
         "DetonatePosX": -1238.632324,
         "DetonatePosY": 136.238892,
-        "DetonatePosZ": 458.343506
+        "DetonatePosZ": 458.343506,
+        "Notes": "",
+        "AimPosX": -1274.070801,
+        "AimPosY": 823.266663,
+        "AimPosZ": 130.639633
       }
     ]
   },
   {
-    "Id": "50430bee70bf4cdaaf4fd089395d7813",
+    "Id": "797eaf3fc06648aab696f0803df6e787",
     "PosX": 166.03125,
     "PosY": 639.963501,
     "PosZ": -28.96875,
@@ -779,12 +935,16 @@
         "ThrowAngYaw": -145.154556,
         "DetonatePosX": 16.39089,
         "DetonatePosY": 226.029877,
-        "DetonatePosZ": 7.031242
+        "DetonatePosZ": 7.031242,
+        "Notes": "",
+        "AimPosX": 84.181976,
+        "AimPosY": 582.980408,
+        "AimPosZ": 41.329578
       }
     ]
   },
   {
-    "Id": "7075b3b9465946399ab8cf51916596b4",
+    "Id": "70207615ddd846bebb088f5872fdd93d",
     "PosX": 870.23999,
     "PosY": 1313.721069,
     "PosZ": -87.96875,
@@ -801,12 +961,16 @@
         "ThrowAngYaw": -87.149719,
         "DetonatePosX": 891.278381,
         "DetonatePosY": 891.195435,
-        "DetonatePosZ": -39.167133
+        "DetonatePosZ": -39.167133,
+        "Notes": "",
+        "AimPosX": 873.338867,
+        "AimPosY": 1251.475586,
+        "AimPosZ": 54.075043
       }
     ]
   },
   {
-    "Id": "c56f6d06c7af49f98c56746f5f1f673f",
+    "Id": "199e3be7800840aea9bbcc6324a8b961",
     "PosX": -1006.667419,
     "PosY": -1293.28833,
     "PosZ": 64.03125,
@@ -823,12 +987,16 @@
         "ThrowAngYaw": 77.331795,
         "DetonatePosX": -673.588867,
         "DetonatePosY": 302.678925,
-        "DetonatePosZ": -93.892128
+        "DetonatePosZ": -93.892128,
+        "Notes": "Aim slightly to the right of the corner",
+        "AimPosX": -995.813477,
+        "AimPosY": -1245.00061,
+        "AimPosZ": 214.764786
       }
     ]
   },
   {
-    "Id": "08545217ffe64758a97753ffcd7bec42",
+    "Id": "370a428bf6d74533b1aa9e30e83ef074",
     "PosX": -874.967285,
     "PosY": -803.628113,
     "PosZ": 64.03125,
@@ -845,12 +1013,16 @@
         "ThrowAngYaw": 111.189384,
         "DetonatePosX": -1289.463989,
         "DetonatePosY": 260.650848,
-        "DetonatePosZ": 492.493439
+        "DetonatePosZ": 492.493439,
+        "Notes": "Aim where the head is missing\\nStep jump throw",
+        "AimPosX": -910.820007,
+        "AimPosY": -711.143372,
+        "AimPosZ": 140.565842
       }
     ]
   },
   {
-    "Id": "9ed1cc26db6843999a272ababdf05c82",
+    "Id": "4b1ed8c6f9434f9bbf9dd5c35ecbf03e",
     "PosX": 1451.968506,
     "PosY": 571.96875,
     "PosZ": 0.03125,
@@ -867,12 +1039,16 @@
         "ThrowAngYaw": 177.110306,
         "DetonatePosX": 253.995987,
         "DetonatePosY": 609.116333,
-        "DetonatePosZ": 31.988749
+        "DetonatePosZ": 31.988749,
+        "Notes": "",
+        "AimPosX": 1358.065186,
+        "AimPosY": 576.70874,
+        "AimPosZ": 97.925446
       }
     ]
   },
   {
-    "Id": "34d2a1268e40473db9733e1e62b222a1",
+    "Id": "217e2c65a09c4bafa995f7aae5096b93",
     "PosX": 837.971069,
     "PosY": -763.968689,
     "PosZ": -11.96875,
@@ -889,12 +1065,16 @@
         "ThrowAngYaw": 151.88826,
         "DetonatePosX": -594.286499,
         "DetonatePosY": 171.241302,
-        "DetonatePosZ": -93.96875
+        "DetonatePosZ": -93.96875,
+        "Notes": "",
+        "AimPosX": 752.279663,
+        "AimPosY": -718.191162,
+        "AimPosZ": 75.565125
       }
     ]
   },
   {
-    "Id": "57249789549f4fadbf3341083b3ce083",
+    "Id": "d9937dcf26e041ae820245be67aa1513",
     "PosX": 736.03418,
     "PosY": 460.010376,
     "PosZ": -151.96875,
@@ -911,7 +1091,11 @@
         "ThrowAngYaw": 33.52821,
         "DetonatePosX": 1572.735474,
         "DetonatePosY": 1012.098389,
-        "DetonatePosZ": -128.489594
+        "DetonatePosZ": -128.489594,
+        "Notes": "Crouch",
+        "AimPosX": 818.57605,
+        "AimPosY": 514.701965,
+        "AimPosZ": -92.140694
       },
       {
         "Name": "Flash A entry",
@@ -925,12 +1109,16 @@
         "ThrowAngYaw": 60.682297,
         "DetonatePosX": 1277.546143,
         "DetonatePosY": 1424.280273,
-        "DetonatePosZ": 153.458221
+        "DetonatePosZ": 153.458221,
+        "Notes": "",
+        "AimPosX": 784.99939,
+        "AimPosY": 547.201355,
+        "AimPosZ": -87.879257
       }
     ]
   },
   {
-    "Id": "eb7b96f438714c80b7ddb454a5ea9deb",
+    "Id": "dad4f4ef0b004ca4b33e66c6820a99f5",
     "PosX": -605.02179,
     "PosY": -630.977356,
     "PosZ": 64.03125,
@@ -947,7 +1135,11 @@
         "ThrowAngYaw": 72.027977,
         "DetonatePosX": 158.676987,
         "DetonatePosY": 1517.789429,
-        "DetonatePosZ": -29.96875
+        "DetonatePosZ": -29.96875,
+        "Notes": "Wedge into corner in front of sign",
+        "AimPosX": -580.951843,
+        "AimPosY": -556.773926,
+        "AimPosZ": 190.437164
       },
       {
         "Name": "Smoke House from Left Mid",
@@ -961,7 +1153,11 @@
         "ThrowAngYaw": 65.560715,
         "DetonatePosX": -29.363272,
         "DetonatePosY": 752.731384,
-        "DetonatePosZ": 2.266544
+        "DetonatePosZ": 2.266544,
+        "Notes": "Middle-Click Jump Throw",
+        "AimPosX": -564.853699,
+        "AimPosY": -542.569641,
+        "AimPosZ": 151.930298
       },
       {
         "Name": "Smoke Camera from Left Mid",
@@ -975,12 +1171,16 @@
         "ThrowAngYaw": 61.922997,
         "DetonatePosX": 535.705811,
         "DetonatePosY": 1288.397095,
-        "DetonatePosZ": -53.968742
+        "DetonatePosZ": -53.968742,
+        "Notes": "Align with teeth on the right and edge of building in the background",
+        "AimPosX": -559.105591,
+        "AimPosY": -544.837158,
+        "AimPosZ": 149.799377
       }
     ]
   },
   {
-    "Id": "b487b30b7c1a41c79d1383baee6ac375",
+    "Id": "1cab2043877d45adb2125cdf72c3d377",
     "PosX": -543.176331,
     "PosY": 2270.971191,
     "PosZ": 24.03125,
@@ -997,12 +1197,16 @@
         "ThrowAngYaw": -60.923931,
         "DetonatePosX": 763.280579,
         "DetonatePosY": 75.729607,
-        "DetonatePosZ": -149.96875
+        "DetonatePosZ": -149.96875,
+        "Notes": "Wedge into corner",
+        "AimPosX": -500.848999,
+        "AimPosY": 2194.849121,
+        "AimPosZ": 137.00209
       }
     ]
   },
   {
-    "Id": "c1ba909508434818aabf39525aa34c4d",
+    "Id": "c34d7e9e34464ad1b70e027bc1183a49",
     "PosX": -607.967346,
     "PosY": 2270.967285,
     "PosZ": 24.03125,
@@ -1019,7 +1223,11 @@
         "ThrowAngYaw": -58.952019,
         "DetonatePosX": 820.465393,
         "DetonatePosY": -106.000412,
-        "DetonatePosZ": -93.96875
+        "DetonatePosZ": -93.96875,
+        "Notes": "",
+        "AimPosX": -562.861633,
+        "AimPosY": 2196.040527,
+        "AimPosZ": 136.362625
       },
       {
         "Name": "Smoke Rugs",
@@ -1033,7 +1241,11 @@
         "ThrowAngYaw": -43.332367,
         "DetonatePosX": 1396.866821,
         "DetonatePosY": 571.081238,
-        "DetonatePosZ": 2.03125
+        "DetonatePosZ": 2.03125,
+        "Notes": "Crouched, take several steps\\nJump throw",
+        "AimPosX": -542.921631,
+        "AimPosY": 2209.602051,
+        "AimPosZ": 114.626221
       },
       {
         "Name": "Smoke A Main from CT Spawn",
@@ -1047,12 +1259,16 @@
         "ThrowAngYaw": -37.077274,
         "DetonatePosX": 1319.838867,
         "DetonatePosY": 824.364807,
-        "DetonatePosZ": -149.96875
+        "DetonatePosZ": -149.96875,
+        "Notes": "",
+        "AimPosX": -531.286377,
+        "AimPosY": 2213.046143,
+        "AimPosZ": 115.824387
       }
     ]
   },
   {
-    "Id": "fa4a849acf15455088dc147553d9a33a",
+    "Id": "11f2aecc14e7438993ab7a8c25802fc8",
     "PosX": -347.96875,
     "PosY": -1315.675537,
     "PosZ": 2.421142,
@@ -1069,7 +1285,11 @@
         "ThrowAngYaw": 100.246689,
         "DetonatePosX": -700.700623,
         "DetonatePosY": 179.778595,
-        "DetonatePosZ": -93.96875
+        "DetonatePosZ": -93.96875,
+        "Notes": "Aim at the bottom right corner of the smudge",
+        "AimPosX": -354.328979,
+        "AimPosY": -1280.491455,
+        "AimPosZ": 127.900208
       },
       {
         "Name": "Smoke inside conn 2",
@@ -1083,12 +1303,16 @@
         "ThrowAngYaw": 103.288544,
         "DetonatePosX": -718.688782,
         "DetonatePosY": 38.968792,
-        "DetonatePosZ": -83.654732
+        "DetonatePosZ": -83.654732,
+        "Notes": "Step jump throw",
+        "AimPosX": -357.648224,
+        "AimPosY": -1274.62207,
+        "AimPosZ": 156.566437
       }
     ]
   },
   {
-    "Id": "ae02cf9dea2545389846a57d60b8d2f6",
+    "Id": "8cc589f9edf34baabf519629f8066179",
     "PosX": -416.0,
     "PosY": -1696.0,
     "PosZ": 2.03125,
@@ -1105,12 +1329,16 @@
         "ThrowAngYaw": 97.254456,
         "DetonatePosX": -768.774597,
         "DetonatePosY": 74.641449,
-        "DetonatePosZ": -93.96875
+        "DetonatePosZ": -93.96875,
+        "Notes": "Align with -1y",
+        "AimPosX": -425.540039,
+        "AimPosY": -1621.055664,
+        "AimPosZ": 131.387222
       }
     ]
   },
   {
-    "Id": "cc56b542492a4283ba0c7abb27aba232",
+    "Id": "040842c9328a48a6adbf51509b4414cc",
     "PosX": -1063.23645,
     "PosY": 1999.05896,
     "PosZ": 48.03125,
@@ -1127,12 +1355,16 @@
         "ThrowAngYaw": -99.219742,
         "DetonatePosX": -921.329651,
         "DetonatePosY": 311.161346,
-        "DetonatePosZ": -53.96875
+        "DetonatePosZ": -53.96875,
+        "Notes": "Aim at bottom left of triangle",
+        "AimPosX": -1077.75061,
+        "AimPosY": 1909.641357,
+        "AimPosZ": 154.224838
       }
     ]
   },
   {
-    "Id": "762ee1c510c54ad9bd6adbe63222777e",
+    "Id": "d22be27fa44648acb3d533c50bf90d95",
     "PosX": -995.680176,
     "PosY": 1860.734131,
     "PosZ": 48.03125,
@@ -1149,12 +1381,16 @@
         "ThrowAngYaw": -111.224251,
         "DetonatePosX": -1580.185547,
         "DetonatePosY": 352.804443,
-        "DetonatePosZ": 2.033468
+        "DetonatePosZ": 2.033468,
+        "Notes": "",
+        "AimPosX": -1004.322815,
+        "AimPosY": 1838.47998,
+        "AimPosZ": 162.040894
       }
     ]
   },
   {
-    "Id": "8dae91786ca54525b915e7c98a381757",
+    "Id": "4371f0bbead543dfac208a55aaa6c24e",
     "PosX": -843.83429,
     "PosY": 946.542847,
     "PosZ": 35.031246,
@@ -1171,7 +1407,11 @@
         "ThrowAngYaw": -117.083618,
         "DetonatePosX": -1753.691895,
         "DetonatePosY": 276.887207,
-        "DetonatePosZ": 497.120422
+        "DetonatePosZ": 497.120422,
+        "Notes": "",
+        "AimPosX": -888.842285,
+        "AimPosY": 858.527466,
+        "AimPosZ": 113.95697
       },
       {
         "Name": "Flash over B Main",
@@ -1185,12 +1425,16 @@
         "ThrowAngYaw": -143.712173,
         "DetonatePosX": -1330.983765,
         "DetonatePosY": -6.093643,
-        "DetonatePosZ": 485.328949
+        "DetonatePosZ": 485.328949,
+        "Notes": "Step jump throw",
+        "AimPosX": -923.111511,
+        "AimPosY": 888.168091,
+        "AimPosZ": 115.246246
       }
     ]
   },
   {
-    "Id": "bcd217edea9545b296e18127d0ec82d5",
+    "Id": "f9f24692033a4de28f08227756ed3d75",
     "PosX": -1106.067383,
     "PosY": 1288.328369,
     "PosZ": 4.209559,
@@ -1207,12 +1451,16 @@
         "ThrowAngYaw": -113.819016,
         "DetonatePosX": -1583.716553,
         "DetonatePosY": 207.177277,
-        "DetonatePosZ": 195.735779
+        "DetonatePosZ": 195.735779,
+        "Notes": "Step Jump Throw",
+        "AimPosX": -1146.293213,
+        "AimPosY": 1197.206055,
+        "AimPosZ": 56.004917
       }
     ]
   },
   {
-    "Id": "8be534682c0a48388e45821826a875d1",
+    "Id": "d6437e176b3846eebe7e20883d73e0f2",
     "PosX": 540.646667,
     "PosY": 2065.638428,
     "PosZ": -54.250061,
@@ -1229,12 +1477,16 @@
         "ThrowAngYaw": -27.362062,
         "DetonatePosX": 1664.900024,
         "DetonatePosY": 1363.795288,
-        "DetonatePosZ": -149.96875
+        "DetonatePosZ": -149.96875,
+        "Notes": "Stand on correct step",
+        "AimPosX": 624.131226,
+        "AimPosY": 2022.434326,
+        "AimPosZ": 32.668312
       }
     ]
   },
   {
-    "Id": "53d677cdf88642b4951643bd6237dfeb",
+    "Id": "69591e2f96cb4c5da0893dcc6d90f8e9",
     "PosX": 540.419556,
     "PosY": 2015.563843,
     "PosZ": -38.96875,
@@ -1251,12 +1503,16 @@
         "ThrowAngYaw": -10.19513,
         "DetonatePosX": 1793.903931,
         "DetonatePosY": 1791.826416,
-        "DetonatePosZ": -21.674238
+        "DetonatePosZ": -21.674238,
+        "Notes": "Crouch on correct step",
+        "AimPosX": 632.005127,
+        "AimPosY": 1999.093018,
+        "AimPosZ": 31.849121
       }
     ]
   },
   {
-    "Id": "c7875e7598e544fbaa91765d4c4c8efb",
+    "Id": "f8dad597e7f04313a4dd645504392c25",
     "PosX": 750.041687,
     "PosY": 2049.071289,
     "PosZ": -39.96875,
@@ -1273,12 +1529,16 @@
         "ThrowAngYaw": -57.566479,
         "DetonatePosX": 1028.424683,
         "DetonatePosY": 1958.404297,
-        "DetonatePosZ": -189.96875
+        "DetonatePosZ": -189.96875,
+        "Notes": "",
+        "AimPosX": 787.08667,
+        "AimPosY": 1990.773071,
+        "AimPosZ": 96.183014
       }
     ]
   },
   {
-    "Id": "dc7bbf67368740ad99bc10a426385bbf",
+    "Id": "235648d9749a4153b28d0f75e856fa07",
     "PosX": 94.040207,
     "PosY": 1175.35376,
     "PosZ": -31.96875,
@@ -1295,12 +1555,16 @@
         "ThrowAngYaw": 14.14036,
         "DetonatePosX": 772.982422,
         "DetonatePosY": 1343.90271,
-        "DetonatePosZ": 15.533954
+        "DetonatePosZ": 15.533954,
+        "Notes": "Step Walk Through (approx 3 steps)\\nRight Click Jump Throw",
+        "AimPosX": 187.007355,
+        "AimPosY": 1198.775146,
+        "AimPosZ": 3.436275
       }
     ]
   },
   {
-    "Id": "38e27573b7d9466fb8f4b3808567d2e8",
+    "Id": "09291bb81d09447e87a37f5388c89347",
     "PosX": 23.969147,
     "PosY": -1744.96875,
     "PosZ": 6.03125,
@@ -1317,12 +1581,16 @@
         "ThrowAngYaw": 92.238708,
         "DetonatePosX": -76.138817,
         "DetonatePosY": 815.825684,
-        "DetonatePosZ": 2.266544
+        "DetonatePosZ": 2.266544,
+        "Notes": "",
+        "AimPosX": 20.16066,
+        "AimPosY": -1647.546753,
+        "AimPosZ": 90.625168
       }
     ]
   },
   {
-    "Id": "63307425082040a7ab262ec71a431531",
+    "Id": "f9aba3c1158c43568585b96e5b8a0c59",
     "PosX": -367.307922,
     "PosY": -424.92041,
     "PosZ": 0.266544,
@@ -1339,12 +1607,16 @@
         "ThrowAngYaw": 66.542984,
         "DetonatePosX": -42.030262,
         "DetonatePosY": 433.27771,
-        "DetonatePosZ": 155.857132
+        "DetonatePosZ": 155.857132,
+        "Notes": "",
+        "AimPosX": -329.571442,
+        "AimPosY": -337.954132,
+        "AimPosZ": 96.088135
       }
     ]
   },
   {
-    "Id": "67f1034a420542b4ac9b6294193011df",
+    "Id": "bf78c5e27aed4acc86f2404618a9e5d1",
     "PosX": 1493.943359,
     "PosY": 269.249084,
     "PosZ": 20.03125,
@@ -1361,12 +1633,16 @@
         "ThrowAngYaw": 125.437561,
         "DetonatePosX": 575.646667,
         "DetonatePosY": 1280.255737,
-        "DetonatePosZ": -48.559097
+        "DetonatePosZ": -48.559097,
+        "Notes": "Running Throw",
+        "AimPosX": 1436.909424,
+        "AimPosY": 349.392273,
+        "AimPosZ": 102.03685
       }
     ]
   },
   {
-    "Id": "72f6c42c420b47a1a66f50d49ad93efe",
+    "Id": "98e57181d2844bef97ad24c19d1b08ff",
     "PosX": 80.03125,
     "PosY": -1759.949951,
     "PosZ": 2.03125,
@@ -1383,12 +1659,16 @@
         "ThrowAngYaw": 103.368942,
         "DetonatePosX": -492.582062,
         "DetonatePosY": 98.768753,
-        "DetonatePosZ": -117.96875
+        "DetonatePosZ": -117.96875,
+        "Notes": "Align with window frame and corner of roof",
+        "AimPosX": 58.028061,
+        "AimPosY": -1667.367676,
+        "AimPosZ": 96.241501
       }
     ]
   },
   {
-    "Id": "042e32c99ea14bd59f1c3ca9f9d85ca0",
+    "Id": "4185c1bf49eb46a5a232ff9158403673",
     "PosX": -568.044434,
     "PosY": -1279.03125,
     "PosZ": 2.03125,
@@ -1405,12 +1685,16 @@
         "ThrowAngYaw": 94.671646,
         "DetonatePosX": -638.870361,
         "DetonatePosY": 42.03125,
-        "DetonatePosZ": -93.479767
+        "DetonatePosZ": -93.479767,
+        "Notes": "Align with the black spot on the pillar",
+        "AimPosX": -575.072083,
+        "AimPosY": -1193.031372,
+        "AimPosZ": 116.574593
       }
     ]
   },
   {
-    "Id": "fcd2e88b022245d2885bf51ec34e6009",
+    "Id": "5fa9639867994328b949b541dc449c68",
     "PosX": -954.016052,
     "PosY": -1302.079224,
     "PosZ": 65.630249,
@@ -1427,12 +1711,16 @@
         "ThrowAngYaw": 101.206184,
         "DetonatePosX": -1386.28894,
         "DetonatePosY": 771.847473,
-        "DetonatePosZ": 38.03125
+        "DetonatePosZ": 38.03125,
+        "Notes": "Aim at 2nd tooth, running middle click",
+        "AimPosX": -972.462097,
+        "AimPosY": -1208.972656,
+        "AimPosZ": 160.077606
       }
     ]
   },
   {
-    "Id": "b8ac1a17a5e64fc784d7256266666af1",
+    "Id": "69660c8d7bc3457e96a5fbd25e73a9f7",
     "PosX": -938.394226,
     "PosY": -1363.419556,
     "PosZ": 66.03125,
@@ -1449,12 +1737,16 @@
         "ThrowAngYaw": 99.787025,
         "DetonatePosX": -1176.136719,
         "DetonatePosY": 786.866455,
-        "DetonatePosZ": -1.96875
+        "DetonatePosZ": -1.96875,
+        "Notes": "",
+        "AimPosX": -955.028748,
+        "AimPosY": -1266.985596,
+        "AimPosZ": 150.226501
       }
     ]
   },
   {
-    "Id": "5577d6b48a7947cfa2f9ca6e16551ef2",
+    "Id": "3f981ed0dae242a68255d16f3f54214f",
     "PosX": -1321.065186,
     "PosY": -491.941162,
     "PosZ": 96.03125,
@@ -1471,7 +1763,11 @@
         "ThrowAngYaw": 66.264389,
         "DetonatePosX": -807.526184,
         "DetonatePosY": 603.056702,
-        "DetonatePosZ": 37.03125
+        "DetonatePosZ": 37.03125,
+        "Notes": "Middle Click Jump Throw",
+        "AimPosX": -1281.852417,
+        "AimPosY": -402.762665,
+        "AimPosZ": 182.604614
       },
       {
         "Name": "Smoke CT @ B from B Main Platform",
@@ -1485,12 +1781,16 @@
         "ThrowAngYaw": 80.685799,
         "DetonatePosX": -1237.1073,
         "DetonatePosY": 969.168823,
-        "DetonatePosZ": 2.03125
+        "DetonatePosZ": 2.03125,
+        "Notes": "",
+        "AimPosX": -1292.16626,
+        "AimPosY": -422.086273,
+        "AimPosZ": 217.924973
       }
     ]
   },
   {
-    "Id": "0fa54e2fbc044f339ec34fe2e6a0e5cb",
+    "Id": "fa9d9ee614ef4ab788826bdd39d293cc",
     "PosX": -1106.79834,
     "PosY": -473.941467,
     "PosZ": 56.03125,
@@ -1507,12 +1807,16 @@
         "ThrowAngYaw": 83.468277,
         "DetonatePosX": -903.335388,
         "DetonatePosY": 1190.235107,
-        "DetonatePosZ": 37.03125
+        "DetonatePosZ": 37.03125,
+        "Notes": "",
+        "AimPosX": -1098.055786,
+        "AimPosY": -397.585144,
+        "AimPosZ": 184.009979
       }
     ]
   },
   {
-    "Id": "adeaf00267aa46aa85c0c9bf0e82abf9",
+    "Id": "abf3427806114010932e3e6f6ffd7a4e",
     "PosX": -1176.592529,
     "PosY": -531.464722,
     "PosZ": 96.031242,
@@ -1529,12 +1833,16 @@
         "ThrowAngYaw": 81.257332,
         "DetonatePosX": -893.460205,
         "DetonatePosY": 1201.595337,
-        "DetonatePosZ": 37.03125
+        "DetonatePosZ": 37.03125,
+        "Notes": "",
+        "AimPosX": -1164.093628,
+        "AimPosY": -450.188751,
+        "AimPosZ": 216.934631
       }
     ]
   },
   {
-    "Id": "a9fc687d32164313a8665329f60f3f0b",
+    "Id": "fd284d8a6fb1449f92b458febabba5ea",
     "PosX": 743.96875,
     "PosY": -1243.942017,
     "PosZ": 46.002041,
@@ -1551,12 +1859,16 @@
         "ThrowAngYaw": 70.455589,
         "DetonatePosX": 1684.659302,
         "DetonatePosY": 1405.990234,
-        "DetonatePosZ": -149.96875
+        "DetonatePosZ": -149.96875,
+        "Notes": "",
+        "AimPosX": 764.685791,
+        "AimPosY": -1185.582764,
+        "AimPosZ": 148.087357
       }
     ]
   },
   {
-    "Id": "60f642ef23024490a3e826ccca5a8cec",
+    "Id": "0ca92b9a0bb14ad295a26e2daf6d5de7",
     "PosX": 1005.244324,
     "PosY": 924.539978,
     "PosZ": -188.833618,
@@ -1573,7 +1885,11 @@
         "ThrowAngYaw": -5.9394,
         "DetonatePosX": 1613.119995,
         "DetonatePosY": 1413.891113,
-        "DetonatePosZ": -149.96875
+        "DetonatePosZ": -149.96875,
+        "Notes": "Step Throw",
+        "AimPosX": 1096.785156,
+        "AimPosY": 915.016541,
+        "AimPosZ": -85.723785
       },
       {
         "Name": "Molo A Main from outside Main",
@@ -1587,12 +1903,16 @@
         "ThrowAngYaw": -10.449392,
         "DetonatePosX": 1536.103638,
         "DetonatePosY": 1181.380859,
-        "DetonatePosZ": -142.900848
+        "DetonatePosZ": -142.900848,
+        "Notes": "Step Throw",
+        "AimPosX": 1095.656128,
+        "AimPosY": 906.959656,
+        "AimPosZ": -87.035233
       }
     ]
   },
   {
-    "Id": "09924817d7894b169b74fdd6168bcf2c",
+    "Id": "4afb24afa4f245bf9542db64af5ca5d8",
     "PosX": 732.042725,
     "PosY": 520.03125,
     "PosZ": -151.96875,
@@ -1609,12 +1929,16 @@
         "ThrowAngYaw": 59.029488,
         "DetonatePosX": 1301.665894,
         "DetonatePosY": 1469.147583,
-        "DetonatePosZ": 147.713287
+        "DetonatePosZ": 147.713287,
+        "Notes": "",
+        "AimPosX": 783.502197,
+        "AimPosY": 605.77417,
+        "AimPosZ": -88.237785
       }
     ]
   },
   {
-    "Id": "fbcaf68015184740ac634a7e63150f1f",
+    "Id": "f5dba0ff16334ce8b1b44f45ad645139",
     "PosX": 1253.955566,
     "PosY": 802.03125,
     "PosZ": -151.96875,
@@ -1631,7 +1955,11 @@
         "ThrowAngYaw": 136.777496,
         "DetonatePosX": 578.951599,
         "DetonatePosY": 1327.983521,
-        "DetonatePosZ": -85.71875
+        "DetonatePosZ": -85.71875,
+        "Notes": "Middle click jump throw",
+        "AimPosX": 1181.088135,
+        "AimPosY": 870.512268,
+        "AimPosZ": -88.794662
       }
     ]
   }

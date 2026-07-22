@@ -1,6 +1,6 @@
 [
   {
-    "Id": "0f3cbf999c074f439b4d1cda6b098c0a",
+    "Id": "5af9e5d3ea6a4d69b4c6de7e3f103fb7",
     "PosX": -798.96875,
     "PosY": 1260.486084,
     "PosZ": -215.96875,
@@ -17,12 +17,16 @@
         "ThrowAngYaw": -43.214165,
         "DetonatePosX": 263.659607,
         "DetonatePosY": 457.203033,
-        "DetonatePosZ": -211.96875
+        "DetonatePosZ": -211.96875,
+        "Notes": "#a_cross_aim",
+        "AimPosX": -742.503662,
+        "AimPosY": 1207.435547,
+        "AimPosZ": -88.744247
       }
     ]
   },
   {
-    "Id": "0409935e5762412c9b491b8cfec89c91",
+    "Id": "e08d6bb5b46540bda000635c34d37caa",
     "PosX": -362.027344,
     "PosY": 1384.029053,
     "PosZ": -160.966797,
@@ -39,12 +43,16 @@
         "ThrowAngYaw": -92.602905,
         "DetonatePosX": -444.438934,
         "DetonatePosY": -428.707733,
-        "DetonatePosZ": -212.96875
+        "DetonatePosZ": -212.96875,
+        "Notes": "#longdog_aim",
+        "AimPosX": -365.735321,
+        "AimPosY": 1302.464111,
+        "AimPosZ": -39.231091
       }
     ]
   },
   {
-    "Id": "f46e7d9d4528475c8a7753b4e1906ac6",
+    "Id": "e7f65251f3db40d6b6ce92fee4ee06ad",
     "PosX": -427.972229,
     "PosY": 1777.971191,
     "PosZ": -209.96875,
@@ -61,7 +69,11 @@
         "ThrowAngYaw": -69.895706,
         "DetonatePosX": 350.717773,
         "DetonatePosY": -473.030151,
-        "DetonatePosZ": -213.878418
+        "DetonatePosZ": -213.878418,
+        "Notes": "",
+        "AimPosX": -393.994812,
+        "AimPosY": 1685.145142,
+        "AimPosZ": -130.840851
       },
       {
         "Name": "Smoke Pop dog",
@@ -75,12 +87,16 @@
         "ThrowAngYaw": -90.043823,
         "DetonatePosX": -429.282532,
         "DetonatePosY": -331.928131,
-        "DetonatePosZ": -212.96875
+        "DetonatePosZ": -212.96875,
+        "Notes": "",
+        "AimPosX": -428.04187,
+        "AimPosY": 1679.647949,
+        "AimPosZ": -127.717735
       }
     ]
   },
   {
-    "Id": "07b0eb378f6948abbb89baa1ada4baad",
+    "Id": "ea8bf0497b6c46b7a4360f32c5df567e",
     "PosX": -1499.048584,
     "PosY": 1479.968018,
     "PosZ": -170.96875,
@@ -97,7 +113,11 @@
         "ThrowAngYaw": -45.328026,
         "DetonatePosX": 371.309174,
         "DetonatePosY": -424.874329,
-        "DetonatePosZ": -213.960281
+        "DetonatePosZ": -213.960281,
+        "Notes": "Aim at the white spot",
+        "AimPosX": -1441.324219,
+        "AimPosY": 1421.578857,
+        "AimPosZ": -51.044525
       },
       {
         "Name": "Smoke Camera",
@@ -111,7 +131,11 @@
         "ThrowAngYaw": -29.216,
         "DetonatePosX": 878.928223,
         "DetonatePosY": 143.819016,
-        "DetonatePosZ": -209.96875
+        "DetonatePosZ": -209.96875,
+        "Notes": "Aim at the edge of the roof",
+        "AimPosX": -1420.484741,
+        "AimPosY": 1436.040649,
+        "AimPosZ": -64.529785
       },
       {
         "Name": "Smoke Camera",
@@ -125,7 +149,11 @@
         "ThrowAngYaw": -30.068018,
         "DetonatePosX": 806.456604,
         "DetonatePosY": 167.266617,
-        "DetonatePosZ": -209.96875
+        "DetonatePosZ": -209.96875,
+        "Notes": "",
+        "AimPosX": -1392.552246,
+        "AimPosY": 1440.359009,
+        "AimPosZ": -46.889172
       },
       {
         "Name": "Smoke conn",
@@ -139,12 +167,16 @@
         "ThrowAngYaw": -45.185863,
         "DetonatePosX": 364.235596,
         "DetonatePosY": -381.086121,
-        "DetonatePosZ": -214.654022
+        "DetonatePosZ": -214.654022,
+        "Notes": "",
+        "AimPosX": -1404.480103,
+        "AimPosY": 1423.111084,
+        "AimPosZ": -48.325779
       }
     ]
   },
   {
-    "Id": "1e30f72c04214392a76de0d369bc1d64",
+    "Id": "87c8179d71c0425daa28f61df83b39e9",
     "PosX": -764.424011,
     "PosY": 524.421936,
     "PosZ": -215.96875,
@@ -161,12 +193,16 @@
         "ThrowAngYaw": -21.385983,
         "DetonatePosX": -764.424011,
         "DetonatePosY": 524.421936,
-        "DetonatePosZ": -215.96875
+        "DetonatePosZ": -215.96875,
+        "Notes": "Aim above the two squares on the yellow beam while running\\nRelease once your crosshair reaches the squares",
+        "AimPosX": -677.374329,
+        "AimPosY": 490.332123,
+        "AimPosZ": -116.62886
       }
     ]
   },
   {
-    "Id": "17923a950a7d427f9469a43790d9ea63",
+    "Id": "73c7e334d40d4be2b2183db4f3e52756",
     "PosX": -650.054688,
     "PosY": 1559.738159,
     "PosZ": -209.804443,
@@ -183,12 +219,16 @@
         "ThrowAngYaw": -77.218193,
         "DetonatePosX": -421.444794,
         "DetonatePosY": 503.366394,
-        "DetonatePosZ": 200.137207
+        "DetonatePosZ": 200.137207,
+        "Notes": "Aim on the top right corner of the sign",
+        "AimPosX": -628.07135,
+        "AimPosY": 1462.835815,
+        "AimPosZ": -139.147217
       }
     ]
   },
   {
-    "Id": "c9746fae99e547ef84d797627e9fbcfa",
+    "Id": "6f0603c36e5e4e47a4de9d6555f33c97",
     "PosX": -420.864929,
     "PosY": 1424.03125,
     "PosZ": -215.975464,
@@ -205,12 +245,16 @@
         "ThrowAngYaw": -61.800339,
         "DetonatePosX": 685.446655,
         "DetonatePosY": -847.798218,
-        "DetonatePosZ": -229.008972
+        "DetonatePosZ": -229.008972,
+        "Notes": "Aim at corner of building",
+        "AimPosX": -384.053253,
+        "AimPosY": 1355.376709,
+        "AimPosZ": -89.487045
       }
     ]
   },
   {
-    "Id": "31fa5589c909426d900fa3e678e53c71",
+    "Id": "c7d6c3cadb70424fb3b59e7f7e562897",
     "PosX": -1040.966187,
     "PosY": -1112.474609,
     "PosZ": -153.96875,
@@ -227,12 +271,16 @@
         "ThrowAngYaw": 24.204889,
         "DetonatePosX": -71.37851,
         "DetonatePosY": -1263.794312,
-        "DetonatePosZ": -275.968719
+        "DetonatePosZ": -275.968719,
+        "Notes": "Aim on the side of the bottom drawer",
+        "AimPosX": -949.982666,
+        "AimPosY": -1071.575684,
+        "AimPosZ": -97.147835
       }
     ]
   },
   {
-    "Id": "200a2651c0b14fb1ade5d9d2fb34932a",
+    "Id": "4c0354bd973b4b49bc369715af1bb457",
     "PosX": -922.031738,
     "PosY": -812.491089,
     "PosZ": -153.96875,
@@ -249,12 +297,16 @@
         "ThrowAngYaw": -13.680044,
         "DetonatePosX": -144.213623,
         "DetonatePosY": -991.105469,
-        "DetonatePosZ": -284.801788
+        "DetonatePosZ": -284.801788,
+        "Notes": "",
+        "AimPosX": -831.46228,
+        "AimPosY": -834.536133,
+        "AimPosZ": -126.339172
       }
     ]
   },
   {
-    "Id": "fdbd5f529ccb4b53a036bbb6d85dcfe8",
+    "Id": "75da1e9a485d43c6b21a5d1d06bcee93",
     "PosX": 334.551483,
     "PosY": -450.437683,
     "PosZ": -216.138916,
@@ -271,12 +323,16 @@
         "ThrowAngYaw": 133.277145,
         "DetonatePosX": -694.332764,
         "DetonatePosY": 537.59198,
-        "DetonatePosZ": -141.89447
+        "DetonatePosZ": -141.89447,
+        "Notes": "Running middle jump throw",
+        "AimPosX": 266.113892,
+        "AimPosY": -377.755493,
+        "AimPosZ": -159.807022
       }
     ]
   },
   {
-    "Id": "5ed69070c58243b2bf689d23b329cd8e",
+    "Id": "fa8f3cfbdcb04e279b904aa8648e0ec2",
     "PosX": -250.186157,
     "PosY": -901.678711,
     "PosZ": -318.96875,
@@ -293,12 +349,16 @@
         "ThrowAngYaw": -179.760529,
         "DetonatePosX": -892.545898,
         "DetonatePosY": -898.95636,
-        "DetonatePosZ": -7.689569
+        "DetonatePosZ": -7.689569,
+        "Notes": "Running throw",
+        "AimPosX": -350.172943,
+        "AimPosY": -902.096863,
+        "AimPosZ": -253.554672
       }
     ]
   },
   {
-    "Id": "8be238ef42aa49ec9fad0df1858e2496",
+    "Id": "25ec6b9333714a199bb0957d06e07e28",
     "PosX": -873.969482,
     "PosY": 754.748962,
     "PosZ": -215.96875,
@@ -315,7 +375,11 @@
         "ThrowAngYaw": -61.2393,
         "DetonatePosX": -303.41922,
         "DetonatePosY": -163.288605,
-        "DetonatePosZ": -211.96875
+        "DetonatePosZ": -211.96875,
+        "Notes": "",
+        "AimPosX": -827.613831,
+        "AimPosY": 670.291138,
+        "AimPosZ": -125.332558
       },
       {
         "Name": "Nade between electric and pop",
@@ -329,12 +393,16 @@
         "ThrowAngYaw": -56.420921,
         "DetonatePosX": -315.300293,
         "DetonatePosY": -133.549713,
-        "DetonatePosZ": -109.066452
+        "DetonatePosZ": -109.066452,
+        "Notes": "Duck at N",
+        "AimPosX": -821.352661,
+        "AimPosY": 628.723877,
+        "AimPosZ": -139.306458
       }
     ]
   },
   {
-    "Id": "9aa3152fe2dc402b9ea8c9119acca7ec",
+    "Id": "ba50e309ed154ec38f02ffe0e4d69fdd",
     "PosX": -763.739014,
     "PosY": -922.96344,
     "PosZ": -213.778015,
@@ -351,12 +419,16 @@
         "ThrowAngYaw": 143.724777,
         "DetonatePosX": -947.807251,
         "DetonatePosY": -473.633118,
-        "DetonatePosZ": 15.826729
+        "DetonatePosZ": 15.826729,
+        "Notes": "Running throw",
+        "AimPosX": -833.527893,
+        "AimPosY": -871.744873,
+        "AimPosZ": -107.846451
       }
     ]
   },
   {
-    "Id": "0a6d63fa889d4c9cac369cbe4f2775a1",
+    "Id": "2fe26683ea954e9fb1927e2005ab6b15",
     "PosX": -671.105835,
     "PosY": -514.032593,
     "PosZ": -35.96875,
@@ -373,12 +445,16 @@
         "ThrowAngYaw": -2.821003,
         "DetonatePosX": 718.65625,
         "DetonatePosY": -586.476501,
-        "DetonatePosZ": -213.96875
+        "DetonatePosZ": -213.96875,
+        "Notes": "Pre-break glass\\nMiddle jump throw",
+        "AimPosX": -580.595642,
+        "AimPosY": -518.492554,
+        "AimPosZ": 64.442505
       }
     ]
   },
   {
-    "Id": "6d1e2f97fdba4374ab1d1ff0bda9c8df",
+    "Id": "003f9099be524d429b34f968d0fd7f47",
     "PosX": -747.96875,
     "PosY": -258.355713,
     "PosZ": 28.044758,
@@ -395,7 +471,11 @@
         "ThrowAngYaw": -27.078819,
         "DetonatePosX": 688.652161,
         "DetonatePosY": -568.719543,
-        "DetonatePosZ": -213.96875
+        "DetonatePosZ": -213.96875,
+        "Notes": "Pre-break glass",
+        "AimPosX": -658.976929,
+        "AimPosY": -303.853607,
+        "AimPosZ": 80.136429
       },
       {
         "Name": "Flash over Pop Dog",
@@ -409,12 +489,16 @@
         "ThrowAngYaw": -51.479752,
         "DetonatePosX": -342.311798,
         "DetonatePosY": -332.412781,
-        "DetonatePosZ": 110.881065
+        "DetonatePosZ": 110.881065,
+        "Notes": "",
+        "AimPosX": -689.547729,
+        "AimPosY": -331.972809,
+        "AimPosZ": 118.183212
       }
     ]
   },
   {
-    "Id": "aad9b8e66e004b8481a9ea46ac99e3b1",
+    "Id": "461508ce48ba4819be7dee80110a8860",
     "PosX": -1152.968628,
     "PosY": -1098.013794,
     "PosZ": -100.96875,
@@ -431,12 +515,16 @@
         "ThrowAngYaw": 9.870275,
         "DetonatePosX": 633.005798,
         "DetonatePosY": -752.37738,
-        "DetonatePosZ": -212.715958
+        "DetonatePosZ": -212.715958,
+        "Notes": "Running throw",
+        "AimPosX": -1058.409668,
+        "AimPosY": -1081.561157,
+        "AimPosZ": -10.059
       }
     ]
   },
   {
-    "Id": "6191e78271d04decb526dfea43ecda70",
+    "Id": "1c19797aa2364fa6a7007de89cfb0786",
     "PosX": -1152.968628,
     "PosY": -1153.96875,
     "PosZ": -100.96875,
@@ -453,7 +541,11 @@
         "ThrowAngYaw": 7.665501,
         "DetonatePosX": 690.82605,
         "DetonatePosY": -905.793274,
-        "DetonatePosZ": -229.787155
+        "DetonatePosZ": -229.787155,
+        "Notes": "Running throw",
+        "AimPosX": -1056.036255,
+        "AimPosY": -1140.922363,
+        "AimPosZ": -17.29829
       },
       {
         "Name": "Flash - Ramp Entry",
@@ -467,12 +559,16 @@
         "ThrowAngYaw": 21.520681,
         "DetonatePosX": -115.973793,
         "DetonatePosY": -775.940552,
-        "DetonatePosZ": -100.453224
+        "DetonatePosZ": -100.453224,
+        "Notes": "",
+        "AimPosX": -1056.73938,
+        "AimPosY": -1141.087524,
+        "AimPosZ": -62.475235
       }
     ]
   },
   {
-    "Id": "b84d85db03d543daac61f500c5cc3bd7",
+    "Id": "dcf5131d86804f149029e0e7998e423a",
     "PosX": -1152.96875,
     "PosY": -1014.921875,
     "PosZ": -100.64325,
@@ -489,7 +585,11 @@
         "ThrowAngYaw": -5.727598,
         "DetonatePosX": 232.966843,
         "DetonatePosY": -1153.942383,
-        "DetonatePosZ": -348.96875
+        "DetonatePosZ": -348.96875,
+        "Notes": "Aim at the dark spot",
+        "AimPosX": -1054.396118,
+        "AimPosY": -1024.808716,
+        "AimPosZ": -24.502167
       },
       {
         "Name": "Molo back left bomb train",
@@ -503,12 +603,16 @@
         "ThrowAngYaw": -7.956883,
         "DetonatePosX": 213.722992,
         "DetonatePosY": -1165.062744,
-        "DetonatePosZ": -291.650055
+        "DetonatePosZ": -291.650055,
+        "Notes": "Aim at top of arm chair",
+        "AimPosX": -1055.528809,
+        "AimPosY": -987.650635,
+        "AimPosZ": -20.131557
       }
     ]
   },
   {
-    "Id": "c4ef313b48c5485bb6083d5b71b5b8c1",
+    "Id": "c5e83552f918411e997291aa59bf984f",
     "PosX": -1152.971069,
     "PosY": -1296.493164,
     "PosZ": -100.96875,
@@ -525,12 +629,16 @@
         "ThrowAngYaw": 33.293541,
         "DetonatePosX": -398.050659,
         "DetonatePosY": -800.723145,
-        "DetonatePosZ": -0.098425
+        "DetonatePosZ": -0.098425,
+        "Notes": "Aim at window",
+        "AimPosX": -1070.598633,
+        "AimPosY": -1242.397827,
+        "AimPosZ": -21.14419
       }
     ]
   },
   {
-    "Id": "d78a7e016e544b9ebe23ae70bb56e7c8",
+    "Id": "8e005776cd204ff4835deecdfa4ce40f",
     "PosX": -2000.0,
     "PosY": 1434.233154,
     "PosZ": -171.96875,
@@ -547,12 +655,16 @@
         "ThrowAngYaw": -23.600021,
         "DetonatePosX": 239.216843,
         "DetonatePosY": 385.915131,
-        "DetonatePosZ": -211.96875
+        "DetonatePosZ": -211.96875,
+        "Notes": "Spawn based",
+        "AimPosX": -1918.515381,
+        "AimPosY": 1398.633423,
+        "AimPosZ": -62.380257
       }
     ]
   },
   {
-    "Id": "dd9d8ac183cc49dabbf6ef510d143e43",
+    "Id": "b0548fc7922b4fbbaef3f90e2745a23a",
     "PosX": -1844.96875,
     "PosY": 1479.967407,
     "PosZ": -170.96875,
@@ -569,12 +681,16 @@
         "ThrowAngYaw": -25.62417,
         "DetonatePosX": 249.728317,
         "DetonatePosY": 407.867065,
-        "DetonatePosZ": -211.96875
+        "DetonatePosZ": -211.96875,
+        "Notes": "",
+        "AimPosX": -1762.984863,
+        "AimPosY": 1440.644775,
+        "AimPosZ": -66.506966
       }
     ]
   },
   {
-    "Id": "331de2dc0589472baf0f86ece18f24fa",
+    "Id": "54b6a0afe1bb4365a015fd075b84d676",
     "PosX": 106.808937,
     "PosY": -1027.059326,
     "PosZ": -167.96875,
@@ -591,12 +707,16 @@
         "ThrowAngYaw": -178.85524,
         "DetonatePosX": -1097.614136,
         "DetonatePosY": -1043.878418,
-        "DetonatePosZ": -38.667946
+        "DetonatePosZ": -38.667946,
+        "Notes": "W-Jump Throw",
+        "AimPosX": 7.748573,
+        "AimPosY": -1029.038818,
+        "AimPosZ": -118.125015
       }
     ]
   },
   {
-    "Id": "476da6144477455a98afbe9b13791e6e",
+    "Id": "8222f640ec9e4fcaa2d0f67f49c1cf75",
     "PosX": 338.034302,
     "PosY": -719.950012,
     "PosZ": -168.96875,
@@ -613,12 +733,16 @@
         "ThrowAngYaw": 158.893936,
         "DetonatePosX": -663.170654,
         "DetonatePosY": -254.910034,
-        "DetonatePosZ": 125.420425
+        "DetonatePosZ": 125.420425,
+        "Notes": "",
+        "AimPosX": 244.880371,
+        "AimPosY": -683.99353,
+        "AimPosZ": -99.699181
       }
     ]
   },
   {
-    "Id": "a9e3fd9345b04cebaa047c5e5ae48f74",
+    "Id": "3bdf1df2a96648a9afd74866daf09713",
     "PosX": -977.294128,
     "PosY": 621.353027,
     "PosZ": 17.031248,
@@ -635,7 +759,11 @@
         "ThrowAngYaw": -89.614311,
         "DetonatePosX": -968.062683,
         "DetonatePosY": -802.627869,
-        "DetonatePosZ": -151.96875
+        "DetonatePosZ": -151.96875,
+        "Notes": "Middle-click throw",
+        "AimPosX": -976.667908,
+        "AimPosY": 528.330261,
+        "AimPosZ": 112.022644
       }
     ]
   }

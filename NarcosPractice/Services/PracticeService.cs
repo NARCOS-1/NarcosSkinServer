@@ -133,9 +133,10 @@ public class PracticeService
         player.GiveNamedItem(weaponClass);
 
         _lastGuided[player.Slot] = lineup;
-        _markerVisualService.ShowAimReference(player.Slot, ComputeAimReferencePoint(throwPos, throwAngles));
+        _markerVisualService.ShowAimReference(player.Slot, ResolveAimReferencePoint(lineup, throwPos, throwAngles));
 
-        player.PrintToChat($"[Practice] '{lineup.Name}' - {lineup.Technique}, {lineup.Strength} throw. Line up and throw it for real.");
+        string notesSuffix = string.IsNullOrWhiteSpace(lineup.Notes) ? "" : $" ({lineup.Notes})";
+        player.PrintToChat($"[Practice] '{lineup.Name}' - {lineup.Technique}, {lineup.Strength} throw.{notesSuffix} Line up and throw it for real.");
     }
 
     // Instantly puts you back at the same stand spot/angle/nade without walking back
@@ -234,7 +235,7 @@ public class PracticeService
         {
             var throwPos = new Vector(lineup.ThrowPosX, lineup.ThrowPosY, lineup.ThrowPosZ);
             var throwAngles = new QAngle(lineup.ThrowAngPitch, lineup.ThrowAngYaw, 0);
-            _markerVisualService.ShowAimReference(player.Slot, ComputeAimReferencePoint(throwPos, throwAngles));
+            _markerVisualService.ShowAimReference(player.Slot, ResolveAimReferencePoint(lineup, throwPos, throwAngles));
             _lastGuided[player.Slot] = lineup;
         }
 
@@ -294,6 +295,16 @@ public class PracticeService
         return best;
     }
 
+    // Prefers the real authored aim point from the source data over the
+    // generic projected fallback - see Lineup.AimPosX/Y/Z for why this exists.
+    private static Vector ResolveAimReferencePoint(Lineup lineup, Vector throwPos, QAngle throwAngles)
+    {
+        if (lineup.AimPosX.HasValue && lineup.AimPosY.HasValue && lineup.AimPosZ.HasValue)
+            return new Vector(lineup.AimPosX.Value, lineup.AimPosY.Value, lineup.AimPosZ.Value);
+
+        return ComputeAimReferencePoint(throwPos, throwAngles);
+    }
+
     private static Vector ComputeAimReferencePoint(Vector throwPos, QAngle throwAngles)
     {
         var direction = DirectionFromAngles(throwAngles.X, throwAngles.Y);
@@ -332,6 +343,8 @@ public class PracticeService
             _ => ""
         };
 
-        return $"<font color='#ffcc66'>&lt; {techniquePart} &gt;</font>{strengthPart}";
+        string notesLine = string.IsNullOrWhiteSpace(lineup.Notes) ? "" : $"<br><font color='#cccccc'>{lineup.Notes}</font>";
+
+        return $"<font color='#ffcc66'>&lt; {techniquePart} &gt;</font>{strengthPart}{notesLine}";
     }
 }
