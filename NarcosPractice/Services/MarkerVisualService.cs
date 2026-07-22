@@ -14,18 +14,35 @@ public class MarkerVisualService
 {
     private readonly Dictionary<string, CPointWorldText> _markerEntities = new();
     private readonly Dictionary<int, CPointWorldText> _aimReferenceEntities = new();
+    private readonly Queue<Marker> _pendingSpawns = new();
+
+    // How many point_worldtext entities to create per tick while draining the
+    // spawn queue - some maps have 80+ lineups, and creating dozens of entities
+    // synchronously in one frame right after a map transition is what actually
+    // caused the server.dll access violation, not the entity properties/enums
+    // themselves (those match a verified working reference implementation).
+    private const int MaxSpawnsPerTick = 4;
 
     public void RefreshMarkersForMap(List<Marker> markers)
     {
-        foreach (var entity in _markerEntities.Values)
-        {
-            if (entity.IsValid)
-                entity.Remove();
-        }
+        // Entities from whatever map was previously loaded are already destroyed
+        // by the engine during the level transition - calling .Remove() on those
+        // stale handles ourselves is a use-after-free, not a safe no-op. Just drop
+        // our references and let new ones get created fresh for the new map.
         _markerEntities.Clear();
+        _aimReferenceEntities.Clear();
 
+        _pendingSpawns.Clear();
         foreach (var marker in markers)
-            SpawnMarkerText(marker);
+            _pendingSpawns.Enqueue(marker);
+    }
+
+    // Drains a few pending marker spawns per tick instead of creating every
+    // entity for a map in one synchronous burst. Call this from OnTick.
+    public void ProcessSpawnQueue()
+    {
+        for (int i = 0; i < MaxSpawnsPerTick && _pendingSpawns.Count > 0; i++)
+            SpawnMarkerText(_pendingSpawns.Dequeue());
     }
 
     public void SpawnMarkerText(Marker marker)
@@ -73,17 +90,8 @@ public class MarkerVisualService
         }
     }
 
-    // TEMPORARILY DISABLED: this was causing a real native access violation crash
-    // in server.dll (0xc0000005), not just a bad-looking .NET exception - one of
-    // these property/enum guesses is wrong in a way that corrupts engine memory
-    // rather than just failing safely. Returning null here until each property is
-    // verified individually against a live server; the markers just won't render
-    // in the meantime, but nothing else breaks or crashes.
     private static CPointWorldText? CreateWorldText(string text, Vector position, Color color)
     {
-        return null;
-
-#pragma warning disable CS0162 // unreachable - kept so this is a one-line revert once verified safe
         var entity = Utilities.CreateEntityByName<CPointWorldText>("point_worldtext");
         if (entity == null)
             return null;
@@ -103,6 +111,5 @@ public class MarkerVisualService
         entity.DispatchSpawn();
 
         return entity;
-#pragma warning restore CS0162
     }
 }

@@ -16,7 +16,12 @@ public partial class Plugin
         RegisterListener<OnMapStart>(mapName =>
         {
             _currentMap = mapName;
-            RefreshMarkerVisuals();
+
+            // Give the new level a couple seconds to finish initializing before
+            // spawning entities - doing it immediately on OnMapStart is what
+            // likely caused the earlier server.dll crash (dedicated servers can
+            // fire this for an internal pre-map before the real one is ready).
+            AddTimer(2.0f, RefreshMarkerVisuals);
         });
         RegisterListener<OnTick>(OnGameTick);
 
@@ -66,6 +71,8 @@ public partial class Plugin
     {
         if (_practiceService == null)
             return;
+
+        _markerVisualService?.ProcessSpawnQueue();
 
         foreach (var player in Utilities.GetPlayers())
         {
