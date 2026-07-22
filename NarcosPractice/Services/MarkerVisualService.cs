@@ -52,23 +52,24 @@ public class MarkerVisualService
         if (_markerEntities.TryGetValue(marker.Id, out var existing) && existing.IsValid)
             existing.Remove();
 
-        // A single point_worldtext entity doesn't reliably render embedded
-        // newlines (K4-WorldText-API has to spawn a separate stacked entity per
-        // line for multiline text) - keep this to one line.
-        string text = marker.Lineups.Count == 1
-            ? $"STAND HERE - {marker.Lineups[0].Name}"
-            : $"STAND HERE - {marker.Lineups.Count} lineups";
-
+        // No label text at all - just a floating shape, closer to how Yprac marks
+        // stand spots with a small gem/diamond prop rather than a readable sign.
+        // A real 3D prop or particle effect would need precaching a specific
+        // asset path server-side, which is exactly the kind of unverified native
+        // resource guess that caused the earlier crash - this reuses the same
+        // point_worldtext entity that's already proven safe, just rendering a
+        // single glyph instead of a label.
         var pos = new Vector(marker.PosX, marker.PosY, marker.PosZ + 8f);
-        var entity = CreateWorldText(text, pos, Color.FromArgb(255, 90, 170, 255));
+        var entity = CreateWorldText("◆", pos, Color.FromArgb(255, 90, 170, 255));
+        string label = marker.Lineups.Count == 1 ? marker.Lineups[0].Name : $"{marker.Lineups.Count} lineups";
         if (entity != null)
         {
             _markerEntities[marker.Id] = entity;
-            Server.PrintToConsole($"[NarcosPractice] Spawned marker '{text}' at {pos.X:F0},{pos.Y:F0},{pos.Z:F0}");
+            Server.PrintToConsole($"[NarcosPractice] Spawned marker '{label}' at {pos.X:F0},{pos.Y:F0},{pos.Z:F0}");
         }
         else
         {
-            Server.PrintToConsole($"[NarcosPractice] FAILED to spawn marker '{text}' - CreateEntityByName/property assignment returned null or threw.");
+            Server.PrintToConsole($"[NarcosPractice] FAILED to spawn marker '{label}' - CreateEntityByName/property assignment returned null or threw.");
         }
     }
 
@@ -88,7 +89,7 @@ public class MarkerVisualService
     {
         HideAimReference(playerSlot);
 
-        var entity = CreateWorldText("AIM HERE", position, Color.FromArgb(255, 120, 255, 120));
+        var entity = CreateWorldText("●", position, Color.FromArgb(255, 120, 255, 120));
         if (entity != null)
             _aimReferenceEntities[playerSlot] = entity;
     }
@@ -117,22 +118,16 @@ public class MarkerVisualService
             entity.MessageText = text;
             entity.Enabled = true;
             entity.FontName = "Arial";
-            entity.FontSize = 26;
+            // No background plate and no label anymore - just a large glowing
+            // glyph, so size it like a shape (bigger) rather than readable text.
+            entity.FontSize = 60;
             entity.Color = color;
             entity.Fullbright = true;
             entity.WorldUnitsPerPx = 0.35f;
             entity.DepthOffset = 0f;
+            entity.DrawBackground = false;
             entity.JustifyHorizontal = PointWorldTextJustifyHorizontal_t.POINT_WORLD_TEXT_JUSTIFY_HORIZONTAL_CENTER;
             entity.JustifyVertical = PointWorldTextJustifyVertical_t.POINT_WORLD_TEXT_JUSTIFY_VERTICAL_CENTER;
-            // Draws a solid plate behind the text so it reads as a sign, not
-            // text floating disconnected in midair. FontName/background fields
-            // aren't confirmed against any working reference like the rest of
-            // this method is - if they don't visibly change anything, that's a
-            // no-op, not a crash risk, since they're plain string/bool/float
-            // fields on an entity we've already proven safe to create.
-            entity.DrawBackground = true;
-            entity.BackgroundBorderWidth = 0.08f;
-            entity.BackgroundBorderHeight = 0.15f;
             // NONE pins the text to a fixed facing forever - from most approach
             // angles it's edge-on and invisible. AROUND_UP billboards it to always
             // face the player (rotating only around the vertical axis), which is
