@@ -360,8 +360,9 @@ public partial class Plugin : BasePlugin
         if (!pawn.GroundEntity.IsValid)
             return;
 
+        // m_vecAbsVelocity isn't a networked field, so no SetStateChanged needed here -
+        // the velocity change takes effect through physics regardless.
         pawn.AbsVelocity.Z = JumpVelocity;
-        Utilities.SetStateChanged(pawn, "CBaseEntity", "m_vecAbsVelocity");
     }
 
 
