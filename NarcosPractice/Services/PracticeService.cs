@@ -1,7 +1,7 @@
 using System.Collections.Concurrent;
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
-using CounterStrikeSharp.API.Modules.Timers;
+using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
 using NarcosPractice.Models;
 
@@ -9,13 +9,7 @@ namespace NarcosPractice.Services;
 
 public class PracticeService
 {
-    // How fast a replayed nade travels - real collision/physics still apply, this
-    // just compresses the normal ~700-900 u/s throw speed into something that lands
-    // in a fraction of a second instead of making you wait out the real flight time.
-    private const float InstaThrowSpeed = 6000f;
-
     private const float PendingSaveTimeoutSeconds = 10f;
-    private const float RunAllDelaySeconds = 3f;
 
     private record PendingSave(string Name, NadeType Type, ThrowTechnique Technique, ThrowStrength Strength, Vector ThrowPos, QAngle ThrowAngles, DateTime ArmedAt);
 
@@ -23,6 +17,12 @@ public class PracticeService
 
     // Rising-edge tracking for the Use (E) button, per player slot.
     private readonly ConcurrentDictionary<int, bool> _usedLastTick = new();
+
+    // Last lineup a player was guided to, so !nadereset can put them right back
+    // without walking back or re-opening the menu.
+    private readonly ConcurrentDictionary<int, Lineup> _lastGuided = new();
+
+    private readonly ConcurrentDictionary<int, bool> _noclip = new();
 
     private readonly MarkerService _markerService;
 
@@ -46,11 +46,12 @@ public class PracticeService
             new QAngle(pawn.EyeAngles.X, pawn.EyeAngles.Y, pawn.EyeAngles.Z),
             DateTime.UtcNow);
 
-        player.PrintToChat($"[Practice] Armed lineup save '{name}' ({type}, {technique}, {strength}) - throw the nade now.");
+        player.PrintToChat($"[Practice] Armed lineup save '{name}' ({type}, {technique}, {strength}) - throw the nade for real now.");
     }
 
     // Called from the relevant *_detonate game event handler once it's confirmed to
-    // belong to this player and matches the pending save's nade type.
+    // belong to this player and matches the pending save's nade type. This captures
+    // where your own real throw actually landed - nothing is faked or computed.
     public void CompletePendingSave(CCSPlayerController player, string map, NadeType type, Vector detonatePos)
     {
         if (!_pending.TryGetValue(player.Slot, out var pending) || pending.Type != type)
@@ -86,7 +87,10 @@ public class PracticeService
         player.PrintToChat($"[Practice] Saved {type} lineup '{pending.Name}' to a marker here.");
     }
 
-    public void Throw(CCSPlayerController player, Lineup lineup)
+    // The core practice loop: teleport to the stand spot, face the saved aim angle,
+    // give the correct (empty) nade so it's in hand, and tell you the technique/
+    // strength to use. You throw it yourself - this only sets up the attempt.
+    public void GuideTo(CCSPlayerController player, Lineup lineup)
     {
         var pawn = player.PlayerPawn.Value;
         if (pawn == null || !pawn.IsValid)
@@ -97,40 +101,51 @@ public class PracticeService
 
         pawn.Teleport(throwPos, throwAngles, new Vector(0, 0, 0));
 
-        float dirX = lineup.DetonatePosX - throwPos.X;
-        float dirY = lineup.DetonatePosY - throwPos.Y;
-        float dirZ = lineup.DetonatePosZ - throwPos.Z;
-        float length = MathF.Sqrt(dirX * dirX + dirY * dirY + dirZ * dirZ);
+        string weaponClass = lineup.Type switch
+        {
+            NadeType.Smoke => "weapon_smokegrenade",
+            NadeType.Flash => "weapon_flashbang",
+            NadeType.HE => "weapon_hegrenade",
+            NadeType.Molotov => "weapon_molotov",
+            _ => "weapon_smokegrenade"
+        };
 
-        if (length < 1f)
-            length = 1f;
+        player.GiveNamedItem(weaponClass);
 
-        var velocity = new Vector(
-            dirX / length * InstaThrowSpeed,
-            dirY / length * InstaThrowSpeed,
-            dirZ / length * InstaThrowSpeed);
+        _lastGuided[player.Slot] = lineup;
 
-        Server.NextFrame(() => SpawnProjectile(lineup.Type, throwPos, velocity));
+        player.PrintToChat($"[Practice] '{lineup.Name}' - {lineup.Technique}, {lineup.Strength} throw. Line up and throw it for real.");
     }
 
-    // Runs every lineup stacked on a marker back to back, with a short pause between
-    // each so you can reset and watch the smoke/flash/etc. actually land before the next.
-    public void ThrowAll(CCSPlayerController player, List<Lineup> lineups)
+    // Instantly puts you back at the same stand spot/angle/nade without walking back
+    // or re-opening the menu - matches Yprac's fast reset-and-retry loop.
+    public void Reset(CCSPlayerController player)
     {
-        if (lineups.Count == 0)
+        if (_lastGuided.TryGetValue(player.Slot, out var lineup))
+            GuideTo(player, lineup);
+        else
+            player.PrintToChat("[Practice] Nothing to reset to yet - pick a lineup from a marker or !nades first.");
+    }
+
+    // Toggles noclip so you can fly up and check where your throw actually landed,
+    // then drop back down - done via MoveType directly (not the "noclip" console
+    // command) so it doesn't get caught by NarcosSkinServer's cheat-command blocker.
+    public void ToggleVerify(CCSPlayerController player)
+    {
+        var pawn = player.PlayerPawn.Value;
+        if (pawn == null || !pawn.IsValid)
             return;
 
-        Throw(player, lineups[0]);
+        bool goingNoclip = !_noclip.GetOrAdd(player.Slot, false);
+        _noclip[player.Slot] = goingNoclip;
 
-        for (int i = 1; i < lineups.Count; i++)
-        {
-            var lineup = lineups[i];
-            new CounterStrikeSharp.API.Modules.Timers.Timer(RunAllDelaySeconds * i, () =>
-            {
-                if (player.IsValid)
-                    Throw(player, lineup);
-            });
-        }
+        Schema.GetRef<MoveType_t>(pawn.Handle, "CBaseEntity", "m_MoveType") =
+            goingNoclip ? MoveType_t.MOVETYPE_NOCLIP : MoveType_t.MOVETYPE_WALK;
+        Utilities.SetStateChanged(pawn, "CBaseEntity", "m_MoveType");
+
+        player.PrintToChat(goingNoclip
+            ? "[Practice] Noclip on - fly up to check your throw, !verify again to drop back down."
+            : "[Practice] Noclip off.");
     }
 
     // Drives the "walk up, press E" interaction. Called once per tick from Events.cs.
@@ -158,46 +173,5 @@ public class PracticeService
 
         if (usingNow && !usedLastTick)
             onInteract(marker);
-    }
-
-    // Matches CHR15cs/CS2-Practice-Plugin's ProjectileManager approach: create the
-    // concrete typed projectile, set its initial position/velocity, then spawn it -
-    // rather than assume a shared base type exposes these fields identically.
-    private static void SpawnProjectile(NadeType type, Vector position, Vector velocity)
-    {
-        switch (type)
-        {
-            case NadeType.Smoke:
-                Spawn<CSmokeGrenadeProjectile>("smokegrenade_projectile", position, velocity);
-                break;
-            case NadeType.Flash:
-                Spawn<CFlashbangProjectile>("flashbang_projectile", position, velocity);
-                break;
-            case NadeType.HE:
-                Spawn<CHEGrenadeProjectile>("hegrenade_projectile", position, velocity);
-                break;
-            case NadeType.Molotov:
-                Spawn<CMolotovProjectile>("molotov_projectile", position, velocity);
-                break;
-        }
-    }
-
-    private static void Spawn<T>(string designerName, Vector position, Vector velocity) where T : CBaseCSGrenadeProjectile
-    {
-        var projectile = Utilities.CreateEntityByName<T>(designerName);
-        if (projectile == null)
-            return;
-
-        projectile.InitialPosition.X = position.X;
-        projectile.InitialPosition.Y = position.Y;
-        projectile.InitialPosition.Z = position.Z;
-
-        projectile.InitialVelocity.X = velocity.X;
-        projectile.InitialVelocity.Y = velocity.Y;
-        projectile.InitialVelocity.Z = velocity.Z;
-
-        projectile.DispatchSpawn();
-
-        projectile.Teleport(position, null, velocity);
     }
 }

@@ -14,7 +14,7 @@ public partial class Plugin : BasePlugin
     public override string ModuleName => "NarcosPractice";
     public override string ModuleVersion => "0.2.0";
     public override string ModuleAuthor => "Zein";
-    public override string ModuleDescription => "Nade lineup practice with markers and insta-throw replay";
+    public override string ModuleDescription => "Nade lineup practice: markers, guided stand/aim, reset-and-retry, fly-and-verify";
 
     public override void Load(bool hotReload)
     {
@@ -28,8 +28,26 @@ public partial class Plugin : BasePlugin
         AddCommand("css_nadesave", "Start saving a lineup here - pick type/technique/strength, then throw", OnNadeSaveCommand);
         AddCommand("css_nades", "Open the nade practice menu", OnNadesCommand);
         AddCommand("css_nadedelete", "Delete a saved lineup", OnNadeDeleteCommand);
+        AddCommand("css_nadereset", "Instantly return to the last guided stand spot/angle/nade", OnNadeResetCommand);
+        AddCommand("css_verify", "Toggle noclip to fly up and check where your throw landed", OnVerifyCommand);
 
         Logger.LogInformation("NarcosPractice loaded!");
+    }
+
+    private void OnNadeResetCommand(CCSPlayerController? player, CommandInfo command)
+    {
+        if (player == null || !player.IsValid || player.IsBot)
+            return;
+
+        _practiceService?.Reset(player);
+    }
+
+    private void OnVerifyCommand(CCSPlayerController? player, CommandInfo command)
+    {
+        if (player == null || !player.IsValid || player.IsBot)
+            return;
+
+        _practiceService?.ToggleVerify(player);
     }
 
     private void OnNadeSaveCommand(CCSPlayerController? player, CommandInfo command)

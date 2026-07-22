@@ -46,7 +46,7 @@ public static class LineupMenu
         {
             menu.AddItem($"{lineup.Name} [{lineup.Technique}, {lineup.Strength}]", (p, o) =>
             {
-                practiceService.Throw(p, lineup);
+                practiceService.GuideTo(p, lineup);
             });
         }
 

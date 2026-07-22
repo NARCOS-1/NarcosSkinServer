@@ -11,19 +11,11 @@ public static class MarkerMenu
     {
         var menu = new WasdMenu("Lineups Here", plugin);
 
-        if (marker.Lineups.Count > 1)
-        {
-            menu.AddItem("Run All (one after another)", (p, o) =>
-            {
-                practiceService.ThrowAll(p, marker.Lineups);
-            });
-        }
-
         foreach (var lineup in marker.Lineups)
         {
             menu.AddItem($"{lineup.Name} [{lineup.Type}, {lineup.Technique}, {lineup.Strength}]", (p, o) =>
             {
-                practiceService.Throw(p, lineup);
+                practiceService.GuideTo(p, lineup);
             });
         }
 
