@@ -53,8 +53,8 @@ public class MarkerVisualService
             existing.Remove();
 
         string text = marker.Lineups.Count == 1
-            ? $"◆ {marker.Lineups[0].Name}"
-            : $"◆ {marker.Lineups.Count} lineups";
+            ? $"* {marker.Lineups[0].Name}"
+            : $"* {marker.Lineups.Count} lineups";
 
         var pos = new Vector(marker.PosX, marker.PosY, marker.PosZ + 8f);
         var entity = CreateWorldText(text, pos, Color.FromArgb(255, 143, 211, 255));
@@ -85,7 +85,7 @@ public class MarkerVisualService
     {
         HideAimReference(playerSlot);
 
-        var entity = CreateWorldText("●", position, Color.FromArgb(255, 120, 255, 120));
+        var entity = CreateWorldText("AIM HERE", position, Color.FromArgb(255, 120, 255, 120));
         if (entity != null)
             _aimReferenceEntities[playerSlot] = entity;
     }
@@ -120,7 +120,11 @@ public class MarkerVisualService
             entity.DepthOffset = 0f;
             entity.JustifyHorizontal = PointWorldTextJustifyHorizontal_t.POINT_WORLD_TEXT_JUSTIFY_HORIZONTAL_CENTER;
             entity.JustifyVertical = PointWorldTextJustifyVertical_t.POINT_WORLD_TEXT_JUSTIFY_VERTICAL_CENTER;
-            entity.ReorientMode = PointWorldTextReorientMode_t.POINT_WORLD_TEXT_REORIENT_NONE;
+            // NONE pins the text to a fixed facing forever - from most approach
+            // angles it's edge-on and invisible. AROUND_UP billboards it to always
+            // face the player (rotating only around the vertical axis), which is
+            // the only other option this enum has and what a floor marker needs.
+            entity.ReorientMode = PointWorldTextReorientMode_t.POINT_WORLD_TEXT_REORIENT_AROUND_UP;
 
             entity.Teleport(position, new QAngle(0, 0, 0));
             entity.DispatchSpawn();
