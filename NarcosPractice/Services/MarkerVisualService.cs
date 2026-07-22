@@ -52,12 +52,15 @@ public class MarkerVisualService
         if (_markerEntities.TryGetValue(marker.Id, out var existing) && existing.IsValid)
             existing.Remove();
 
+        // A single point_worldtext entity doesn't reliably render embedded
+        // newlines (K4-WorldText-API has to spawn a separate stacked entity per
+        // line for multiline text) - keep this to one line.
         string text = marker.Lineups.Count == 1
-            ? $"* {marker.Lineups[0].Name}"
-            : $"* {marker.Lineups.Count} lineups";
+            ? $"STAND HERE - {marker.Lineups[0].Name}"
+            : $"STAND HERE - {marker.Lineups.Count} lineups";
 
         var pos = new Vector(marker.PosX, marker.PosY, marker.PosZ + 8f);
-        var entity = CreateWorldText(text, pos, Color.FromArgb(255, 143, 211, 255));
+        var entity = CreateWorldText(text, pos, Color.FromArgb(255, 90, 170, 255));
         if (entity != null)
         {
             _markerEntities[marker.Id] = entity;
@@ -113,13 +116,23 @@ public class MarkerVisualService
 
             entity.MessageText = text;
             entity.Enabled = true;
-            entity.FontSize = 30;
+            entity.FontName = "Arial";
+            entity.FontSize = 26;
             entity.Color = color;
             entity.Fullbright = true;
-            entity.WorldUnitsPerPx = 0.4f;
+            entity.WorldUnitsPerPx = 0.35f;
             entity.DepthOffset = 0f;
             entity.JustifyHorizontal = PointWorldTextJustifyHorizontal_t.POINT_WORLD_TEXT_JUSTIFY_HORIZONTAL_CENTER;
             entity.JustifyVertical = PointWorldTextJustifyVertical_t.POINT_WORLD_TEXT_JUSTIFY_VERTICAL_CENTER;
+            // Draws a solid plate behind the text so it reads as a sign, not
+            // text floating disconnected in midair. FontName/background fields
+            // aren't confirmed against any working reference like the rest of
+            // this method is - if they don't visibly change anything, that's a
+            // no-op, not a crash risk, since they're plain string/bool/float
+            // fields on an entity we've already proven safe to create.
+            entity.DrawBackground = true;
+            entity.BackgroundBorderWidth = 0.08f;
+            entity.BackgroundBorderHeight = 0.15f;
             // NONE pins the text to a fixed facing forever - from most approach
             // angles it's edge-on and invisible. AROUND_UP billboards it to always
             // face the player (rotating only around the vertical axis), which is
