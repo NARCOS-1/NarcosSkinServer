@@ -35,6 +35,8 @@ public class MarkerVisualService
         _pendingSpawns.Clear();
         foreach (var marker in markers)
             _pendingSpawns.Enqueue(marker);
+
+        Server.PrintToConsole($"[NarcosPractice] Queued {markers.Count} markers to spawn.");
     }
 
     // Drains a few pending marker spawns per tick instead of creating every
@@ -54,9 +56,17 @@ public class MarkerVisualService
             ? $"◆ {marker.Lineups[0].Name}"
             : $"◆ {marker.Lineups.Count} lineups";
 
-        var entity = CreateWorldText(text, new Vector(marker.PosX, marker.PosY, marker.PosZ + 8f), Color.FromArgb(255, 143, 211, 255));
+        var pos = new Vector(marker.PosX, marker.PosY, marker.PosZ + 8f);
+        var entity = CreateWorldText(text, pos, Color.FromArgb(255, 143, 211, 255));
         if (entity != null)
+        {
             _markerEntities[marker.Id] = entity;
+            Server.PrintToConsole($"[NarcosPractice] Spawned marker '{text}' at {pos.X:F0},{pos.Y:F0},{pos.Z:F0}");
+        }
+        else
+        {
+            Server.PrintToConsole($"[NarcosPractice] FAILED to spawn marker '{text}' - CreateEntityByName/property assignment returned null or threw.");
+        }
     }
 
     public void RemoveMarkerText(string markerId)
@@ -92,24 +102,35 @@ public class MarkerVisualService
 
     private static CPointWorldText? CreateWorldText(string text, Vector position, Color color)
     {
-        var entity = Utilities.CreateEntityByName<CPointWorldText>("point_worldtext");
-        if (entity == null)
+        try
+        {
+            var entity = Utilities.CreateEntityByName<CPointWorldText>("point_worldtext");
+            if (entity == null)
+            {
+                Server.PrintToConsole("[NarcosPractice] CreateEntityByName(point_worldtext) returned null.");
+                return null;
+            }
+
+            entity.MessageText = text;
+            entity.Enabled = true;
+            entity.FontSize = 30;
+            entity.Color = color;
+            entity.Fullbright = true;
+            entity.WorldUnitsPerPx = 0.4f;
+            entity.DepthOffset = 0f;
+            entity.JustifyHorizontal = PointWorldTextJustifyHorizontal_t.POINT_WORLD_TEXT_JUSTIFY_HORIZONTAL_CENTER;
+            entity.JustifyVertical = PointWorldTextJustifyVertical_t.POINT_WORLD_TEXT_JUSTIFY_VERTICAL_CENTER;
+            entity.ReorientMode = PointWorldTextReorientMode_t.POINT_WORLD_TEXT_REORIENT_NONE;
+
+            entity.Teleport(position, new QAngle(0, 0, 0));
+            entity.DispatchSpawn();
+
+            return entity;
+        }
+        catch (Exception ex)
+        {
+            Server.PrintToConsole($"[NarcosPractice] EXCEPTION creating world text: {ex}");
             return null;
-
-        entity.MessageText = text;
-        entity.Enabled = true;
-        entity.FontSize = 30;
-        entity.Color = color;
-        entity.Fullbright = true;
-        entity.WorldUnitsPerPx = 0.4f;
-        entity.DepthOffset = 0f;
-        entity.JustifyHorizontal = PointWorldTextJustifyHorizontal_t.POINT_WORLD_TEXT_JUSTIFY_HORIZONTAL_CENTER;
-        entity.JustifyVertical = PointWorldTextJustifyVertical_t.POINT_WORLD_TEXT_JUSTIFY_VERTICAL_CENTER;
-        entity.ReorientMode = PointWorldTextReorientMode_t.POINT_WORLD_TEXT_REORIENT_NONE;
-
-        entity.Teleport(position, new QAngle(0, 0, 0));
-        entity.DispatchSpawn();
-
-        return entity;
+        }
     }
 }
