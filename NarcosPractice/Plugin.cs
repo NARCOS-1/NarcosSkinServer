@@ -1,3 +1,4 @@
+using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Commands;
 using Microsoft.Extensions.Logging;
@@ -9,21 +10,29 @@ namespace NarcosPractice;
 public partial class Plugin : BasePlugin
 {
     private MarkerService? _markerService;
+    private MarkerVisualService? _markerVisualService;
     private PracticeService? _practiceService;
 
     public override string ModuleName => "NarcosPractice";
-    public override string ModuleVersion => "0.2.0";
+    public override string ModuleVersion => "0.3.0";
     public override string ModuleAuthor => "Zein";
-    public override string ModuleDescription => "Nade lineup practice: markers, guided stand/aim, reset-and-retry, fly-and-verify";
+    public override string ModuleDescription => "Nade lineup practice: visible markers, guided stand/aim, technique HUD, reset-and-retry, fly-and-verify";
 
     public override void Load(bool hotReload)
     {
         string pluginDirectory = Path.GetDirectoryName(ModulePath)!;
 
         _markerService = new MarkerService(pluginDirectory);
-        _practiceService = new PracticeService(_markerService);
+        _markerVisualService = new MarkerVisualService();
+        _practiceService = new PracticeService(_markerService, _markerVisualService);
 
         RegisterListeners();
+
+        // OnMapStart won't fire again for whatever map is already running when this
+        // plugin loads (or hot-reloads), so seed the current map and spawn its
+        // markers immediately instead of waiting for the next map change.
+        _currentMap = Server.MapName;
+        RefreshMarkerVisuals();
 
         AddCommand("css_nadesave", "Start saving a lineup here - pick type/technique/strength, then throw", OnNadeSaveCommand);
         AddCommand("css_nades", "Open the nade practice menu", OnNadesCommand);
@@ -97,6 +106,17 @@ public partial class Plugin : BasePlugin
             .FirstOrDefault(m => m.Lineups.Any(l => l.Name.Equals(command.GetArg(1), StringComparison.OrdinalIgnoreCase) && l.Type == type));
 
         bool deleted = marker != null && (_markerService?.DeleteLineup(_currentMap, marker, command.GetArg(1), type) ?? false);
+
+        if (deleted && marker != null)
+        {
+            // DeleteLineup already removed the marker from storage if that was its
+            // last lineup - mirror that on the visual side too.
+            if (marker.Lineups.Count == 0)
+                _markerVisualService?.RemoveMarkerText(marker.Id);
+            else
+                _markerVisualService?.SpawnMarkerText(marker);
+        }
+
         player.PrintToChat(deleted
             ? $"[Practice] Deleted '{command.GetArg(1)}'."
             : $"[Practice] No lineup named '{command.GetArg(1)}' found.");

@@ -13,7 +13,11 @@ public partial class Plugin
 
     private void RegisterListeners()
     {
-        RegisterListener<OnMapStart>(mapName => _currentMap = mapName);
+        RegisterListener<OnMapStart>(mapName =>
+        {
+            _currentMap = mapName;
+            RefreshMarkerVisuals();
+        });
         RegisterListener<OnTick>(OnGameTick);
 
         RegisterEventHandler<EventSmokegrenadeDetonate>((@event, info) =>
@@ -39,6 +43,14 @@ public partial class Plugin
             HandleDetonate(@event.Userid, NadeType.Molotov, @event.X, @event.Y, @event.Z);
             return HookResult.Continue;
         });
+    }
+
+    private void RefreshMarkerVisuals()
+    {
+        if (_markerService == null || _markerVisualService == null)
+            return;
+
+        _markerVisualService.RefreshMarkersForMap(_markerService.GetMarkers(_currentMap));
     }
 
     private void HandleDetonate(CCSPlayerController? player, NadeType type, float x, float y, float z)
