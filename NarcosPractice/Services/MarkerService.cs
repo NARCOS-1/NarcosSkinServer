@@ -13,15 +13,18 @@ public class MarkerService
     public const float InteractRadius = 80f;
 
     private readonly string _dataDirectory;
+    private readonly string _seedDirectory;
     private readonly Dictionary<string, List<Marker>> _cache = new(StringComparer.OrdinalIgnoreCase);
 
     public MarkerService(string pluginDirectory)
     {
         _dataDirectory = Path.Combine(pluginDirectory, "Data", "Markers");
+        _seedDirectory = Path.Combine(pluginDirectory, "Data", "SeedMarkers");
         Directory.CreateDirectory(_dataDirectory);
     }
 
     private string PathFor(string map) => Path.Combine(_dataDirectory, $"{map}.json");
+    private string SeedPathFor(string map) => Path.Combine(_seedDirectory, $"{map}.json");
 
     public List<Marker> GetMarkers(string? map)
     {
@@ -35,9 +38,24 @@ public class MarkerService
             return cached;
 
         string path = PathFor(map);
-        List<Marker> markers = File.Exists(path)
-            ? JsonConvert.DeserializeObject<List<Marker>>(File.ReadAllText(path)) ?? []
-            : [];
+        List<Marker> markers;
+
+        if (File.Exists(path))
+        {
+            markers = JsonConvert.DeserializeObject<List<Marker>>(File.ReadAllText(path)) ?? [];
+        }
+        else if (File.Exists(SeedPathFor(map)))
+        {
+            // First time this map's been seen - seed the real, editable data file
+            // from the bundled community lineup library instead of starting empty.
+            // The seed itself is never modified; !nadesave additions go to `path`.
+            markers = JsonConvert.DeserializeObject<List<Marker>>(File.ReadAllText(SeedPathFor(map))) ?? [];
+            Persist(map, markers);
+        }
+        else
+        {
+            markers = [];
+        }
 
         _cache[map] = markers;
         return markers;

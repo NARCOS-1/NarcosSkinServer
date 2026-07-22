@@ -1,0 +1,642 @@
+[
+  {
+    "Id": "0f3cbf999c074f439b4d1cda6b098c0a",
+    "PosX": -798.96875,
+    "PosY": 1260.486084,
+    "PosZ": -215.96875,
+    "Lineups": [
+      {
+        "Name": "#a_cross_main_title",
+        "Type": "Smoke",
+        "Technique": "Normal",
+        "Strength": "Full",
+        "ThrowPosX": -798.96875,
+        "ThrowPosY": 1260.486084,
+        "ThrowPosZ": -215.96875,
+        "ThrowAngPitch": -39.215954,
+        "ThrowAngYaw": -43.214165,
+        "DetonatePosX": 263.659607,
+        "DetonatePosY": 457.203033,
+        "DetonatePosZ": -211.96875
+      }
+    ]
+  },
+  {
+    "Id": "0409935e5762412c9b491b8cfec89c91",
+    "PosX": -362.027344,
+    "PosY": 1384.029053,
+    "PosZ": -160.966797,
+    "Lineups": [
+      {
+        "Name": "#longdog_main_title",
+        "Type": "Smoke",
+        "Technique": "Normal",
+        "Strength": "Full",
+        "ThrowPosX": -362.027344,
+        "ThrowPosY": 1384.029053,
+        "ThrowPosZ": -160.966797,
+        "ThrowAngPitch": -35.26487,
+        "ThrowAngYaw": -92.602905,
+        "DetonatePosX": -444.438934,
+        "DetonatePosY": -428.707733,
+        "DetonatePosZ": -212.96875
+      }
+    ]
+  },
+  {
+    "Id": "f46e7d9d4528475c8a7753b4e1906ac6",
+    "PosX": -427.972229,
+    "PosY": 1777.971191,
+    "PosZ": -209.96875,
+    "Lineups": [
+      {
+        "Name": "Smoke Conn",
+        "Type": "Smoke",
+        "Technique": "Jumpthrow",
+        "Strength": "Full",
+        "ThrowPosX": -427.972229,
+        "ThrowPosY": 1777.971191,
+        "ThrowPosZ": -209.96875,
+        "ThrowAngPitch": -8.70105,
+        "ThrowAngYaw": -69.895706,
+        "DetonatePosX": 350.717773,
+        "DetonatePosY": -473.030151,
+        "DetonatePosZ": -213.878418
+      },
+      {
+        "Name": "Smoke Pop dog",
+        "Type": "Smoke",
+        "Technique": "Jumpthrow",
+        "Strength": "Full",
+        "ThrowPosX": -427.966675,
+        "ThrowPosY": 1777.968262,
+        "ThrowPosZ": -209.96875,
+        "ThrowAngPitch": -10.516005,
+        "ThrowAngYaw": -90.043823,
+        "DetonatePosX": -429.282532,
+        "DetonatePosY": -331.928131,
+        "DetonatePosZ": -212.96875
+      }
+    ]
+  },
+  {
+    "Id": "07b0eb378f6948abbb89baa1ada4baad",
+    "PosX": -1499.048584,
+    "PosY": 1479.968018,
+    "PosZ": -170.96875,
+    "Lineups": [
+      {
+        "Name": "Smoke Connector",
+        "Type": "Smoke",
+        "Technique": "Jumpthrow",
+        "Strength": "Full",
+        "ThrowPosX": -1499.048584,
+        "ThrowPosY": 1479.968018,
+        "ThrowPosZ": -170.96875,
+        "ThrowAngPitch": -34.808979,
+        "ThrowAngYaw": -45.328026,
+        "DetonatePosX": 371.309174,
+        "DetonatePosY": -424.874329,
+        "DetonatePosZ": -213.960281
+      },
+      {
+        "Name": "Smoke Camera",
+        "Type": "Smoke",
+        "Technique": "Jumpthrow",
+        "Strength": "Full",
+        "ThrowPosX": -1499.03125,
+        "ThrowPosY": 1479.967651,
+        "ThrowPosZ": -170.96875,
+        "ThrowAngPitch": -25.848284,
+        "ThrowAngYaw": -29.216,
+        "DetonatePosX": 878.928223,
+        "DetonatePosY": 143.819016,
+        "DetonatePosZ": -209.96875
+      },
+      {
+        "Name": "Smoke Camera",
+        "Type": "Smoke",
+        "Technique": "Jumpthrow",
+        "Strength": "Full",
+        "ThrowPosX": -1460.96875,
+        "ThrowPosY": 1479.967896,
+        "ThrowPosZ": -170.96875,
+        "ThrowAngPitch": -37.762939,
+        "ThrowAngYaw": -30.068018,
+        "DetonatePosX": 806.456604,
+        "DetonatePosY": 167.266617,
+        "DetonatePosZ": -209.96875
+      },
+      {
+        "Name": "Smoke conn",
+        "Type": "Smoke",
+        "Technique": "Jumpthrow",
+        "Strength": "Full",
+        "ThrowPosX": -1460.96875,
+        "ThrowPosY": 1479.967407,
+        "ThrowPosZ": -170.96875,
+        "ThrowAngPitch": -36.72892,
+        "ThrowAngYaw": -45.185863,
+        "DetonatePosX": 364.235596,
+        "DetonatePosY": -381.086121,
+        "DetonatePosZ": -214.654022
+      }
+    ]
+  },
+  {
+    "Id": "1e30f72c04214392a76de0d369bc1d64",
+    "PosX": -764.424011,
+    "PosY": 524.421936,
+    "PosZ": -215.96875,
+    "Lineups": [
+      {
+        "Name": "Molly Back Site",
+        "Type": "Molotov",
+        "Technique": "Walkthrow",
+        "Strength": "Full",
+        "ThrowPosX": -764.424011,
+        "ThrowPosY": 524.421936,
+        "ThrowPosZ": -215.96875,
+        "ThrowAngPitch": -20.793375,
+        "ThrowAngYaw": -21.385983,
+        "DetonatePosX": -764.424011,
+        "DetonatePosY": 524.421936,
+        "DetonatePosZ": -215.96875
+      }
+    ]
+  },
+  {
+    "Id": "17923a950a7d427f9469a43790d9ea63",
+    "PosX": -650.054688,
+    "PosY": 1559.738159,
+    "PosZ": -209.804443,
+    "Lineups": [
+      {
+        "Name": "A site flash",
+        "Type": "Flash",
+        "Technique": "Jumpthrow",
+        "Strength": "Short",
+        "ThrowPosX": -650.054688,
+        "ThrowPosY": 1559.738159,
+        "ThrowPosZ": -209.804443,
+        "ThrowAngPitch": -6.461999,
+        "ThrowAngYaw": -77.218193,
+        "DetonatePosX": -421.444794,
+        "DetonatePosY": 503.366394,
+        "DetonatePosZ": 200.137207
+      }
+    ]
+  },
+  {
+    "Id": "c9746fae99e547ef84d797627e9fbcfa",
+    "PosX": -420.864929,
+    "PosY": 1424.03125,
+    "PosZ": -215.975464,
+    "Lineups": [
+      {
+        "Name": "B Connector from Garbage",
+        "Type": "Smoke",
+        "Technique": "Jumpthrow",
+        "Strength": "Full",
+        "ThrowPosX": -420.864929,
+        "ThrowPosY": 1424.03125,
+        "ThrowPosZ": -215.975464,
+        "ThrowAngPitch": -38.830143,
+        "ThrowAngYaw": -61.800339,
+        "DetonatePosX": 685.446655,
+        "DetonatePosY": -847.798218,
+        "DetonatePosZ": -229.008972
+      }
+    ]
+  },
+  {
+    "Id": "31fa5589c909426d900fa3e678e53c71",
+    "PosX": -1040.966187,
+    "PosY": -1112.474609,
+    "PosZ": -153.96875,
+    "Lineups": [
+      {
+        "Name": "Smoke Left bomb from halls",
+        "Type": "Smoke",
+        "Technique": "Jumpthrow",
+        "Strength": "Full",
+        "ThrowPosX": -1040.966187,
+        "ThrowPosY": -1112.474609,
+        "ThrowPosZ": -153.96875,
+        "ThrowAngPitch": 4.024948,
+        "ThrowAngYaw": 24.204889,
+        "DetonatePosX": -71.37851,
+        "DetonatePosY": -1263.794312,
+        "DetonatePosZ": -275.968719
+      }
+    ]
+  },
+  {
+    "Id": "200a2651c0b14fb1ade5d9d2fb34932a",
+    "PosX": -922.031738,
+    "PosY": -812.491089,
+    "PosZ": -153.96875,
+    "Lineups": [
+      {
+        "Name": "Smoke B side-walk from halls",
+        "Type": "Smoke",
+        "Technique": "Normal",
+        "Strength": "Full",
+        "ThrowPosX": -922.031738,
+        "ThrowPosY": -812.491089,
+        "ThrowPosZ": -153.96875,
+        "ThrowAngPitch": 21.229477,
+        "ThrowAngYaw": -13.680044,
+        "DetonatePosX": -144.213623,
+        "DetonatePosY": -991.105469,
+        "DetonatePosZ": -284.801788
+      }
+    ]
+  },
+  {
+    "Id": "fdbd5f529ccb4b53a036bbb6d85dcfe8",
+    "PosX": 334.551483,
+    "PosY": -450.437683,
+    "PosZ": -216.138916,
+    "Lineups": [
+      {
+        "Name": "Molo A Main",
+        "Type": "Molotov",
+        "Technique": "Runjumpthrow",
+        "Strength": "Medium",
+        "ThrowPosX": 334.551483,
+        "ThrowPosY": -450.437683,
+        "ThrowPosZ": -216.138916,
+        "ThrowAngPitch": 3.322061,
+        "ThrowAngYaw": 133.277145,
+        "DetonatePosX": -694.332764,
+        "DetonatePosY": 537.59198,
+        "DetonatePosZ": -141.89447
+      }
+    ]
+  },
+  {
+    "Id": "5ed69070c58243b2bf689d23b329cd8e",
+    "PosX": -250.186157,
+    "PosY": -901.678711,
+    "PosZ": -318.96875,
+    "Lineups": [
+      {
+        "Name": "Flash B Halls",
+        "Type": "Flash",
+        "Technique": "Walkthrow",
+        "Strength": "Full",
+        "ThrowPosX": -250.186157,
+        "ThrowPosY": -901.678711,
+        "ThrowPosZ": -318.96875,
+        "ThrowAngPitch": -0.901922,
+        "ThrowAngYaw": -179.760529,
+        "DetonatePosX": -892.545898,
+        "DetonatePosY": -898.95636,
+        "DetonatePosZ": -7.689569
+      }
+    ]
+  },
+  {
+    "Id": "8be238ef42aa49ec9fad0df1858e2496",
+    "PosX": -873.969482,
+    "PosY": 754.748962,
+    "PosZ": -215.96875,
+    "Lineups": [
+      {
+        "Name": "Molo between electric and pop dog",
+        "Type": "Molotov",
+        "Technique": "Normal",
+        "Strength": "Full",
+        "ThrowPosX": -873.969482,
+        "ThrowPosY": 754.748962,
+        "ThrowPosZ": -215.96875,
+        "ThrowAngPitch": -15.543026,
+        "ThrowAngYaw": -61.2393,
+        "DetonatePosX": -303.41922,
+        "DetonatePosY": -163.288605,
+        "DetonatePosZ": -211.96875
+      },
+      {
+        "Name": "Nade between electric and pop",
+        "Type": "HE",
+        "Technique": "Duckthrow",
+        "Strength": "Full",
+        "ThrowPosX": -873.968628,
+        "ThrowPosY": 707.980042,
+        "ThrowPosZ": -215.96875,
+        "ThrowAngPitch": -17.952173,
+        "ThrowAngYaw": -56.420921,
+        "DetonatePosX": -315.300293,
+        "DetonatePosY": -133.549713,
+        "DetonatePosZ": -109.066452
+      }
+    ]
+  },
+  {
+    "Id": "9aa3152fe2dc402b9ea8c9119acca7ec",
+    "PosX": -763.739014,
+    "PosY": -922.96344,
+    "PosZ": -213.778015,
+    "Lineups": [
+      {
+        "Name": "Molo window from ramp",
+        "Type": "Molotov",
+        "Technique": "Walkthrow",
+        "Strength": "Full",
+        "ThrowPosX": -763.739014,
+        "ThrowPosY": -922.96344,
+        "ThrowPosZ": -213.778015,
+        "ThrowAngPitch": -30.040823,
+        "ThrowAngYaw": 143.724777,
+        "DetonatePosX": -947.807251,
+        "DetonatePosY": -473.633118,
+        "DetonatePosZ": 15.826729
+      }
+    ]
+  },
+  {
+    "Id": "0a6d63fa889d4c9cac369cbe4f2775a1",
+    "PosX": -671.105835,
+    "PosY": -514.032593,
+    "PosZ": -35.96875,
+    "Lineups": [
+      {
+        "Name": "Smoke deep conn",
+        "Type": "Smoke",
+        "Technique": "Jumpthrow",
+        "Strength": "Medium",
+        "ThrowPosX": -671.105835,
+        "ThrowPosY": -514.032593,
+        "ThrowPosZ": -35.96875,
+        "ThrowAngPitch": -25.014603,
+        "ThrowAngYaw": -2.821003,
+        "DetonatePosX": 718.65625,
+        "DetonatePosY": -586.476501,
+        "DetonatePosZ": -213.96875
+      }
+    ]
+  },
+  {
+    "Id": "6d1e2f97fdba4374ab1d1ff0bda9c8df",
+    "PosX": -747.96875,
+    "PosY": -258.355713,
+    "PosZ": 28.044758,
+    "Lineups": [
+      {
+        "Name": "Smoke deep conn",
+        "Type": "Smoke",
+        "Technique": "Jumpthrow",
+        "Strength": "Full",
+        "ThrowPosX": -747.96875,
+        "ThrowPosY": -258.355713,
+        "ThrowPosZ": 28.044758,
+        "ThrowAngPitch": 1.848132,
+        "ThrowAngYaw": -27.078819,
+        "DetonatePosX": 688.652161,
+        "DetonatePosY": -568.719543,
+        "DetonatePosZ": -213.96875
+      },
+      {
+        "Name": "Flash over Pop Dog",
+        "Type": "Flash",
+        "Technique": "Normal",
+        "Strength": "Full",
+        "ThrowPosX": -747.96875,
+        "ThrowPosY": -258.580811,
+        "ThrowPosZ": 28.044758,
+        "ThrowAngPitch": -20.273191,
+        "ThrowAngYaw": -51.479752,
+        "DetonatePosX": -342.311798,
+        "DetonatePosY": -332.412781,
+        "DetonatePosZ": 110.881065
+      }
+    ]
+  },
+  {
+    "Id": "aad9b8e66e004b8481a9ea46ac99e3b1",
+    "PosX": -1152.968628,
+    "PosY": -1098.013794,
+    "PosZ": -100.96875,
+    "Lineups": [
+      {
+        "Name": "Smoke conn",
+        "Type": "Smoke",
+        "Technique": "Walkthrow",
+        "Strength": "Full",
+        "ThrowPosX": -1152.968628,
+        "ThrowPosY": -1098.013794,
+        "ThrowPosZ": -100.96875,
+        "ThrowAngPitch": -16.301846,
+        "ThrowAngYaw": 9.870275,
+        "DetonatePosX": 633.005798,
+        "DetonatePosY": -752.37738,
+        "DetonatePosZ": -212.715958
+      }
+    ]
+  },
+  {
+    "Id": "6191e78271d04decb526dfea43ecda70",
+    "PosX": -1152.968628,
+    "PosY": -1153.96875,
+    "PosZ": -100.96875,
+    "Lineups": [
+      {
+        "Name": "Smoke CT/Molo Conn",
+        "Type": "Smoke",
+        "Technique": "Walkthrow",
+        "Strength": "Full",
+        "ThrowPosX": -1152.968628,
+        "ThrowPosY": -1153.96875,
+        "ThrowPosZ": -100.96875,
+        "ThrowAngPitch": -12.023024,
+        "ThrowAngYaw": 7.665501,
+        "DetonatePosX": 690.82605,
+        "DetonatePosY": -905.793274,
+        "DetonatePosZ": -229.787155
+      },
+      {
+        "Name": "Flash - Ramp Entry",
+        "Type": "Flash",
+        "Technique": "Jumpthrow",
+        "Strength": "Full",
+        "ThrowPosX": -1146.968628,
+        "ThrowPosY": -1176.667358,
+        "ThrowPosZ": -101.96875,
+        "ThrowAngPitch": 14.091126,
+        "ThrowAngYaw": 21.520681,
+        "DetonatePosX": -115.973793,
+        "DetonatePosY": -775.940552,
+        "DetonatePosZ": -100.453224
+      }
+    ]
+  },
+  {
+    "Id": "b84d85db03d543daac61f500c5cc3bd7",
+    "PosX": -1152.96875,
+    "PosY": -1014.921875,
+    "PosZ": -100.64325,
+    "Lineups": [
+      {
+        "Name": "Smoke back left bomb train",
+        "Type": "Smoke",
+        "Technique": "Normal",
+        "Strength": "Full",
+        "ThrowPosX": -1152.96875,
+        "ThrowPosY": -1014.921875,
+        "ThrowPosZ": -100.64325,
+        "ThrowAngPitch": -7.831812,
+        "ThrowAngYaw": -5.727598,
+        "DetonatePosX": 232.966843,
+        "DetonatePosY": -1153.942383,
+        "DetonatePosZ": -348.96875
+      },
+      {
+        "Name": "Molo back left bomb train",
+        "Type": "Molotov",
+        "Technique": "Normal",
+        "Strength": "Full",
+        "ThrowPosX": -1152.967773,
+        "ThrowPosY": -974.03125,
+        "ThrowPosZ": -100.96875,
+        "ThrowAngPitch": -10.307497,
+        "ThrowAngYaw": -7.956883,
+        "DetonatePosX": 213.722992,
+        "DetonatePosY": -1165.062744,
+        "DetonatePosZ": -291.650055
+      }
+    ]
+  },
+  {
+    "Id": "c4ef313b48c5485bb6083d5b71b5b8c1",
+    "PosX": -1152.971069,
+    "PosY": -1296.493164,
+    "PosZ": -100.96875,
+    "Lineups": [
+      {
+        "Name": "Flash - Ramp Entry",
+        "Type": "Flash",
+        "Technique": "Normal",
+        "Strength": "Full",
+        "ThrowPosX": -1152.971069,
+        "ThrowPosY": -1296.493164,
+        "ThrowPosZ": -100.96875,
+        "ThrowAngPitch": -9.778849,
+        "ThrowAngYaw": 33.293541,
+        "DetonatePosX": -398.050659,
+        "DetonatePosY": -800.723145,
+        "DetonatePosZ": -0.098425
+      }
+    ]
+  },
+  {
+    "Id": "d78a7e016e544b9ebe23ae70bb56e7c8",
+    "PosX": -2000.0,
+    "PosY": 1434.233154,
+    "PosZ": -171.96875,
+    "Lineups": [
+      {
+        "Name": "Smoke Sandwich",
+        "Type": "Smoke",
+        "Technique": "Jumpthrow",
+        "Strength": "Full",
+        "ThrowPosX": -2000.0,
+        "ThrowPosY": 1434.233154,
+        "ThrowPosZ": -171.96875,
+        "ThrowAngPitch": -27.224936,
+        "ThrowAngYaw": -23.600021,
+        "DetonatePosX": 239.216843,
+        "DetonatePosY": 385.915131,
+        "DetonatePosZ": -211.96875
+      }
+    ]
+  },
+  {
+    "Id": "dd9d8ac183cc49dabbf6ef510d143e43",
+    "PosX": -1844.96875,
+    "PosY": 1479.967407,
+    "PosZ": -170.96875,
+    "Lineups": [
+      {
+        "Name": "Smoke Sandwich",
+        "Type": "Smoke",
+        "Technique": "Jumpthrow",
+        "Strength": "Full",
+        "ThrowPosX": -1844.96875,
+        "ThrowPosY": 1479.967407,
+        "ThrowPosZ": -170.96875,
+        "ThrowAngPitch": -24.596033,
+        "ThrowAngYaw": -25.62417,
+        "DetonatePosX": 249.728317,
+        "DetonatePosY": 407.867065,
+        "DetonatePosZ": -211.96875
+      }
+    ]
+  },
+  {
+    "Id": "331de2dc0589472baf0f86ece18f24fa",
+    "PosX": 106.808937,
+    "PosY": -1027.059326,
+    "PosZ": -167.96875,
+    "Lineups": [
+      {
+        "Name": "Nade B Halls",
+        "Type": "HE",
+        "Technique": "Jumpthrow",
+        "Strength": "Full",
+        "ThrowPosX": 106.808937,
+        "ThrowPosY": -1027.059326,
+        "ThrowPosZ": -167.96875,
+        "ThrowAngPitch": 7.777368,
+        "ThrowAngYaw": -178.85524,
+        "DetonatePosX": -1097.614136,
+        "DetonatePosY": -1043.878418,
+        "DetonatePosZ": -38.667946
+      }
+    ]
+  },
+  {
+    "Id": "476da6144477455a98afbe9b13791e6e",
+    "PosX": 338.034302,
+    "PosY": -719.950012,
+    "PosZ": -168.96875,
+    "Lineups": [
+      {
+        "Name": "Molo inside B Halls",
+        "Type": "Molotov",
+        "Technique": "Jumpthrow",
+        "Strength": "Full",
+        "ThrowPosX": 338.034302,
+        "ThrowPosY": -719.950012,
+        "ThrowPosZ": -168.96875,
+        "ThrowAngPitch": -3.112448,
+        "ThrowAngYaw": 158.893936,
+        "DetonatePosX": -663.170654,
+        "DetonatePosY": -254.910034,
+        "DetonatePosZ": 125.420425
+      }
+    ]
+  },
+  {
+    "Id": "a9e3fd9345b04cebaa047c5e5ae48f74",
+    "PosX": -977.294128,
+    "PosY": 621.353027,
+    "PosZ": 17.031248,
+    "Lineups": [
+      {
+        "Name": "Molo B Ramp",
+        "Type": "Molotov",
+        "Technique": "Normal",
+        "Strength": "Medium",
+        "ThrowPosX": -977.294128,
+        "ThrowPosY": 621.353027,
+        "ThrowPosZ": 17.031248,
+        "ThrowAngPitch": -21.526403,
+        "ThrowAngYaw": -89.614311,
+        "DetonatePosX": -968.062683,
+        "DetonatePosY": -802.627869,
+        "DetonatePosZ": -151.96875
+      }
+    ]
+  }
+]

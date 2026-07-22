@@ -13,6 +13,13 @@
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<None Remove="Data\SeedMarkers\*.json" />
+		<Content Include="Data\SeedMarkers\*.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
 	<Target Name="CopyPlugin" AfterTargets="Build">
 
 		<MakeDir Directories="D:\CS2Server\server\game\csgo\addons\counterstrikesharp\plugins\NarcosPractice" />
