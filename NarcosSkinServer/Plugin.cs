@@ -49,10 +49,7 @@ public partial class Plugin : BasePlugin
 
         Economy.Initialize(pluginDirectory, weaponDefIndexes);
 
-        // Per-skin legacy_model flags (whether a paint kit uses the pre-2023 mesh/UV
-        // layout). GivePlayerWeaponSkin picks the weapon's bodygroup off this, and
-        // legacy vs modern is genuinely per-skin - defaulting it one way or the other
-        // when this list is empty renders some skins with the wrong mesh entirely.
+        
         string skinLegacyModelsPath = Path.Combine(pluginDirectory, "Data", "SkinLegacyModels.json");
 
         if (File.Exists(skinLegacyModelsPath))
@@ -99,16 +96,16 @@ public partial class Plugin : BasePlugin
             Server.ExecuteCommand("sv_cheats 1");
             Server.ExecuteCommand("sv_lan 0");
 
-            // Bots (none, this is a solo/inspection server)
+            // Bots 
             Server.ExecuteCommand("bot_quota 0");
             Server.ExecuteCommand("bot_kick");
 
-            // Warmup: skip it entirely
+            // Warmup
             Server.ExecuteCommand("mp_warmup_end");
             Server.ExecuteCommand("mp_warmuptime 0");
             Server.ExecuteCommand("mp_do_warmup_offline 0");
 
-            // Round/freeze time: no friction between spawning and playing
+            // Round/freeze time
             Server.ExecuteCommand("mp_freezetime 0");
             Server.ExecuteCommand("mp_round_restart_delay 0");
             Server.ExecuteCommand("mp_ignore_round_win_conditions 1");
@@ -118,12 +115,12 @@ public partial class Plugin : BasePlugin
             Server.ExecuteCommand("mp_maxrounds 0");
             Server.ExecuteCommand("mp_timelimit 0");
 
-            // Buying: anywhere, anytime, full armor free
+            // Buying
             Server.ExecuteCommand("mp_buy_anywhere 1");
             Server.ExecuteCommand("mp_buytime 9999");
             Server.ExecuteCommand("mp_free_armor 2");
 
-            // Money: maxed out
+            // Money
             Server.ExecuteCommand("mp_startmoney 65535");
             Server.ExecuteCommand("mp_maxmoney 65535");
             Server.ExecuteCommand("mp_afterroundmoney 65535");
@@ -131,7 +128,7 @@ public partial class Plugin : BasePlugin
             // Ammo
             Server.ExecuteCommand("sv_infinite_ammo 2");
 
-            // Survivability (closest vanilla approximation to "can't die")
+            // Survivability
             Server.ExecuteCommand("mp_respawn_on_death_ct 1");
             Server.ExecuteCommand("mp_respawn_on_death_t 1");
             Server.ExecuteCommand("mp_respawn_immunitytime 9999");
@@ -271,10 +268,7 @@ public partial class Plugin : BasePlugin
         player.PrintToChat($"[Narcos] {WeaponNames.Get(knifeId)} | {Economy.GetPaintKit(paint).Name ?? $"Paint {paint}"}");
     }
 
-    // The WASD skin menu only offers a handful of fixed seed presets (0, 100, 250,
-    // 500, 661, Random) since CS2MenuManager has no free-text input. This command
-    // fills the gap for picking an exact seed/pattern (e.g. to match a specific
-    // showcase image), the same way css_knife/css_gloves already do for those categories.
+    
     private void OnWeaponCommand(CCSPlayerController? player, CommandInfo command)
     {
         if (player == null || !player.IsValid || player.IsBot)
