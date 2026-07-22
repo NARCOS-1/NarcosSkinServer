@@ -25,6 +25,17 @@ public partial class Plugin
         });
         RegisterListener<OnTick>(OnGameTick);
 
+        // CS2 clears out dynamically-spawned entities during the warmup-to-live
+        // round transition - our markers spawn once on map start, well before that
+        // transition happens, so they can get wiped before anyone ever sees them.
+        // Respawning on every round start is cheap (the queue just drains a few
+        // per tick) and guarantees the markers survive past that cleanup.
+        RegisterEventHandler<EventRoundStart>((@event, info) =>
+        {
+            RefreshMarkerVisuals();
+            return HookResult.Continue;
+        });
+
         RegisterEventHandler<EventSmokegrenadeDetonate>((@event, info) =>
         {
             HandleDetonate(@event.Userid, NadeType.Smoke, @event.X, @event.Y, @event.Z);
