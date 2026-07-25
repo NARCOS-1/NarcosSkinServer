@@ -13,17 +13,19 @@ namespace NarcosPractice.Services;
 // reference that caused a real crash earlier in this plugin's history.
 public class MarkerVisualService
 {
-    // One entity per lineup now, not per marker - Yprac shows a separate
-    // labeled panel for each lineup ("Smoke wall 3", "Smoke mouz wall 1", ...)
-    // even when several share roughly the same stand spot, rather than
-    // collapsing them into a single "3 lineups" summary.
-    private readonly Dictionary<string, List<CPointWorldText>> _markerEntities = new();
+    // No more per-lineup name labels - back to one icon per marker, no text at
+    // all. Multiple lineups sharing a stand spot don't need multiple stacked
+    // copies of the same icon, so this is one entity per marker again.
+    private readonly Dictionary<string, CPointWorldText> _markerEntities = new();
     private readonly Dictionary<int, CPointWorldText> _aimReferenceEntities = new();
     private readonly Queue<Marker> _pendingSpawns = new();
 
-    // Vertical gap between stacked lineup labels at the same marker, so they
-    // read as a list rather than overlapping into unreadable mush.
-    private const float LabelStackSpacing = 26f;
+    // Diamond for "stand here", bullseye ring for "aim here" - plain glyphs
+    // rendered through the same point_worldtext entity already proven safe,
+    // not a texture/sprite (that would need an unverified native resource
+    // reference, same category of guess that caused the earlier crash).
+    private const string StandIcon = "◆"; // ◆
+    private const string AimIcon = "◎";   // ◎
 
     // How many point_worldtext entities to create per tick while draining the
     // spawn queue - some maps have 80+ lineups, and creating dozens of entities
@@ -60,37 +62,26 @@ public class MarkerVisualService
     {
         RemoveMarkerText(marker.Id);
 
-        var entities = new List<CPointWorldText>();
-        for (int i = 0; i < marker.Lineups.Count; i++)
+        var pos = new Vector(marker.PosX, marker.PosY, marker.PosZ + 32f);
+        var entity = CreateWorldText(StandIcon, pos, Color.FromArgb(255, 90, 170, 255), background: false);
+
+        if (entity != null)
         {
-            var lineup = marker.Lineups[i];
-            var pos = new Vector(marker.PosX, marker.PosY, marker.PosZ + 32f + i * LabelStackSpacing);
-            var entity = CreateWorldText(lineup.Name, pos, Color.FromArgb(255, 255, 193, 61), background: true);
-
-            if (entity != null)
-            {
-                entities.Add(entity);
-                Server.PrintToConsole($"[NarcosPractice] Spawned '{lineup.Name}' at {pos.X:F0},{pos.Y:F0},{pos.Z:F0}");
-            }
-            else
-            {
-                Server.PrintToConsole($"[NarcosPractice] FAILED to spawn '{lineup.Name}' - CreateEntityByName/property assignment returned null or threw.");
-            }
+            _markerEntities[marker.Id] = entity;
+            Server.PrintToConsole($"[NarcosPractice] Spawned marker icon at {pos.X:F0},{pos.Y:F0},{pos.Z:F0}");
         }
-
-        if (entities.Count > 0)
-            _markerEntities[marker.Id] = entities;
+        else
+        {
+            Server.PrintToConsole("[NarcosPractice] FAILED to spawn marker icon - CreateEntityByName/property assignment returned null or threw.");
+        }
     }
 
     public void RemoveMarkerText(string markerId)
     {
-        if (_markerEntities.TryGetValue(markerId, out var entities))
+        if (_markerEntities.TryGetValue(markerId, out var entity))
         {
-            foreach (var entity in entities)
-            {
-                if (entity.IsValid)
-                    entity.Remove();
-            }
+            if (entity.IsValid)
+                entity.Remove();
             _markerEntities.Remove(markerId);
         }
     }
@@ -101,7 +92,7 @@ public class MarkerVisualService
     {
         HideAimReference(playerSlot);
 
-        var entity = CreateWorldText("O", position, Color.FromArgb(255, 255, 221, 0), background: false);
+        var entity = CreateWorldText(AimIcon, position, Color.FromArgb(255, 255, 221, 0), background: false);
         if (entity != null)
             _aimReferenceEntities[playerSlot] = entity;
     }
@@ -130,7 +121,9 @@ public class MarkerVisualService
             entity.MessageText = text;
             entity.Enabled = true;
             entity.FontName = "Arial";
-            entity.FontSize = 24;
+            // These are icon glyphs now, not readable text labels - sized to
+            // read as a shape from a distance rather than as small print.
+            entity.FontSize = 50;
             entity.Color = color;
             entity.Fullbright = true;
             entity.WorldUnitsPerPx = 0.3f;
