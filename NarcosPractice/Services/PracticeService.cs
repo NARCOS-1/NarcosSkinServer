@@ -142,6 +142,18 @@ public class PracticeService
 
         pawn.Teleport(throwPos, throwAngles, new Vector(0, 0, 0));
 
+        // Diagnostic only - two MoveType-based fixes for the "weird standing"
+        // bug have both failed to resolve it, so print the raw state right
+        // after the teleport instead of guessing a third theory blind. Remove
+        // once the real cause is found.
+        Server.PrintToConsole(
+            $"[Practice-Debug] GuideTo for {player.PlayerName}: " +
+            $"MoveType={Schema.GetRef<MoveType_t>(pawn.Handle, "CBaseEntity", "m_MoveType")} " +
+            $"ActualMoveType={Schema.GetRef<MoveType_t>(pawn.Handle, "CBaseEntity", "m_nActualMoveType")} " +
+            $"LifeState={pawn.LifeState} " +
+            $"AbsOrigin={pawn.AbsOrigin} " +
+            $"EyeAngles={pawn.EyeAngles}");
+
         string weaponClass = lineup.Type switch
         {
             NadeType.Smoke => "weapon_smokegrenade",
