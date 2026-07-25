@@ -133,7 +133,7 @@ public class PracticeService
         // afterwards ever leveled the body back out, so it stuck until reconnect.
         pawn.Teleport(throwPos, new QAngle(0, throwAngles.Y, 0), new Vector(0, 0, 0));
 
-        pawn.EyeAngles = throwAngles;
+        Schema.GetRef<QAngle>(pawn.Handle, "CBasePlayerPawn", "m_angEyeAngles") = throwAngles;
         Utilities.SetStateChanged(pawn, "CBasePlayerPawn", "m_angEyeAngles");
 
         string weaponClass = lineup.Type switch
