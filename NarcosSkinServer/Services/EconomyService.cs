@@ -82,6 +82,14 @@ public class EconomyService
                     weapon.AttributeManager.Item.NetworkedDynamicAttributes.Attributes.RemoveAll();
                     break;
                 }
+            // No customization stored for this specific gun - leave it completely
+            // untouched (not just the paint fields below, but EntityQuality and
+            // AccountID too), so a player's real Steam-inventory skin renders
+            // exactly as-is instead of being disrupted by data that only makes
+            // sense once we're actually about to apply our own skin.
+            case false when !HasChangedPaint(player, weapon.AttributeManager.Item.ItemDefinitionIndex, out var _):
+                return;
+
             default:
                 weapon.AttributeManager.Item.EntityQuality = 0;
                 break;
