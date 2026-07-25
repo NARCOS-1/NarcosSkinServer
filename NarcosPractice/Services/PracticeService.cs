@@ -168,8 +168,8 @@ public class PracticeService
     }
 
     // Toggles noclip so you can fly up and check where your throw actually landed,
-    // then drop back down - done via MoveType directly (not the "noclip" console
-    // command) so it doesn't get caught by NarcosSkinServer's cheat-command blocker.
+    // then drop back down - done via MoveType directly rather than the "noclip"
+    // console command, which is a plain toggle and would fight with our own state.
     public void ToggleVerify(CCSPlayerController player)
     {
         var pawn = player.PlayerPawn.Value;
