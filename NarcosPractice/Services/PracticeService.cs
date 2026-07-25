@@ -17,10 +17,12 @@ public class PracticeService
     // visible anchor close enough to always render.
     private const float AimReferenceDistance = 400f;
 
-    // How far away / how far off-crosshair a marker can be and still count as
-    // "aimed at" for the shoot/use-to-teleport fast-travel convenience.
+    // How far away a marker can be and still count as "aimed at" for the
+    // shoot/use-to-teleport fast-travel convenience, and how close the aim ray
+    // itself has to pass to the marker's actual position (roughly the icon's
+    // own world-space footprint, not a generous fixed-degree cone).
     private const float AimMaxDistance = 1200f;
-    private const float AimMaxAngleDegrees = 4f;
+    private const float AimHitRadius = 18f;
 
     // Close enough to a marker to count as "standing at it" for the automatic
     // equip-and-see-the-aim-guide flow - this is the primary way lineups are meant
@@ -284,9 +286,15 @@ public class PracticeService
         };
     }
 
-    // Simple angle-to-nearest-marker check rather than a real engine trace - good
-    // enough for "which marker is roughly under your crosshair," and avoids taking
-    // on a whole new trace/collision API for this.
+    // Simulated hitscan rather than a real engine trace: projects each marker
+    // onto the aim ray and only counts it as "aimed at" if the ray actually
+    // passes within the icon's own footprint (AimHitRadius) of it, picking
+    // whichever qualifying marker is nearest along the ray - same behavior as
+    // a real trace hitting the closest thing first. The previous version
+    // picked whichever marker had the smallest angle to it, which is why it
+    // felt so imprecise: a fixed-degree cone covers a radius that grows with
+    // distance, so a marker 1200 units away could register from being tens of
+    // units off to the side while a nearby one needed near-pixel accuracy.
     private Marker? FindAimedAtMarker(CCSPlayerController player, string map)
     {
         var pawn = player.PlayerPawn.Value;
@@ -297,27 +305,32 @@ public class PracticeService
         var forward = DirectionFromAngles(pawn.EyeAngles.X, pawn.EyeAngles.Y);
 
         Marker? best = null;
-        float bestAngle = AimMaxAngleDegrees;
+        float bestDistanceAlongRay = AimMaxDistance;
 
         foreach (var marker in _markerService.GetMarkers(map))
         {
             float dx = marker.PosX - eyeOrigin.X;
             float dy = marker.PosY - eyeOrigin.Y;
             float dz = marker.PosZ - eyeOrigin.Z;
-            float dist = MathF.Sqrt(dx * dx + dy * dy + dz * dz);
 
-            if (dist > AimMaxDistance || dist < 1f)
+            float distanceAlongRay = dx * forward.X + dy * forward.Y + dz * forward.Z;
+            if (distanceAlongRay <= 0f || distanceAlongRay >= bestDistanceAlongRay)
                 continue;
 
-            float dot = (forward.X * dx + forward.Y * dy + forward.Z * dz) / dist;
-            dot = Math.Clamp(dot, -1f, 1f);
-            float angleDeg = MathF.Acos(dot) * (180f / MathF.PI);
+            float closestX = eyeOrigin.X + forward.X * distanceAlongRay;
+            float closestY = eyeOrigin.Y + forward.Y * distanceAlongRay;
+            float closestZ = eyeOrigin.Z + forward.Z * distanceAlongRay;
 
-            if (angleDeg < bestAngle)
-            {
-                bestAngle = angleDeg;
-                best = marker;
-            }
+            float perpX = marker.PosX - closestX;
+            float perpY = marker.PosY - closestY;
+            float perpZ = marker.PosZ - closestZ;
+            float perpDist = MathF.Sqrt(perpX * perpX + perpY * perpY + perpZ * perpZ);
+
+            if (perpDist > AimHitRadius)
+                continue;
+
+            bestDistanceAlongRay = distanceAlongRay;
+            best = marker;
         }
 
         return best;
