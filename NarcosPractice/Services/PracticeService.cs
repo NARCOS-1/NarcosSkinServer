@@ -125,34 +125,16 @@ public class PracticeService
         var throwPos = new Vector(lineup.ThrowPosX, lineup.ThrowPosY, lineup.ThrowPosZ);
         var throwAngles = new QAngle(lineup.ThrowAngPitch, lineup.ThrowAngYaw, 0);
 
-        // GuideTo is usually called from a WasdMenu item selection. That menu
-        // freezes the player by setting MoveType to MOVETYPE_OBSOLETE while
-        // open and only restores MOVETYPE_WALK when it closes - if our
-        // Teleport happens before that restore has actually run, the pawn
-        // moves while still in that frozen, non-simulated state, which looks
-        // exactly like a camera stuck outside the body even though movement
-        // and shooting still work once it clears. Force it back to normal
-        // ourselves instead of depending on the menu library's own timing.
-        // Freeze()/Unfreeze() actually touch two separate fields - m_MoveType
-        // and m_nActualMoveType - so both have to be restored or the pawn stays
-        // in the frozen state even though m_MoveType alone looks correct.
-        Schema.GetRef<MoveType_t>(pawn.Handle, "CBaseEntity", "m_MoveType") = MoveType_t.MOVETYPE_WALK;
-        Utilities.SetStateChanged(pawn, "CBaseEntity", "m_MoveType");
-        Schema.GetRef<MoveType_t>(pawn.Handle, "CBaseEntity", "m_nActualMoveType") = MoveType_t.MOVETYPE_WALK;
+        // A player's body should only ever rotate in yaw - pitch (looking up/down,
+        // often steep for jumpthrows) belongs on the eye angles alone. Teleport's
+        // angle argument sets the entity's body orientation, so passing the full
+        // saved pitch there was tipping the whole body model over ("weirdly
+        // standing" / half-upside-down), not just aiming the camera - and nothing
+        // afterwards ever leveled the body back out, so it stuck until reconnect.
+        pawn.Teleport(throwPos, new QAngle(0, throwAngles.Y, 0), new Vector(0, 0, 0));
 
-        pawn.Teleport(throwPos, throwAngles, new Vector(0, 0, 0));
-
-        // Diagnostic only - two MoveType-based fixes for the "weird standing"
-        // bug have both failed to resolve it, so print the raw state right
-        // after the teleport instead of guessing a third theory blind. Remove
-        // once the real cause is found.
-        Server.PrintToConsole(
-            $"[Practice-Debug] GuideTo for {player.PlayerName}: " +
-            $"MoveType={Schema.GetRef<MoveType_t>(pawn.Handle, "CBaseEntity", "m_MoveType")} " +
-            $"ActualMoveType={Schema.GetRef<MoveType_t>(pawn.Handle, "CBaseEntity", "m_nActualMoveType")} " +
-            $"LifeState={pawn.LifeState} " +
-            $"AbsOrigin={pawn.AbsOrigin} " +
-            $"EyeAngles={pawn.EyeAngles}");
+        pawn.EyeAngles = throwAngles;
+        Utilities.SetStateChanged(pawn, "CBasePlayerPawn", "m_angEyeAngles");
 
         string weaponClass = lineup.Type switch
         {
