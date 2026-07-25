@@ -141,7 +141,8 @@ public class PracticeService
         _lastGuided[player.Slot] = lineup;
         _markerVisualService.ShowAimReference(player.Slot, ResolveAimReferencePoint(lineup, throwPos, throwAngles));
 
-        string notesSuffix = string.IsNullOrWhiteSpace(lineup.Notes) ? "" : $" ({lineup.Notes})";
+        string notes = CleanNotes(lineup.Notes, " - ");
+        string notesSuffix = string.IsNullOrWhiteSpace(notes) ? "" : $" ({notes})";
         player.PrintToChat($"[Practice] '{lineup.Name}' - {lineup.Technique}, {lineup.Strength} throw.{notesSuffix} Line up and throw it for real.");
     }
 
@@ -361,8 +362,22 @@ public class PracticeService
             _ => ""
         };
 
-        string notesLine = string.IsNullOrWhiteSpace(lineup.Notes) ? "" : $"<br><font color='#cccccc'>{lineup.Notes}</font>";
+        string notes = CleanNotes(lineup.Notes, "<br>");
+        string notesLine = string.IsNullOrWhiteSpace(notes) ? "" : $"<br><font color='#cccccc'>{notes}</font>";
 
         return $"<font color='#ffcc66'>&lt; {techniquePart} &gt;</font>{strengthPart}{notesLine}";
+    }
+
+    // Source annotation data has literal "\n" (backslash-n) two-character
+    // sequences the original author typed as their own formatting, not real
+    // newline characters - shown raw, they look exactly like that: a visible
+    // backslash and n in the middle of the text. Replace with something
+    // sensible for wherever it's being displayed (plain chat vs HTML center text).
+    private static string CleanNotes(string? notes, string lineBreakReplacement)
+    {
+        if (string.IsNullOrWhiteSpace(notes))
+            return "";
+
+        return notes.Replace("\\n", lineBreakReplacement).Trim();
     }
 }

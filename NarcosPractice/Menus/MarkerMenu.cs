@@ -15,7 +15,12 @@ public static class MarkerMenu
         {
             menu.AddItem($"{lineup.Name} [{lineup.Type}, {lineup.Technique}, {lineup.Strength}]", (p, o) =>
             {
-                practiceService.GuideTo(p, lineup);
+                // Teleporting in the same tick the world-space menu closes seems
+                // to leave the client's camera stuck looking from outside the
+                // player (third-person, spectator-style nameplate) even though
+                // movement/shooting still work fine - a short delay lets the
+                // menu's own close/camera-reattach finish first.
+                plugin.AddTimer(0.1f, () => practiceService.GuideTo(p, lineup));
             });
         }
 
