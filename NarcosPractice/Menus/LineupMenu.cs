@@ -33,7 +33,10 @@ public static class LineupMenu
 
         var menu = new WasdMenu($"{type} Lineups", plugin)
         {
-            PrevMenu = previousMenu
+            PrevMenu = previousMenu,
+            // See MarkerMenu.cs - this menu's items also call GuideTo directly,
+            // so skip the library's own MoveType freeze/unfreeze here too.
+            WasdMenu_FreezePlayer = false
         };
 
         if (lineups.Count == 0)
