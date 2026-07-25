@@ -125,16 +125,7 @@ public class PracticeService
         var throwPos = new Vector(lineup.ThrowPosX, lineup.ThrowPosY, lineup.ThrowPosZ);
         var throwAngles = new QAngle(lineup.ThrowAngPitch, lineup.ThrowAngYaw, 0);
 
-        // A player's body should only ever rotate in yaw - pitch (looking up/down,
-        // often steep for jumpthrows) belongs on the eye angles alone. Teleport's
-        // angle argument sets the entity's body orientation, so passing the full
-        // saved pitch there was tipping the whole body model over ("weirdly
-        // standing" / half-upside-down), not just aiming the camera - and nothing
-        // afterwards ever leveled the body back out, so it stuck until reconnect.
-        pawn.Teleport(throwPos, new QAngle(0, throwAngles.Y, 0), new Vector(0, 0, 0));
-
-        Schema.GetRef<QAngle>(pawn.Handle, "CBasePlayerPawn", "m_angEyeAngles") = throwAngles;
-        Utilities.SetStateChanged(pawn, "CBasePlayerPawn", "m_angEyeAngles");
+        pawn.Teleport(throwPos, throwAngles, new Vector(0, 0, 0));
 
         string weaponClass = lineup.Type switch
         {
