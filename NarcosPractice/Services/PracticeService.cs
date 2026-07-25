@@ -228,6 +228,11 @@ public class PracticeService
         // made shoot-to-teleport feel broken at close range.
         if (aimedMarker != null && aimedMarker != nearbyMarker)
         {
+            // Don't leave a stale aim dot / marker-id on screen from whatever
+            // was shown a moment ago while switching into this branch.
+            _markerVisualService.HideAimReference(player.Slot);
+            _lastShownMarkerId.TryRemove(player.Slot, out _);
+
             int count = aimedMarker.Lineups.Count;
             SetCenterText(player, $"<font color='#8fd3ff'>SHOOT or USE</font> to teleport - {count} lineup{(count == 1 ? "" : "s")} here");
 
@@ -263,9 +268,7 @@ public class PracticeService
             _lastShownMarkerId[player.Slot] = marker.Id;
         }
 
-        var aimedLineup = FindClosestAlongRay(eyeOrigin, forward, marker.Lineups,
-            l => ResolveAimReferencePoint(l, new Vector(l.ThrowPosX, l.ThrowPosY, l.ThrowPosZ), new QAngle(l.ThrowAngPitch, l.ThrowAngYaw, 0)),
-            AimMaxDistance, AimHitRadius);
+        var aimedLineup = FindAimedAtLineup(eyeOrigin, forward, marker.Lineups);
 
         if (aimedLineup != null)
         {
@@ -277,6 +280,48 @@ public class PracticeService
         int count = marker.Lineups.Count;
         string types = string.Join(", ", marker.Lineups.Select(l => l.Type).Distinct());
         SetCenterText(player, $"<font color='#8fd3ff'>{count} lineup{(count == 1 ? "" : "s")} here</font> ({types}) - look at a marker for details");
+    }
+
+    // Aim-reference dots are often far away (a window across a rooftop, the far
+    // side of a sightline) - the tight, fixed-radius hitscan used for shooting
+    // a nearby diamond marker doesn't work here, since at long range even
+    // dead-center aim has enough natural eye-height/angle slop to miss an
+    // 18-unit-wide target entirely. This uses an angular tolerance instead
+    // (unaffected by distance), which is also the right tool for "which of
+    // several aim dots is roughly under my crosshair" rather than requiring
+    // real hitscan precision.
+    private const float LineupAimMaxAngleDegrees = 4f;
+
+    private static Lineup? FindAimedAtLineup(Vector eyeOrigin, Vector forward, IEnumerable<Lineup> lineups)
+    {
+        Lineup? best = null;
+        float bestAngle = LineupAimMaxAngleDegrees;
+
+        foreach (var lineup in lineups)
+        {
+            var aimPoint = ResolveAimReferencePoint(lineup,
+                new Vector(lineup.ThrowPosX, lineup.ThrowPosY, lineup.ThrowPosZ),
+                new QAngle(lineup.ThrowAngPitch, lineup.ThrowAngYaw, 0));
+
+            float dx = aimPoint.X - eyeOrigin.X;
+            float dy = aimPoint.Y - eyeOrigin.Y;
+            float dz = aimPoint.Z - eyeOrigin.Z;
+            float dist = MathF.Sqrt(dx * dx + dy * dy + dz * dz);
+            if (dist < 1f)
+                continue;
+
+            float dot = (forward.X * dx + forward.Y * dy + forward.Z * dz) / dist;
+            dot = Math.Clamp(dot, -1f, 1f);
+            float angleDeg = MathF.Acos(dot) * (180f / MathF.PI);
+
+            if (angleDeg < bestAngle)
+            {
+                bestAngle = angleDeg;
+                best = lineup;
+            }
+        }
+
+        return best;
     }
 
     // Only actually calls PrintToCenterHtml when the text differs from what
