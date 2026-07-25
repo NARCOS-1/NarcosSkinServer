@@ -133,8 +133,12 @@ public class PracticeService
         // exactly like a camera stuck outside the body even though movement
         // and shooting still work once it clears. Force it back to normal
         // ourselves instead of depending on the menu library's own timing.
+        // Freeze()/Unfreeze() actually touch two separate fields - m_MoveType
+        // and m_nActualMoveType - so both have to be restored or the pawn stays
+        // in the frozen state even though m_MoveType alone looks correct.
         Schema.GetRef<MoveType_t>(pawn.Handle, "CBaseEntity", "m_MoveType") = MoveType_t.MOVETYPE_WALK;
         Utilities.SetStateChanged(pawn, "CBaseEntity", "m_MoveType");
+        Schema.GetRef<MoveType_t>(pawn.Handle, "CBaseEntity", "m_nActualMoveType") = MoveType_t.MOVETYPE_WALK;
 
         pawn.Teleport(throwPos, throwAngles, new Vector(0, 0, 0));
 
