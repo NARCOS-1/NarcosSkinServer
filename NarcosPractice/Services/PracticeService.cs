@@ -40,6 +40,12 @@ public class PracticeService
 
     private readonly ConcurrentDictionary<int, bool> _noclip = new();
 
+    // Last hint text actually sent to each player, so we only call
+    // PrintToCenterHtml when it changes instead of every single tick - sending
+    // it repeatedly (even as "") is what kept the hint box frame stuck on
+    // screen permanently instead of clearing when there was nothing to show.
+    private readonly ConcurrentDictionary<int, string> _lastCenterText = new();
+
     private readonly MarkerService _markerService;
     private readonly MarkerVisualService _markerVisualService;
 
@@ -206,7 +212,7 @@ public class PracticeService
             }
 
             var neededTypes = string.Join(", ", nearbyMarker.Lineups.Select(l => l.Type).Distinct());
-            player.PrintToCenterHtml($"<font color='#8fd3ff'>Equip {neededTypes}</font> to see the aim guide here");
+            SetCenterText(player, $"<font color='#8fd3ff'>Equip {neededTypes}</font> to see the aim guide here");
             return;
         }
 
@@ -215,12 +221,12 @@ public class PracticeService
 
         if (aimedMarker == null)
         {
-            player.PrintToCenterHtml("");
+            SetCenterText(player, "");
             return;
         }
 
         int count = aimedMarker.Lineups.Count;
-        player.PrintToCenterHtml($"<font color='#8fd3ff'>SHOOT or USE</font> to teleport - {count} lineup{(count == 1 ? "" : "s")} here");
+        SetCenterText(player, $"<font color='#8fd3ff'>SHOOT or USE</font> to teleport - {count} lineup{(count == 1 ? "" : "s")} here");
 
         if (interactingNow && !interactedLastTick)
             onInteract(aimedMarker);
@@ -239,7 +245,19 @@ public class PracticeService
             _lastGuided[player.Slot] = lineup;
         }
 
-        player.PrintToCenterHtml(BuildTechniqueBarText(lineup));
+        SetCenterText(player, BuildTechniqueBarText(lineup));
+    }
+
+    // Only actually calls PrintToCenterHtml when the text differs from what
+    // this player was last shown - repeatedly re-sending identical text (even
+    // "") every tick is what kept the hint box permanently on screen.
+    private void SetCenterText(CCSPlayerController player, string text)
+    {
+        if (_lastCenterText.TryGetValue(player.Slot, out var last) && last == text)
+            return;
+
+        _lastCenterText[player.Slot] = text;
+        player.PrintToCenterHtml(text);
     }
 
     private static NadeType? GetEquippedNadeType(CCSPlayerController player)

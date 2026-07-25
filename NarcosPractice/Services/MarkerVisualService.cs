@@ -62,7 +62,11 @@ public class MarkerVisualService
     {
         RemoveMarkerText(marker.Id);
 
-        var pos = new Vector(marker.PosX, marker.PosY, marker.PosZ + 32f);
+        // Sitting close to the actual floor reads as "stand here" - floating
+        // higher makes the exact ground spot harder to judge precisely. Can't
+        // lie flat on the ground (billboard-only reorient modes), but hugging
+        // the floor gets closer than hovering at head height.
+        var pos = new Vector(marker.PosX, marker.PosY, marker.PosZ + 6f);
         var entity = CreateWorldText(StandIcon, pos, Color.FromArgb(255, 90, 170, 255), background: false);
 
         if (entity != null)
