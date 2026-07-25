@@ -53,6 +53,12 @@ public class PracticeService
     // not every single tick.
     private readonly ConcurrentDictionary<int, string> _lastShownMarkerId = new();
 
+    // Which of a marker's several lineups is currently considered "aimed at"
+    // per player - used purely for hysteresis in FindAimedAtLineup, so normal
+    // crosshair wobble right at the edge of the angle threshold doesn't flicker
+    // the technique bar on and off every other tick.
+    private readonly ConcurrentDictionary<int, Lineup> _lastAimedLineup = new();
+
     private readonly MarkerService _markerService;
     private readonly MarkerVisualService _markerVisualService;
 
@@ -268,7 +274,7 @@ public class PracticeService
             _lastShownMarkerId[player.Slot] = marker.Id;
         }
 
-        var aimedLineup = FindAimedAtLineup(eyeOrigin, forward, marker.Lineups);
+        var aimedLineup = FindAimedAtLineup(player.Slot, eyeOrigin, forward, marker.Lineups);
 
         if (aimedLineup != null)
         {
@@ -290,12 +296,22 @@ public class PracticeService
     // (unaffected by distance), which is also the right tool for "which of
     // several aim dots is roughly under my crosshair" rather than requiring
     // real hitscan precision.
-    private const float LineupAimMaxAngleDegrees = 4f;
+    //
+    // Two thresholds instead of one: ordinary crosshair wobble bounces right
+    // at the edge of a single fixed angle every tick, so a lineup would pass
+    // and fail the check from one tick to the next - flickering the technique
+    // bar on and off ("split second"). Once a lineup is locked on, it keeps
+    // being reported as long as it's within the wider Exit angle, and only
+    // loses that lock to another lineup that's inside the tighter Enter angle.
+    private const float LineupAimEnterAngleDegrees = 4f;
+    private const float LineupAimExitAngleDegrees = 8f;
 
-    private static Lineup? FindAimedAtLineup(Vector eyeOrigin, Vector forward, IEnumerable<Lineup> lineups)
+    private Lineup? FindAimedAtLineup(int playerSlot, Vector eyeOrigin, Vector forward, IEnumerable<Lineup> lineups)
     {
+        _lastAimedLineup.TryGetValue(playerSlot, out var current);
+
         Lineup? best = null;
-        float bestAngle = LineupAimMaxAngleDegrees;
+        float bestAngle = float.MaxValue;
 
         foreach (var lineup in lineups)
         {
@@ -314,12 +330,18 @@ public class PracticeService
             dot = Math.Clamp(dot, -1f, 1f);
             float angleDeg = MathF.Acos(dot) * (180f / MathF.PI);
 
-            if (angleDeg < bestAngle)
+            float threshold = ReferenceEquals(lineup, current) ? LineupAimExitAngleDegrees : LineupAimEnterAngleDegrees;
+            if (angleDeg < threshold && angleDeg < bestAngle)
             {
                 bestAngle = angleDeg;
                 best = lineup;
             }
         }
+
+        if (best != null)
+            _lastAimedLineup[playerSlot] = best;
+        else
+            _lastAimedLineup.TryRemove(playerSlot, out _);
 
         return best;
     }
