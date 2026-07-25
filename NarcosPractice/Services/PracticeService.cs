@@ -24,8 +24,8 @@ public class PracticeService
     private const float AimMaxDistance = 1200f;
     private const float AimHitRadius = 18f;
 
-    // Close enough to a marker to count as "standing at it" for the automatic
-    // equip-and-see-the-aim-guide flow - this is the primary way lineups are meant
+    // Close enough to a marker to count as "standing at it" and see every one of
+    // its lineups' aim dots at once - this is the primary way lineups are meant
     // to be practiced; shoot/use-to-teleport above is just a fast-travel shortcut.
     private const float StandingAtMarkerRadius = 100f;
 
@@ -47,6 +47,11 @@ public class PracticeService
     // it repeatedly (even as "") is what kept the hint box frame stuck on
     // screen permanently instead of clearing when there was nothing to show.
     private readonly ConcurrentDictionary<int, string> _lastCenterText = new();
+
+    // Which marker's aim dots are currently shown to each player, so they're
+    // only respawned when the player actually walks up to a different marker,
+    // not every single tick.
+    private readonly ConcurrentDictionary<int, string> _lastShownMarkerId = new();
 
     private readonly MarkerService _markerService;
     private readonly MarkerVisualService _markerVisualService;
@@ -194,10 +199,12 @@ public class PracticeService
             : "[Practice] Noclip off.");
     }
 
-    // Primary flow: standing at a marker with the matching nade equipped shows the
-    // aim guide automatically, no interaction needed. Secondary: aiming at a distant
-    // marker still offers shoot/use as a fast-travel shortcut to walking there.
-    // Called once per tick from Events.cs.
+    // Primary flow: standing at a marker shows an aim dot for every lineup there
+    // at once (not just whichever matches the currently equipped nade) - looking
+    // at a specific dot shows that lineup's technique bar. Secondary: aiming at a
+    // marker you're not standing at still offers shoot/use as a fast-travel
+    // shortcut, independent of whether you happen to be near a *different*
+    // marker right now. Called once per tick from Events.cs.
     public void Tick(CCSPlayerController player, string map, Action<Marker> onInteract)
     {
         var pawn = player.PlayerPawn.Value;
@@ -208,56 +215,68 @@ public class PracticeService
         bool interactedLastTick = _interactedLastTick.GetOrAdd(player.Slot, false);
         _interactedLastTick[player.Slot] = interactingNow;
 
+        var eyeOrigin = new Vector(pawn.AbsOrigin.X, pawn.AbsOrigin.Y, pawn.AbsOrigin.Z + 64f);
+        var forward = DirectionFromAngles(pawn.EyeAngles.X, pawn.EyeAngles.Y);
+
         var nearbyMarker = _markerService.FindNearest(map, pawn.AbsOrigin.X, pawn.AbsOrigin.Y, pawn.AbsOrigin.Z, StandingAtMarkerRadius);
+        var aimedMarker = FindClosestAlongRay(eyeOrigin, forward, _markerService.GetMarkers(map),
+            m => new Vector(m.PosX, m.PosY, m.PosZ), AimMaxDistance, AimHitRadius);
+
+        // A marker you're actually pointing at offers the shoot/use shortcut
+        // regardless of being close to some *other* marker right now - that
+        // proximity used to swallow the interaction outright, which is what
+        // made shoot-to-teleport feel broken at close range.
+        if (aimedMarker != null && aimedMarker != nearbyMarker)
+        {
+            int count = aimedMarker.Lineups.Count;
+            SetCenterText(player, $"<font color='#8fd3ff'>SHOOT or USE</font> to teleport - {count} lineup{(count == 1 ? "" : "s")} here");
+
+            if (interactingNow && !interactedLastTick)
+                onInteract(aimedMarker);
+            return;
+        }
 
         if (nearbyMarker != null)
         {
-            var equippedType = GetEquippedNadeType(player);
-            var matchingLineup = equippedType == null
-                ? null
-                : nearbyMarker.Lineups.Find(l => l.Type == equippedType);
-
-            if (matchingLineup != null)
-            {
-                ShowAutoGuide(player, matchingLineup);
-                return;
-            }
-
-            var neededTypes = string.Join(", ", nearbyMarker.Lineups.Select(l => l.Type).Distinct());
-            SetCenterText(player, $"<font color='#8fd3ff'>Equip {neededTypes}</font> to see the aim guide here");
+            ShowStandingGuide(player, nearbyMarker, eyeOrigin, forward);
             return;
         }
 
-        // Not standing at a marker - fall back to the aim/shoot/use fast-travel hint.
-        var aimedMarker = FindAimedAtMarker(player, map);
-
-        if (aimedMarker == null)
-        {
-            SetCenterText(player, "");
-            return;
-        }
-
-        int count = aimedMarker.Lineups.Count;
-        SetCenterText(player, $"<font color='#8fd3ff'>SHOOT or USE</font> to teleport - {count} lineup{(count == 1 ? "" : "s")} here");
-
-        if (interactingNow && !interactedLastTick)
-            onInteract(aimedMarker);
+        _markerVisualService.HideAimReference(player.Slot);
+        _lastShownMarkerId.TryRemove(player.Slot, out _);
+        SetCenterText(player, "");
     }
 
-    // Shows the aim-reference marker + technique bar for whichever lineup matches
-    // the nade currently in hand - only respawns the reference dot when the
-    // relevant lineup actually changes, not every single tick.
-    private void ShowAutoGuide(CCSPlayerController player, Lineup lineup)
+    // Shows one aim dot per lineup at this marker, all at once - only respawns
+    // them when the player's walked up to a different marker, not every tick.
+    // Whichever dot the player is currently looking at gets its technique bar
+    // shown; otherwise just a headcount of what's available here.
+    private void ShowStandingGuide(CCSPlayerController player, Marker marker, Vector eyeOrigin, Vector forward)
     {
-        if (!_lastGuided.TryGetValue(player.Slot, out var previous) || previous != lineup)
+        if (!_lastShownMarkerId.TryGetValue(player.Slot, out var previousId) || previousId != marker.Id)
         {
-            var throwPos = new Vector(lineup.ThrowPosX, lineup.ThrowPosY, lineup.ThrowPosZ);
-            var throwAngles = new QAngle(lineup.ThrowAngPitch, lineup.ThrowAngYaw, 0);
-            _markerVisualService.ShowAimReference(player.Slot, ResolveAimReferencePoint(lineup, throwPos, throwAngles));
-            _lastGuided[player.Slot] = lineup;
+            var positions = marker.Lineups
+                .Select(l => ResolveAimReferencePoint(l, new Vector(l.ThrowPosX, l.ThrowPosY, l.ThrowPosZ), new QAngle(l.ThrowAngPitch, l.ThrowAngYaw, 0)))
+                .ToList();
+
+            _markerVisualService.ShowAimReferences(player.Slot, positions);
+            _lastShownMarkerId[player.Slot] = marker.Id;
         }
 
-        SetCenterText(player, BuildTechniqueBarText(lineup));
+        var aimedLineup = FindClosestAlongRay(eyeOrigin, forward, marker.Lineups,
+            l => ResolveAimReferencePoint(l, new Vector(l.ThrowPosX, l.ThrowPosY, l.ThrowPosZ), new QAngle(l.ThrowAngPitch, l.ThrowAngYaw, 0)),
+            AimMaxDistance, AimHitRadius);
+
+        if (aimedLineup != null)
+        {
+            _lastGuided[player.Slot] = aimedLineup;
+            SetCenterText(player, BuildTechniqueBarText(aimedLineup));
+            return;
+        }
+
+        int count = marker.Lineups.Count;
+        string types = string.Join(", ", marker.Lineups.Select(l => l.Type).Distinct());
+        SetCenterText(player, $"<font color='#8fd3ff'>{count} lineup{(count == 1 ? "" : "s")} here</font> ({types}) - look at a marker for details");
     }
 
     // Only actually calls PrintToCenterHtml when the text differs from what
@@ -272,46 +291,30 @@ public class PracticeService
         player.PrintToCenterHtml(text);
     }
 
-    private static NadeType? GetEquippedNadeType(CCSPlayerController player)
-    {
-        string? designerName = player.PlayerPawn.Value?.WeaponServices?.ActiveWeapon.Value?.DesignerName;
-
-        return designerName switch
-        {
-            "weapon_smokegrenade" => NadeType.Smoke,
-            "weapon_flashbang" => NadeType.Flash,
-            "weapon_hegrenade" => NadeType.HE,
-            "weapon_molotov" or "weapon_incgrenade" => NadeType.Molotov,
-            _ => null
-        };
-    }
-
-    // Simulated hitscan rather than a real engine trace: projects each marker
+    // Simulated hitscan rather than a real engine trace: projects each candidate
     // onto the aim ray and only counts it as "aimed at" if the ray actually
-    // passes within the icon's own footprint (AimHitRadius) of it, picking
-    // whichever qualifying marker is nearest along the ray - same behavior as
-    // a real trace hitting the closest thing first. The previous version
-    // picked whichever marker had the smallest angle to it, which is why it
-    // felt so imprecise: a fixed-degree cone covers a radius that grows with
-    // distance, so a marker 1200 units away could register from being tens of
-    // units off to the side while a nearby one needed near-pixel accuracy.
-    private Marker? FindAimedAtMarker(CCSPlayerController player, string map)
+    // passes within its footprint (hitRadius), picking whichever qualifying
+    // candidate is nearest along the ray - same behavior as a real trace
+    // hitting the closest thing first. Shared by the marker check (used for
+    // the shoot/use-to-teleport shortcut) and the per-lineup check (used to
+    // pick which of a marker's several aim dots the player is looking at).
+    // The previous marker version picked whichever had the smallest angle to
+    // it, which is why it felt so imprecise: a fixed-degree cone covers a
+    // radius that grows with distance, so something 1200 units away could
+    // register from being tens of units off to the side while something close
+    // needed near-pixel accuracy.
+    private static T? FindClosestAlongRay<T>(Vector eyeOrigin, Vector forward, IEnumerable<T> candidates,
+        Func<T, Vector> position, float maxDistance, float hitRadius) where T : class
     {
-        var pawn = player.PlayerPawn.Value;
-        if (pawn == null || !pawn.IsValid || pawn.AbsOrigin == null || pawn.EyeAngles == null)
-            return null;
+        T? best = null;
+        float bestDistanceAlongRay = maxDistance;
 
-        var eyeOrigin = new Vector(pawn.AbsOrigin.X, pawn.AbsOrigin.Y, pawn.AbsOrigin.Z + 64f);
-        var forward = DirectionFromAngles(pawn.EyeAngles.X, pawn.EyeAngles.Y);
-
-        Marker? best = null;
-        float bestDistanceAlongRay = AimMaxDistance;
-
-        foreach (var marker in _markerService.GetMarkers(map))
+        foreach (var candidate in candidates)
         {
-            float dx = marker.PosX - eyeOrigin.X;
-            float dy = marker.PosY - eyeOrigin.Y;
-            float dz = marker.PosZ - eyeOrigin.Z;
+            var pos = position(candidate);
+            float dx = pos.X - eyeOrigin.X;
+            float dy = pos.Y - eyeOrigin.Y;
+            float dz = pos.Z - eyeOrigin.Z;
 
             float distanceAlongRay = dx * forward.X + dy * forward.Y + dz * forward.Z;
             if (distanceAlongRay <= 0f || distanceAlongRay >= bestDistanceAlongRay)
@@ -321,16 +324,16 @@ public class PracticeService
             float closestY = eyeOrigin.Y + forward.Y * distanceAlongRay;
             float closestZ = eyeOrigin.Z + forward.Z * distanceAlongRay;
 
-            float perpX = marker.PosX - closestX;
-            float perpY = marker.PosY - closestY;
-            float perpZ = marker.PosZ - closestZ;
+            float perpX = pos.X - closestX;
+            float perpY = pos.Y - closestY;
+            float perpZ = pos.Z - closestZ;
             float perpDist = MathF.Sqrt(perpX * perpX + perpY * perpY + perpZ * perpZ);
 
-            if (perpDist > AimHitRadius)
+            if (perpDist > hitRadius)
                 continue;
 
             bestDistanceAlongRay = distanceAlongRay;
-            best = marker;
+            best = candidate;
         }
 
         return best;

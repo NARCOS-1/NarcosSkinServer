@@ -17,7 +17,10 @@ public class MarkerVisualService
     // all. Multiple lineups sharing a stand spot don't need multiple stacked
     // copies of the same icon, so this is one entity per marker again.
     private readonly Dictionary<string, CPointWorldText> _markerEntities = new();
-    private readonly Dictionary<int, CPointWorldText> _aimReferenceEntities = new();
+
+    // A marker with several lineups shows one aim dot per lineup at once now,
+    // not just whichever one happened to match your currently equipped nade.
+    private readonly Dictionary<int, List<CPointWorldText>> _aimReferenceEntities = new();
     private readonly Queue<Marker> _pendingSpawns = new();
 
     // Diamond for "stand here", bullseye ring for "aim here" - plain glyphs
@@ -90,28 +93,43 @@ public class MarkerVisualService
         }
     }
 
-    // The small "aim here" reference point shown while a lineup is actively guided,
-    // separate from the persistent stand-here markers above. One per player.
-    public void ShowAimReference(int playerSlot, Vector position)
+    // The "aim here" reference point(s) shown while at/guided to a marker,
+    // separate from the persistent stand-here markers above. One set per player -
+    // a marker with several lineups gets one dot per lineup, all visible together.
+    public void ShowAimReference(int playerSlot, Vector position) =>
+        ShowAimReferences(playerSlot, [position]);
+
+    public void ShowAimReferences(int playerSlot, IReadOnlyList<Vector> positions)
     {
         HideAimReference(playerSlot);
 
-        // point_worldtext's un-rotated plane lies flat (horizontal), which is
-        // fine for the floor-hugging stand marker but makes this one (at head
-        // height, usually viewed near-level) read as a squashed horizontal
-        // shape instead of a circle. Pitching it 90 degrees stands the plane
-        // up before AROUND_UP billboards it to face the player in yaw.
-        var entity = CreateWorldText(AimIcon, position, Color.FromArgb(255, 255, 221, 0), background: false, new QAngle(90, 0, 0));
-        if (entity != null)
-            _aimReferenceEntities[playerSlot] = entity;
+        var entities = new List<CPointWorldText>(positions.Count);
+        foreach (var position in positions)
+        {
+            // point_worldtext's un-rotated plane lies flat (horizontal), which is
+            // fine for the floor-hugging stand marker but makes this one (at head
+            // height, usually viewed near-level) read as a squashed horizontal
+            // shape instead of a circle. Pitching it 90 degrees stands the plane
+            // up before AROUND_UP billboards it to face the player in yaw.
+            var entity = CreateWorldText(AimIcon, position, Color.FromArgb(255, 255, 221, 0), background: false, new QAngle(90, 0, 0));
+            if (entity != null)
+                entities.Add(entity);
+        }
+
+        if (entities.Count > 0)
+            _aimReferenceEntities[playerSlot] = entities;
     }
 
     public void HideAimReference(int playerSlot)
     {
-        if (_aimReferenceEntities.TryGetValue(playerSlot, out var entity))
+        if (_aimReferenceEntities.TryGetValue(playerSlot, out var entities))
         {
-            if (entity.IsValid)
-                entity.Remove();
+            foreach (var entity in entities)
+            {
+                if (entity.IsValid)
+                    entity.Remove();
+            }
+
             _aimReferenceEntities.Remove(playerSlot);
         }
     }
