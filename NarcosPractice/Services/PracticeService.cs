@@ -125,6 +125,17 @@ public class PracticeService
         var throwPos = new Vector(lineup.ThrowPosX, lineup.ThrowPosY, lineup.ThrowPosZ);
         var throwAngles = new QAngle(lineup.ThrowAngPitch, lineup.ThrowAngYaw, 0);
 
+        // GuideTo is usually called from a WasdMenu item selection. That menu
+        // freezes the player by setting MoveType to MOVETYPE_OBSOLETE while
+        // open and only restores MOVETYPE_WALK when it closes - if our
+        // Teleport happens before that restore has actually run, the pawn
+        // moves while still in that frozen, non-simulated state, which looks
+        // exactly like a camera stuck outside the body even though movement
+        // and shooting still work once it clears. Force it back to normal
+        // ourselves instead of depending on the menu library's own timing.
+        Schema.GetRef<MoveType_t>(pawn.Handle, "CBaseEntity", "m_MoveType") = MoveType_t.MOVETYPE_WALK;
+        Utilities.SetStateChanged(pawn, "CBaseEntity", "m_MoveType");
+
         pawn.Teleport(throwPos, throwAngles, new Vector(0, 0, 0));
 
         string weaponClass = lineup.Type switch
