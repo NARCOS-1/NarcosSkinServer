@@ -125,12 +125,15 @@ public class PracticeService
         var throwPos = new Vector(lineup.ThrowPosX, lineup.ThrowPosY, lineup.ThrowPosZ);
         var throwAngles = new QAngle(lineup.ThrowAngPitch, lineup.ThrowAngYaw, 0);
 
-        // Diagnostic: dropping pitch here (only yaw goes to Teleport) to test
-        // whether the saved look-up/down angle is what tips the body over in
-        // the "weird standing" bug. The previous attempt to restore exact
-        // pitch via a raw m_angEyeAngles schema write crashed the server, so
-        // this intentionally does NOT try to preserve aim pitch yet - it's
-        // purely to confirm or rule out the theory safely first.
+        // Confirmed cause of the "weird standing" bug: Teleport's angle argument
+        // sets the pawn's own body orientation, and passing the saved pitch
+        // (often steep on jumpthrows) tipped the whole body model over instead
+        // of just aiming the camera. Only yaw goes here now - the aim reference
+        // marker below already shows the exact saved pitch+yaw to look at, so
+        // the player still gets the full 3D aim direction without the server
+        // forcing their view (which CS2Sharp doesn't cleanly support anyway -
+        // EyeAngles has no public setter, and writing m_angEyeAngles directly
+        // via schema crashed the server since it isn't a networked field).
         pawn.Teleport(throwPos, new QAngle(0, throwAngles.Y, 0), new Vector(0, 0, 0));
 
         string weaponClass = lineup.Type switch
