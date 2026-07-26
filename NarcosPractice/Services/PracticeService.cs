@@ -237,16 +237,6 @@ public class PracticeService
         // actually looking at.
         if (nearbyMarker != null)
         {
-            // The shoot-to-teleport MarkerMenu opened from outside standing
-            // range never closes itself if the player just walks up to the
-            // marker instead of picking an item from it - and
-            // WasdMenuInstance.OnTick() keeps calling PrintToCenterHtml every
-            // single tick for as long as it's open, fighting with (and often
-            // winning over) our own technique-bar text below. Being here
-            // replaces the need for that menu entirely, so close it.
-            if (MenuManager.GetActiveMenu(player) is WasdMenuInstance activeMenu)
-                activeMenu.Close(false);
-
             ShowStandingGuide(player, nearbyMarker, eyeOrigin, forward);
             return;
         }
@@ -281,6 +271,22 @@ public class PracticeService
     {
         if (!_lastShownMarkerId.TryGetValue(player.Slot, out var previousId) || previousId != marker.Id)
         {
+            // A shoot-to-teleport MarkerMenu opened from outside standing range
+            // never closes itself if the player just walks up to the marker
+            // instead of picking an item from it - and WasdMenuInstance keeps
+            // calling PrintToCenterHtml every tick for as long as it's open,
+            // fighting with our own technique-bar text below. Being here
+            // replaces the need for that menu, so close it - but only once,
+            // right as we recognize arriving at a new marker: calling Close()
+            // every single tick would itself spam PrintToCenterHtml(" ") (its
+            // own exit text) behind our dedup cache's back, blanking the
+            // screen the instant our real text tries to render.
+            if (MenuManager.GetActiveMenu(player) is WasdMenuInstance activeMenu)
+            {
+                activeMenu.Close(false);
+                _lastCenterText.TryRemove(player.Slot, out _);
+            }
+
             var positions = marker.Lineups
                 .Select(l => ResolveAimReferencePoint(l, new Vector(l.ThrowPosX, l.ThrowPosY, l.ThrowPosZ), new QAngle(l.ThrowAngPitch, l.ThrowAngYaw, 0)))
                 .ToList();
