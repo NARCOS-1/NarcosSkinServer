@@ -106,12 +106,14 @@ public class MarkerVisualService
         var entities = new List<CPointWorldText>(positions.Count);
         foreach (var position in positions)
         {
-            // point_worldtext's un-rotated plane lies flat (horizontal), which is
-            // fine for the floor-hugging stand marker but makes this one (at head
-            // height, usually viewed near-level) read as a squashed horizontal
-            // shape instead of a circle. Pitching it 90 degrees stands the plane
-            // up before AROUND_UP billboards it to face the player in yaw.
-            var entity = CreateWorldText(AimIcon, position, Color.FromArgb(255, 255, 221, 0), background: false, new QAngle(90, 0, 0));
+            // Reverted the QAngle(90,0,0) base angle that used to be here: it
+            // fixed the squashed-circle look, but confirmed via a live position
+            // readout that it also shifts the rendered glyph tens of units away
+            // from the entity's actual AbsOrigin - the same coordinate the aim
+            // hit-test correctly uses. A crooked-looking icon is a far smaller
+            // problem than "the visible target isn't where it logically is",
+            // so this goes back to the plain, position-accurate orientation.
+            var entity = CreateWorldText(AimIcon, position, Color.FromArgb(255, 255, 221, 0), background: false);
             if (entity != null)
                 entities.Add(entity);
         }
@@ -134,7 +136,7 @@ public class MarkerVisualService
         }
     }
 
-    private static CPointWorldText? CreateWorldText(string text, Vector position, Color color, bool background, QAngle? baseAngle = null)
+    private static CPointWorldText? CreateWorldText(string text, Vector position, Color color, bool background)
     {
         try
         {
@@ -166,7 +168,7 @@ public class MarkerVisualService
             // the only other option this enum has and what a floor marker needs.
             entity.ReorientMode = PointWorldTextReorientMode_t.POINT_WORLD_TEXT_REORIENT_AROUND_UP;
 
-            entity.Teleport(position, baseAngle ?? new QAngle(0, 0, 0));
+            entity.Teleport(position, new QAngle(0, 0, 0));
             entity.DispatchSpawn();
 
             return entity;
