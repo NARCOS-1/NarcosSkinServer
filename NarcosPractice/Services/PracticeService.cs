@@ -237,7 +237,7 @@ public class PracticeService
         // actually looking at.
         if (nearbyMarker != null)
         {
-            ShowStandingGuide(player, nearbyMarker, eyeOrigin, forward);
+            ShowStandingGuide(player, nearbyMarker, pawn.AbsOrigin, eyeOrigin, forward);
             return;
         }
 
@@ -267,7 +267,7 @@ public class PracticeService
     // them when the player's walked up to a different marker, not every tick.
     // Whichever dot the player is currently looking at gets its technique bar
     // shown; otherwise just a headcount of what's available here.
-    private void ShowStandingGuide(CCSPlayerController player, Marker marker, Vector eyeOrigin, Vector forward)
+    private void ShowStandingGuide(CCSPlayerController player, Marker marker, Vector playerOrigin, Vector eyeOrigin, Vector forward)
     {
         if (!_lastShownMarkerId.TryGetValue(player.Slot, out var previousId) || previousId != marker.Id)
         {
@@ -300,7 +300,13 @@ public class PracticeService
         if (aimedLineup != null)
         {
             _lastGuided[player.Slot] = aimedLineup;
-            SetCenterText(player, BuildTechniqueBarText(aimedLineup));
+
+            float dx = aimedLineup.ThrowPosX - playerOrigin.X;
+            float dy = aimedLineup.ThrowPosY - playerOrigin.Y;
+            float dz = aimedLineup.ThrowPosZ - playerOrigin.Z;
+            float distanceFromExactSpot = MathF.Sqrt(dx * dx + dy * dy + dz * dz);
+
+            SetCenterText(player, BuildTechniqueBarText(aimedLineup, distanceFromExactSpot));
             return;
         }
 
@@ -457,7 +463,15 @@ public class PracticeService
             -MathF.Sin(pitchRad));
     }
 
-    private static string BuildTechniqueBarText(Lineup lineup)
+    // Thresholds for the live "how far off the exact recorded stand spot am I"
+    // readout - the shared marker's standing radius (100 units) only means
+    // roughly here, not exactly on the spot a jumpthrow in particular needs to
+    // land correctly, so show the real number instead of pretending "close
+    // enough to see the guide" also means "close enough to throw."
+    private const float ExactSpotGoodRadius = 16f;
+    private const float ExactSpotOkRadius = 48f;
+
+    private static string BuildTechniqueBarText(Lineup lineup, float distanceFromExactSpot)
     {
         string techniquePart = lineup.Technique switch
         {
@@ -478,7 +492,13 @@ public class PracticeService
         string notes = CleanNotes(lineup.Notes, "<br>");
         string notesLine = string.IsNullOrWhiteSpace(notes) ? "" : $"<br><font color='#cccccc'>{notes}</font>";
 
-        return $"<font color='#ffcc66'>&lt; {techniquePart} &gt;</font>{strengthPart}{notesLine}";
+        string spotColor = distanceFromExactSpot <= ExactSpotGoodRadius ? "#7CFC00"
+            : distanceFromExactSpot <= ExactSpotOkRadius ? "#ffcc66"
+            : "#ff6666";
+        string spotLabel = distanceFromExactSpot <= ExactSpotGoodRadius ? "ON SPOT" : $"{distanceFromExactSpot:F0} units off";
+        string spotLine = $"<br><font color='{spotColor}'>{spotLabel}</font>";
+
+        return $"<font color='#ffcc66'>&lt; {techniquePart} &gt;</font>{strengthPart}{notesLine}{spotLine}";
     }
 
     // Source annotation data has literal "\n" (backslash-n) two-character
