@@ -44,16 +44,15 @@ public class PracticeService
 
     private readonly ConcurrentDictionary<int, bool> _noclip = new();
 
-    // Last hint text actually sent to each player, so we only call
-    // PrintToCenterHtml when it changes instead of every single tick - sending
-    // it repeatedly (even as "") is what kept the hint box frame stuck on
-    // screen permanently instead of clearing when there was nothing to show.
+    // Last hint text actually sent to each player. Only used to dedupe the
+    // empty-string "clear" case - sending "" repeatedly is what kept an empty
+    // hint box frame stuck on screen permanently. Non-empty content is always
+    // resent every tick regardless of this (see SetCenterText) because
+    // PrintToCenterHtml plays a full fade-in/fade-out animation on each call
+    // rather than silently extending a hold - resending only occasionally
+    // (even every couple seconds) is visible as a pop-open/fade-out/pop-open
+    // pulse instead of one steady, continuously-visible element.
     private readonly ConcurrentDictionary<int, string> _lastCenterText = new();
-
-    // When each player's center text was last actually sent - CS2's own HUD
-    // element fades out after a few seconds on its own, so unchanged text
-    // still needs periodic resending to stay visible (see SetCenterText).
-    private readonly ConcurrentDictionary<int, DateTime> _lastCenterTextSentAt = new();
 
     // Which marker's aim dots are currently shown to each player, so they're
     // only respawned when the player actually walks up to a different marker,
@@ -380,27 +379,23 @@ public class PracticeService
         return best;
     }
 
-    // CS2's PrintToCenterHtml box has its own client-side display duration and
-    // fades out on its own after a few seconds regardless of whether the
-    // plugin ever sends anything else - confirmed via diagnostic logging that
-    // kept computing the exact same (correct) text every second while the
-    // player reported seeing nothing, because our dedup skipped resending it
-    // as "unchanged". So: skip only when the text is unchanged AND we've
-    // refreshed it recently enough to still be within that window - otherwise
-    // resend the identical text anyway just to keep it alive on screen.
-    private const float CenterTextRefreshSeconds = 2f;
-
+    // PrintToCenterHtml plays its own fade-in/fade-out animation on every call
+    // and doesn't stay held just because the plugin stops touching it - a
+    // 2-second refresh interval was still slow enough to visibly complete that
+    // whole animation and pop again, looping open/close/open. Non-empty
+    // content is now resent every single tick (fast enough that the fade-out
+    // never gets to finish, so it reads as one continuously-visible element)
+    // - the empty string is the one case still deduped, since repeatedly
+    // sending "" is what caused an empty box frame to hang around forever.
     private void SetCenterText(CCSPlayerController player, string text)
     {
-        bool unchanged = _lastCenterText.TryGetValue(player.Slot, out var last) && last == text;
-        bool dueForRefresh = !_lastCenterTextSentAt.TryGetValue(player.Slot, out var sentAt)
-            || (DateTime.UtcNow - sentAt).TotalSeconds >= CenterTextRefreshSeconds;
-
-        if (unchanged && !dueForRefresh)
-            return;
+        if (text.Length == 0)
+        {
+            if (_lastCenterText.TryGetValue(player.Slot, out var last) && last.Length == 0)
+                return;
+        }
 
         _lastCenterText[player.Slot] = text;
-        _lastCenterTextSentAt[player.Slot] = DateTime.UtcNow;
         player.PrintToCenterHtml(text);
     }
 
