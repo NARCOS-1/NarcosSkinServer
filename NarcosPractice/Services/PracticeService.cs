@@ -226,6 +226,21 @@ public class PracticeService
 
         var nearbyMarker = _markerService.FindNearest(map, pawn.AbsOrigin.X, pawn.AbsOrigin.Y, pawn.AbsOrigin.Z, StandingAtMarkerRadius);
 
+        // Diagnostic only - confirms whether "standing at the marker" (the hard
+        // gate ShowStandingGuide's per-lineup aim check lives behind) is even
+        // true, since that would fully explain nothing showing at all. Shoot
+        // or use to log one line. Remove once the real cause is found.
+        if (interactingNow && !interactedLastTick)
+        {
+            var closestAny = _markerService.FindNearest(map, pawn.AbsOrigin.X, pawn.AbsOrigin.Y, pawn.AbsOrigin.Z, float.MaxValue);
+            float distToClosest = closestAny == null ? -1f :
+                MathF.Sqrt(MathF.Pow(closestAny.PosX - pawn.AbsOrigin.X, 2) + MathF.Pow(closestAny.PosY - pawn.AbsOrigin.Y, 2) + MathF.Pow(closestAny.PosZ - pawn.AbsOrigin.Z, 2));
+            Server.PrintToConsole(
+                $"[Practice-Debug] playerPos={pawn.AbsOrigin} nearbyMarker={(nearbyMarker == null ? "null" : nearbyMarker.Id)} " +
+                $"closestMarkerId={(closestAny == null ? "none" : closestAny.Id)} closestMarkerLineups={closestAny?.Lineups.Count ?? 0} " +
+                $"distToClosest={distToClosest:F0} (standingRadius={StandingAtMarkerRadius:F0})");
+        }
+
         // Standing at a marker always wins, full stop - shoot/use here browses
         // its own lineups, never the fast-travel shortcut below. Without this,
         // aiming up at your own aim-reference dot could happen to line up with
