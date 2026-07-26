@@ -336,8 +336,8 @@ public class PracticeService
     // bar on and off ("split second"). Once a lineup is locked on, it keeps
     // being reported as long as it's within the wider Exit angle, and only
     // loses that lock to another lineup that's inside the tighter Enter angle.
-    private const float LineupAimEnterAngleDegrees = 8f;
-    private const float LineupAimExitAngleDegrees = 14f;
+    private const float LineupAimEnterAngleDegrees = 3f;
+    private const float LineupAimExitAngleDegrees = 6f;
 
     private Lineup? FindAimedAtLineup(int playerSlot, Vector eyeOrigin, Vector forward, IEnumerable<Lineup> lineups)
     {
