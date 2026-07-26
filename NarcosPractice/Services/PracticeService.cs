@@ -61,6 +61,10 @@ public class PracticeService
     // the technique bar on and off every other tick.
     private readonly ConcurrentDictionary<int, Lineup> _lastAimedLineup = new();
 
+    // Diagnostic only - throttles the passive ShowStandingGuide print to once a
+    // second per player instead of every tick.
+    private readonly ConcurrentDictionary<int, DateTime> _lastDebugPrint = new();
+
     private readonly MarkerService _markerService;
     private readonly MarkerVisualService _markerVisualService;
 
@@ -297,6 +301,13 @@ public class PracticeService
 
         var aimedLineup = FindAimedAtLineup(player.Slot, eyeOrigin, forward, marker.Lineups);
 
+        // Diagnostic only - once a second, print what this function is about
+        // to do regardless of button presses, since the report is "nothing
+        // shows at all just from standing here", not tied to any interaction.
+        bool shouldPrintDebug = !_lastDebugPrint.TryGetValue(player.Slot, out var lastPrint) || (DateTime.UtcNow - lastPrint).TotalSeconds >= 1;
+        if (shouldPrintDebug)
+            _lastDebugPrint[player.Slot] = DateTime.UtcNow;
+
         if (aimedLineup != null)
         {
             _lastGuided[player.Slot] = aimedLineup;
@@ -306,13 +317,28 @@ public class PracticeService
             float dz = aimedLineup.ThrowPosZ - playerOrigin.Z;
             float distanceFromExactSpot = MathF.Sqrt(dx * dx + dy * dy + dz * dz);
 
-            SetCenterText(player, BuildTechniqueBarText(aimedLineup, distanceFromExactSpot));
+            string text = BuildTechniqueBarText(aimedLineup, distanceFromExactSpot);
+            if (shouldPrintDebug)
+            {
+                _lastCenterText.TryGetValue(player.Slot, out var cached);
+                Server.PrintToConsole($"[Practice-Debug] aimedLineup='{aimedLineup.Name}' willSend={(cached == text ? "NO (matches cache)" : "YES")} text={text}");
+            }
+
+            SetCenterText(player, text);
             return;
         }
 
         int count = marker.Lineups.Count;
         string types = string.Join(", ", marker.Lineups.Select(l => l.Type).Distinct());
-        SetCenterText(player, $"<font color='#8fd3ff'>{count} lineup{(count == 1 ? "" : "s")} here</font> ({types}) - look at a marker for details");
+        string genericText = $"<font color='#8fd3ff'>{count} lineup{(count == 1 ? "" : "s")} here</font> ({types}) - look at a marker for details";
+
+        if (shouldPrintDebug)
+        {
+            _lastCenterText.TryGetValue(player.Slot, out var cachedGeneric);
+            Server.PrintToConsole($"[Practice-Debug] aimedLineup=null willSend={(cachedGeneric == genericText ? "NO (matches cache)" : "YES")} text={genericText}");
+        }
+
+        SetCenterText(player, genericText);
     }
 
     // Aim-reference dots are often far away (a window across a rooftop, the far
