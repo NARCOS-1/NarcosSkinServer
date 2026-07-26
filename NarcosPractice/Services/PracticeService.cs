@@ -225,31 +225,34 @@ public class PracticeService
         var forward = DirectionFromAngles(pawn.EyeAngles.X, pawn.EyeAngles.Y);
 
         var nearbyMarker = _markerService.FindNearest(map, pawn.AbsOrigin.X, pawn.AbsOrigin.Y, pawn.AbsOrigin.Z, StandingAtMarkerRadius);
+
+        // Standing at a marker always wins, full stop - shoot/use here browses
+        // its own lineups, never the fast-travel shortcut below. Without this,
+        // aiming up at your own aim-reference dot could happen to line up with
+        // some *other*, entirely unrelated marker further along that sightline
+        // (e.g. a rooftop stand-spot), and shoot would open a menu for that
+        // other marker instead of doing anything related to what you're
+        // actually looking at.
+        if (nearbyMarker != null)
+        {
+            ShowStandingGuide(player, nearbyMarker, eyeOrigin, forward);
+            return;
+        }
+
+        // Not standing at any marker - aiming at one from a distance offers
+        // shoot/use as a fast-travel shortcut, regardless of range (this used
+        // to be gated by proximity to some *other* marker, which is what made
+        // it feel broken up close).
         var aimedMarker = FindClosestAlongRay(eyeOrigin, forward, _markerService.GetMarkers(map),
             m => new Vector(m.PosX, m.PosY, m.PosZ), AimMaxDistance, AimHitRadius);
 
-        // A marker you're actually pointing at offers the shoot/use shortcut
-        // regardless of being close to some *other* marker right now - that
-        // proximity used to swallow the interaction outright, which is what
-        // made shoot-to-teleport feel broken at close range.
-        if (aimedMarker != null && aimedMarker != nearbyMarker)
+        if (aimedMarker != null)
         {
-            // Don't leave a stale aim dot / marker-id on screen from whatever
-            // was shown a moment ago while switching into this branch.
-            _markerVisualService.HideAimReference(player.Slot);
-            _lastShownMarkerId.TryRemove(player.Slot, out _);
-
             int count = aimedMarker.Lineups.Count;
             SetCenterText(player, $"<font color='#8fd3ff'>SHOOT or USE</font> to teleport - {count} lineup{(count == 1 ? "" : "s")} here");
 
             if (interactingNow && !interactedLastTick)
                 onInteract(aimedMarker);
-            return;
-        }
-
-        if (nearbyMarker != null)
-        {
-            ShowStandingGuide(player, nearbyMarker, eyeOrigin, forward, interactingNow && !interactedLastTick);
             return;
         }
 
@@ -262,7 +265,7 @@ public class PracticeService
     // them when the player's walked up to a different marker, not every tick.
     // Whichever dot the player is currently looking at gets its technique bar
     // shown; otherwise just a headcount of what's available here.
-    private void ShowStandingGuide(CCSPlayerController player, Marker marker, Vector eyeOrigin, Vector forward, bool printDebug)
+    private void ShowStandingGuide(CCSPlayerController player, Marker marker, Vector eyeOrigin, Vector forward)
     {
         if (!_lastShownMarkerId.TryGetValue(player.Slot, out var previousId) || previousId != marker.Id)
         {
@@ -272,31 +275,6 @@ public class PracticeService
 
             _markerVisualService.ShowAimReferences(player.Slot, positions);
             _lastShownMarkerId[player.Slot] = marker.Id;
-        }
-
-        // Diagnostic only - two tolerance widenings haven't fixed the "doesn't
-        // register even dead-center" report, so print the real numbers instead
-        // of guessing a third one. Shoot or use while looking at a dot to log
-        // one line per lineup: the aim point actually being checked against,
-        // and the resulting distance/angle. Remove once the real cause is found.
-        if (printDebug)
-        {
-            Server.PrintToConsole($"[Practice-Debug] eyeOrigin={eyeOrigin} forward={forward}");
-            foreach (var lineup in marker.Lineups)
-            {
-                var aimPoint = ResolveAimReferencePoint(lineup,
-                    new Vector(lineup.ThrowPosX, lineup.ThrowPosY, lineup.ThrowPosZ),
-                    new QAngle(lineup.ThrowAngPitch, lineup.ThrowAngYaw, 0));
-
-                float dx = aimPoint.X - eyeOrigin.X;
-                float dy = aimPoint.Y - eyeOrigin.Y;
-                float dz = aimPoint.Z - eyeOrigin.Z;
-                float dist = MathF.Sqrt(dx * dx + dy * dy + dz * dz);
-                float dot = dist < 1f ? 0f : Math.Clamp((forward.X * dx + forward.Y * dy + forward.Z * dz) / dist, -1f, 1f);
-                float angleDeg = MathF.Acos(dot) * (180f / MathF.PI);
-
-                Server.PrintToConsole($"[Practice-Debug]   '{lineup.Name}' aimPoint={aimPoint} dist={dist:F0} angle={angleDeg:F1}");
-            }
         }
 
         var aimedLineup = FindAimedAtLineup(player.Slot, eyeOrigin, forward, marker.Lineups);
