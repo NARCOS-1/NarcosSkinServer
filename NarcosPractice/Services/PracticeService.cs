@@ -50,6 +50,11 @@ public class PracticeService
     // screen permanently instead of clearing when there was nothing to show.
     private readonly ConcurrentDictionary<int, string> _lastCenterText = new();
 
+    // When each player's center text was last actually sent - CS2's own HUD
+    // element fades out after a few seconds on its own, so unchanged text
+    // still needs periodic resending to stay visible (see SetCenterText).
+    private readonly ConcurrentDictionary<int, DateTime> _lastCenterTextSentAt = new();
+
     // Which marker's aim dots are currently shown to each player, so they're
     // only respawned when the player actually walks up to a different marker,
     // not every single tick.
@@ -60,10 +65,6 @@ public class PracticeService
     // crosshair wobble right at the edge of the angle threshold doesn't flicker
     // the technique bar on and off every other tick.
     private readonly ConcurrentDictionary<int, Lineup> _lastAimedLineup = new();
-
-    // Diagnostic only - throttles the passive ShowStandingGuide print to once a
-    // second per player instead of every tick.
-    private readonly ConcurrentDictionary<int, DateTime> _lastDebugPrint = new();
 
     private readonly MarkerService _markerService;
     private readonly MarkerVisualService _markerVisualService;
@@ -301,13 +302,6 @@ public class PracticeService
 
         var aimedLineup = FindAimedAtLineup(player.Slot, eyeOrigin, forward, marker.Lineups);
 
-        // Diagnostic only - once a second, print what this function is about
-        // to do regardless of button presses, since the report is "nothing
-        // shows at all just from standing here", not tied to any interaction.
-        bool shouldPrintDebug = !_lastDebugPrint.TryGetValue(player.Slot, out var lastPrint) || (DateTime.UtcNow - lastPrint).TotalSeconds >= 1;
-        if (shouldPrintDebug)
-            _lastDebugPrint[player.Slot] = DateTime.UtcNow;
-
         if (aimedLineup != null)
         {
             _lastGuided[player.Slot] = aimedLineup;
@@ -317,26 +311,13 @@ public class PracticeService
             float dz = aimedLineup.ThrowPosZ - playerOrigin.Z;
             float distanceFromExactSpot = MathF.Sqrt(dx * dx + dy * dy + dz * dz);
 
-            string text = BuildTechniqueBarText(aimedLineup, distanceFromExactSpot);
-            if (shouldPrintDebug)
-            {
-                _lastCenterText.TryGetValue(player.Slot, out var cached);
-                Server.PrintToConsole($"[Practice-Debug] aimedLineup='{aimedLineup.Name}' willSend={(cached == text ? "NO (matches cache)" : "YES")} text={text}");
-            }
-
-            SetCenterText(player, text);
+            SetCenterText(player, BuildTechniqueBarText(aimedLineup, distanceFromExactSpot));
             return;
         }
 
         int count = marker.Lineups.Count;
         string types = string.Join(", ", marker.Lineups.Select(l => l.Type).Distinct());
         string genericText = $"<font color='#8fd3ff'>{count} lineup{(count == 1 ? "" : "s")} here</font> ({types}) - look at a marker for details";
-
-        if (shouldPrintDebug)
-        {
-            _lastCenterText.TryGetValue(player.Slot, out var cachedGeneric);
-            Server.PrintToConsole($"[Practice-Debug] aimedLineup=null willSend={(cachedGeneric == genericText ? "NO (matches cache)" : "YES")} text={genericText}");
-        }
 
         SetCenterText(player, genericText);
     }
@@ -399,15 +380,27 @@ public class PracticeService
         return best;
     }
 
-    // Only actually calls PrintToCenterHtml when the text differs from what
-    // this player was last shown - repeatedly re-sending identical text (even
-    // "") every tick is what kept the hint box permanently on screen.
+    // CS2's PrintToCenterHtml box has its own client-side display duration and
+    // fades out on its own after a few seconds regardless of whether the
+    // plugin ever sends anything else - confirmed via diagnostic logging that
+    // kept computing the exact same (correct) text every second while the
+    // player reported seeing nothing, because our dedup skipped resending it
+    // as "unchanged". So: skip only when the text is unchanged AND we've
+    // refreshed it recently enough to still be within that window - otherwise
+    // resend the identical text anyway just to keep it alive on screen.
+    private const float CenterTextRefreshSeconds = 2f;
+
     private void SetCenterText(CCSPlayerController player, string text)
     {
-        if (_lastCenterText.TryGetValue(player.Slot, out var last) && last == text)
+        bool unchanged = _lastCenterText.TryGetValue(player.Slot, out var last) && last == text;
+        bool dueForRefresh = !_lastCenterTextSentAt.TryGetValue(player.Slot, out var sentAt)
+            || (DateTime.UtcNow - sentAt).TotalSeconds >= CenterTextRefreshSeconds;
+
+        if (unchanged && !dueForRefresh)
             return;
 
         _lastCenterText[player.Slot] = text;
+        _lastCenterTextSentAt[player.Slot] = DateTime.UtcNow;
         player.PrintToCenterHtml(text);
     }
 
