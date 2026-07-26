@@ -4,6 +4,8 @@ using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
+using CS2MenuManager.API.Class;
+using CS2MenuManager.API.Menu;
 using NarcosPractice.Models;
 
 namespace NarcosPractice.Services;
@@ -226,45 +228,6 @@ public class PracticeService
 
         var nearbyMarker = _markerService.FindNearest(map, pawn.AbsOrigin.X, pawn.AbsOrigin.Y, pawn.AbsOrigin.Z, StandingAtMarkerRadius);
 
-        // Diagnostic only - confirmed the standing-radius gate isn't the
-        // blocker (nearbyMarker matches with distToClosest=0), so this now
-        // also prints the actual per-lineup angle math and what
-        // FindAimedAtLineup resolves to, to see whether the check itself is
-        // failing or something after it is. Shoot or use to log one line per
-        // lineup. Remove once the real cause is found.
-        if (interactingNow && !interactedLastTick)
-        {
-            var closestAny = _markerService.FindNearest(map, pawn.AbsOrigin.X, pawn.AbsOrigin.Y, pawn.AbsOrigin.Z, float.MaxValue);
-            float distToClosest = closestAny == null ? -1f :
-                MathF.Sqrt(MathF.Pow(closestAny.PosX - pawn.AbsOrigin.X, 2) + MathF.Pow(closestAny.PosY - pawn.AbsOrigin.Y, 2) + MathF.Pow(closestAny.PosZ - pawn.AbsOrigin.Z, 2));
-            Server.PrintToConsole(
-                $"[Practice-Debug] playerPos={pawn.AbsOrigin} nearbyMarker={(nearbyMarker == null ? "null" : nearbyMarker.Id)} " +
-                $"closestMarkerId={(closestAny == null ? "none" : closestAny.Id)} closestMarkerLineups={closestAny?.Lineups.Count ?? 0} " +
-                $"distToClosest={distToClosest:F0} (standingRadius={StandingAtMarkerRadius:F0})");
-
-            if (nearbyMarker != null)
-            {
-                foreach (var lineup in nearbyMarker.Lineups)
-                {
-                    var aimPoint = ResolveAimReferencePoint(lineup,
-                        new Vector(lineup.ThrowPosX, lineup.ThrowPosY, lineup.ThrowPosZ),
-                        new QAngle(lineup.ThrowAngPitch, lineup.ThrowAngYaw, 0));
-
-                    float dx = aimPoint.X - eyeOrigin.X;
-                    float dy = aimPoint.Y - eyeOrigin.Y;
-                    float dz = aimPoint.Z - eyeOrigin.Z;
-                    float dist = MathF.Sqrt(dx * dx + dy * dy + dz * dz);
-                    float dot = dist < 1f ? 0f : Math.Clamp((forward.X * dx + forward.Y * dy + forward.Z * dz) / dist, -1f, 1f);
-                    float angleDeg = MathF.Acos(dot) * (180f / MathF.PI);
-
-                    Server.PrintToConsole($"[Practice-Debug]   '{lineup.Name}' aimPoint={aimPoint} dist={dist:F0} angle={angleDeg:F1}");
-                }
-
-                var resolved = FindAimedAtLineup(player.Slot, eyeOrigin, forward, nearbyMarker.Lineups);
-                Server.PrintToConsole($"[Practice-Debug] FindAimedAtLineup resolved to: {(resolved == null ? "null" : resolved.Name)}");
-            }
-        }
-
         // Standing at a marker always wins, full stop - shoot/use here browses
         // its own lineups, never the fast-travel shortcut below. Without this,
         // aiming up at your own aim-reference dot could happen to line up with
@@ -274,6 +237,16 @@ public class PracticeService
         // actually looking at.
         if (nearbyMarker != null)
         {
+            // The shoot-to-teleport MarkerMenu opened from outside standing
+            // range never closes itself if the player just walks up to the
+            // marker instead of picking an item from it - and
+            // WasdMenuInstance.OnTick() keeps calling PrintToCenterHtml every
+            // single tick for as long as it's open, fighting with (and often
+            // winning over) our own technique-bar text below. Being here
+            // replaces the need for that menu entirely, so close it.
+            if (MenuManager.GetActiveMenu(player) is WasdMenuInstance activeMenu)
+                activeMenu.Close(false);
+
             ShowStandingGuide(player, nearbyMarker, eyeOrigin, forward);
             return;
         }
