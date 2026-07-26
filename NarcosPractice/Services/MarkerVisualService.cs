@@ -23,12 +23,20 @@ public class MarkerVisualService
     private readonly Dictionary<int, List<CPointWorldText>> _aimReferenceEntities = new();
     private readonly Queue<Marker> _pendingSpawns = new();
 
-    // Diamond for "stand here", bullseye ring for "aim here" - plain glyphs
-    // rendered through the same point_worldtext entity already proven safe,
-    // not a texture/sprite (that would need an unverified native resource
-    // reference, same category of guess that caused the earlier crash).
-    private const string StandIcon = "◆"; // ◆
+    // Hollow square for "stand here" (sized to roughly frame a player's own
+    // footprint), bullseye ring for "aim here" - plain glyphs rendered through
+    // the same point_worldtext entity already proven safe, not a texture/
+    // sprite (that would need an unverified native resource reference, same
+    // category of guess that caused the earlier crash).
+    private const string StandIcon = "□"; // □
     private const string AimIcon = "◎";   // ◎
+
+    // CS2 players are ~32 units wide - FontSize 100 at WorldUnitsPerPx 0.3
+    // renders roughly that size, so the square reads as "stand inside this."
+    // The aim dot stays smaller since it's just a point reference, not
+    // something to be physically contained by.
+    private const int StandIconFontSize = 100;
+    private const int DefaultFontSize = 50;
 
     // How many point_worldtext entities to create per tick while draining the
     // spawn queue - some maps have 80+ lineups, and creating dozens of entities
@@ -70,7 +78,7 @@ public class MarkerVisualService
         // lie flat on the ground (billboard-only reorient modes), but hugging
         // the floor gets closer than hovering at head height.
         var pos = new Vector(marker.PosX, marker.PosY, marker.PosZ + 6f);
-        var entity = CreateWorldText(StandIcon, pos, Color.FromArgb(255, 90, 170, 255), background: false);
+        var entity = CreateWorldText(StandIcon, pos, Color.FromArgb(255, 90, 170, 255), background: false, StandIconFontSize);
 
         if (entity != null)
         {
@@ -136,7 +144,7 @@ public class MarkerVisualService
         }
     }
 
-    private static CPointWorldText? CreateWorldText(string text, Vector position, Color color, bool background)
+    private static CPointWorldText? CreateWorldText(string text, Vector position, Color color, bool background, int fontSize = DefaultFontSize)
     {
         try
         {
@@ -152,7 +160,7 @@ public class MarkerVisualService
             entity.FontName = "Arial";
             // These are icon glyphs now, not readable text labels - sized to
             // read as a shape from a distance rather than as small print.
-            entity.FontSize = 50;
+            entity.FontSize = fontSize;
             entity.Color = color;
             entity.Fullbright = true;
             entity.WorldUnitsPerPx = 0.3f;
