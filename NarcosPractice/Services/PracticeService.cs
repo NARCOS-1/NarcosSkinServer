@@ -147,21 +147,18 @@ public class PracticeService
         // Confirmed cause of the "weird standing" bug: Teleport's angle argument
         // sets the pawn's own body orientation, and passing the saved pitch
         // (often steep on jumpthrows) tipped the whole body model over instead
-        // of just aiming the camera. Only yaw goes here (keeps the body
-        // upright); the full pitch+yaw goes to the client's own "setang"
-        // console command below instead.
+        // of just aiming the camera. Only yaw goes here - the aim reference
+        // marker below shows the exact saved pitch+yaw to look at instead.
+        //
+        // There is no safe way for the plugin to force a player's view angle:
+        // writing m_angEyeAngles directly via schema crashed the server (not a
+        // networked field), and running "setang" through ExecuteClientCommand
+        // is flatly rejected by the engine ("missing required FCVAR flag") -
+        // that command only accepts genuine client-typed input, not
+        // server-injected commands, as a deliberate anti-cheat protection.
+        // The aim-reference dot the player aims at themselves is the only
+        // viable option here.
         pawn.Teleport(throwPos, new QAngle(0, throwAngles.Y, 0), new Vector(0, 0, 0));
-
-        // Forces the exact saved look direction via the client's own setang
-        // command (needs sv_cheats 1) rather than writing eye angles directly
-        // - that raw schema write crashed the server earlier since m_angEyeAngles
-        // isn't a networked field. This runs through the engine's normal client
-        // command pipeline instead of poking memory, so it can't crash the same
-        // way, but it's still an experiment: forcing view client-side like this
-        // is unverified against server-side movement/prediction staying in sync.
-        string pitch = throwAngles.X.ToString(System.Globalization.CultureInfo.InvariantCulture);
-        string yaw = throwAngles.Y.ToString(System.Globalization.CultureInfo.InvariantCulture);
-        player.ExecuteClientCommand($"setang {pitch} {yaw} 0");
 
         string weaponClass = lineup.Type switch
         {
