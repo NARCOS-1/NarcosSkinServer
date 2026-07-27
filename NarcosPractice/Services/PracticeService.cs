@@ -14,6 +14,16 @@ public class PracticeService
 {
     private const float PendingSaveTimeoutSeconds = 10f;
 
+    // ArmSave records the throw angle from pawn.EyeAngles (an eye-level look
+    // direction) but the throw *position* from pawn.AbsOrigin (feet level) -
+    // anything projecting a ray from ThrowPos along ThrowAngPitch/Yaw needs to
+    // add this back first, or the ray starts 64 units below where it was
+    // actually aimed from. Confirmed via a real saved lineup: projecting from
+    // raw feet level put the computed aim point ~64 units too low, which at
+    // AimReferenceDistance works out to roughly the same several-degree pitch
+    // error a player would see trying to re-aim at it from eye height.
+    private const float StandingEyeHeight = 64f;
+
     // How far along the saved aim direction the "look here" reference dot sits.
     // Not the real detonation point (could be far off or behind a wall) - just a
     // visible anchor close enough to always render.
@@ -252,7 +262,7 @@ public class PracticeService
         bool interactedLastTick = _interactedLastTick.GetOrAdd(player.Slot, false);
         _interactedLastTick[player.Slot] = interactingNow;
 
-        var eyeOrigin = new Vector(pawn.AbsOrigin.X, pawn.AbsOrigin.Y, pawn.AbsOrigin.Z + 64f);
+        var eyeOrigin = new Vector(pawn.AbsOrigin.X, pawn.AbsOrigin.Y, pawn.AbsOrigin.Z + StandingEyeHeight);
         var forward = DirectionFromAngles(pawn.EyeAngles.X, pawn.EyeAngles.Y);
 
         var nearbyMarker = _markerService.FindNearest(map, pawn.AbsOrigin.X, pawn.AbsOrigin.Y, pawn.AbsOrigin.Z, StandingAtMarkerRadius);
@@ -484,11 +494,16 @@ public class PracticeService
 
     private static Vector ComputeAimReferencePoint(Vector throwPos, QAngle throwAngles)
     {
+        // ThrowAngPitch/Yaw came from an eye-level look direction (ArmSave
+        // reads pawn.EyeAngles), but throwPos is feet-level (pawn.AbsOrigin) -
+        // project from eye height, not raw feet height, or the ray starts 64
+        // units below where it was actually aimed from.
+        var eyeOrigin = new Vector(throwPos.X, throwPos.Y, throwPos.Z + StandingEyeHeight);
         var direction = DirectionFromAngles(throwAngles.X, throwAngles.Y);
         return new Vector(
-            throwPos.X + direction.X * AimReferenceDistance,
-            throwPos.Y + direction.Y * AimReferenceDistance,
-            throwPos.Z + direction.Z * AimReferenceDistance);
+            eyeOrigin.X + direction.X * AimReferenceDistance,
+            eyeOrigin.Y + direction.Y * AimReferenceDistance,
+            eyeOrigin.Z + direction.Z * AimReferenceDistance);
     }
 
     private static Vector DirectionFromAngles(float pitchDegrees, float yawDegrees)
