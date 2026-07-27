@@ -128,6 +128,15 @@ public class PracticeService
         _markerService.AddLineup(map, marker, lineup);
         _markerVisualService.SpawnMarkerText(marker);
 
+        // ShowStandingGuide only refreshes a player's aim dots when the
+        // marker's *id* changes - if they're already standing here (the
+        // usual case, since this is exactly where they just threw the real
+        // nade from), that id hasn't changed even though the lineup list
+        // just did, so the newly-saved lineup's dot would never appear until
+        // they walked away and back. Clearing this forces a fresh fetch of
+        // the now-updated lineup list on the very next tick.
+        _lastShownMarkerId.TryRemove(player.Slot, out _);
+
         player.PrintToChat($"[Practice] Saved {type} lineup '{pending.Name}' to a marker here.");
     }
 
@@ -177,6 +186,17 @@ public class PracticeService
         string notes = CleanNotes(lineup.Notes, " - ");
         string notesSuffix = string.IsNullOrWhiteSpace(notes) ? "" : $" ({notes})";
         player.PrintToChat($"[Practice] '{lineup.Name}' - {lineup.Technique}, {lineup.Strength} throw.{notesSuffix} Line up and throw it for real.");
+    }
+
+    // Called whenever a marker's lineup list changes from outside the normal
+    // standing-here flow (e.g. !nadedelete) - clears every player's "already
+    // fetched this marker's dots" cache so whoever's currently standing at any
+    // marker gets a fresh respawn reflecting the change next tick, instead of
+    // the stale list ShowStandingGuide would otherwise keep reusing until they
+    // walked away and back.
+    public void InvalidateStandingGuideCache()
+    {
+        _lastShownMarkerId.Clear();
     }
 
     // Instantly puts you back at the same stand spot/angle/nade without walking back

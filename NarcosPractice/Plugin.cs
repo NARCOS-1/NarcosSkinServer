@@ -121,6 +121,11 @@ public partial class Plugin : BasePlugin
                 _markerVisualService?.RemoveMarkerText(marker.Id);
             else
                 _markerVisualService?.SpawnMarkerText(marker);
+
+            // Same stale-cache issue as saving: anyone currently standing at
+            // this marker (or any marker) needs their aim dots refreshed to
+            // reflect the change instead of showing a deleted lineup's dot.
+            _practiceService?.InvalidateStandingGuideCache();
         }
 
         player.PrintToChat(deleted
