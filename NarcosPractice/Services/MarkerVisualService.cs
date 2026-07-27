@@ -36,7 +36,7 @@ public class MarkerVisualService
     // rather than just barely matching it. The aim dot is much smaller since
     // it's just a precise point reference, not something to stand inside.
     private const int StandIconFontSize = 130;
-    private const int AimIconFontSize = 20;
+    private const int AimIconFontSize = 35;
     private const int DefaultFontSize = 50;
 
     // How many point_worldtext entities to create per tick while draining the
@@ -118,14 +118,15 @@ public class MarkerVisualService
         var entities = new List<CPointWorldText>(positions.Count);
         foreach (var position in positions)
         {
-            // QAngle(90,0,0) previously caused a confirmed ~70-unit mismatch
-            // between the rendered dot and the real AimPos data when this was
-            // a ring - re-applied here on explicit request for the vertical
-            // look. Position accuracy has not been re-verified with this glyph;
-            // if aim detection stops lining up with what's visually shown,
-            // this rotation is the first thing to suspect and revert.
+            // Reverted QAngle(90,0,0) again - confirmed this time via two
+            // screenshots that the dot wasn't rendering at all (not just
+            // squashed), while the hint text kept responding to aim direction
+            // normally, meaning detection was fine but the glyph itself
+            // wasn't visible. Between that rotation and the smaller font size
+            // together, it likely rendered as effectively invisible. Back to
+            // the plain, confirmed-reliable orientation.
             var entity = CreateWorldText(AimIcon, position, Color.FromArgb(255, 255, 221, 0), background: false,
-                AimIconFontSize, PointWorldTextReorientMode_t.POINT_WORLD_TEXT_REORIENT_AROUND_UP, new QAngle(90, 0, 0));
+                AimIconFontSize);
             if (entity != null)
                 entities.Add(entity);
         }
