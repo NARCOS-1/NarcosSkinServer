@@ -27,19 +27,16 @@ public class MarkerVisualService
     // footprint), solid dot for "aim here" - plain glyphs rendered through the
     // same point_worldtext entity already proven safe, not a texture/sprite
     // (that would need an unverified native resource reference, same category
-    // of guess that caused the earlier crash). A ring ("◎") looked broken when
-    // squashed by the flat, non-tilting AROUND_UP billboard from steep viewing
-    // angles - a filled dot just looks like a thin sliver at those angles
-    // instead of "wrong", so it doesn't need the QAngle(90,0,0) rotation that
-    // caused the confirmed ~70-unit position mismatch.
+    // of guess that caused the earlier crash).
     private const string StandIcon = "□"; // □
     private const string AimIcon = "●";   // ●
 
     // CS2 players are ~32 units wide - FontSize 130 at WorldUnitsPerPx 0.3
     // renders around 39 units, comfortably framing the player's own footprint
-    // rather than just barely matching it. The aim dot stays smaller since
-    // it's just a point reference, not something to be physically contained by.
+    // rather than just barely matching it. The aim dot is much smaller since
+    // it's just a precise point reference, not something to stand inside.
     private const int StandIconFontSize = 130;
+    private const int AimIconFontSize = 20;
     private const int DefaultFontSize = 50;
 
     // How many point_worldtext entities to create per tick while draining the
@@ -121,14 +118,14 @@ public class MarkerVisualService
         var entities = new List<CPointWorldText>(positions.Count);
         foreach (var position in positions)
         {
-            // Reverted the QAngle(90,0,0) base angle that used to be here: it
-            // fixed the squashed-circle look, but confirmed via a live position
-            // readout that it also shifts the rendered glyph tens of units away
-            // from the entity's actual AbsOrigin - the same coordinate the aim
-            // hit-test correctly uses. A crooked-looking icon is a far smaller
-            // problem than "the visible target isn't where it logically is",
-            // so this goes back to the plain, position-accurate orientation.
-            var entity = CreateWorldText(AimIcon, position, Color.FromArgb(255, 255, 221, 0), background: false);
+            // QAngle(90,0,0) previously caused a confirmed ~70-unit mismatch
+            // between the rendered dot and the real AimPos data when this was
+            // a ring - re-applied here on explicit request for the vertical
+            // look. Position accuracy has not been re-verified with this glyph;
+            // if aim detection stops lining up with what's visually shown,
+            // this rotation is the first thing to suspect and revert.
+            var entity = CreateWorldText(AimIcon, position, Color.FromArgb(255, 255, 221, 0), background: false,
+                AimIconFontSize, PointWorldTextReorientMode_t.POINT_WORLD_TEXT_REORIENT_AROUND_UP, new QAngle(90, 0, 0));
             if (entity != null)
                 entities.Add(entity);
         }
@@ -153,7 +150,8 @@ public class MarkerVisualService
 
     private static CPointWorldText? CreateWorldText(string text, Vector position, Color color, bool background,
         int fontSize = DefaultFontSize,
-        PointWorldTextReorientMode_t reorientMode = PointWorldTextReorientMode_t.POINT_WORLD_TEXT_REORIENT_AROUND_UP)
+        PointWorldTextReorientMode_t reorientMode = PointWorldTextReorientMode_t.POINT_WORLD_TEXT_REORIENT_AROUND_UP,
+        QAngle? baseAngle = null)
     {
         try
         {
@@ -190,7 +188,7 @@ public class MarkerVisualService
             // keeps AROUND_UP.
             entity.ReorientMode = reorientMode;
 
-            entity.Teleport(position, new QAngle(0, 0, 0));
+            entity.Teleport(position, baseAngle ?? new QAngle(0, 0, 0));
             entity.DispatchSpawn();
 
             return entity;
