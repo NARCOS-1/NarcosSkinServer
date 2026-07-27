@@ -31,11 +31,11 @@ public class MarkerVisualService
     private const string StandIcon = "□"; // □
     private const string AimIcon = "◎";   // ◎
 
-    // CS2 players are ~32 units wide - FontSize 100 at WorldUnitsPerPx 0.3
-    // renders roughly that size, so the square reads as "stand inside this."
-    // The aim dot stays smaller since it's just a point reference, not
-    // something to be physically contained by.
-    private const int StandIconFontSize = 100;
+    // CS2 players are ~32 units wide - FontSize 130 at WorldUnitsPerPx 0.3
+    // renders around 39 units, comfortably framing the player's own footprint
+    // rather than just barely matching it. The aim dot stays smaller since
+    // it's just a point reference, not something to be physically contained by.
+    private const int StandIconFontSize = 130;
     private const int DefaultFontSize = 50;
 
     // How many point_worldtext entities to create per tick while draining the
@@ -73,12 +73,15 @@ public class MarkerVisualService
     {
         RemoveMarkerText(marker.Id);
 
-        // Sitting close to the actual floor reads as "stand here" - floating
-        // higher makes the exact ground spot harder to judge precisely. Can't
-        // lie flat on the ground (billboard-only reorient modes), but hugging
-        // the floor gets closer than hovering at head height.
+        // Sitting close to the actual floor reads as "stand here". REORIENT_NONE
+        // keeps whatever angle it's spawned with fixed forever instead of
+        // billboarding to face the player (AROUND_UP), and the un-rotated
+        // QAngle(0,0,0) plane already lies flat - so this now sits still on the
+        // ground as a real footprint decal instead of rotating to face you as
+        // you walk around it (which read as "the marker is moving with me").
         var pos = new Vector(marker.PosX, marker.PosY, marker.PosZ + 6f);
-        var entity = CreateWorldText(StandIcon, pos, Color.FromArgb(255, 90, 170, 255), background: false, StandIconFontSize);
+        var entity = CreateWorldText(StandIcon, pos, Color.FromArgb(255, 90, 170, 255), background: false,
+            StandIconFontSize, PointWorldTextReorientMode_t.POINT_WORLD_TEXT_REORIENT_NONE);
 
         if (entity != null)
         {
@@ -144,7 +147,9 @@ public class MarkerVisualService
         }
     }
 
-    private static CPointWorldText? CreateWorldText(string text, Vector position, Color color, bool background, int fontSize = DefaultFontSize)
+    private static CPointWorldText? CreateWorldText(string text, Vector position, Color color, bool background,
+        int fontSize = DefaultFontSize,
+        PointWorldTextReorientMode_t reorientMode = PointWorldTextReorientMode_t.POINT_WORLD_TEXT_REORIENT_AROUND_UP)
     {
         try
         {
@@ -170,11 +175,16 @@ public class MarkerVisualService
             entity.BackgroundBorderHeight = 0.2f;
             entity.JustifyHorizontal = PointWorldTextJustifyHorizontal_t.POINT_WORLD_TEXT_JUSTIFY_HORIZONTAL_CENTER;
             entity.JustifyVertical = PointWorldTextJustifyVertical_t.POINT_WORLD_TEXT_JUSTIFY_VERTICAL_CENTER;
-            // NONE pins the text to a fixed facing forever - from most approach
-            // angles it's edge-on and invisible. AROUND_UP billboards it to always
-            // face the player (rotating only around the vertical axis), which is
-            // the only other option this enum has and what a floor marker needs.
-            entity.ReorientMode = PointWorldTextReorientMode_t.POINT_WORLD_TEXT_REORIENT_AROUND_UP;
+            // NONE pins the text to whatever angle it was spawned with, forever -
+            // fine (even wanted) for a flat ground decal that shouldn't rotate as
+            // you walk around it. AROUND_UP instead billboards it to continuously
+            // face the player (rotating around the vertical axis), which is what
+            // a sign-like marker viewed from any angle needs, but reads as "the
+            // marker is moving with me" for something meant to sit still on the
+            // ground - that's why the stand square uses NONE while the aim dot
+            // (which does need to stay legible from any angle at a distance)
+            // keeps AROUND_UP.
+            entity.ReorientMode = reorientMode;
 
             entity.Teleport(position, new QAngle(0, 0, 0));
             entity.DispatchSpawn();
