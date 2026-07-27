@@ -159,6 +159,12 @@ public partial class Plugin : BasePlugin
             // removes the speed penalty CS normally applies for over-bhopping.
             Server.ExecuteCommand("sv_autobunnyhopping 1");
             Server.ExecuteCommand("sv_enablebunnyhopping 1");
+
+            // Shows the actual nade throw arc in-flight and leaves the trail
+            // visible for 15s after, so you can see where it landed relative
+            // to where you were aiming.
+            Server.ExecuteCommand("sv_grenade_trajectory_prac_pipreview 1");
+            Server.ExecuteCommand("sv_grenade_trajectory_prac_trailtime 15");
         });
     }
     private void OnGlovesCommand(CCSPlayerController? player, CommandInfo command)
