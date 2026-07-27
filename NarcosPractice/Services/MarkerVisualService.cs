@@ -24,12 +24,16 @@ public class MarkerVisualService
     private readonly Queue<Marker> _pendingSpawns = new();
 
     // Hollow square for "stand here" (sized to roughly frame a player's own
-    // footprint), bullseye ring for "aim here" - plain glyphs rendered through
-    // the same point_worldtext entity already proven safe, not a texture/
-    // sprite (that would need an unverified native resource reference, same
-    // category of guess that caused the earlier crash).
+    // footprint), solid dot for "aim here" - plain glyphs rendered through the
+    // same point_worldtext entity already proven safe, not a texture/sprite
+    // (that would need an unverified native resource reference, same category
+    // of guess that caused the earlier crash). A ring ("◎") looked broken when
+    // squashed by the flat, non-tilting AROUND_UP billboard from steep viewing
+    // angles - a filled dot just looks like a thin sliver at those angles
+    // instead of "wrong", so it doesn't need the QAngle(90,0,0) rotation that
+    // caused the confirmed ~70-unit position mismatch.
     private const string StandIcon = "□"; // □
-    private const string AimIcon = "◎";   // ◎
+    private const string AimIcon = "●";   // ●
 
     // CS2 players are ~32 units wide - FontSize 130 at WorldUnitsPerPx 0.3
     // renders around 39 units, comfortably framing the player's own footprint
